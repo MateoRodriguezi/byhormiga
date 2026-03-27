@@ -23,8 +23,10 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv(
 # Application definition
 
 INSTALLED_APPS = [
-    # Django Admin Theme (must be before django.contrib.admin)
+    # Django Unfold Admin Theme (must be before django.contrib.admin)
     'unfold',
+    'unfold.contrib.filters',
+    'unfold.contrib.forms',
 
     # Django Apps
     'django.contrib.admin',
@@ -32,6 +34,7 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     
     # Third Party
