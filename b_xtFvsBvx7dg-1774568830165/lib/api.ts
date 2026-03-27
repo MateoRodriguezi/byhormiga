@@ -1,6 +1,6 @@
 import type { Event, GalleryItem, Post, ContactFormData } from './types'
 
-// TODO: Replace with real API endpoint
+// API Base URL from environment variables
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
 // Mock data for events
@@ -137,66 +137,150 @@ export const mockPosts: Post[] = [
   },
 ]
 
-// TODO: Replace with actual API calls
+// Fetch events from API
 export async function getEvents(): Promise<Event[]> {
-  // TODO: Uncomment when API is ready
-  // const res = await fetch(`${API_BASE_URL}/api/events/`, {
-  //   next: { revalidate: 60 }
-  // })
-  // return res.json()
+  if (!API_BASE_URL) {
+    console.warn('API_BASE_URL not configured, using mock data')
+    return mockEvents
+  }
 
-  return mockEvents
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/events/`, {
+      next: { revalidate: 60 },
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch events: ${res.status}`)
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching events:', error)
+    return mockEvents
+  }
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | undefined> {
-  // TODO: Uncomment when API is ready
-  // const res = await fetch(`${API_BASE_URL}/api/events/${slug}`, {
-  //   next: { revalidate: 60 }
-  // })
-  // return res.json()
+  if (!API_BASE_URL) {
+    console.warn('API_BASE_URL not configured, using mock data')
+    return mockEvents.find(event => event.slug === slug)
+  }
 
-  return mockEvents.find(event => event.slug === slug)
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/events/${slug}/`, {
+      next: { revalidate: 60 },
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (!res.ok) {
+      if (res.status === 404) {
+        return undefined
+      }
+      throw new Error(`Failed to fetch event: ${res.status}`)
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching event:', error)
+    return mockEvents.find(event => event.slug === slug)
+  }
 }
 
 export async function getGallery(): Promise<GalleryItem[]> {
-  // TODO: Uncomment when API is ready
-  // const res = await fetch(`${API_BASE_URL}/api/gallery/`, {
-  //   next: { revalidate: 60 }
-  // })
-  // return res.json()
+  if (!API_BASE_URL) {
+    console.warn('API_BASE_URL not configured, using mock data')
+    return mockGallery
+  }
 
-  return mockGallery
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/gallery/`, {
+      next: { revalidate: 60 },
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch gallery: ${res.status}`)
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching gallery:', error)
+    return mockGallery
+  }
 }
 
 export async function getPosts(): Promise<Post[]> {
-  // TODO: Uncomment when API is ready
-  // const res = await fetch(`${API_BASE_URL}/api/posts/`, {
-  //   next: { revalidate: 60 }
-  // })
-  // return res.json()
+  if (!API_BASE_URL) {
+    console.warn('API_BASE_URL not configured, using mock data')
+    return mockPosts
+  }
 
-  return mockPosts
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/posts/`, {
+      next: { revalidate: 60 },
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (!res.ok) {
+      throw new Error(`Failed to fetch posts: ${res.status}`)
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+    return mockPosts
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
-  // TODO: Uncomment when API is ready
-  // const res = await fetch(`${API_BASE_URL}/api/posts/${slug}`, {
-  //   next: { revalidate: 60 }
-  // })
-  // return res.json()
+  if (!API_BASE_URL) {
+    console.warn('API_BASE_URL not configured, using mock data')
+    return mockPosts.find(post => post.slug === slug)
+  }
 
-  return mockPosts.find(post => post.slug === slug)
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/posts/${slug}/`, {
+      next: { revalidate: 60 },
+      headers: { 'Content-Type': 'application/json' }
+    })
+
+    if (!res.ok) {
+      if (res.status === 404) {
+        return undefined
+      }
+      throw new Error(`Failed to fetch post: ${res.status}`)
+    }
+
+    return await res.json()
+  } catch (error) {
+    console.error('Error fetching post:', error)
+    return mockPosts.find(post => post.slug === slug)
+  }
 }
 
-export async function submitContactForm(data: ContactFormData): Promise<{ success: boolean }> {
-  // TODO: Uncomment when API is ready
-  // const res = await fetch(`${API_BASE_URL}/api/contact/`, {
-  //   method: 'POST',
-  //   headers: { 'Content-Type': 'application/json' },
-  //   body: JSON.stringify(data),
-  // })
-  // return res.json()
+export async function submitContactForm(data: ContactFormData): Promise<{ success: boolean; message?: string }> {
+  if (!API_BASE_URL) {
+    console.warn('API_BASE_URL not configured, contact form will not be sent')
+    console.log('Contact form data:', data)
+    return { success: true, message: 'Mock submission successful' }
+  }
 
-  console.log('Contact form submitted:', data)
-  return { success: true }
+  try {
+    const res = await fetch(`${API_BASE_URL}/api/contact/`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(data),
+    })
+
+    if (!res.ok) {
+      throw new Error(`Failed to submit contact form: ${res.status}`)
+    }
+
+    const result = await res.json()
+    return { success: true, message: result.message }
+  } catch (error) {
+    console.error('Error submitting contact form:', error)
+    return { success: false, message: 'Error al enviar el mensaje. Por favor intenta nuevamente.' }
+  }
 }
