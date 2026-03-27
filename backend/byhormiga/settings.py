@@ -24,8 +24,8 @@ ALLOWED_HOSTS = config('ALLOWED_HOSTS', default='localhost,127.0.0.1', cast=Csv(
 
 INSTALLED_APPS = [
     # Django Admin Theme (must be before django.contrib.admin)
-    'jazzmin',
-    
+    'unfold',
+
     # Django Apps
     'django.contrib.admin',
     'django.contrib.auth',
@@ -159,79 +159,81 @@ MEDIA_ROOT = BASE_DIR / 'media'
 # Default primary key field type
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Jazzmin Admin Theme Configuration
-JAZZMIN_SETTINGS = {
-    "site_title": "ByHormiga Admin",
-    "site_header": "ByHormiga",
-    "site_brand": "ByHormiga",
-    "site_logo": None,
-    "welcome_sign": "Bienvenido al panel de administración",
-    "copyright": "ByHormiga 2026",
-    "search_model": "events.Event",
-    
-    # Theme
-    "theme": "darkly",
-    "dark_mode_theme": "darkly",
-    
-    # Top Menu
-    "topmenu_links": [
-        {"name": "Home", "url": "admin:index", "permissions": ["auth.view_user"]},
-        {"name": "Ver sitio", "url": "/", "new_window": True},
-    ],
-    
-    # Sidebar
-    "show_sidebar": True,
-    "navigation_expanded": True,
-    
-    # Icons (Font Awesome)
-    "icons": {
-        "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
-        "auth.Group": "fas fa-users",
-        "events.Event": "fas fa-calendar-alt",
-        "events.Venue": "fas fa-map-marker-alt",
-        "gallery.Album": "fas fa-images",
-        "gallery.Photo": "fas fa-image",
-        "blog.Post": "fas fa-newspaper",
-        "contact.ContactMessage": "fas fa-envelope",
-    },
-    
-    # UI Tweaks
-    "custom_css": None,
-    "custom_js": None,
-    "show_ui_builder": False,
-    "changeform_format": "horizontal_tabs",
-    "related_modal_active": True,
-}
+# Django Unfold Admin Theme Configuration
+UNFOLD = {
+    "SITE_TITLE": "ByHormiga Admin",
+    "SITE_HEADER": "ByHormiga",
+    "SITE_URL": "/",
+    "SITE_SYMBOL": "celebration",  # Google Material Symbol
 
-JAZZMIN_UI_TWEAKS = {
-    "navbar_small_text": False,
-    "footer_small_text": False,
-    "body_small_text": False,
-    "brand_small_text": False,
-    "brand_colour": "navbar-dark",
-    "accent": "accent-primary",
-    "navbar": "navbar-dark",
-    "no_navbar_border": False,
-    "navbar_fixed": True,
-    "layout_boxed": False,
-    "footer_fixed": False,
-    "sidebar_fixed": True,
-    "sidebar": "sidebar-dark-primary",
-    "sidebar_nav_small_text": False,
-    "sidebar_disable_expand": False,
-    "sidebar_nav_child_indent": True,
-    "sidebar_nav_compact_style": False,
-    "sidebar_nav_legacy_style": False,
-    "sidebar_nav_flat_style": True,
-    "theme": "darkly",
-    "dark_mode_theme": "darkly",
-    "button_classes": {
-        "primary": "btn-primary",
-        "secondary": "btn-secondary",
-        "info": "btn-info",
-        "warning": "btn-warning",
-        "danger": "btn-danger",
-        "success": "btn-success"
-    }
+    "COLORS": {
+        "primary": {
+            "50": "250 245 255",
+            "100": "243 232 255",
+            "200": "233 213 255",
+            "300": "216 180 254",
+            "400": "192 132 252",
+            "500": "168 85 247",
+            "600": "147 51 234",
+            "700": "126 34 206",
+            "800": "107 33 168",
+            "900": "88 28 135",
+            "950": "59 7 100",
+        },
+    },
+
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+        "navigation": [
+            {
+                "title": "Eventos",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Eventos",
+                        "icon": "calendar_month",
+                        "link": lambda request: "/admin/events/event/",
+                    },
+                    {
+                        "title": "Venues",
+                        "icon": "location_on",
+                        "link": lambda request: "/admin/events/venue/",
+                    },
+                ],
+            },
+            {
+                "title": "Galería",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Álbumes",
+                        "icon": "photo_library",
+                        "link": lambda request: "/admin/gallery/album/",
+                    },
+                    {
+                        "title": "Fotos",
+                        "icon": "image",
+                        "link": lambda request: "/admin/gallery/photo/",
+                    },
+                ],
+            },
+            {
+                "title": "Contenido",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Artículos",
+                        "icon": "article",
+                        "link": lambda request: "/admin/blog/post/",
+                    },
+                    {
+                        "title": "Mensajes",
+                        "icon": "mail",
+                        "link": lambda request: "/admin/contact/contactmessage/",
+                    },
+                ],
+            },
+        ],
+    },
 }
