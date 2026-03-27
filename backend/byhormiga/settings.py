@@ -153,7 +153,11 @@ if config('CLOUDINARY_CLOUD_NAME', default=''):
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.StaticFilesStorage'
+
+# WhiteNoise configuration
+WHITENOISE_USE_FINDERS = True
+WHITENOISE_AUTOREFRESH = True if DEBUG else False
+WHITENOISE_KEEP_ONLY_HASHED_FILES = False
 
 # Media files
 MEDIA_URL = '/media/'
