@@ -1,8 +1,19 @@
+[phases.setup]
+nixPkgs = ["python311"]
+
+[phases.install]
+cmds = [
+    "pip install -r requirements.txt"
+]
+
 [phases.build]
 cmds = [
-    "pip install -r requirements.txt",
-    "python manage.py collectstatic --no-input"
+    "mkdir -p staticfiles",
+    "python manage.py collectstatic --no-input --clear"
 ]
 
 [start]
-cmd = "gunicorn byhormiga.wsgi --log-file -"
+cmd = "gunicorn byhormiga.wsgi --log-file - --bind 0.0.0.0:$PORT"
+
+[variables]
+NIXPACKS_PYTHON_VERSION = "3.11"
