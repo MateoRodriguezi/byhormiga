@@ -2,6 +2,7 @@ asgiref==3.11.1
 certifi==2026.2.25
 charset-normalizer==3.4.6
 cloudinary==1.41.0
+dj-database-url==2.2.0
 Django==4.2.16
 django-admin-sortable2==2.2.3
 django-cloudinary-storage==0.3.0

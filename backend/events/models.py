@@ -1,3 +1,118 @@
 from django.db import models
+from django.utils.text import slugify
 
-# Create your models here.
+
+class Venue(models.Model):
+    """Modelo para venues/lugares de eventos"""
+    name = models.CharField(max_length=200, verbose_name="Nombre")
+    address = models.CharField(max_length=300, verbose_name="Dirección")
+    city = models.CharField(max_length=100, default="Montevideo", verbose_name="Ciudad")
+    maps_url = models.URLField(blank=True, null=True, verbose_name="URL Google Maps")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Venue"
+        verbose_name_plural = "Venues"
+        ordering = ['name']
+
+    def __str__(self):
+        return self.name
+
+
+class Event(models.Model):
+    """Modelo para eventos"""
+    STATUS_CHOICES = [
+        ('draft', 'Borrador'),
+        ('published', 'Publicado'),
+        ('cancelled', 'Cancelado'),
+        ('sold_out', 'Agotado'),
+    ]
+
+    title = models.CharField(max_length=200, verbose_name="Título")
+    slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug")
+    description = models.TextField(verbose_name="Descripción")
+    date = models.DateTimeField(verbose_name="Fecha y hora")
+    venue = models.ForeignKey(
+        Venue,
+        on_delete=models.PROTECT,
+        related_name='events',
+        verbose_name="Venue"
+    )
+    poster = models.ImageField(
+        upload_to='events/posters/',
+        blank=True,
+        null=True,
+        verbose_name="Poster"
+    )
+    ticket_url = models.URLField(
+        blank=True,
+        null=True,
+        verbose_name="URL de tickets"
+    )
+    price_info = models.CharField(
+        max_length=200,
+        blank=True,
+        verbose_name="Información de precio"
+    )
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='draft',
+        verbose_name="Estado"
+    )
+    featured = models.BooleanField(
+        default=False,
+        verbose_name="Destacado",
+        help_text="Marcar si el evento debe aparecer destacado"
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = "Evento"
+        verbose_name_plural = "Eventos"
+        ordering = ['-date']
+
+    def __str__(self):
+        return self.title
+
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
+
+    @property
+    def day(self):
+        """Extrae el número del día para el frontend"""
+        return self.date.strftime('%d')
+
+    @property
+    def month(self):
+        """Extrae la abreviación del mes en español"""
+        months = {
+            1: 'ENE', 2: 'FEB', 3: 'MAR', 4: 'ABR',
+            5: 'MAY', 6: 'JUN', 7: 'JUL', 8: 'AGO',
+            9: 'SEP', 10: 'OCT', 11: 'NOV', 12: 'DIC'
+        }
+        return months[self.date.month]
+
+    @property
+    def weekday(self):
+        """Extrae la abreviación del día de la semana en español"""
+        weekdays = {
+            0: 'LUN', 1: 'MAR', 2: 'MIÉ', 3: 'JUE',
+            4: 'VIE', 5: 'SÁB', 6: 'DOM'
+        }
+        return weekdays[self.date.weekday()]
+
+    @property
+    def frontend_status(self):
+        """Mapea el status de Django al formato del frontend"""
+        status_map = {
+            'published': 'en-venta',
+            'sold_out': 'agotado',
+            'draft': 'proximamente',
+            'cancelled': 'proximamente',
+        }
+        return status_map.get(self.status, 'proximamente')
