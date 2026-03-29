@@ -1,41 +1,53 @@
 from django.contrib import admin
 from django.utils.html import format_html
+from unfold.admin import ModelAdmin
 from .models import Venue, Event
 
 
 @admin.register(Venue)
-class VenueAdmin(admin.ModelAdmin):
-    list_display = ['name', 'city', 'address', 'created_at']
+class VenueAdmin(ModelAdmin):
+    list_display = ['name', 'city', 'address', 'event_count', 'created_at']
     search_fields = ['name', 'address', 'city']
     list_filter = ['city', 'created_at']
-    readonly_fields = ['created_at', 'updated_at']
+    readonly_fields = ['event_count', 'created_at', 'updated_at']
 
     fieldsets = (
         ('Información básica', {
             'fields': ('name', 'city', 'address', 'maps_url')
         }),
         ('Metadatos', {
-            'fields': ('created_at', 'updated_at'),
+            'fields': ('event_count', 'created_at', 'updated_at'),
             'classes': ('collapse',)
         }),
     )
 
+    def event_count(self, obj):
+        """Muestra la cantidad de eventos en este venue"""
+        count = obj.events.count()
+        return format_html(
+            '<span style="background-color: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold;">{}</span>',
+            count
+        )
+    event_count.short_description = 'Eventos'
+
 
 @admin.register(Event)
-class EventAdmin(admin.ModelAdmin):
+class EventAdmin(ModelAdmin):
     list_display = [
         'poster_thumbnail',
         'title',
+        'formatted_date',
         'venue',
-        'date',
         'status_badge',
-        'featured',
+        'featured_badge',
     ]
     list_filter = ['status', 'featured', 'venue', 'date']
     search_fields = ['title', 'description']
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ['poster_preview', 'created_at', 'updated_at']
     date_hierarchy = 'date'
+    list_editable = ['featured']
+    actions = ['mark_as_published', 'mark_as_draft', 'mark_as_sold_out', 'mark_as_cancelled']
 
     fieldsets = (
         ('Información básica', {
@@ -76,6 +88,18 @@ class EventAdmin(admin.ModelAdmin):
         return 'No hay poster cargado'
     poster_preview.short_description = 'Vista previa'
 
+    def formatted_date(self, obj):
+        """Muestra fecha formateada con día de la semana"""
+        return format_html(
+            '<strong>{}</strong><br><small>{} {} - {}:{}</small>',
+            obj.date.strftime('%d/%m/%Y'),
+            obj.weekday,
+            obj.date.strftime('%H:%M'),
+            obj.date.strftime('%H'),
+            obj.date.strftime('%M')
+        )
+    formatted_date.short_description = 'Fecha'
+
     def status_badge(self, obj):
         """Muestra badge de status con colores"""
         colors = {
@@ -91,3 +115,32 @@ class EventAdmin(admin.ModelAdmin):
             obj.get_status_display()
         )
     status_badge.short_description = 'Estado'
+
+    def featured_badge(self, obj):
+        """Muestra si el evento está destacado"""
+        if obj.featured:
+            return format_html(
+                '<span style="color: #fbbf24;">⭐ Destacado</span>'
+            )
+        return '-'
+    featured_badge.short_description = 'Destacado'
+
+    @admin.action(description="✅ Marcar como publicado")
+    def mark_as_published(self, request, queryset):
+        updated = queryset.update(status='published')
+        self.message_user(request, f"{updated} evento(s) marcado(s) como publicado.")
+
+    @admin.action(description="📝 Marcar como borrador")
+    def mark_as_draft(self, request, queryset):
+        updated = queryset.update(status='draft')
+        self.message_user(request, f"{updated} evento(s) marcado(s) como borrador.")
+
+    @admin.action(description="🎫 Marcar como agotado")
+    def mark_as_sold_out(self, request, queryset):
+        updated = queryset.update(status='sold_out')
+        self.message_user(request, f"{updated} evento(s) marcado(s) como agotado.")
+
+    @admin.action(description="❌ Marcar como cancelado")
+    def mark_as_cancelled(self, request, queryset):
+        updated = queryset.update(status='cancelled')
+        self.message_user(request, f"{updated} evento(s) marcado(s) como cancelado.")
