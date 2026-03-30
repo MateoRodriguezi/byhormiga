@@ -56,6 +56,7 @@ INSTALLED_APPS = [
     'gallery',
     'blog',
     'contact',
+    'partners',
 ]
 
 MIDDLEWARE = [
@@ -244,6 +245,17 @@ UNFOLD = {
                         "title": "Mensajes",
                         "icon": "mail",
                         "link": lambda request: "/admin/contact/contactmessage/",
+                    },
+                ],
+            },
+            {
+                "title": "Partners",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Marcas",
+                        "icon": "handshake",
+                        "link": lambda request: "/admin/partners/partner/",
                     },
                 ],
             },

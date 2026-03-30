@@ -46,8 +46,7 @@ class EventAdmin(ModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     readonly_fields = ['poster_preview', 'created_at', 'updated_at']
     date_hierarchy = 'date'
-    list_editable = ['featured']
-    actions = ['mark_as_published', 'mark_as_draft', 'mark_as_sold_out', 'mark_as_cancelled']
+    actions = ['mark_as_published', 'mark_as_draft', 'mark_as_sold_out', 'mark_as_cancelled', 'mark_as_featured', 'mark_as_not_featured']
 
     fieldsets = (
         ('Información básica', {
@@ -144,3 +143,13 @@ class EventAdmin(ModelAdmin):
     def mark_as_cancelled(self, request, queryset):
         updated = queryset.update(status='cancelled')
         self.message_user(request, f"{updated} evento(s) marcado(s) como cancelado.")
+
+    @admin.action(description="⭐ Marcar como destacado")
+    def mark_as_featured(self, request, queryset):
+        updated = queryset.update(featured=True)
+        self.message_user(request, f"{updated} evento(s) marcado(s) como destacado.")
+
+    @admin.action(description="⭐ Quitar destacado")
+    def mark_as_not_featured(self, request, queryset):
+        updated = queryset.update(featured=False)
+        self.message_user(request, f"{updated} evento(s) desmarcado(s) como destacado.")
