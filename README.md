@@ -1,58 +1,105 @@
-🐜 byhormiga — Sitio Web Oficial
-Sitio web oficial de byhormiga, productora de eventos de Montevideo, Uruguay con más de 30 años de experiencia en la industria del entretenimiento.
+# 🐜 ByHormiga
 
-🌐 URLs en producción
-ServicioURLSitio webhttps://byhormiga.vercel.appAdmin Djangohttps://byhormiga-production.up.railway.app/adminAPI RESThttps://byhormiga-production.up.railway.app/api
+Sitio web oficial de **ByHormiga**, productora de eventos de Montevideo, Uruguay con más de 30 años de experiencia en la industria del entretenimiento.
 
-🏗️ Arquitectura
+---
+
+## 🌐 URLs en Producción
+
+| Servicio | URL |
+|----------|-----|
+| **Sitio Web** | https://byhormiga.vercel.app |
+| **Admin Django** | https://byhormiga-production.up.railway.app/admin |
+| **API REST** | https://byhormiga-production.up.railway.app/api |
+
+---
+
+## 🏗️ Arquitectura
+
+```
 byhormiga/
 ├── b_xtFvsBvx7dg-1774568830165/   ← Frontend (Next.js 14)
 └── backend/                        ← Backend (Django 4.2)
-Stack
-CapaTecnologíaHostingFrontendNext.js 14 + TypeScript + Tailwind + Framer MotionVercelBackend / AdminDjango 4.2 + Django REST Framework + UnfoldRailwayBase de datosPostgreSQLRailwayMedia (fotos)CloudinaryCloudinary CDNRepositorioGitHubgithub.com/MateoRodriguezi/byhormiga
+```
 
-🖥️ Frontend
-Generado con v0.dev y ajustado manualmente. Estética dark/underground, blanco y negro, tipografía bold uppercase.
-Páginas
+### Stack Tecnológico
 
-/ — Home con hero, stats, eventos, galería, prensa
-/eventos — Listado de todos los eventos
-/eventos/[slug] — Detalle de cada evento
-/galeria — Galería de fotos por evento
-/prensa — Artículos y prensa
-/prensa/[slug] — Detalle de artículo
-/contacto — Formulario de contacto
+| Capa | Tecnología | Hosting |
+|------|-----------|---------|
+| **Frontend** | Next.js 14 + TypeScript + Tailwind + Framer Motion | Vercel |
+| **Backend / Admin** | Django 4.2 + Django REST Framework + Unfold | Railway |
+| **Base de datos** | PostgreSQL | Railway |
+| **Media (fotos)** | Cloudinary | Cloudinary CDN |
+| **Repositorio** | GitHub | [github.com/MateoRodriguezi/byhormiga](https://github.com/MateoRodriguezi/byhormiga) |
 
-Setup local
-bashcd b_xtFvsBvx7dg-1774568830165
+---
+
+## 🖥️ Frontend
+
+Generado con **v0.dev** y ajustado manualmente. Estética dark/underground, blanco y negro, tipografía bold uppercase.
+
+### Páginas
+
+- `/` — Home con hero, stats, eventos, galería, prensa
+- `/eventos` — Listado de todos los eventos
+- `/eventos/[slug]` — Detalle de cada evento
+- `/galeria` — Galería de fotos por evento
+- `/prensa` — Artículos y prensa
+- `/prensa/[slug]` — Detalle de artículo
+- `/contacto` — Formulario de contacto
+
+### Setup Local
+
+```bash
+cd b_xtFvsBvx7dg-1774568830165
 pnpm install
 pnpm dev
 # → http://localhost:3000
-Variables de entorno
-Crear .env.local:
+```
+
+### Variables de Entorno
+
+Crear `.env.local`:
+
+```env
 NEXT_PUBLIC_API_URL=https://byhormiga-production.up.railway.app/api
+```
+
 Para desarrollo local contra backend local:
+
+```env
 NEXT_PUBLIC_API_URL=http://localhost:8000/api
+```
 
-⚙️ Backend
-Django con panel de administración Unfold (dark mode) para que el propietario gestione el contenido sin tocar código.
-Apps Django
+---
 
-events — Eventos y Venues
-gallery — Álbumes y Fotos
-blog — Artículos de prensa
-contact — Mensajes de contacto
+## ⚙️ Backend
 
-API Endpoints
-GET  /api/events/              → Lista de eventos publicados
-GET  /api/events/{slug}/       → Detalle de evento
-GET  /api/events/featured/     → Eventos destacados
-GET  /api/gallery/             → Álbumes con fotos
-GET  /api/posts/               → Artículos de prensa
-GET  /api/posts/{slug}/        → Detalle de artículo
-POST /api/contact/             → Enviar mensaje de contacto
-Setup local
-bashcd backend
+Django con panel de administración **Unfold** (dark mode) para que el propietario gestione el contenido sin tocar código.
+
+### Apps Django
+
+- `events` — Eventos y Venues
+- `gallery` — Álbumes y Fotos
+- `blog` — Artículos de prensa
+- `contact` — Mensajes de contacto
+
+### API Endpoints
+
+| Method | Endpoint | Descripción |
+|--------|----------|-------------|
+| `GET` | `/api/events/` | Lista de eventos publicados |
+| `GET` | `/api/events/{slug}/` | Detalle de evento |
+| `GET` | `/api/events/featured/` | Eventos destacados |
+| `GET` | `/api/gallery/` | Álbumes con fotos |
+| `GET` | `/api/posts/` | Artículos de prensa |
+| `GET` | `/api/posts/{slug}/` | Detalle de artículo |
+| `POST` | `/api/contact/` | Enviar mensaje de contacto |
+
+### Setup Local
+
+```bash
+cd backend
 
 # Crear entorno virtual
 python3 -m venv venv
@@ -75,7 +122,13 @@ python manage.py createsuperuser
 python manage.py runserver
 # → Admin en http://localhost:8000/admin
 # → API en http://localhost:8000/api
-Variables de entorno (backend/.env)
+```
+
+### Variables de Entorno
+
+Crear `backend/.env`:
+
+```env
 SECRET_KEY=tu-secret-key-aqui
 DEBUG=True
 ALLOWED_HOSTS=localhost,127.0.0.1
@@ -90,47 +143,61 @@ CLOUDINARY_API_SECRET=tu-api-secret
 
 # CORS
 CORS_ALLOWED_ORIGINS=http://localhost:3000
+```
 
-🚀 Deploy
-Frontend → Vercel
+---
 
-Conectado al repo GitHub (main branch)
-Root Directory: b_xtFvsBvx7dg-1774568830165
-Deploy automático en cada push a main
-Variable de entorno: NEXT_PUBLIC_API_URL
+## 🚀 Deployment
 
-Backend → Railway
+### Frontend → Vercel
 
-Conectado al repo GitHub (main branch)
-Root Directory: backend
-Pre-deploy Command: python manage.py collectstatic --no-input && python manage.py migrate --no-input
-Start Command: gunicorn byhormiga.wsgi --log-file -
-Servicios: byhormiga (Django) + Postgres
+- Conectado al repo GitHub (`main` branch)
+- **Root Directory**: `b_xtFvsBvx7dg-1774568830165`
+- Deploy automático en cada push a `main`
+- **Variable de entorno**: `NEXT_PUBLIC_API_URL`
 
-Variables de entorno en Railway
-SECRET_KEY
+### Backend → Railway
+
+- Conectado al repo GitHub (`main` branch)
+- **Root Directory**: `backend`
+- **Pre-deploy Command**: `python manage.py collectstatic --no-input && python manage.py migrate --no-input`
+- **Start Command**: `gunicorn byhormiga.wsgi --log-file -`
+- **Servicios**: byhormiga (Django) + Postgres
+
+#### Variables de Entorno en Railway
+
+```env
+SECRET_KEY=...
 DEBUG=False
 ALLOWED_HOSTS=.railway.app
-DATABASE_URL          ← referenciada desde el servicio Postgres
-CLOUDINARY_CLOUD_NAME
-CLOUDINARY_API_KEY
-CLOUDINARY_API_SECRET
+DATABASE_URL=...          # ← referenciada desde el servicio Postgres
+CLOUDINARY_CLOUD_NAME=...
+CLOUDINARY_API_KEY=...
+CLOUDINARY_API_SECRET=...
 CORS_ALLOWED_ORIGINS=https://byhormiga.vercel.app
+```
 
-📋 Panel de administración
+---
+
+## 📋 Panel de Administración
+
 El propietario accede a https://byhormiga-production.up.railway.app/admin y puede:
 
-✅ Crear y editar eventos (título, fecha, venue, flyer, precio, link de tickets)
-✅ Subir fotos a la galería por evento
-✅ Publicar artículos de prensa
-✅ Ver mensajes de contacto
-✅ Marcar eventos como destacados (aparecen en el home)
-✅ Cambiar estado de eventos (Borrador / Publicado / Agotado / Cancelado)
+- ✅ Crear y editar eventos (título, fecha, venue, flyer, precio, link de tickets)
+- ✅ Subir fotos a la galería por evento
+- ✅ Publicar artículos de prensa
+- ✅ Ver mensajes de contacto
+- ✅ Marcar eventos como destacados (aparecen en el home)
+- ✅ Cambiar estado de eventos (Borrador / Publicado / Agotado / Cancelado)
 
+---
 
-📦 Dependencias principales
-Frontend
-json{
+## 📦 Dependencias Principales
+
+### Frontend
+
+```json
+{
   "next": "^14",
   "react": "^19",
   "typescript": "^5",
@@ -138,7 +205,11 @@ json{
   "framer-motion": "^11",
   "lucide-react": "^0.383"
 }
-Backend
+```
+
+### Backend
+
+```txt
 django==4.2
 djangorestframework==3.15
 django-unfold
@@ -149,20 +220,34 @@ psycopg[binary]
 dj-database-url
 gunicorn
 whitenoise
+```
 
-🔜 Pendientes
+---
 
- Conectar frontend con API real (descomentar fetch calls en lib/api.ts)
- Conectar dominio byhormiga.com.uy (agregar registro A 216.198.79.1 en DNS)
- Rotar credenciales de PostgreSQL en Railway
- Cargar eventos reales desde el admin
- Subir fotos reales a la galería
- Tomar cambios del doc
+## 🔜 Pendientes
 
+- [ ] Conectar frontend con API real (descomentar fetch calls en `lib/api.ts`)
+- [ ] Conectar dominio `byhormiga.com.uy` (agregar registro A `216.198.79.1` en DNS)
+- [ ] Rotar credenciales de PostgreSQL en Railway
+- [ ] Cargar eventos reales desde el admin
+- [ ] Subir fotos reales a la galería
+- [ ] Tomar cambios del doc
 
-👥 Equipo
-Mateo Rodriguez 
-Panita Isaac
+---
 
+## 👥 Equipo
 
-Construido con Next.js + Django · Deployado en Vercel + Railway · 2026
+- **Mateo Rodriguez**
+- **Panita Isaac**
+
+---
+
+## 📄 Licencia
+
+Todos los derechos reservados © ByHormiga 2026
+
+---
+
+<p align="center">
+  <sub>Construido con Next.js + Django · Deployado en Vercel + Railway</sub>
+</p>
