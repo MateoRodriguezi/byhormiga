@@ -18,19 +18,68 @@ Sitio web oficial de **ByHormiga**, productora de eventos de Montevideo, Uruguay
 
 ```
 byhormiga/
-├── b_xtFvsBvx7dg-1774568830165/   ← Frontend (Next.js 14)
-└── backend/                        ← Backend (Django 4.2)
+├── b_xtFvsBvx7dg-1774568830165/   ← Frontend (Next.js 16)
+├── backend/                        ← Backend (Django 4.2)
+├── docker-compose.yml              ← Orquestación de servicios
+├── Makefile                        ← Comandos útiles
+├── skills.md                       ← Documentación técnica
+└── agents.md                       ← Guía para agentes IA
 ```
 
 ### Stack Tecnológico
 
 | Capa | Tecnología | Hosting |
 |------|-----------|---------|
-| **Frontend** | Next.js 14 + TypeScript + Tailwind + Framer Motion | Vercel |
+| **Frontend** | Next.js 16 + TypeScript + Tailwind + Framer Motion | Vercel |
 | **Backend / Admin** | Django 4.2 + Django REST Framework + Unfold | Railway |
 | **Base de datos** | PostgreSQL | Railway |
 | **Media (fotos)** | Cloudinary | Cloudinary CDN |
+| **Contenedores** | Docker + Docker Compose | - |
+| **Package Manager** | UV (backend) + pnpm (frontend) | - |
 | **Repositorio** | GitHub | [github.com/MateoRodriguezi/byhormiga](https://github.com/MateoRodriguezi/byhormiga) |
+
+---
+
+## 🚀 Quick Start (Docker - Recomendado)
+
+**Prerequisitos**: Docker y Docker Compose instalados
+
+```bash
+# 1. Clonar repositorio
+git clone https://github.com/MateoRodriguezi/byhormiga.git
+cd byhormiga
+
+# 2. Copiar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales de Cloudinary
+
+# 3. Levantar todo el stack
+make fresh
+# O manualmente:
+# docker-compose build
+# docker-compose up -d
+# docker-compose exec backend python manage.py migrate
+# docker-compose exec backend python manage.py createsuperuser
+
+# 4. Acceder a las URLs
+# Frontend: http://localhost:3000
+# Backend API: http://localhost:8000/api
+# Admin: http://localhost:8000/admin
+```
+
+### Comandos Útiles
+
+```bash
+make help              # Ver todos los comandos disponibles
+make dev               # Levantar servicios y ver logs
+make logs              # Ver logs de todos los servicios
+make migrate           # Ejecutar migraciones
+make createsuperuser   # Crear usuario admin
+make shell             # Abrir Django shell
+make down              # Detener servicios
+```
+
+Ver `skills.md` para documentación completa de comandos.
 
 ---
 
@@ -48,11 +97,18 @@ Generado con **v0.dev** y ajustado manualmente. Estética dark/underground, blan
 - `/prensa/[slug]` — Detalle de artículo
 - `/contacto` — Formulario de contacto
 
-### Setup Local
+### Setup Local (Sin Docker)
 
 ```bash
 cd b_xtFvsBvx7dg-1774568830165
+
+# Instalar pnpm (si no lo tienes)
+npm install -g pnpm
+
+# Instalar dependencias
 pnpm install
+
+# Correr servidor de desarrollo
 pnpm dev
 # → http://localhost:3000
 ```
@@ -83,6 +139,7 @@ Django con panel de administración **Unfold** (dark mode) para que el propietar
 - `gallery` — Álbumes y Fotos
 - `blog` — Artículos de prensa
 - `contact` — Mensajes de contacto
+- `partners` — Marcas colaboradoras
 
 ### API Endpoints
 
@@ -96,7 +153,40 @@ Django con panel de administración **Unfold** (dark mode) para que el propietar
 | `GET` | `/api/posts/{slug}/` | Detalle de artículo |
 | `POST` | `/api/contact/` | Enviar mensaje de contacto |
 
-### Setup Local
+### Setup Local (Opción 1: Con UV - Recomendado)
+
+**UV** es un gestor de paquetes Python ultra-rápido (10-100x más rápido que pip).
+
+```bash
+cd backend
+
+# Instalar UV (si no lo tienes)
+curl -LsSf https://astral.sh/uv/install.sh | sh
+
+# Crear entorno virtual y activarlo
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+
+# Instalar dependencias con UV (mucho más rápido)
+uv pip install -r requirements.txt
+
+# Configurar variables de entorno
+cp .env.example .env
+# Editar .env con tus credenciales
+
+# Migraciones
+python manage.py migrate
+
+# Crear superusuario para el admin
+python manage.py createsuperuser
+
+# Correr servidor
+python manage.py runserver
+# → Admin en http://localhost:8000/admin
+# → API en http://localhost:8000/api
+```
+
+### Setup Local (Opción 2: Con pip tradicional)
 
 ```bash
 cd backend
@@ -115,13 +205,11 @@ cp .env.example .env
 # Migraciones
 python manage.py migrate
 
-# Crear superusuario para el admin
+# Crear superusuario
 python manage.py createsuperuser
 
 # Correr servidor
 python manage.py runserver
-# → Admin en http://localhost:8000/admin
-# → API en http://localhost:8000/api
 ```
 
 ### Variables de Entorno
@@ -224,6 +312,15 @@ whitenoise
 
 ---
 
+## 📚 Documentación
+
+- **`README.md`** - Este archivo, overview del proyecto
+- **`skills.md`** - Documentación técnica completa, comandos, stack
+- **`agents.md`** - Guía para agentes de IA que trabajan en el proyecto
+- **`Makefile`** - Comandos útiles de Docker y desarrollo
+
+---
+
 ## 🔜 Pendientes
 
 - [ ] Conectar frontend con API real (descomentar fetch calls en `lib/api.ts`)
@@ -231,7 +328,9 @@ whitenoise
 - [ ] Rotar credenciales de PostgreSQL en Railway
 - [ ] Cargar eventos reales desde el admin
 - [ ] Subir fotos reales a la galería
-- [ ] Tomar cambios del doc
+- [x] Migrar a UV para gestión de paquetes Python
+- [x] Implementar Docker + Docker Compose
+- [x] Crear documentación para agentes IA
 
 ---
 

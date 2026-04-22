@@ -1,0 +1,41 @@
+[project]
+name = "byhormiga"
+version = "1.0.0"
+description = "Backend API para ByHormiga - Productora de Eventos"
+requires-python = ">=3.11"
+dependencies = [
+    "asgiref==3.11.1",
+    "certifi==2026.2.25",
+    "charset-normalizer==3.4.6",
+    "cloudinary==1.41.0",
+    "dj-database-url==2.2.0",
+    "Django==4.2.16",
+    "django-admin-sortable2==2.2.3",
+    "django-cloudinary-storage==0.3.0",
+    "django-cors-headers==4.4.0",
+    "django-filter==24.3",
+    "django-unfold==0.38.0",
+    "djangorestframework==3.15.2",
+    "gunicorn==23.0.0",
+    "idna==3.11",
+    "packaging==26.0",
+    "pillow==10.4.0",
+    "psycopg[binary]==3.2.3",
+    "python-decouple==3.8",
+    "requests==2.32.5",
+    "six==1.17.0",
+    "sqlparse==0.5.5",
+    "typing_extensions==4.15.0",
+    "urllib3==2.6.3",
+    "whitenoise==6.7.0",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.uv]
+dev-dependencies = []
+
+[tool.django]
+settings-module = "byhormiga.settings"
