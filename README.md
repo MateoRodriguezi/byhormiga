@@ -34,15 +34,15 @@ byhormiga/
 | **Backend / Admin** | Django 4.2 + Django REST Framework + Unfold | Railway |
 | **Base de datos** | PostgreSQL | Railway |
 | **Media (fotos)** | Cloudinary | Cloudinary CDN |
-| **Contenedores** | Docker + Docker Compose | - |
+| **Contenedores** | Docker + Docker Compose (backend + db) | - |
 | **Package Manager** | UV (backend) + pnpm (frontend) | - |
 | **Repositorio** | GitHub | [github.com/MateoRodriguezi/byhormiga](https://github.com/MateoRodriguezi/byhormiga) |
 
 ---
 
-## 🚀 Quick Start (Docker - Recomendado)
+## 🚀 Quick Start (Docker para backend + pnpm para frontend)
 
-**Prerequisitos**: Docker y Docker Compose instalados
+**Prerequisitos**: Docker, Docker Compose y pnpm instalados
 
 ```bash
 # 1. Clonar repositorio
@@ -53,15 +53,14 @@ cd byhormiga
 cp .env.example .env
 # Editar .env con tus credenciales de Cloudinary
 
-# 3. Levantar todo el stack
+# 3. Levantar backend + base de datos
 make fresh
-# O manualmente:
-# docker-compose build
-# docker-compose up -d
-# docker compose exec backend uv run --no-sync python manage.py migrate
-# docker compose exec backend uv run --no-sync python manage.py createsuperuser
 
-# 4. Acceder a las URLs
+# 4. Levantar frontend local
+make frontend-install
+make frontend-dev
+
+# 5. Acceder a las URLs
 # Frontend: http://localhost:3000
 # Backend API: http://localhost:8000/api
 # Admin: http://localhost:8000/admin
@@ -71,7 +70,8 @@ make fresh
 
 ```bash
 make help              # Ver todos los comandos disponibles
-make dev               # Levantar servicios y ver logs
+make dev               # Levantar backend/db con Docker
+make frontend-dev      # Levantar frontend local con pnpm
 make logs              # Ver logs de todos los servicios
 make migrate           # Ejecutar migraciones
 make createsuperuser   # Crear usuario admin
@@ -287,7 +287,7 @@ whitenoise
 - **`README.md`** - Este archivo, overview del proyecto
 - **`skills.md`** - Documentación técnica completa, comandos, stack
 - **`agents.md`** - Guía para agentes de IA que trabajan en el proyecto
-- **`Makefile`** - Comandos útiles de Docker y desarrollo
+- **`Makefile`** - Comandos útiles para Docker (backend/db) y frontend con pnpm
 
 ---
 
@@ -299,7 +299,7 @@ whitenoise
 - [ ] Cargar eventos reales desde el admin
 - [ ] Subir fotos reales a la galería
 - [x] Migrar a UV para gestión de paquetes Python
-- [x] Implementar Docker + Docker Compose
+- [x] Implementar Docker + Docker Compose para backend y base de datos
 - [x] Crear documentación para agentes IA
 
 ---

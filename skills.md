@@ -26,7 +26,7 @@ Este archivo documenta las habilidades, comandos y capacidades del proyecto ByHo
 - **Gestión de paquetes**: UV
 
 ### Infraestructura
-- **Contenedores**: Docker + Docker Compose
+- **Contenedores**: Docker + Docker Compose (backend + db)
 - **Frontend Hosting**: Vercel
 - **Backend Hosting**: Railway
 - **Base de datos**: Railway PostgreSQL
@@ -34,11 +34,11 @@ Este archivo documenta las habilidades, comandos y capacidades del proyecto ByHo
 
 ---
 
-## 🐳 Comandos Docker (Recomendado)
+## 🐳 Comandos Docker (Backend + DB)
 
 ### Setup Inicial
 ```bash
-# Levantar todo el stack (primera vez)
+# Levantar backend + db (primera vez)
 make fresh
 
 # O manualmente:
@@ -56,7 +56,6 @@ make down             # Detener servicios
 make restart          # Reiniciar servicios
 make logs             # Ver logs de todos los servicios
 make logs-backend     # Ver solo logs del backend
-make logs-frontend    # Ver solo logs del frontend
 ```
 
 ### Base de Datos
@@ -76,9 +75,12 @@ make collectstatic    # Recolectar archivos estáticos
 make test             # Ejecutar tests
 ```
 
-### Frontend
+### Frontend (local con pnpm)
 ```bash
-make frontend-shell   # Shell bash en el contenedor frontend
+make frontend-install # Instalar dependencias
+make frontend-dev     # Levantar frontend en desarrollo
+make frontend-build   # Build de producción
+make frontend-lint    # Ejecutar lint
 ```
 
 ---
@@ -154,7 +156,6 @@ byhormiga/
 │   │   ├── api.ts             # Funciones de API
 │   │   ├── types.ts           # TypeScript types
 │   │   └── utils.ts           # Helpers
-│   ├── Dockerfile             # Multi-stage para Next.js
 │   ├── package.json           # Dependencias npm
 │   └── next.config.mjs        # Config de Next.js
 ├── docker-compose.yml         # Orquestación de servicios
@@ -278,11 +279,6 @@ cd backend && uv add nombre_paquete
 
 ### Agregar paquete al frontend
 ```bash
-# Dentro del contenedor
-make frontend-shell
-pnpm add nombre_paquete
-
-# O localmente
 cd b_xtFvsBvx7dg-1774568830165
 pnpm add nombre_paquete
 ```
@@ -305,11 +301,11 @@ make db-shell
 
 ### Frontend
 ```bash
-# Ver logs en tiempo real
-make logs-frontend
+# Levantar frontend en desarrollo
+make frontend-dev
 
-# Shell en el contenedor
-make frontend-shell
+# O manualmente
+cd b_xtFvsBvx7dg-1774568830165 && pnpm dev
 ```
 
 ---
@@ -362,7 +358,7 @@ pnpm update nombre_paquete
 
 1. **Usa `make help`** para ver todos los comandos disponibles
 2. **UV es mucho más rápido** para instalar paquetes
-3. **Docker garantiza** el mismo entorno en todos lados
+3. **Docker se usa para backend y base de datos** en desarrollo local
 4. **El admin de Unfold** está en modo oscuro para match con la estética del sitio
 5. **Cloudinary** maneja todas las imágenes automáticamente
 6. **Los serializers** mapean automáticamente los campos del modelo al formato del frontend

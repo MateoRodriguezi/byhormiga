@@ -30,7 +30,7 @@ ByHormiga es una **productora de eventos** fundada por Fernando Herrero en Monte
 2. **API-First**: El backend expone todo via REST API
 3. **Content Management**: Panel de admin para gestión sin código
 4. **Cloud-Native**: Diseñado para deployment en cloud (Vercel + Railway)
-5. **Docker-First**: Desarrollo local con Docker para consistencia
+5. **Flujo mixto local**: Backend/db con Docker, frontend con pnpm
 
 ### Flujo de Datos
 ```
@@ -277,7 +277,7 @@ export async function getEvents(): Promise<Event[]> {
 ```
 feat: agregar endpoint de eventos destacados
 fix: corregir filtro de álbumes publicados
-docs: actualizar README con instrucciones Docker
+docs: actualizar README con instrucciones de desarrollo local
 style: aplicar formato a serializers
 refactor: simplificar lógica de eventos
 test: agregar tests para EventViewSet
@@ -350,12 +350,12 @@ export async function getMiData(): Promise<Event[]> {
 
 ---
 
-## 🐳 Workflow con Docker
+## 🐳 Workflow local (Docker + pnpm)
 
 ### Desarrollo diario
-1. `make up` - levantar servicios
+1. `make up` - levantar backend y base de datos
 2. Hacer cambios en código
-3. Los cambios se reflejan automáticamente (hot reload)
+3. `make frontend-dev` - levantar frontend local con hot reload
 4. `make logs` - ver logs si algo falla
 5. `make down` - apagar al terminar
 
@@ -371,7 +371,7 @@ export async function getMiData(): Promise<Event[]> {
 make uv-add PKG=requests
 
 # Frontend
-make frontend-shell
+cd b_xtFvsBvx7dg-1774568830165
 pnpm add axios
 ```
 
@@ -398,7 +398,7 @@ pnpm add axios
 
 1. **Lee el código existente** antes de agregar nuevo código
 2. **Sigue los patrones** ya establecidos en el proyecto
-3. **Usa Docker** para desarrollo local
+3. **Usa Docker solo para backend y base de datos** en local
 4. **Prueba en local** antes de hacer commit
 5. **Commits pequeños** y descriptivos
 6. **Documenta** cambios significativos

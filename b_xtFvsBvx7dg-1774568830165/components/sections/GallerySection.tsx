@@ -68,7 +68,7 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
 
       {/* Content */}
       <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wide">{item.eventName}</h3>
+        <h3 className="text-sm font-bold text-white uppercase tracking-wide">{item.event_name}</h3>
         <p className="mt-1 text-[10px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
       </div>
     </motion.div>

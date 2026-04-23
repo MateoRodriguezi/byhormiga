@@ -1,4 +1,6 @@
-.PHONY: help build up down restart logs clean migrate createsuperuser shell test
+.PHONY: help build up down restart logs logs-backend clean migrate makemigrations createsuperuser shell backend-shell collectstatic db-shell db-backup db-restore dev fresh test uv-lock uv-sync uv-add frontend-install frontend-dev frontend-build frontend-lint
+
+FRONTEND_DIR := b_xtFvsBvx7dg-1774568830165
 
 help: ## Mostrar esta ayuda
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-20s\033[0m %s\n", $$1, $$2}'
@@ -22,9 +24,6 @@ logs: ## Ver logs de todos los servicios
 logs-backend: ## Ver logs del backend
 	docker compose logs -f backend
 
-logs-frontend: ## Ver logs del frontend
-	docker compose logs -f frontend
-
 clean: ## Limpiar contenedores, volúmenes e imágenes
 	docker compose down -v --rmi all
 
@@ -47,9 +46,18 @@ backend-shell: ## Abrir shell bash en el contenedor del backend
 collectstatic: ## Recolectar archivos estáticos
 	docker compose exec backend uv run --no-sync python manage.py collectstatic --no-input
 
-# Frontend commands
-frontend-shell: ## Abrir shell bash en el contenedor del frontend
-	docker compose exec frontend sh
+# Frontend commands (local con pnpm)
+frontend-install: ## Instalar dependencias del frontend
+	pnpm --dir $(FRONTEND_DIR) install
+
+frontend-dev: ## Correr frontend local en modo desarrollo
+	pnpm --dir $(FRONTEND_DIR) dev
+
+frontend-build: ## Build del frontend
+	pnpm --dir $(FRONTEND_DIR) build
+
+frontend-lint: ## Lint del frontend
+	pnpm --dir $(FRONTEND_DIR) lint
 
 # Database commands
 db-shell: ## Abrir shell de PostgreSQL
@@ -62,9 +70,10 @@ db-restore: ## Restaurar base de datos desde backup (usar: make db-restore FILE=
 	cat $(FILE) | docker compose exec -T db psql -U byhormiga byhormiga
 
 # Development commands
-dev: up logs ## Levantar servicios y ver logs
+dev: ## Levantar backend/db con Docker (correr frontend con make frontend-dev)
+	docker compose up
 
-fresh: down build up migrate ## Setup completo desde cero
+fresh: down build up migrate ## Setup backend/db desde cero
 
 # Testing
 test: ## Ejecutar tests del backend

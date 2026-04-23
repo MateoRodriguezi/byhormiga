@@ -1,3 +1,10 @@
+export interface PaginatedResponse<T> {
+  count: number
+  next: string | null
+  previous: string | null
+  results: T[]
+}
+
 export interface Event {
   id: string
   slug: string
@@ -14,15 +21,19 @@ export interface Event {
   image?: string
 }
 
+export interface GalleryPhoto {
+  id: string
+  image: string
+  caption: string
+  order: number
+}
+
 export interface GalleryItem {
   id: string
-  eventName: string
+  event_name: string
   date: string
   image: string
-  span?: {
-    cols: number
-    rows: number
-  }
+  photos: GalleryPhoto[]
 }
 
 export interface Post {

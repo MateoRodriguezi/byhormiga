@@ -45,7 +45,7 @@ services:
       CLOUDINARY_API_SECRET: ${CLOUDINARY_API_SECRET:-}
 
       # CORS
-      CORS_ALLOWED_ORIGINS: http://localhost:3000,http://frontend:3000
+      CORS_ALLOWED_ORIGINS: http://localhost:3000
     volumes:
       - ./backend:/app
       - /app/.venv
@@ -56,30 +56,6 @@ services:
     depends_on:
       db:
         condition: service_healthy
-    networks:
-      - byhormiga-network
-
-  # Next.js Frontend
-  frontend:
-    build:
-      context: ./b_xtFvsBvx7dg-1774568830165
-      dockerfile: Dockerfile
-      target: builder
-      args:
-        NEXT_PUBLIC_API_URL: http://backend:8000/api
-    container_name: byhormiga-frontend
-    command: pnpm dev
-    environment:
-      NODE_ENV: development
-      NEXT_PUBLIC_API_URL: http://backend:8000/api
-    volumes:
-      - ./b_xtFvsBvx7dg-1774568830165:/app
-      - /app/node_modules
-      - /app/.next
-    ports:
-      - "3000:3000"
-    depends_on:
-      - backend
     networks:
       - byhormiga-network
 

@@ -17,27 +17,31 @@ export default async function GaleriaPage() {
     ...gallery,
     {
       id: '6',
-      eventName: 'HORMIGA NEGRA VII',
+      event_name: 'HORMIGA NEGRA VII',
       date: 'OCT 2025',
       image: '/gallery/event-6.jpg',
+      photos: [],
     },
     {
       id: '7',
-      eventName: 'SUBTERRANEA VOL.2',
+      event_name: 'SUBTERRANEA VOL.2',
       date: 'SEP 2025',
       image: '/gallery/event-7.jpg',
+      photos: [],
     },
     {
       id: '8',
-      eventName: 'OPEN AIR PRIMAVERA',
+      event_name: 'OPEN AIR PRIMAVERA',
       date: 'AGO 2025',
       image: '/gallery/event-8.jpg',
+      photos: [],
     },
     {
       id: '9',
-      eventName: 'ANIVERSARIO 29',
+      event_name: 'ANIVERSARIO 29',
       date: 'JUN 2025',
       image: '/gallery/event-9.jpg',
+      photos: [],
     },
   ]
 
@@ -88,7 +92,7 @@ export default async function GaleriaPage() {
                 {/* Content */}
                 <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
                   <h3 className="text-xs lg:text-sm font-bold text-white uppercase tracking-wide">
-                    {item.eventName}
+                    {item.event_name}
                   </h3>
                   <p className="mt-1 text-[9px] lg:text-[10px] tracking-[.2em] text-gray-400 uppercase">
                     {item.date}
