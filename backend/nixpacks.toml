@@ -1,19 +1,20 @@
 [phases.setup]
-nixPkgs = ["python311"]
+nixPkgs = ["python311", "curl"]
 
 [phases.install]
 cmds = [
-    "pip install -r requirements.txt"
+    "curl -LsSf https://astral.sh/uv/install.sh | sh",
+    "$HOME/.local/bin/uv sync --locked --no-install-project --no-dev"
 ]
 
 [phases.build]
 cmds = [
     "mkdir -p staticfiles",
-    "python manage.py collectstatic --no-input --clear"
+    "$HOME/.local/bin/uv run --no-sync python manage.py collectstatic --no-input --clear"
 ]
 
 [start]
-cmd = "gunicorn byhormiga.wsgi --log-file - --bind 0.0.0.0:$PORT"
+cmd = "$HOME/.local/bin/uv run --no-sync gunicorn byhormiga.wsgi --log-file - --bind 0.0.0.0:$PORT"
 
 [variables]
 NIXPACKS_PYTHON_VERSION = "3.11"

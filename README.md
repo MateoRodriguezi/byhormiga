@@ -58,8 +58,8 @@ make fresh
 # O manualmente:
 # docker-compose build
 # docker-compose up -d
-# docker-compose exec backend python manage.py migrate
-# docker-compose exec backend python manage.py createsuperuser
+# docker compose exec backend uv run --no-sync python manage.py migrate
+# docker compose exec backend uv run --no-sync python manage.py createsuperuser
 
 # 4. Acceder a las URLs
 # Frontend: http://localhost:3000
@@ -155,7 +155,7 @@ Django con panel de administración **Unfold** (dark mode) para que el propietar
 
 ### Setup Local (Opción 1: Con UV - Recomendado)
 
-**UV** es un gestor de paquetes Python ultra-rápido (10-100x más rápido que pip).
+**UV** es un gestor de paquetes Python ultra-rápido.
 
 ```bash
 cd backend
@@ -163,53 +163,23 @@ cd backend
 # Instalar UV (si no lo tienes)
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
-# Crear entorno virtual y activarlo
-python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Instalar dependencias con UV (mucho más rápido)
-uv pip install -r requirements.txt
+# Sincronizar dependencias desde pyproject.toml + uv.lock
+uv sync --locked --no-install-project
 
 # Configurar variables de entorno
 cp .env.example .env
 # Editar .env con tus credenciales
 
 # Migraciones
-python manage.py migrate
+uv run --no-sync python manage.py migrate
 
 # Crear superusuario para el admin
-python manage.py createsuperuser
+uv run --no-sync python manage.py createsuperuser
 
 # Correr servidor
-python manage.py runserver
+uv run --no-sync python manage.py runserver
 # → Admin en http://localhost:8000/admin
 # → API en http://localhost:8000/api
-```
-
-### Setup Local (Opción 2: Con pip tradicional)
-
-```bash
-cd backend
-
-# Crear entorno virtual
-python3 -m venv venv
-source venv/bin/activate  # Windows: venv\Scripts\activate
-
-# Instalar dependencias
-pip install -r requirements.txt
-
-# Configurar variables de entorno
-cp .env.example .env
-# Editar .env con tus credenciales
-
-# Migraciones
-python manage.py migrate
-
-# Crear superusuario
-python manage.py createsuperuser
-
-# Correr servidor
-python manage.py runserver
 ```
 
 ### Variables de Entorno
@@ -248,7 +218,7 @@ CORS_ALLOWED_ORIGINS=http://localhost:3000
 
 - Conectado al repo GitHub (`main` branch)
 - **Root Directory**: `backend`
-- **Pre-deploy Command**: `python manage.py collectstatic --no-input && python manage.py migrate --no-input`
+- **Pre-deploy Command**: `uv run --no-sync python manage.py collectstatic --no-input && uv run --no-sync python manage.py migrate --no-input`
 - **Start Command**: `gunicorn byhormiga.wsgi --log-file -`
 - **Servicios**: byhormiga (Django) + Postgres
 

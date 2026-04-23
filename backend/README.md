@@ -25,15 +25,14 @@ Django REST API backend para la plataforma de eventos ByHormiga.
 cd /Users/mateorodriguez/Desktop/ByHormiga/backend
 ```
 
-2. Crear entorno virtual:
+2. Instalar UV:
 ```bash
-python3 -m venv venv
-source venv/bin/activate  # En Windows: venv\Scripts\activate
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-3. Instalar dependencias:
+3. Sincronizar dependencias:
 ```bash
-pip install -r requirements.txt
+uv sync --locked --no-install-project
 ```
 
 4. Crear archivo .env desde .env.example:
@@ -44,17 +43,17 @@ cp .env.example .env
 
 5. Ejecutar migraciones:
 ```bash
-python manage.py migrate
+uv run --no-sync python manage.py migrate
 ```
 
 6. Crear superusuario:
 ```bash
-python manage.py createsuperuser
+uv run --no-sync python manage.py createsuperuser
 ```
 
 7. Ejecutar servidor de desarrollo:
 ```bash
-python manage.py runserver
+uv run --no-sync python manage.py runserver
 ```
 
 Panel de admin: http://localhost:8000/admin
@@ -136,7 +135,8 @@ backend/
 ├── blog/               # App de artículos de prensa
 ├── contact/            # App de mensajes de contacto
 ├── manage.py
-├── requirements.txt
+├── pyproject.toml
+├── uv.lock
 ├── .env.example
 ├── .gitignore
 ├── Procfile

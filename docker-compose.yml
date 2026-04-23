@@ -27,9 +27,9 @@ services:
       target: development
     container_name: byhormiga-backend
     command: >
-      sh -c "python manage.py migrate --no-input &&
-             python manage.py collectstatic --no-input &&
-             python manage.py runserver 0.0.0.0:8000"
+      sh -c "uv run --no-sync python manage.py migrate --no-input &&
+             uv run --no-sync python manage.py collectstatic --no-input &&
+             uv run --no-sync python manage.py runserver 0.0.0.0:8000"
     environment:
       # Django settings
       SECRET_KEY: django-insecure-dev-secret-key-change-in-production
@@ -48,6 +48,7 @@ services:
       CORS_ALLOWED_ORIGINS: http://localhost:3000,http://frontend:3000
     volumes:
       - ./backend:/app
+      - /app/.venv
       - backend_static:/app/staticfiles
       - backend_media:/app/media
     ports:

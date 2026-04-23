@@ -241,7 +241,7 @@ export async function getEvents(): Promise<Event[]> {
 - Filtrar por `status='published'` en queries públicos
 - Usar `verbose_name` en español
 - Usar `settings` para configuración
-- `python manage.py makemigrations` después de cambios
+- `uv run --no-sync python manage.py makemigrations` después de cambios
 - Retornar 404 con `get_object_or_404()`
 
 ### Frontend

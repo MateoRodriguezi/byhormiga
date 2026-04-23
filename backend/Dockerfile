@@ -1,68 +1,59 @@
 # syntax=docker/dockerfile:1
 
-# Stage 1: Base image with UV
-FROM python:3.11-slim as base
+FROM python:3.11-slim AS base
 
-# Install UV (ultra-fast Python package installer)
-COPY --from=ghcr.io/astral-sh/uv:latest /uv /usr/local/bin/uv
+COPY --from=ghcr.io/astral-sh/uv:0.11.7 /uv /uvx /bin/
 
-# Set environment variables
 ENV PYTHONUNBUFFERED=1 \
     PYTHONDONTWRITEBYTECODE=1 \
-    UV_SYSTEM_PYTHON=1
+    UV_LINK_MODE=copy \
+    UV_COMPILE_BYTECODE=1
 
 WORKDIR /app
 
-# Stage 2: Dependencies
-FROM base as dependencies
+FROM base AS deps
 
-# Copy dependency files
-COPY pyproject.toml ./
-COPY requirements.txt ./
+RUN --mount=type=cache,target=/root/.cache/uv \
+    --mount=type=bind,source=uv.lock,target=uv.lock \
+    --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
+    uv sync --locked --no-install-project --no-dev
 
-# Install dependencies with UV (much faster than pip)
-RUN uv pip install -r requirements.txt
+FROM base AS development
 
-# Stage 3: Development
-FROM dependencies as development
+COPY --from=deps /app/.venv /app/.venv
+COPY . /app
 
-# Copy application code
-COPY . .
+ENV PATH="/app/.venv/bin:$PATH"
 
-# Collect static files
-RUN python manage.py collectstatic --no-input || true
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-install-project --no-dev
 
-# Expose port
 EXPOSE 8000
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/admin/', timeout=5)"
+    CMD uv run --no-sync python -c "import requests; requests.get('http://localhost:8000/admin/', timeout=5)"
 
-# Run development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["uv", "run", "--no-sync", "python", "manage.py", "runserver", "0.0.0.0:8000"]
 
-# Stage 4: Production
-FROM dependencies as production
+FROM base AS production
 
-# Copy application code
-COPY . .
+COPY --from=deps /app/.venv /app/.venv
+COPY . /app
 
-# Create non-root user for security
-RUN useradd -m -u 1000 django && \
-    chown -R django:django /app
+ENV PATH="/app/.venv/bin:$PATH"
+
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync --locked --no-install-project --no-dev
+
+RUN useradd -m -u 1000 django && chown -R django:django /app
 
 USER django
 
-# Collect static files
-RUN python manage.py collectstatic --no-input
+RUN uv run --no-sync python manage.py collectstatic --no-input
 
-# Expose port
 EXPOSE 8000
 
-# Health check
 HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD python -c "import requests; requests.get('http://localhost:8000/admin/', timeout=5)" || exit 1
+    CMD uv run --no-sync python -c "import requests; requests.get('http://localhost:8000/admin/', timeout=5)"
 
-# Run with gunicorn
-CMD ["gunicorn", "byhormiga.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-"]
+CMD ["uv", "run", "--no-sync", "gunicorn", "byhormiga.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-"]

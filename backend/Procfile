@@ -1,2 +1,2 @@
-web: gunicorn byhormiga.wsgi --log-file -
-release: python manage.py migrate --no-input
+web: uv run --no-sync gunicorn byhormiga.wsgi --log-file -
+release: uv run --no-sync python manage.py migrate --no-input

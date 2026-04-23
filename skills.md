@@ -23,7 +23,7 @@ Este archivo documenta las habilidades, comandos y capacidades del proyecto ByHo
 - **ORM**: Django ORM
 - **Almacenamiento**: Cloudinary (imágenes)
 - **Servidor**: Gunicorn 23.0.0
-- **Gestión de paquetes**: UV (recomendado) o pip
+- **Gestión de paquetes**: UV
 
 ### Infraestructura
 - **Contenedores**: Docker + Docker Compose
@@ -42,10 +42,10 @@ Este archivo documenta las habilidades, comandos y capacidades del proyecto ByHo
 make fresh
 
 # O manualmente:
-docker-compose build
-docker-compose up -d
-docker-compose exec backend python manage.py migrate
-docker-compose exec backend python manage.py createsuperuser
+docker compose build
+docker compose up -d
+docker compose exec backend uv run --no-sync python manage.py migrate
+docker compose exec backend uv run --no-sync python manage.py createsuperuser
 ```
 
 ### Uso Diario
@@ -93,7 +93,7 @@ cd backend
 curl -LsSf https://astral.sh/uv/install.sh | sh
 
 # Instalar dependencias
-uv pip install -r requirements.txt
+uv sync --locked --no-install-project
 ```
 
 ### Gestión de Paquetes
@@ -102,14 +102,13 @@ uv pip install -r requirements.txt
 make uv-add PKG=nombre_paquete
 
 # O manualmente:
-uv pip install nombre_paquete
-uv pip freeze > requirements.txt
+uv add nombre_paquete
 
 # Sincronizar dependencias
 make uv-sync
 
 # Actualizar un paquete
-uv pip install --upgrade nombre_paquete
+uv add --upgrade-package nombre_paquete
 ```
 
 ---
@@ -136,7 +135,7 @@ byhormiga/
 │   ├── partners/              # App de partners
 │   ├── Dockerfile             # Multi-stage con UV
 │   ├── pyproject.toml         # Config de UV
-│   ├── requirements.txt       # Dependencias
+│   ├── uv.lock                # Lockfile de dependencias
 │   └── manage.py              # Django CLI
 ├── b_xtFvsBvx7dg-1774568830165/  # Next.js Frontend
 │   ├── app/                   # App Router
@@ -240,7 +239,7 @@ NEXT_PUBLIC_API_URL=http://localhost:8000/api
 make test
 
 # O manualmente:
-docker-compose exec backend python manage.py test
+docker compose exec backend uv run --no-sync python manage.py test
 
 # Frontend (no configurado aún)
 cd b_xtFvsBvx7dg-1774568830165
@@ -260,8 +259,8 @@ pnpm test
 ### Backend (Railway)
 - Auto-deploy desde `main` branch
 - Root directory: `backend`
-- Build command: `python manage.py collectstatic --no-input && python manage.py migrate --no-input`
-- Start command: `gunicorn byhormiga.wsgi --log-file -`
+- Build command: `uv run --no-sync python manage.py collectstatic --no-input && uv run --no-sync python manage.py migrate --no-input`
+- Start command: `uv run --no-sync gunicorn byhormiga.wsgi --log-file -`
 - Servicios: Django + PostgreSQL
 
 ---
@@ -273,9 +272,8 @@ pnpm test
 # Con UV (recomendado)
 make uv-add PKG=nombre_paquete
 
-# Con pip
-docker-compose exec backend pip install nombre_paquete
-docker-compose exec backend pip freeze > requirements.txt
+# Sin Docker
+cd backend && uv add nombre_paquete
 ```
 
 ### Agregar paquete al frontend
@@ -336,8 +334,8 @@ make frontend-shell
 ```bash
 # Backend
 cd backend
-uv pip list --outdated
-uv pip install --upgrade nombre_paquete
+uv tree
+uv add --upgrade-package nombre_paquete
 
 # Frontend
 cd b_xtFvsBvx7dg-1774568830165
@@ -363,7 +361,7 @@ pnpm update nombre_paquete
 ## 💡 Tips
 
 1. **Usa `make help`** para ver todos los comandos disponibles
-2. **UV es mucho más rápido** que pip para instalar paquetes
+2. **UV es mucho más rápido** para instalar paquetes
 3. **Docker garantiza** el mismo entorno en todos lados
 4. **El admin de Unfold** está en modo oscuro para match con la estética del sitio
 5. **Cloudinary** maneja todas las imágenes automáticamente
