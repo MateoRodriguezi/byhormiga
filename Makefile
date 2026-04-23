@@ -38,8 +38,8 @@ makemigrations: ## Crear nuevas migraciones
 createsuperuser: ## Crear superusuario de Django
 	docker-compose exec backend python manage.py createsuperuser
 
-shell: ## Abrir shell de Django
-	docker-compose exec backend python manage.py shell
+shell: ## Abrir shell_plus de Django
+	docker-compose exec backend python manage.py shell_plus
 
 backend-shell: ## Abrir shell bash en el contenedor del backend
 	docker-compose exec backend sh
