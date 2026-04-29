@@ -29,22 +29,22 @@ clean: ## Limpiar contenedores, volúmenes e imágenes
 
 # Backend commands
 migrate: ## Ejecutar migraciones de Django
-	docker compose exec backend uv run --no-sync python manage.py migrate
+	docker compose run --rm backend uv run --no-sync python manage.py migrate
 
 makemigrations: ## Crear nuevas migraciones
-	docker compose exec backend uv run --no-sync python manage.py makemigrations
+	docker compose run --rm backend uv run --no-sync python manage.py makemigrations
 
 createsuperuser: ## Crear superusuario de Django
-	docker compose exec backend uv run --no-sync python manage.py createsuperuser
+	docker compose run --rm backend uv run --no-sync python manage.py createsuperuser
 
 shell: ## Abrir shell_plus de Django
-	docker compose exec backend uv run --no-sync python manage.py shell_plus
+	docker compose run --rm backend uv run --no-sync python manage.py shell_plus
 
 backend-shell: ## Abrir shell bash en el contenedor del backend
-	docker compose exec backend sh
+	docker compose run --rm backend sh
 
 collectstatic: ## Recolectar archivos estáticos
-	docker compose exec backend uv run --no-sync python manage.py collectstatic --no-input
+	docker compose run --rm backend uv run --no-sync python manage.py collectstatic --no-input
 
 # Frontend commands (local con pnpm)
 frontend-install: ## Instalar dependencias del frontend
@@ -61,13 +61,13 @@ frontend-lint: ## Lint del frontend
 
 # Database commands
 db-shell: ## Abrir shell de PostgreSQL
-	docker compose exec db psql -U byhormiga -d byhormiga
+	docker compose run --rm db psql -U byhormiga -d byhormiga
 
 db-backup: ## Hacer backup de la base de datos
-	docker compose exec db pg_dump -U byhormiga byhormiga > backup_$$(date +%Y%m%d_%H%M%S).sql
+	docker compose run --rm db pg_dump -U byhormiga byhormiga > backup_$$(date +%Y%m%d_%H%M%S).sql
 
 db-restore: ## Restaurar base de datos desde backup (usar: make db-restore FILE=backup.sql)
-	cat $(FILE) | docker compose exec -T db psql -U byhormiga byhormiga
+	cat $(FILE) | docker compose run --rm -T db psql -U byhormiga byhormiga
 
 # Development commands
 dev: ## Levantar backend/db con Docker (correr frontend con make frontend-dev)
@@ -77,7 +77,7 @@ fresh: down build up migrate ## Setup backend/db desde cero
 
 # Testing
 test: ## Ejecutar tests del backend
-	docker compose exec backend uv run --no-sync python manage.py test
+	docker compose run --rm backend uv run --no-sync python manage.py test
 
 # UV commands (local development sin Docker)
 uv-lock: ## Generar o actualizar uv.lock

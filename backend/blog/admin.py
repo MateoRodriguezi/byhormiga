@@ -1,5 +1,10 @@
 from django.contrib import admin
+from django.core.files.base import ContentFile
+from django.core.files.storage import default_storage
+from django.http import JsonResponse
+from django.urls import path, reverse
 from django.utils.html import format_html
+from django.utils.text import get_valid_filename
 from unfold.admin import ModelAdmin
 from .models import Post
 
@@ -9,19 +14,25 @@ class PostAdmin(ModelAdmin):
     list_display = [
         "cover_thumbnail",
         "title",
-        "excerpt_preview",
+        "description_preview",
         "status_badge",
         "published_at",
     ]
     list_filter = ["status", "published_at", "created_at"]
-    search_fields = ["title", "excerpt", "body"]
+    search_fields = ["title", "description", "body"]
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ["cover_preview", "created_at", "updated_at"]
     date_hierarchy = "published_at"
     actions = ["mark_as_published", "mark_as_draft"]
 
     fieldsets = (
-        ("Contenido", {"fields": ("title", "slug", "excerpt", "body")}),
+        (
+            "Contenido",
+            {
+                "fields": ("title", "slug", "description", "body"),
+                "description": "Editor HTML simple con preview y subida de imagenes.",
+            },
+        ),
         ("Visual", {"fields": ("cover", "cover_preview")}),
         ("Publicación", {"fields": ("status", "published_at")}),
         (
@@ -29,7 +40,51 @@ class PostAdmin(ModelAdmin):
             {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
         ),
     )
+    readonly_fields = ["cover_preview", "created_at", "updated_at"]
 
+    class Media:
+        js = ("blog/js/post_editor.js",)
+
+    def get_urls(self):
+        urls = super().get_urls()
+        custom_urls = [
+            path(
+                "upload-image/",
+                self.admin_site.admin_view(self.upload_image_view),
+                name="blog_post_upload_image",
+            )
+        ]
+        return custom_urls + urls
+
+    def render_change_form(self, request, context, add=False, change=False, form_url="", obj=None):
+        body_field = context.get("adminform").form.fields.get("body")
+        if body_field:
+            body_field.widget.attrs.update(
+                {
+                    "rows": 18,
+                    "data-upload-url": reverse("admin:blog_post_upload_image"),
+                }
+            )
+            body_field.help_text = (
+                "HTML permitido. Usa la barra para negrita, cursiva, H1/H2/H3, links e imagenes."
+            )
+        return super().render_change_form(request, context, add, change, form_url, obj)
+
+    def upload_image_view(self, request):
+        if request.method != "POST":
+            return JsonResponse({"detail": "Method not allowed"}, status=405)
+
+        image = request.FILES.get("image")
+        if not image:
+            return JsonResponse({"detail": "No image provided"}, status=400)
+
+        filename = get_valid_filename(image.name)
+        storage_path = default_storage.save(
+            f"blog/content/{filename}", ContentFile(image.read())
+        )
+        return JsonResponse({"url": default_storage.url(storage_path)})
+
+    @admin.display(description="Portada")
     def cover_thumbnail(self, obj):
         """Muestra miniatura del cover en la lista"""
         if obj.cover:
@@ -39,8 +94,7 @@ class PostAdmin(ModelAdmin):
             )
         return "-"
 
-    cover_thumbnail.short_description = "Portada"
-
+    @admin.display(description="Vista previa")
     def cover_preview(self, obj):
         """Muestra preview del cover en el detalle"""
         if obj.cover:
@@ -50,21 +104,19 @@ class PostAdmin(ModelAdmin):
             )
         return "No hay portada cargada"
 
-    cover_preview.short_description = "Vista previa"
-
-    def excerpt_preview(self, obj):
+    @admin.display(description="Extracto")
+    def description_preview(self, obj):
         """Muestra un extracto truncado del post"""
         max_length = 80
-        if len(obj.excerpt) > max_length:
+        if len(obj.description) > max_length:
             return format_html(
                 '<span title="{}">{}</span>',
-                obj.excerpt,
-                obj.excerpt[:max_length] + "...",
+                obj.description,
+                obj.description[:max_length] + "...",
             )
-        return obj.excerpt
+        return obj.description
 
-    excerpt_preview.short_description = "Extracto"
-
+    @admin.display(description="Estado")
     def status_badge(self, obj):
         """Muestra badge de status con colores"""
         colors = {
@@ -83,8 +135,6 @@ class PostAdmin(ModelAdmin):
             icon,
             obj.get_status_display(),
         )
-
-    status_badge.short_description = "Estado"
 
     @admin.action(description="✅ Publicar artículos")
     def mark_as_published(self, request, queryset):

@@ -15,7 +15,7 @@ class PostSerializer(serializers.ModelSerializer):
             "id",
             "slug",
             "title",
-            "excerpt",
+            "description",
             "content",
             "date",
             "image",

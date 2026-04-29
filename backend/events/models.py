@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
+from byhormiga.utils import SPANISH_MONTH_ABBR
 
 
 class Venue(models.Model):
@@ -77,21 +78,7 @@ class Event(models.Model):
     @property
     def month(self):
         """Extrae la abreviación del mes en español"""
-        months = {
-            1: "ENE",
-            2: "FEB",
-            3: "MAR",
-            4: "ABR",
-            5: "MAY",
-            6: "JUN",
-            7: "JUL",
-            8: "AGO",
-            9: "SEP",
-            10: "OCT",
-            11: "NOV",
-            12: "DIC",
-        }
-        return months[self.date.month]
+        return SPANISH_MONTH_ABBR[self.date.month]
 
     @property
     def weekday(self):

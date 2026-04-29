@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from adminsortable2.admin import SortableInlineAdminMixin
+from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 from unfold.admin import ModelAdmin, TabularInline
 from .models import Event, EventPhoto, Venue
 
@@ -42,7 +42,7 @@ class VenueAdmin(ModelAdmin):
 
 
 @admin.register(Event)
-class EventAdmin(ModelAdmin):
+class EventAdmin(SortableAdminBase, ModelAdmin):
     list_display = [
         "poster_thumbnail",
         "title",
