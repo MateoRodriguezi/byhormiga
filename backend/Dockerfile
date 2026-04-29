@@ -13,7 +13,7 @@ WORKDIR /app
 
 FROM base AS deps
 
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,id=uv-cache,target=/root/.cache/uv \
     --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-install-project --no-dev
@@ -25,13 +25,10 @@ COPY . /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,id=uv-cache,target=/root/.cache/uv \
     uv sync --locked --no-install-project --no-dev
 
 EXPOSE 8000
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD uv run --no-sync python -c "import requests; requests.get('http://localhost:8000/admin/', timeout=5)"
 
 CMD ["uv", "run", "--no-sync", "python", "manage.py", "runserver", "0.0.0.0:8000"]
 
@@ -42,7 +39,7 @@ COPY . /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,target=/root/.cache/uv \
+RUN --mount=type=cache,id=uv-cache,target=/root/.cache/uv \
     uv sync --locked --no-install-project --no-dev
 
 RUN useradd -m -u 1000 django && chown -R django:django /app
@@ -52,8 +49,5 @@ USER django
 RUN uv run --no-sync python manage.py collectstatic --no-input
 
 EXPOSE 8000
-
-HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
-    CMD uv run --no-sync python -c "import requests; requests.get('http://localhost:8000/admin/', timeout=5)"
 
 CMD ["uv", "run", "--no-sync", "gunicorn", "byhormiga.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-"]
