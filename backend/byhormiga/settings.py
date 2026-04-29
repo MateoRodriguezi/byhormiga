@@ -2,7 +2,6 @@
 Django settings for byhormiga project.
 """
 
-import os
 from pathlib import Path
 from decouple import config, Csv
 import cloudinary

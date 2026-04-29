@@ -5,26 +5,58 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('events', '0001_initial'),
+        ("events", "0001_initial"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='EventPhoto',
+            name="EventPhoto",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('image', models.ImageField(upload_to='events/photos/', verbose_name='Imagen')),
-                ('caption', models.CharField(blank=True, max_length=300, verbose_name='Caption')),
-                ('order', models.PositiveIntegerField(default=0, help_text='Orden de aparicion en la galeria', verbose_name='Orden')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('event', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='photos', to='events.event', verbose_name='Evento')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                (
+                    "image",
+                    models.ImageField(
+                        upload_to="events/photos/", verbose_name="Imagen"
+                    ),
+                ),
+                (
+                    "caption",
+                    models.CharField(
+                        blank=True, max_length=300, verbose_name="Caption"
+                    ),
+                ),
+                (
+                    "order",
+                    models.PositiveIntegerField(
+                        default=0,
+                        help_text="Orden de aparicion en la galeria",
+                        verbose_name="Orden",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                (
+                    "event",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.CASCADE,
+                        related_name="photos",
+                        to="events.event",
+                        verbose_name="Evento",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Foto de evento',
-                'verbose_name_plural': 'Fotos de eventos',
-                'ordering': ['order', '-created_at'],
+                "verbose_name": "Foto de evento",
+                "verbose_name_plural": "Fotos de eventos",
+                "ordering": ["order", "-created_at"],
             },
         ),
     ]

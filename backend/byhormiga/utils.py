@@ -15,7 +15,9 @@ SPANISH_MONTH_ABBR = {
 
 
 def format_spanish_date(date_value):
-    return f"{date_value.day:02d} {SPANISH_MONTH_ABBR[date_value.month]} {date_value.year}"
+    return (
+        f"{date_value.day:02d} {SPANISH_MONTH_ABBR[date_value.month]} {date_value.year}"
+    )
 
 
 def format_spanish_month_year(date_value):

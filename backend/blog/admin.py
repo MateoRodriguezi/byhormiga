@@ -56,7 +56,9 @@ class PostAdmin(ModelAdmin):
         ]
         return custom_urls + urls
 
-    def render_change_form(self, request, context, add=False, change=False, form_url="", obj=None):
+    def render_change_form(
+        self, request, context, add=False, change=False, form_url="", obj=None
+    ):
         body_field = context.get("adminform").form.fields.get("body")
         if body_field:
             body_field.widget.attrs.update(
@@ -65,9 +67,7 @@ class PostAdmin(ModelAdmin):
                     "data-upload-url": reverse("admin:blog_post_upload_image"),
                 }
             )
-            body_field.help_text = (
-                "HTML permitido. Usa la barra para negrita, cursiva, H1/H2/H3, links e imagenes."
-            )
+            body_field.help_text = "HTML permitido. Usa la barra para negrita, cursiva, H1/H2/H3, links e imagenes."
         return super().render_change_form(request, context, add, change, form_url, obj)
 
     def upload_image_view(self, request):
