@@ -9,19 +9,19 @@ from rest_framework.routers import DefaultRouter
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from events.views import EventViewSet, GalleryListAPIView
 from blog.views import PostViewSet
-from contact.views import ContactMessageViewSet
-from partners.views import PartnerViewSet
+from contact.views import ContactMessageCreateAPIView
+from partners.views import PartnerListAPIView
 
 # Router para la API
 router = DefaultRouter()
 router.register(r"events", EventViewSet, basename="event")
 router.register(r"posts", PostViewSet, basename="post")
-router.register(r"contact", ContactMessageViewSet, basename="contact")
-router.register(r"partners", PartnerViewSet, basename="partner")
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/gallery/", GalleryListAPIView.as_view(), name="gallery-list"),
+    path("api/contact/", ContactMessageCreateAPIView.as_view(), name="contact-create"),
+    path("api/partners/", PartnerListAPIView.as_view(), name="partner-list"),
     path("api/", include(router.urls)),
 ]
 

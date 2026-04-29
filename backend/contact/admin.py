@@ -28,6 +28,7 @@ class ContactMessageAdmin(ModelAdmin):
 
     actions = ["mark_as_read", "mark_as_unread"]
 
+    @admin.display(description="Asunto")
     def subject_preview(self, obj):
         """Muestra el asunto truncado si es muy largo"""
         max_length = 50
@@ -39,8 +40,7 @@ class ContactMessageAdmin(ModelAdmin):
             )
         return obj.subject
 
-    subject_preview.short_description = "Asunto"
-
+    @admin.display(description="Mensaje")
     def message_formatted(self, obj):
         """Muestra el mensaje con formato mejorado"""
         return format_html(
@@ -48,8 +48,7 @@ class ContactMessageAdmin(ModelAdmin):
             obj.message,
         )
 
-    message_formatted.short_description = "Mensaje"
-
+    @admin.display(description="Estado")
     def read_badge(self, obj):
         """Muestra badge visual para estado de lectura"""
         if obj.read:
@@ -59,8 +58,6 @@ class ContactMessageAdmin(ModelAdmin):
         return format_html(
             '<span style="background-color: #3b82f6; color: white; padding: 3px 10px; border-radius: 3px; font-size: 11px; font-weight: bold;">✉ Nuevo</span>'
         )
-
-    read_badge.short_description = "Estado"
 
     @admin.action(description="✓ Marcar como leído")
     def mark_as_read(self, request, queryset):

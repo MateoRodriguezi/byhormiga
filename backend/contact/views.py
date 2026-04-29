@@ -1,17 +1,15 @@
-from rest_framework import viewsets, status
+from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
-from .models import ContactMessage
 from .serializers import ContactMessageSerializer
 
 
-class ContactMessageViewSet(viewsets.GenericViewSet):
+class ContactMessageCreateAPIView(generics.CreateAPIView):
     """
     API endpoint para mensajes de contacto.
     - Create: POST /api/contact/
     """
 
-    queryset = ContactMessage.objects.all()
     serializer_class = ContactMessageSerializer
     permission_classes = [AllowAny]
 
