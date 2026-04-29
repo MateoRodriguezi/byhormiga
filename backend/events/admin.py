@@ -5,6 +5,17 @@ from unfold.admin import ModelAdmin, TabularInline
 from .models import Event, EventPhoto, Venue
 
 
+WEEKDAY_ABBR = {
+    0: "LUN",
+    1: "MAR",
+    2: "MIÉ",
+    3: "JUE",
+    4: "VIE",
+    5: "SÁB",
+    6: "DOM",
+}
+
+
 class EventPhotoInline(SortableInlineAdminMixin, TabularInline):
     model = EventPhoto
     extra = 1
@@ -30,6 +41,7 @@ class VenueAdmin(ModelAdmin):
         ),
     )
 
+    @admin.display(description="Eventos")
     def event_count(self, obj):
         """Muestra la cantidad de eventos en este venue"""
         count = obj.events.count()
@@ -37,8 +49,6 @@ class VenueAdmin(ModelAdmin):
             '<span style="background-color: #3b82f6; color: white; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: bold;">{}</span>',
             count,
         )
-
-    event_count.short_description = "Eventos"
 
 
 @admin.register(Event)
@@ -83,6 +93,7 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
         ),
     )
 
+    @admin.display(description="Poster")
     def poster_thumbnail(self, obj):
         """Muestra miniatura del poster en la lista"""
         if obj.poster:
@@ -92,8 +103,7 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
             )
         return "-"
 
-    poster_thumbnail.short_description = "Poster"
-
+    @admin.display(description="Vista previa")
     def poster_preview(self, obj):
         """Muestra preview del poster en el detalle"""
         if obj.poster:
@@ -103,21 +113,20 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
             )
         return "No hay poster cargado"
 
-    poster_preview.short_description = "Vista previa"
-
+    @admin.display(description="Fecha")
     def formatted_date(self, obj):
         """Muestra fecha formateada con día de la semana"""
+        weekday = WEEKDAY_ABBR[obj.date.weekday()]
         return format_html(
             "<strong>{}</strong><br><small>{} {} - {}:{}</small>",
             obj.date.strftime("%d/%m/%Y"),
-            obj.weekday,
+            weekday,
             obj.date.strftime("%H:%M"),
             obj.date.strftime("%H"),
             obj.date.strftime("%M"),
         )
 
-    formatted_date.short_description = "Fecha"
-
+    @admin.display(description="Estado")
     def status_badge(self, obj):
         """Muestra badge de status con colores"""
         colors = {
@@ -133,15 +142,12 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
             obj.get_status_display(),
         )
 
-    status_badge.short_description = "Estado"
-
+    @admin.display(description="Destacado")
     def featured_badge(self, obj):
         """Muestra si el evento está destacado"""
         if obj.featured:
             return format_html('<span style="color: #fbbf24;">⭐ Destacado</span>')
         return "-"
-
-    featured_badge.short_description = "Destacado"
 
     @admin.action(description="✅ Marcar como publicado")
     def mark_as_published(self, request, queryset):

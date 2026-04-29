@@ -1,6 +1,6 @@
 from rest_framework import serializers
 from .models import Event, EventPhoto, Venue
-from byhormiga.utils import format_spanish_month_year
+from byhormiga.utils import SPANISH_MONTH_ABBR, format_spanish_month_year
 
 
 class VenueSerializer(serializers.ModelSerializer):
@@ -16,9 +16,9 @@ class EventSerializer(serializers.ModelSerializer):
 
     venue = serializers.CharField(source="venue.name", read_only=True)
     venue_detail = VenueSerializer(source="venue", read_only=True)
-    day = serializers.ReadOnlyField()
-    month = serializers.ReadOnlyField()
-    weekday = serializers.ReadOnlyField()
+    day = serializers.SerializerMethodField()
+    month = serializers.SerializerMethodField()
+    weekday = serializers.SerializerMethodField()
     status = serializers.CharField(source="frontend_status", read_only=True)
     image = serializers.ImageField(source="poster", read_only=True)
     name = serializers.CharField(source="title", read_only=True)
@@ -43,6 +43,24 @@ class EventSerializer(serializers.ModelSerializer):
             "image",
             "ticket_url",
         ]
+
+    def get_day(self, obj):
+        return obj.date.strftime("%d")
+
+    def get_month(self, obj):
+        return SPANISH_MONTH_ABBR[obj.date.month]
+
+    def get_weekday(self, obj):
+        weekdays = {
+            0: "LUN",
+            1: "MAR",
+            2: "MIÉ",
+            3: "JUE",
+            4: "VIE",
+            5: "SÁB",
+            6: "DOM",
+        }
+        return weekdays[obj.date.weekday()]
 
 
 class EventPhotoSerializer(serializers.ModelSerializer):

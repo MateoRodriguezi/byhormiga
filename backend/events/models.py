@@ -1,7 +1,6 @@
 from django.db import models
 from django.utils.text import slugify
 from byhormiga.models import TimeStampMixin
-from byhormiga.utils import SPANISH_MONTH_ABBR
 
 
 class Venue(TimeStampMixin):
@@ -64,32 +63,16 @@ class Event(TimeStampMixin):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            base_slug = slugify(self.title)
+            slug = base_slug
+            suffix = 2
+
+            while Event.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{suffix}"
+                suffix += 1
+
+            self.slug = slug
         super().save(*args, **kwargs)
-
-    @property
-    def day(self):
-        """Extrae el número del día para el frontend"""
-        return self.date.strftime("%d")
-
-    @property
-    def month(self):
-        """Extrae la abreviación del mes en español"""
-        return SPANISH_MONTH_ABBR[self.date.month]
-
-    @property
-    def weekday(self):
-        """Extrae la abreviación del día de la semana en español"""
-        weekdays = {
-            0: "LUN",
-            1: "MAR",
-            2: "MIÉ",
-            3: "JUE",
-            4: "VIE",
-            5: "SÁB",
-            6: "DOM",
-        }
-        return weekdays[self.date.weekday()]
 
     @property
     def frontend_status(self):
@@ -124,6 +107,11 @@ class EventPhoto(TimeStampMixin):
         verbose_name = "Foto de evento"
         verbose_name_plural = "Fotos de eventos"
         ordering = ["order", "-created_at"]
+        constraints = [
+            models.UniqueConstraint(
+                fields=["event", "order"], name="unique_event_photo_order"
+            )
+        ]
 
     def __str__(self):
         return f"{self.event.title} - Foto {self.order}"

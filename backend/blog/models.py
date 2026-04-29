@@ -42,7 +42,15 @@ class Post(TimeStampMixin):
 
     def save(self, *args, **kwargs):
         if not self.slug:
-            self.slug = slugify(self.title)
+            base_slug = slugify(self.title)
+            slug = base_slug
+            suffix = 2
+
+            while Post.objects.filter(slug=slug).exists():
+                slug = f"{base_slug}-{suffix}"
+                suffix += 1
+
+            self.slug = slug
         super().save(*args, **kwargs)
 
     @property
