@@ -1,10 +1,6 @@
-from django.urls import path, include
-from rest_framework.routers import DefaultRouter
-from .views import PartnerViewSet
-
-router = DefaultRouter()
-router.register(r'partners', PartnerViewSet, basename='partner')
+from django.urls import path
+from .views import PartnerListAPIView
 
 urlpatterns = [
-    path('', include(router.urls)),
+    path("partners/", PartnerListAPIView.as_view(), name="partner-list"),
 ]

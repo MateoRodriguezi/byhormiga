@@ -4,29 +4,57 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Partner',
+            name="Partner",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Nombre')),
-                ('logo', models.ImageField(upload_to='partners/logos/', verbose_name='Logo')),
-                ('website_url', models.URLField(blank=True, null=True, verbose_name='URL del sitio web')),
-                ('order', models.PositiveIntegerField(default=0, help_text='Orden de aparición en el carrusel (menor número = primero)', verbose_name='Orden')),
-                ('active', models.BooleanField(default=True, help_text='Marcar para mostrar en el carrusel', verbose_name='Activo')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Nombre")),
+                (
+                    "logo",
+                    models.ImageField(upload_to="partners/logos/", verbose_name="Logo"),
+                ),
+                (
+                    "website_url",
+                    models.URLField(
+                        blank=True, null=True, verbose_name="URL del sitio web"
+                    ),
+                ),
+                (
+                    "order",
+                    models.PositiveIntegerField(
+                        default=0,
+                        help_text="Orden de aparición en el carrusel (menor número = primero)",
+                        verbose_name="Orden",
+                    ),
+                ),
+                (
+                    "active",
+                    models.BooleanField(
+                        default=True,
+                        help_text="Marcar para mostrar en el carrusel",
+                        verbose_name="Activo",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Partner',
-                'verbose_name_plural': 'Partners',
-                'ordering': ['order', 'name'],
+                "verbose_name": "Partner",
+                "verbose_name_plural": "Partners",
+                "ordering": ["order", "name"],
             },
         ),
     ]

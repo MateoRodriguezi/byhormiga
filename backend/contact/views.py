@@ -10,6 +10,7 @@ class ContactMessageViewSet(viewsets.GenericViewSet):
     API endpoint para mensajes de contacto.
     - Create: POST /api/contact/
     """
+
     queryset = ContactMessage.objects.all()
     serializer_class = ContactMessageSerializer
     permission_classes = [AllowAny]
@@ -20,6 +21,6 @@ class ContactMessageViewSet(viewsets.GenericViewSet):
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return Response(
-            {'success': True, 'message': 'Mensaje enviado correctamente'},
-            status=status.HTTP_201_CREATED
+            {"success": True, "message": "Mensaje enviado correctamente"},
+            status=status.HTTP_201_CREATED,
         )

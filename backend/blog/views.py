@@ -10,9 +10,10 @@ class PostViewSet(viewsets.ReadOnlyModelViewSet):
     - List: GET /api/posts/
     - Detail: GET /api/posts/{slug}/
     """
-    queryset = Post.objects.filter(status='published')
+
+    queryset = Post.objects.filter(status="published")
     serializer_class = PostSerializer
-    lookup_field = 'slug'
+    lookup_field = "slug"
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    ordering_fields = ['published_at']
-    ordering = ['-published_at']
+    ordering_fields = ["published_at"]
+    ordering = ["-published_at"]

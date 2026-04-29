@@ -8,11 +8,10 @@ class PartnerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Partner
         fields = [
-            'id',
-            'name',
-            'logo',
-            'website_url',
-            'order',
-            'active',
+            "id",
+            "name",
+            "logo",
+            "website_url",
+            "order",
         ]
-        read_only_fields = ['id']
+        read_only_fields = ["id"]

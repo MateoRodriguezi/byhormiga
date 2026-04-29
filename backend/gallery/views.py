@@ -9,8 +9,11 @@ class AlbumViewSet(viewsets.ReadOnlyModelViewSet):
     - List: GET /api/gallery/
     - Detail: GET /api/gallery/{id}/
     """
-    queryset = Album.objects.filter(
-        published=True
-    ).select_related('event').prefetch_related('photos')
+
+    queryset = (
+        Album.objects.filter(published=True)
+        .select_related("event")
+        .prefetch_related("photos")
+    )
     serializer_class = AlbumSerializer
-    ordering = ['-event__date']
+    ordering = ["-event__date"]

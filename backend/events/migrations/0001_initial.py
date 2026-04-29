@@ -5,51 +5,124 @@ import django.db.models.deletion
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Venue',
+            name="Venue",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('name', models.CharField(max_length=200, verbose_name='Nombre')),
-                ('address', models.CharField(max_length=300, verbose_name='Dirección')),
-                ('city', models.CharField(default='Montevideo', max_length=100, verbose_name='Ciudad')),
-                ('maps_url', models.URLField(blank=True, null=True, verbose_name='URL Google Maps')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("name", models.CharField(max_length=200, verbose_name="Nombre")),
+                ("address", models.CharField(max_length=300, verbose_name="Dirección")),
+                (
+                    "city",
+                    models.CharField(
+                        default="Montevideo", max_length=100, verbose_name="Ciudad"
+                    ),
+                ),
+                (
+                    "maps_url",
+                    models.URLField(
+                        blank=True, null=True, verbose_name="URL Google Maps"
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Venue',
-                'verbose_name_plural': 'Venues',
-                'ordering': ['name'],
+                "verbose_name": "Venue",
+                "verbose_name_plural": "Venues",
+                "ordering": ["name"],
             },
         ),
         migrations.CreateModel(
-            name='Event',
+            name="Event",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('title', models.CharField(max_length=200, verbose_name='Título')),
-                ('slug', models.SlugField(max_length=200, unique=True, verbose_name='Slug')),
-                ('description', models.TextField(verbose_name='Descripción')),
-                ('date', models.DateTimeField(verbose_name='Fecha y hora')),
-                ('poster', models.ImageField(blank=True, null=True, upload_to='events/posters/', verbose_name='Poster')),
-                ('ticket_url', models.URLField(blank=True, null=True, verbose_name='URL de tickets')),
-                ('price_info', models.CharField(blank=True, max_length=200, verbose_name='Información de precio')),
-                ('status', models.CharField(choices=[('draft', 'Borrador'), ('published', 'Publicado'), ('cancelled', 'Cancelado'), ('sold_out', 'Agotado')], default='draft', max_length=20, verbose_name='Estado')),
-                ('featured', models.BooleanField(default=False, help_text='Marcar si el evento debe aparecer destacado', verbose_name='Destacado')),
-                ('created_at', models.DateTimeField(auto_now_add=True)),
-                ('updated_at', models.DateTimeField(auto_now=True)),
-                ('venue', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, related_name='events', to='events.venue', verbose_name='Venue')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("title", models.CharField(max_length=200, verbose_name="Título")),
+                (
+                    "slug",
+                    models.SlugField(max_length=200, unique=True, verbose_name="Slug"),
+                ),
+                ("description", models.TextField(verbose_name="Descripción")),
+                ("date", models.DateTimeField(verbose_name="Fecha y hora")),
+                (
+                    "poster",
+                    models.ImageField(
+                        blank=True,
+                        null=True,
+                        upload_to="events/posters/",
+                        verbose_name="Poster",
+                    ),
+                ),
+                (
+                    "ticket_url",
+                    models.URLField(
+                        blank=True, null=True, verbose_name="URL de tickets"
+                    ),
+                ),
+                (
+                    "price_info",
+                    models.CharField(
+                        blank=True, max_length=200, verbose_name="Información de precio"
+                    ),
+                ),
+                (
+                    "status",
+                    models.CharField(
+                        choices=[
+                            ("draft", "Borrador"),
+                            ("published", "Publicado"),
+                            ("cancelled", "Cancelado"),
+                            ("sold_out", "Agotado"),
+                        ],
+                        default="draft",
+                        max_length=20,
+                        verbose_name="Estado",
+                    ),
+                ),
+                (
+                    "featured",
+                    models.BooleanField(
+                        default=False,
+                        help_text="Marcar si el evento debe aparecer destacado",
+                        verbose_name="Destacado",
+                    ),
+                ),
+                ("created_at", models.DateTimeField(auto_now_add=True)),
+                ("updated_at", models.DateTimeField(auto_now=True)),
+                (
+                    "venue",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        related_name="events",
+                        to="events.venue",
+                        verbose_name="Venue",
+                    ),
+                ),
             ],
             options={
-                'verbose_name': 'Evento',
-                'verbose_name_plural': 'Eventos',
-                'ordering': ['-date'],
+                "verbose_name": "Evento",
+                "verbose_name_plural": "Eventos",
+                "ordering": ["-date"],
             },
         ),
     ]

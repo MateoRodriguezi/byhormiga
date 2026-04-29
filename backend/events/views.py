@@ -13,15 +13,16 @@ class EventViewSet(viewsets.ReadOnlyModelViewSet):
     - Detail: GET /api/events/{slug}/
     - Featured: GET /api/events/featured/
     """
-    queryset = Event.objects.filter(status='published').select_related('venue')
-    serializer_class = EventSerializer
-    lookup_field = 'slug'
-    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
-    filterset_fields = ['featured', 'status']
-    ordering_fields = ['date']
-    ordering = ['date']
 
-    @action(detail=False, methods=['get'])
+    queryset = Event.objects.filter(status="published").select_related("venue")
+    serializer_class = EventSerializer
+    lookup_field = "slug"
+    filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
+    filterset_fields = ["featured", "status"]
+    ordering_fields = ["date"]
+    ordering = ["date"]
+
+    @action(detail=False, methods=["get"])
     def featured(self, request):
         """Retorna solo eventos destacados"""
         featured_events = self.queryset.filter(featured=True)
