@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from django.utils.text import slugify
+from byhormiga.models import TimeStampMixin
 from byhormiga.utils import format_spanish_date
 
 
-class Post(models.Model):
+class Post(TimeStampMixin):
     """Modelo para artículos de prensa/blog"""
 
     STATUS_CHOICES = [
@@ -30,8 +31,6 @@ class Post(models.Model):
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="draft", verbose_name="Estado"
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Artículo"

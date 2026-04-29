@@ -1,17 +1,16 @@
 from django.db import models
 from django.utils.text import slugify
+from byhormiga.models import TimeStampMixin
 from byhormiga.utils import SPANISH_MONTH_ABBR
 
 
-class Venue(models.Model):
+class Venue(TimeStampMixin):
     """Modelo para venues/lugares de eventos"""
 
     name = models.CharField(max_length=200, verbose_name="Nombre")
     address = models.CharField(max_length=300, verbose_name="Dirección")
     city = models.CharField(max_length=100, default="Montevideo", verbose_name="Ciudad")
     maps_url = models.URLField(blank=True, null=True, verbose_name="URL Google Maps")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Venue"
@@ -22,7 +21,7 @@ class Venue(models.Model):
         return self.name
 
 
-class Event(models.Model):
+class Event(TimeStampMixin):
     """Modelo para eventos"""
 
     STATUS_CHOICES = [
@@ -54,8 +53,6 @@ class Event(models.Model):
         verbose_name="Destacado",
         help_text="Marcar si el evento debe aparecer destacado",
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Evento"
@@ -106,7 +103,7 @@ class Event(models.Model):
         return status_map.get(self.status, "proximamente")
 
 
-class EventPhoto(models.Model):
+class EventPhoto(TimeStampMixin):
     """Modelo para fotos de galeria asociadas a un evento"""
 
     event = models.ForeignKey(
@@ -122,7 +119,6 @@ class EventPhoto(models.Model):
         verbose_name="Orden",
         help_text="Orden de aparicion en la galeria",
     )
-    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         verbose_name = "Foto de evento"

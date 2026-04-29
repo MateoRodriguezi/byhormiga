@@ -1,7 +1,8 @@
 from django.db import models
+from byhormiga.models import TimeStampMixin
 
 
-class Partner(models.Model):
+class Partner(TimeStampMixin):
     """Modelo para marcas/partners con las que trabaja ByHormiga"""
 
     name = models.CharField(max_length=200, verbose_name="Nombre")
@@ -19,8 +20,6 @@ class Partner(models.Model):
         verbose_name="Activo",
         help_text="Marcar para mostrar en el carrusel",
     )
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
 
     class Meta:
         verbose_name = "Partner"

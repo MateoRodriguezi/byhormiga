@@ -1,7 +1,8 @@
 from django.db import models
+from byhormiga.models import TimeStampMixin
 
 
-class ContactMessage(models.Model):
+class ContactMessage(TimeStampMixin):
     """Modelo para mensajes del formulario de contacto"""
 
     name = models.CharField(max_length=200, verbose_name="Nombre")
@@ -9,7 +10,6 @@ class ContactMessage(models.Model):
     subject = models.CharField(max_length=300, verbose_name="Asunto")
     message = models.TextField(verbose_name="Mensaje")
     read = models.BooleanField(default=False, verbose_name="Leído")
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de envío")
 
     class Meta:
         verbose_name = "Mensaje de contacto"
