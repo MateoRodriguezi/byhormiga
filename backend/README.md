@@ -67,8 +67,7 @@ API: http://localhost:8000/api/
 - `GET /api/events/featured/` - Solo eventos destacados
 
 ### Galería
-- `GET /api/gallery/` - Lista todos los álbumes publicados
-- `GET /api/gallery/{id}/` - Detalle de álbum con fotos
+- `GET /api/gallery/` - Lista eventos pasados publicados con sus fotos
 
 ### Blog/Prensa
 - `GET /api/posts/` - Lista todos los artículos publicados
@@ -131,7 +130,6 @@ Acceder en `/admin` con credenciales de superusuario.
 backend/
 ├── byhormiga/          # Configuración del proyecto
 ├── events/             # App de eventos y venues
-├── gallery/            # App de galería (álbumes y fotos)
 ├── blog/               # App de artículos de prensa
 ├── contact/            # App de mensajes de contacto
 ├── manage.py
@@ -149,9 +147,8 @@ backend/
 - **Venue**: Lugares de eventos
 - **Event**: Eventos con relación a Venue
 
-### Gallery App
-- **Album**: Álbumes de fotos (OneToOne con Event)
-- **Photo**: Fotos individuales de un álbum
+### Events App (galería)
+- **EventPhoto**: Fotos individuales asociadas a Event
 
 ### Blog App
 - **Post**: Artículos de prensa/blog

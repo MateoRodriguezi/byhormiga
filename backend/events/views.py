@@ -1,9 +1,10 @@
-from rest_framework import viewsets, filters
+from django.utils import timezone
+from rest_framework import filters, generics, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import Event
-from .serializers import EventSerializer
+from .serializers import EventSerializer, GalleryEventSerializer
 
 
 class EventViewSet(viewsets.ReadOnlyModelViewSet):
@@ -28,3 +29,21 @@ class EventViewSet(viewsets.ReadOnlyModelViewSet):
         featured_events = self.queryset.filter(featured=True)
         serializer = self.get_serializer(featured_events, many=True)
         return Response(serializer.data)
+
+
+class GalleryListAPIView(generics.ListAPIView):
+    """API endpoint para galeria: eventos pasados con fotos."""
+
+    serializer_class = GalleryEventSerializer
+
+    def get_queryset(self):
+        return (
+            Event.objects.filter(
+                status="published",
+                date__lt=timezone.now(),
+                photos__isnull=False,
+            )
+            .prefetch_related("photos")
+            .order_by("-date")
+            .distinct()
+        )

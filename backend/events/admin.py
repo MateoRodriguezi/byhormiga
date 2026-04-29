@@ -1,7 +1,15 @@
 from django.contrib import admin
 from django.utils.html import format_html
-from unfold.admin import ModelAdmin
-from .models import Venue, Event
+from adminsortable2.admin import SortableInlineAdminMixin
+from unfold.admin import ModelAdmin, TabularInline
+from .models import Event, EventPhoto, Venue
+
+
+class EventPhotoInline(SortableInlineAdminMixin, TabularInline):
+    model = EventPhoto
+    extra = 1
+    fields = ["image", "caption", "order"]
+    ordering = ["order"]
 
 
 @admin.register(Venue)
@@ -48,6 +56,7 @@ class EventAdmin(ModelAdmin):
     prepopulated_fields = {"slug": ("title",)}
     readonly_fields = ["poster_preview", "created_at", "updated_at"]
     date_hierarchy = "date"
+    inlines = [EventPhotoInline]
     actions = [
         "mark_as_published",
         "mark_as_draft",

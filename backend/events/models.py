@@ -117,3 +117,30 @@ class Event(models.Model):
             "cancelled": "proximamente",
         }
         return status_map.get(self.status, "proximamente")
+
+
+class EventPhoto(models.Model):
+    """Modelo para fotos de galeria asociadas a un evento"""
+
+    event = models.ForeignKey(
+        Event,
+        on_delete=models.CASCADE,
+        related_name="photos",
+        verbose_name="Evento",
+    )
+    image = models.ImageField(upload_to="events/photos/", verbose_name="Imagen")
+    caption = models.CharField(max_length=300, blank=True, verbose_name="Caption")
+    order = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Orden",
+        help_text="Orden de aparicion en la galeria",
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        verbose_name = "Foto de evento"
+        verbose_name_plural = "Fotos de eventos"
+        ordering = ["order", "-created_at"]
+
+    def __str__(self):
+        return f"{self.event.title} - Foto {self.order}"

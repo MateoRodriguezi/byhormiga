@@ -54,7 +54,6 @@ INSTALLED_APPS = [
     "adminsortable2",
     # Local Apps
     "events",
-    "gallery",
     "blog",
     "contact",
     "partners",
@@ -217,22 +216,6 @@ UNFOLD = {
                         "title": "Venues",
                         "icon": "location_on",
                         "link": lambda request: "/admin/events/venue/",
-                    },
-                ],
-            },
-            {
-                "title": "Galería",
-                "separator": True,
-                "items": [
-                    {
-                        "title": "Álbumes",
-                        "icon": "photo_library",
-                        "link": lambda request: "/admin/gallery/album/",
-                    },
-                    {
-                        "title": "Fotos",
-                        "icon": "image",
-                        "link": lambda request: "/admin/gallery/photo/",
                     },
                 ],
             },
