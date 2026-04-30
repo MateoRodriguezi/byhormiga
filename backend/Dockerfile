@@ -13,8 +13,7 @@ WORKDIR /app
 
 FROM base AS deps
 
-RUN --mount=type=cache,id=uv-cache,target=/root/.cache/uv \
-    --mount=type=bind,source=uv.lock,target=uv.lock \
+RUN --mount=type=bind,source=uv.lock,target=uv.lock \
     --mount=type=bind,source=pyproject.toml,target=pyproject.toml \
     uv sync --locked --no-install-project --no-dev
 
@@ -25,8 +24,7 @@ COPY . /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,id=uv-cache,target=/root/.cache/uv \
-    uv sync --locked --no-install-project --no-dev
+RUN uv sync --locked --no-install-project --no-dev
 
 EXPOSE 8000
 
@@ -39,8 +37,7 @@ COPY . /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
-RUN --mount=type=cache,id=uv-cache,target=/root/.cache/uv \
-    uv sync --locked --no-install-project --no-dev
+RUN uv sync --locked --no-install-project --no-dev
 
 RUN useradd -m -u 1000 django && chown -R django:django /app
 
