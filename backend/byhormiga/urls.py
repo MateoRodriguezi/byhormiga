@@ -28,3 +28,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(api_v1_url_patterns)),
 ]
+
+handler404 = "byhormiga.views.api_not_found"
