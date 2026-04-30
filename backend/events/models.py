@@ -38,7 +38,10 @@ class Event(TimeStampMixin):
         Venue, on_delete=models.PROTECT, related_name="events", verbose_name="Venue"
     )
     poster = models.ImageField(
-        upload_to="events/posters/", blank=True, null=True, verbose_name="Poster"
+        upload_to="events/posters/",
+        blank=True,
+        null=True,
+        verbose_name="Poster",
     )
     ticket_url = models.URLField(blank=True, null=True, verbose_name="URL de tickets")
     price_info = models.CharField(

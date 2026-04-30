@@ -3,10 +3,8 @@ Django settings for byhormiga project.
 """
 
 from pathlib import Path
-from decouple import config, Csv
-import cloudinary
-import cloudinary.uploader
-import cloudinary.api
+from decouple import Csv, config
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -48,8 +46,7 @@ INSTALLED_APPS = [
     "django_filters",
     "drf_spectacular",
     "django_extensions",
-    "cloudinary",
-    "cloudinary_storage",
+    "storages",
     "adminsortable2",
     # Local Apps
     "events",
@@ -93,7 +90,6 @@ WSGI_APPLICATION = "byhormiga.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-import dj_database_url
 
 DATABASES = {
     "default": dj_database_url.config(
@@ -149,17 +145,15 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
 }
 
-# Cloudinary Configuration
-cloudinary.config(
-    cloud_name=config("CLOUDINARY_CLOUD_NAME", default=""),
-    api_key=config("CLOUDINARY_API_KEY", default=""),
-    api_secret=config("CLOUDINARY_API_SECRET", default=""),
-    secure=True,
-)
+# S3-compatible bucket configuration (AWS S3, Cloudflare R2, Backblaze, etc.)
+AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default="")
+AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY", default="")
+AWS_STORAGE_BUCKET_NAME = config("AWS_STORAGE_BUCKET_NAME", default="")
+AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME", default="")
+AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL", default="")
 
-# Storage backends
-if config("CLOUDINARY_CLOUD_NAME", default=""):
-    DEFAULT_FILE_STORAGE = "cloudinary_storage.storage.MediaCloudinaryStorage"
+if AWS_STORAGE_BUCKET_NAME:
+    DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
