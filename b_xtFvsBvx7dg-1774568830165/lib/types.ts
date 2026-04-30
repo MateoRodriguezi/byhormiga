@@ -6,17 +6,17 @@ export interface PaginatedResponse<T> {
 }
 
 export interface Event {
-  id: string
   slug: string
   name: string
   venue: string
-  date: string
-  day: string
-  month: string
-  weekday: string
-  price: string
+  day?: string
+  month?: string
+  weekday?: string
   status: 'en-venta' | 'agotado' | 'proximamente'
   featured?: boolean
+  date?: string
+  price?: string
+  ticket_url?: string
   description?: string
   image?: string
 }
@@ -37,15 +37,19 @@ export interface GalleryItem {
 }
 
 export interface Post {
-  id: string
   slug: string
   title: string
-  excerpt: string
-  content?: string
   date: string
-  author?: string
+  description?: string
   image?: string
 }
+
+export interface ContactSuccessResponse {
+  success: boolean
+  message: string
+}
+
+export type ContactErrorResponse = Partial<Record<keyof ContactFormData, string[]>>
 
 export interface ContactFormData {
   name: string

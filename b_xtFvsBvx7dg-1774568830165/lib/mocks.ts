@@ -1,9 +1,8 @@
-import type { Event, GalleryItem, Post, ContactFormData } from './types'
+import type { Event, GalleryItem, Post } from './types'
 
 // Mock data for events
 export const mockEvents: Event[] = [
   {
-    id: '1',
     slug: 'hormiga-negra-x',
     name: 'HORMIGA NEGRA X',
     venue: 'Cine Universitario',
@@ -17,7 +16,6 @@ export const mockEvents: Event[] = [
     description: 'La décima edición de nuestra experiencia más icónica. Una noche de arte, música electrónica y conexiones genuinas en el emblemático Cine Universitario.',
   },
   {
-    id: '2',
     slug: 'subterranea-vol4',
     name: 'SUBTERRANEA VOL.4',
     venue: 'La Trastienda',
@@ -30,7 +28,6 @@ export const mockEvents: Event[] = [
     description: 'Cuarta edición de nuestra serie underground. Experiencia audiovisual única en La Trastienda con los mejores DJs de la escena local.',
   },
   {
-    id: '3',
     slug: 'open-air-otono',
     name: 'OPEN AIR OTOÑO',
     venue: 'Parque Rodó',
@@ -43,7 +40,6 @@ export const mockEvents: Event[] = [
     description: 'Festival al aire libre en el corazón del Parque Rodó. SOLD OUT. Una experiencia única que celebra la música y la cultura uruguaya.',
   },
   {
-    id: '4',
     slug: 'hormiga-sessions-01',
     name: 'HORMIGA SESSIONS 01',
     venue: 'Club Azul',
@@ -57,7 +53,6 @@ export const mockEvents: Event[] = [
     description: 'Primera edición de nuestra nueva serie de experiencias íntimas. Arte, música experimental y conexiones genuinas en un espacio único.',
   },
   {
-    id: '5',
     slug: 'aniversario-30-anos',
     name: 'ANIVERSARIO 30 AÑOS',
     venue: 'TBA',
@@ -113,27 +108,24 @@ export const mockGallery: GalleryItem[] = [
 // Mock data for posts
 export const mockPosts: Post[] = [
   {
-    id: '1',
     slug: 'byhormiga-trastienda-nueva-era',
     title: 'BYHORMIGA Y LA TRASTIENDA: UNA NUEVA ERA PARA LOS EVENTOS EN MONTEVIDEO',
-    excerpt: 'El icónico venue montevideano y byhormiga unen fuerzas para crear experiencias inolvidables que redefinen la escena de eventos en Uruguay.',
+    description:
+      'El icónico venue montevideano y byhormiga unen fuerzas para crear experiencias inolvidables que redefinen la escena de eventos en Uruguay.',
     date: '18 MAR 2026',
-    content: 'La alianza estratégica entre byhormiga y La Trastienda marca un antes y después en la producción de eventos en Montevideo. Esta colaboración promete llevar la escena cultural uruguaya a nuevos niveles, combinando la experiencia de 30 años de byhormiga con el prestigio de uno de los venues más emblemáticos de la ciudad.',
   },
   {
-    id: '2',
     slug: '30-anos-byhormiga-fernando-herrero',
     title: '30 AÑOS DE BYHORMIGA: CÓMO FERNANDO HERRERO TRANSFORMÓ LA ESCENA DE EVENTOS EN URUGUAY',
-    excerpt: 'Un recorrido por tres décadas de innovación, creatividad y pasión por las experiencias que conectan a las personas.',
+    description:
+      'Un recorrido por tres décadas de innovación, creatividad y pasión por las experiencias que conectan a las personas.',
     date: '05 FEB 2026',
-    content: 'Fernando Herrero fundó byhormiga en 1996 con una visión clara: crear experiencias que trasciendan el evento mismo. Tres décadas después, byhormiga se ha consolidado como la agencia de eventos más innovadora de Uruguay, habiendo producido más de 500 eventos que han marcado la cultura y el entretenimiento del país.',
   },
   {
-    id: '3',
     slug: 'mejores-momentos-hormiga-negra-ix',
     title: 'LOS MEJORES MOMENTOS DE HORMIGA NEGRA IX EN EL CINE UNIVERSITARIO',
-    excerpt: 'Revivimos la novena edición de nuestro evento más emblemático a través de imágenes y testimonios de quienes lo vivieron.',
+    description:
+      'Revivimos la novena edición de nuestro evento más emblemático a través de imágenes y testimonios de quienes lo vivieron.',
     date: '20 ENE 2026',
-    content: 'Hormiga Negra IX superó todas las expectativas. El Cine Universitario fue testigo de una noche mágica donde la música electrónica, el arte visual y las conexiones humanas se fusionaron en una experiencia inolvidable. Más de 2000 asistentes disfrutaron de sets de DJs locales e internacionales en un ambiente único.',
   },
 ]

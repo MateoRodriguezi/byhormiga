@@ -1,8 +1,13 @@
-import { mockEvents, mockGallery, mockPosts } from './mocks'
-import type { ContactFormData, Event, GalleryItem, PaginatedResponse, Post } from './types'
+import type {
+  ContactFormData,
+  ContactSuccessResponse,
+  Event,
+  GalleryItem,
+  PaginatedResponse,
+  Post,
+} from './types'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
-const IS_LOCAL_ENV = process.env.NODE_ENV === 'development'
 
 class ApiError extends Error {
   status: number
@@ -45,12 +50,11 @@ type NextRequestInit = RequestInit & {
   }
 }
 
-async function apiGetList<T>(path: string, mockData: T[]): Promise<T[]> {
-  if (IS_LOCAL_ENV) {
-    return mockData
-  }
+type ListResponse<T> = Pick<PaginatedResponse<T>, 'count' | 'results'> &
+  Partial<Pick<PaginatedResponse<T>, 'next' | 'previous'>>
 
-  const response = await apiRequest<PaginatedResponse<T>>(path, {
+async function apiGetList<T>(path: string): Promise<T[]> {
+  const response = await apiRequest<ListResponse<T>>(path, {
     next: { revalidate: 60 },
     headers: { 'Content-Type': 'application/json' },
   } satisfies NextRequestInit)
@@ -60,13 +64,7 @@ async function apiGetList<T>(path: string, mockData: T[]): Promise<T[]> {
 
 async function apiGetBySlug<T>(
   path: string,
-  mockData: T[],
-  matcher: (item: T) => boolean,
 ): Promise<T | undefined> {
-  if (IS_LOCAL_ENV) {
-    return mockData.find(matcher)
-  }
-
   try {
     return await apiRequest<T>(path, {
       next: { revalidate: 60 },
@@ -82,38 +80,29 @@ async function apiGetBySlug<T>(
 }
 
 export async function getEvents(): Promise<Event[]> {
-  return apiGetList<Event>('/api/events/', mockEvents)
+  return apiGetList<Event>('/api/events/')
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | undefined> {
-  return apiGetBySlug<Event>(`/api/events/${slug}/`, mockEvents, (event) => event.slug === slug)
+  return apiGetBySlug<Event>(`/api/events/${slug}/`)
 }
 
 export async function getGallery(): Promise<GalleryItem[]> {
-  return apiGetList<GalleryItem>('/api/gallery/', mockGallery)
+  return apiGetList<GalleryItem>('/api/events/gallery/')
 }
 
 export async function getPosts(): Promise<Post[]> {
-  return apiGetList<Post>('/api/posts/', mockPosts)
+  return apiGetList<Post>('/api/posts/')
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
-  return apiGetBySlug<Post>(`/api/posts/${slug}/`, mockPosts, (post) => post.slug === slug)
+  return apiGetBySlug<Post>(`/api/posts/${slug}/`)
 }
 
-export async function submitContactForm(data: ContactFormData): Promise<{ success: boolean; message?: string }> {
-  if (IS_LOCAL_ENV) {
-    return { success: true, message: 'Mock submission successful' }
-  }
-
-  const result = await apiRequest<{ success?: boolean; message?: string }>('/api/contact/', {
+export async function submitContactForm(data: ContactFormData): Promise<ContactSuccessResponse> {
+  return apiRequest<ContactSuccessResponse>('/api/contact/', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(data),
   })
-
-  return {
-    success: result.success ?? true,
-    message: result.message,
-  }
 }

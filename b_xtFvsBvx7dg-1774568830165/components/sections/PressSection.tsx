@@ -71,9 +71,11 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
       </h3>
 
       {/* Excerpt */}
-      <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed mb-4 sm:mb-6">
-        {post.excerpt}
-      </p>
+      {post.description && (
+        <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed mb-4 sm:mb-6">
+          {post.description}
+        </p>
+      )}
 
       {/* Read more link */}
       <Link
@@ -96,7 +98,7 @@ export function PressSection({ posts }: PressSectionProps) {
         <div className="grid grid-cols-1 lg:grid-cols-3 border-t border-white/[.08]">
           {posts.map((post, index) => (
             <div
-              key={post.id}
+              key={post.slug}
               className={`${index < posts.length - 1 ? 'border-b lg:border-b-0 lg:border-r border-white/[.08]' : ''}`}
             >
               <ArticleCard post={post} index={index} />

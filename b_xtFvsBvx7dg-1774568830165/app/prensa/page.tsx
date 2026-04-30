@@ -37,7 +37,7 @@ export default async function PrensaPage() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-[1px] bg-white/[.08]">
             {posts.map((post, index) => (
               <article
-                key={post.id}
+                key={post.slug}
                 className="group relative bg-[#0a0908] p-8 lg:p-12 hover:bg-[#111111] transition-colors"
               >
                 {/* Top border reveal animation */}
@@ -59,9 +59,11 @@ export default async function PrensaPage() {
                 </h2>
 
                 {/* Excerpt */}
-                <p className="text-sm text-gray-500 leading-relaxed mb-8 max-w-lg">
-                  {post.excerpt}
-                </p>
+                {post.description && (
+                  <p className="text-sm text-gray-500 leading-relaxed mb-8 max-w-lg">
+                    {post.description}
+                  </p>
+                )}
 
                 {/* Read more link */}
                 <Link

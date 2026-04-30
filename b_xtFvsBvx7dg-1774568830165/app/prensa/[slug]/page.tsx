@@ -26,7 +26,7 @@ export async function generateMetadata({ params }: PostPageProps): Promise<Metad
 
   return {
     title: `${post.title} | BYHORMIGA`,
-    description: post.excerpt,
+    description: post.description,
   }
 }
 
@@ -71,7 +71,9 @@ export default async function PostPage({ params }: PostPageProps) {
 
           {/* Article Content */}
           <article className="prose prose-invert prose-lg max-w-none">
-            <p className="text-xl text-gray-300 leading-relaxed mb-8">{post.excerpt}</p>
+            {post.description && (
+              <p className="text-xl text-gray-300 leading-relaxed mb-8">{post.description}</p>
+            )}
 
             {/* Placeholder content */}
             <p className="text-gray-400 leading-relaxed">

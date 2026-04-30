@@ -71,9 +71,9 @@ export default async function EventPage({ params }: EventPageProps) {
             <div className="flex flex-col justify-center">
               {/* Date */}
               <div className="mb-6">
-                <span className="text-6xl lg:text-8xl font-black text-white">{event.day}</span>
+                <span className="text-6xl lg:text-8xl font-black text-white">{event.day ?? '--'}</span>
                 <span className="ml-4 text-xl lg:text-2xl font-bold text-gray-500 uppercase">
-                  {event.month} · {event.weekday}
+                  {event.month ?? 'TBA'} · {event.weekday ?? 'TBA'}
                 </span>
               </div>
 
@@ -105,7 +105,7 @@ export default async function EventPage({ params }: EventPageProps) {
                 </div>
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-gray-500" />
-                  <span className="text-white">{event.date}</span>
+                  <span className="text-white">{event.date ?? 'Fecha por confirmar'}</span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Clock className="w-5 h-5 text-gray-500" />
@@ -131,7 +131,9 @@ export default async function EventPage({ params }: EventPageProps) {
 
                 {event.status === 'en-venta' && (
                   <a
-                    href="#"
+                    href={event.ticket_url ?? '#'}
+                    target={event.ticket_url ? '_blank' : undefined}
+                    rel={event.ticket_url ? 'noopener noreferrer' : undefined}
                     className="flex-1 lg:flex-none bg-white text-[#0a0908] px-12 py-4 text-[11px] font-bold tracking-[.15em] uppercase text-center hover:bg-white/90 transition-colors"
                   >
                     COMPRAR ENTRADAS

@@ -44,7 +44,7 @@ export default async function EventosPage() {
           <div className="border-t border-white/[.08]">
             {events.map((event) => (
               <div
-                key={event.id}
+                key={event.slug}
                 className="group relative border-b border-white/[.08] hover:bg-white/[.025] transition-colors"
               >
                 <div className="absolute left-0 top-0 bottom-0 w-[3px] bg-white scale-y-0 origin-bottom group-hover:scale-y-100 transition-transform duration-300" />
@@ -52,9 +52,9 @@ export default async function EventosPage() {
                 <div className="flex flex-col lg:flex-row lg:items-center py-8 lg:py-10 px-4 lg:px-8 gap-4 lg:gap-0">
                   {/* Date Column */}
                   <div className="w-full lg:w-[120px] shrink-0">
-                    <div className="text-4xl lg:text-5xl font-black text-white">{event.day}</div>
+                    <div className="text-4xl lg:text-5xl font-black text-white">{event.day ?? '--'}</div>
                     <div className="text-[10px] tracking-[.2em] text-gray-500 uppercase">
-                      {event.month} · {event.weekday}
+                      {event.month ?? 'TBA'} · {event.weekday ?? 'TBA'}
                     </div>
                   </div>
 

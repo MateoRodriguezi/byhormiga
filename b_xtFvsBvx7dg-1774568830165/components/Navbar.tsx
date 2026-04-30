@@ -7,10 +7,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '#eventos', label: 'EVENTOS' },
-  { href: '#galeria', label: 'GALERÍA' },
-  { href: '#prensa', label: 'PRENSA' },
-  { href: '#contacto', label: 'CONTACTO' },
+  { href: '/#eventos', label: 'EVENTOS' },
+  { href: '/#galeria', label: 'GALERÍA' },
+  { href: '/#prensa', label: 'PRENSA' },
+  { href: '/#contacto', label: 'CONTACTO' },
 ]
 
 export function Navbar() {
@@ -79,7 +79,7 @@ export function Navbar() {
 
             {/* Desktop CTA */}
             <Link
-              href="#contacto"
+              href="/#contacto"
               className="hidden lg:block border border-white px-6 py-2.5 text-[10px] font-medium tracking-[.25em] uppercase text-white hover:bg-white hover:text-[#0a0908] transition-all"
             >
               CONTACTO

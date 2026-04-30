@@ -138,7 +138,7 @@ export function EventsSection({ events }: EventsSectionProps) {
         <SectionHeader />
         <div className="border-t border-white/[.08]">
           {events.map((event, index) => (
-            <EventRow key={event.id} event={event} index={index} />
+            <EventRow key={event.slug} event={event} index={index} />
           ))}
         </div>
       </div>

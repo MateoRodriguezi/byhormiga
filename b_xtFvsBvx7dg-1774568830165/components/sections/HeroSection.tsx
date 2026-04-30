@@ -109,13 +109,13 @@ export function HeroSection() {
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
           <Link
-            href="#eventos"
+            href="/#eventos"
             className="inline-flex items-center justify-center bg-white text-[#0a0908] px-6 sm:px-8 py-3 sm:py-4 text-[9px] sm:text-[10px] font-bold tracking-[.15em] sm:tracking-[.2em] uppercase hover:bg-white/90 transition-colors"
           >
             VER EVENTOS
           </Link>
           <Link
-            href="#contacto"
+            href="/#contacto"
             className="inline-flex items-center justify-center border border-white text-white px-6 sm:px-8 py-3 sm:py-4 text-[9px] sm:text-[10px] font-bold tracking-[.15em] sm:tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
           >
             TRABAJEMOS JUNTOS
