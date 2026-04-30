@@ -1,4 +1,4 @@
-.PHONY: help build up down restart logs logs-backend clean migrate makemigrations createsuperuser shell backend-shell collectstatic db-shell db-backup db-restore dev fresh test uv-lock uv-sync uv-add frontend-install frontend-dev frontend-build frontend-lint
+.PHONY: help build up down restart logs logs-backend clean migrate makemigrations createsuperuser shell backend-shell bash collectstatic db-shell db-backup db-restore dev fresh test uv-lock uv-sync uv-add frontend-install frontend-dev frontend-build frontend-lint
 
 FRONTEND_DIR := b_xtFvsBvx7dg-1774568830165
 
@@ -29,22 +29,25 @@ clean: ## Limpiar contenedores, volúmenes e imágenes
 
 # Backend commands
 migrate: ## Ejecutar migraciones de Django
-	docker compose run --rm backend uv run --no-sync python manage.py migrate
+	docker compose run --rm backend uv run --no-sync manage.py migrate
 
 makemigrations: ## Crear nuevas migraciones
-	docker compose run --rm backend uv run --no-sync python manage.py makemigrations
+	docker compose run --rm backend uv run --no-sync manage.py makemigrations
 
 createsuperuser: ## Crear superusuario de Django
-	docker compose run --rm backend uv run --no-sync python manage.py createsuperuser
+	docker compose run --rm backend uv run --no-sync manage.py createsuperuser
 
 shell: ## Abrir shell_plus de Django
-	docker compose run --rm backend uv run --no-sync python manage.py shell_plus
+	docker compose run --rm backend uv run --no-sync manage.py shell_plus
 
 backend-shell: ## Abrir shell bash en el contenedor del backend
 	docker compose run --rm backend sh
 
+bash: ## Abrir bash en el contenedor del backend
+	docker compose run --rm backend bash
+
 collectstatic: ## Recolectar archivos estáticos
-	docker compose run --rm backend uv run --no-sync python manage.py collectstatic --no-input
+	docker compose run --rm backend uv run --no-sync manage.py collectstatic --no-input
 
 # Frontend commands (local con pnpm)
 frontend-install: ## Instalar dependencias del frontend
@@ -77,7 +80,7 @@ fresh: down build up migrate ## Setup backend/db desde cero
 
 # Testing
 test: ## Ejecutar tests del backend
-	docker compose run --rm backend uv run --no-sync python manage.py test
+	docker compose run --rm backend uv run --no-sync manage.py test
 
 # UV commands (local development sin Docker)
 uv-lock: ## Generar o actualizar uv.lock
