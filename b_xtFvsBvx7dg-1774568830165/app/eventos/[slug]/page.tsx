@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Image from 'next/image'
 import Link from 'next/link'
 import { notFound } from 'next/navigation'
 import { MapPin, Calendar, Clock } from 'lucide-react'
@@ -59,13 +60,20 @@ export default async function EventPage({ params }: EventPageProps) {
           </Link>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 mt-8">
-            {/* Left - Event Image Placeholder */}
-            <div
-              className="aspect-square lg:aspect-[4/5]"
-              style={{
-                background: 'linear-gradient(135deg, #0a0908 0%, #1a1a1a 50%, #0f0f0f 100%)',
-              }}
-            />
+            {/* Left - Event Image */}
+            <div className="relative aspect-square overflow-hidden bg-gradient-to-br from-[#0a0908] via-[#1a1a1a] to-[#0f0f0f] lg:aspect-[4/5]">
+              {event.image ? (
+                <Image
+                  src={event.image}
+                  alt={event.name}
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  priority
+                />
+              ) : null}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+            </div>
 
             {/* Right - Event Details */}
             <div className="flex flex-col justify-center">

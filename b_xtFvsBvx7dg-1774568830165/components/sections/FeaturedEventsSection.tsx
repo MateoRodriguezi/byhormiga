@@ -122,10 +122,10 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
           className="mb-16"
         >
           <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
-            DESTACADOS
+            SELECCIÓN
           </span>
           <h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
-            PRÓXIMAS EXPERIENCIAS
+            EVENTOS DESTACADOS
           </h2>
         </motion.div>
 

@@ -1,18 +1,11 @@
 'use client'
 
 import { motion } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
+import type { Sponsor } from '@/lib/types'
 
-const partners = [
-  { name: 'Speed', logo: '/partners/speed.png' },
-  { name: 'Pilsen', logo: '/partners/pilsen.png' },
-  { name: 'Coca Cola', logo: '/partners/coca-cola.png' },
-  { name: 'Absolut', logo: '/partners/absolut.png' },
-  { name: 'Red Bull', logo: '/partners/redbull.png' },
-  { name: 'Beats', logo: '/partners/beats.png' },
-]
-
-export function PartnersSection() {
+export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   return (
     <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
       <div className="max-w-[1600px] mx-auto">
@@ -33,28 +26,40 @@ export function PartnersSection() {
         <div className="relative overflow-hidden">
           <div className="flex animate-scroll-partners">
             {/* First set */}
-            {partners.map((partner, index) => (
+            {sponsors.map((sponsor, index) => (
               <div
-                key={`first-${index}`}
+                key={`first-${sponsor.id}-${index}`}
                 className="flex-shrink-0 mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300"
               >
                 <div className="w-32 h-32 lg:w-40 lg:h-40 flex items-center justify-center">
-                  <div className="text-white/40 hover:text-white transition-colors text-2xl font-bold">
-                    {partner.name}
-                  </div>
+                  {sponsor.logo ? (
+                    <div className="relative h-16 w-28 lg:h-20 lg:w-36 opacity-60 hover:opacity-100 transition-opacity">
+                      <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
+                    </div>
+                  ) : (
+                    <div className="text-white/40 hover:text-white transition-colors text-2xl font-bold text-center">
+                      {sponsor.name}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
-            {partners.map((partner, index) => (
+            {sponsors.map((sponsor, index) => (
               <div
-                key={`second-${index}`}
+                key={`second-${sponsor.id}-${index}`}
                 className="flex-shrink-0 mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300"
               >
                 <div className="w-32 h-32 lg:w-40 lg:h-40 flex items-center justify-center">
-                  <div className="text-white/40 hover:text-white transition-colors text-2xl font-bold">
-                    {partner.name}
-                  </div>
+                  {sponsor.logo ? (
+                    <div className="relative h-16 w-28 lg:h-20 lg:w-36 opacity-60 hover:opacity-100 transition-opacity">
+                      <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
+                    </div>
+                  ) : (
+                    <div className="text-white/40 hover:text-white transition-colors text-2xl font-bold text-center">
+                      {sponsor.name}
+                    </div>
+                  )}
                 </div>
               </div>
             ))}
