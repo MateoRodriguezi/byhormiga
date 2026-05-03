@@ -72,14 +72,7 @@ export const defaultMetadata: Metadata = {
       'max-snippet': -1,
     },
   },
-  icons: {
-    icon: [
-      { url: '/favicon.ico', sizes: 'any' },
-      { url: '/icon-dark-32x32.png', sizes: '32x32', type: 'image/png' },
-      { url: '/icon.svg', type: 'image/svg+xml' },
-    ],
-    apple: '/apple-icon.png',
-  },
+  // Icons are auto-detected from /app/icon.png and /app/apple-icon.png
   manifest: '/site.webmanifest',
 }
 
