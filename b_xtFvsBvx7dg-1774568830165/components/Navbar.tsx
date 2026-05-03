@@ -9,9 +9,9 @@ import { cn } from '@/lib/utils'
 const navLinks = [
   { href: '/#eventos', label: 'EVENTOS' },
   { href: '/nosotros', label: 'NOSOTROS' },
-  { href: '/#galeria', label: 'GALERÍA' },
-  { href: '/#prensa', label: 'PRENSA' },
-  { href: '/#contacto', label: 'CONTACTO' },
+  { href: '/sponsors', label: 'SPONSORS' },
+  { href: '/noticias', label: 'NOTICIAS' },
+  { href: '/relajo', label: 'RELAJO' },
 ]
 
 export function Navbar() {
