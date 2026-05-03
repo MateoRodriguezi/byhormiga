@@ -40,26 +40,39 @@ export function Navbar() {
     <>
       <nav
         className={cn(
-          'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-          isScrolled ? 'bg-[#0a0908]/95 backdrop-blur-sm' : 'bg-transparent'
+          'fixed top-0 left-0 right-0 z-50 transition-all duration-500',
+          isScrolled
+            ? 'bg-[#0a0908]/95 backdrop-blur-md border-b border-white/10 shadow-lg'
+            : 'bg-transparent'
         )}
       >
         <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
-          <div className="flex h-16 sm:h-20 items-center justify-between">
+          <div className={cn(
+            "flex items-center justify-between transition-all duration-500",
+            isScrolled ? "h-14 sm:h-16" : "h-16 sm:h-20"
+          )}>
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 sm:gap-3"
+              className="flex items-center gap-2 sm:gap-3 group"
             >
-              <Image
-                src="/images/logo-hormiga.png"
-                alt="BYHORMIGA"
-                width={40}
-                height={40}
-                priority
-                className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
-              />
-              <span className="text-xs sm:text-sm font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase">
+              <div className={cn(
+                "transition-all duration-500",
+                isScrolled ? "w-7 h-7 sm:w-8 sm:h-8" : "w-8 h-8 sm:w-10 sm:h-10"
+              )}>
+                <Image
+                  src="/images/logo-hormiga.png"
+                  alt="BYHORMIGA"
+                  width={40}
+                  height={40}
+                  priority
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
+                />
+              </div>
+              <span className={cn(
+                "font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase transition-all duration-500",
+                isScrolled ? "text-[10px] sm:text-xs" : "text-xs sm:text-sm"
+              )}>
                 BYHORMIGA
               </span>
             </Link>
@@ -80,7 +93,10 @@ export function Navbar() {
             {/* Desktop CTA */}
             <Link
               href="/#contacto"
-              className="hidden lg:block border border-white px-6 py-2.5 text-[10px] font-medium tracking-[.25em] uppercase text-white hover:bg-white hover:text-[#0a0908] transition-all"
+              className={cn(
+                "hidden lg:block border border-white text-[10px] font-medium tracking-[.25em] uppercase text-white hover:bg-white hover:text-[#0a0908] transition-all duration-300",
+                isScrolled ? "px-5 py-2" : "px-6 py-2.5"
+              )}
             >
               CONTACTO
             </Link>
