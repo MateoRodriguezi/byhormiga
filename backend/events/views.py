@@ -42,7 +42,6 @@ class GalleryListAPIView(generics.ListAPIView):
     def get_queryset(self):
         return (
             Event.objects.filter(
-                status="published",
                 date__lt=timezone.now(),
                 photos__isnull=False,
             )

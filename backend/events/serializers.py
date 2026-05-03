@@ -70,13 +70,15 @@ class EventPhotoSerializer(serializers.ModelSerializer):
 
 
 class GalleryEventSerializer(serializers.ModelSerializer):
+    slug = serializers.SlugField(read_only=True)
     event_name = serializers.CharField(source="title", read_only=True)
     date = serializers.SerializerMethodField()
+    image = serializers.ImageField(source="poster", read_only=True)
     photos = EventPhotoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event
-        fields = ["id", "event_name", "date", "photos"]
+        fields = ["id", "slug", "event_name", "date", "image", "photos"]
 
     def get_date(self, obj):
         return format_spanish_month_year(obj.date)
