@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import Image from 'next/image'
 import { Calendar, MapPin } from 'lucide-react'
 
 const featuredEvents = [
@@ -43,13 +44,17 @@ function EventCard({ event, index }: { event: typeof featuredEvents[0]; index: n
       transition={{ delay: index * 0.15, duration: 0.6 }}
       className="group relative aspect-[3/4] overflow-hidden"
     >
-      {/* Background gradient (placeholder for image) */}
-      <div
-        className="absolute inset-0 bg-gradient-to-br from-gray-800 via-gray-900 to-black transition-transform duration-700 group-hover:scale-110"
-        style={{
-          backgroundImage: `linear-gradient(135deg, rgba(${index * 30}, ${index * 20}, ${index * 40}, 0.3), rgba(0, 0, 0, 0.8))`,
-        }}
-      />
+      {/* Background image */}
+      <div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
+        <Image
+          src={event.image}
+          alt={event.name}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+          priority={index === 0}
+        />
+      </div>
 
       {/* Overlay gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 group-hover:opacity-70 transition-opacity duration-500" />
