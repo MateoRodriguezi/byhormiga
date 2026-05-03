@@ -68,10 +68,6 @@ export function Navbar() {
                   height={40}
                   priority
                   className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                  style={{
-                    mixBlendMode: 'lighten',
-                    filter: 'brightness(1.2) contrast(1.1)'
-                  }}
                 />
               </div>
               <span className={cn(
