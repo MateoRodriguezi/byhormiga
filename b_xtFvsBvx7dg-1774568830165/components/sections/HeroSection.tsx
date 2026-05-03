@@ -41,11 +41,11 @@ export function HeroSection() {
           loop
           muted
           playsInline
-          className="w-full h-full object-cover opacity-20"
+          className="w-full h-full object-cover opacity-35"
         >
           <source src="/videos/hero-background.mp4" type="video/mp4" />
         </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/80 via-[#0a0908]/60 to-[#0a0908]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/70 via-[#0a0908]/50 to-[#0a0908]" />
       </div>
 
       {/* Background Logo with overlay effect */}
