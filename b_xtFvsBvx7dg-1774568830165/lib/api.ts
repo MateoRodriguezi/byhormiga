@@ -88,7 +88,7 @@ export async function getEventBySlug(slug: string): Promise<Event | undefined> {
 }
 
 export async function getGallery(): Promise<GalleryItem[]> {
-  return apiGetList<GalleryItem>('/api/events/gallery/')
+  return apiGetList<GalleryItem>('/api/gallery/')
 }
 
 export async function getPosts(): Promise<Post[]> {
