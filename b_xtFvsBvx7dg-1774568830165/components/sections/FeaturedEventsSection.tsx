@@ -133,7 +133,7 @@ export function FeaturedEventsSection() {
             DESTACADOS
           </span>
           <h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
-            PRÓXIMAS EXPERIENCIAS
+            FIESTAS
           </h2>
         </motion.div>
 
