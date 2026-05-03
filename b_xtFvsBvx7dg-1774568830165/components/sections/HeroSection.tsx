@@ -114,7 +114,8 @@ export function HeroSection() {
           transition={{ delay: 0.8, duration: 0.6 }}
           className="mt-8 text-base lg:text-lg max-w-md leading-relaxed"
         >
-          <div className="relative h-8 overflow-hidden">
+          <span className="text-gray-400">Dedicados a crear </span>
+          <div className="inline-block relative h-7 w-56 overflow-hidden align-middle">
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentTextIndex}
@@ -122,7 +123,7 @@ export function HeroSection() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -30, opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute left-0 text-white font-semibold uppercase tracking-wider"
+                className="absolute left-0 text-white font-semibold"
               >
                 {rotatingTexts[currentTextIndex]}
               </motion.span>
