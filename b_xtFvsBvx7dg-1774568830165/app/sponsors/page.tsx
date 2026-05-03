@@ -3,54 +3,11 @@
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { motion } from 'framer-motion'
-import { useState } from 'react'
-
-const sponsors = [
-  {
-    id: 'speed',
-    name: 'Speed',
-    logo: '/partners/speed.png',
-    description: 'Bebida energética oficial de nuestros eventos',
-    activations: [
-      {
-        title: 'Juegos Interactivos',
-        description: 'Stands con juegos y retos para ganar premios',
-        images: ['/activations/speed-1.jpg', '/activations/speed-2.jpg'],
-      },
-      {
-        title: 'Sampling de Producto',
-        description: 'Degustación gratuita en todos nuestros eventos',
-        images: ['/activations/speed-3.jpg'],
-      },
-    ],
-  },
-  {
-    id: 'pilsen',
-    name: 'Pilsen',
-    logo: '/partners/pilsen.png',
-    description: 'Cerveza oficial de ByHormiga',
-    activations: [
-      {
-        title: 'Zonas VIP',
-        description: 'Espacios exclusivos con servicio premium',
-        images: ['/activations/pilsen-1.jpg'],
-      },
-    ],
-  },
-  {
-    id: 'coca-cola',
-    name: 'Coca Cola',
-    logo: '/partners/coca-cola.png',
-    description: 'Bebidas oficiales',
-    activations: [
-      {
-        title: 'Photo Booth',
-        description: 'Cabinas de fotos personalizadas',
-        images: ['/activations/coca-1.jpg'],
-      },
-    ],
-  },
-]
+import Image from 'next/image'
+import Link from 'next/link'
+import { useEffect, useState } from 'react'
+import { getSponsors } from '@/lib/api'
+import type { Sponsor } from '@/lib/types'
 
 function HeroSection() {
   return (
@@ -77,9 +34,7 @@ function HeroSection() {
   )
 }
 
-function SponsorCard({ sponsor, index }: { sponsor: typeof sponsors[0]; index: number }) {
-  const [showActivations, setShowActivations] = useState(false)
-
+function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40 }}
@@ -88,55 +43,55 @@ function SponsorCard({ sponsor, index }: { sponsor: typeof sponsors[0]; index: n
       transition={{ delay: index * 0.15, duration: 0.6 }}
       className="border border-white/[.08] p-8 lg:p-12"
     >
-      {/* Logo placeholder */}
+      {/* Logo */}
       <div className="h-24 flex items-center justify-center mb-8 border-b border-white/[.08] pb-8">
-        <div className="text-4xl font-black text-white uppercase">{sponsor.name}</div>
+        {sponsor.logo ? (
+          <div className="relative h-16 w-44">
+            <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
+          </div>
+        ) : (
+          <div className="text-4xl font-black text-white uppercase">{sponsor.name}</div>
+        )}
       </div>
 
       {/* Description */}
-      <p className="text-gray-400 text-center mb-8">{sponsor.description}</p>
+      <p className="text-gray-400 text-center mb-8">Partner oficial de BYHORMIGA</p>
 
-      {/* Toggle Activations */}
-      <button
-        onClick={() => setShowActivations(!showActivations)}
-        className="w-full border border-white text-white px-6 py-3 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors mb-6"
-      >
-        {showActivations ? 'OCULTAR SPONSORS' : 'VER SPONSORS'}
-      </button>
-
-      {/* Activations */}
-      {showActivations && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: 'auto' }}
-          exit={{ opacity: 0, height: 0 }}
-          className="space-y-6 pt-6 border-t border-white/[.08]"
+      {sponsor.website_url && (
+        <Link
+          href={sponsor.website_url}
+          target="_blank"
+          rel="noreferrer"
+          className="w-full inline-flex items-center justify-center border border-white text-white px-6 py-3 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
         >
-          {sponsor.activations.map((activation, idx) => (
-            <div key={idx} className="space-y-3">
-              <h4 className="text-lg font-bold text-white uppercase">{activation.title}</h4>
-              <p className="text-sm text-gray-400">{activation.description}</p>
-
-              {/* Image placeholders */}
-              <div className="grid grid-cols-2 gap-4 mt-4">
-                {activation.images.map((img, imgIdx) => (
-                  <div
-                    key={imgIdx}
-                    className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 flex items-center justify-center"
-                  >
-                    <span className="text-xs text-gray-600 uppercase">Foto {imgIdx + 1}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </motion.div>
+          VER SITIO
+        </Link>
       )}
     </motion.div>
   )
 }
 
 export default function SponsorsPage() {
+  const [sponsors, setSponsors] = useState<Sponsor[]>([])
+
+  useEffect(() => {
+    let active = true
+
+    getSponsors()
+      .then((data) => {
+        if (active) {
+          setSponsors(data)
+        }
+      })
+      .catch((error) => {
+        console.error('Sponsors API failed:', error)
+      })
+
+    return () => {
+      active = false
+    }
+  }, [])
+
   return (
     <>
       <Navbar />
@@ -161,6 +116,11 @@ export default function SponsorsPage() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {sponsors.length === 0 && (
+                <div className="md:col-span-2 lg:col-span-3 border border-white/[.08] p-8 text-center text-gray-500 uppercase tracking-[.15em] text-xs">
+                  No hay sponsors disponibles por el momento
+                </div>
+              )}
               {sponsors.map((sponsor, index) => (
                 <SponsorCard key={sponsor.id} sponsor={sponsor} index={index} />
               ))}

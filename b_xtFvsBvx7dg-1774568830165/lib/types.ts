@@ -44,6 +44,22 @@ export interface Post {
   image?: string
 }
 
+export interface SponsorActivation {
+  title: string
+  description: string
+  images?: string[]
+}
+
+export interface Sponsor {
+  id: string | number
+  name: string
+  logo?: string
+  website_url?: string
+  order?: number
+  description?: string
+  activations?: SponsorActivation[]
+}
+
 export interface ContactSuccessResponse {
   success: boolean
   message: string

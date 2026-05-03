@@ -5,8 +5,9 @@ import type {
   GalleryItem,
   PaginatedResponse,
   Post,
+  Sponsor,
 } from './types'
-import { mockEvents, mockGallery, mockPosts } from './mocks'
+import { mockEvents, mockGallery } from './mocks'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -108,16 +109,15 @@ export async function getGallery(): Promise<GalleryItem[]> {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  try {
-    return await apiGetList<Post>('/api/posts/')
-  } catch (error) {
-    console.warn('Posts API failed, using mock data:', error)
-    return mockPosts
-  }
+  return apiGetList<Post>('/api/posts/')
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
   return apiGetBySlug<Post>(`/api/posts/${slug}/`)
+}
+
+export async function getSponsors(): Promise<Sponsor[]> {
+  return apiGetList<Sponsor>('/api/partners/')
 }
 
 export async function submitContactForm(data: ContactFormData): Promise<ContactSuccessResponse> {
