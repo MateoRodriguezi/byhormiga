@@ -1,8 +1,9 @@
 'use client'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
+import { useState, useEffect } from 'react'
+import { InteractiveButton } from '@/components/ui/InteractiveButton'
 
 const letterVariants = {
   hidden: { y: 100, opacity: 0 },
@@ -17,14 +18,38 @@ const letterVariants = {
   }),
 }
 
+const rotatingTexts = ['momentos únicos', 'experiencias inolvidables', 'conexiones genuinas']
+
 export function HeroSection() {
   const byLetters = ['B', 'Y']
   const hormigaLetters = ['H', 'O', 'R', 'M', 'I', 'G', 'A']
+  const [currentTextIndex, setCurrentTextIndex] = useState(0)
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTextIndex((prev) => (prev + 1) % rotatingTexts.length)
+    }, 3000)
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <section className="relative min-h-screen bg-[#0a0908] flex flex-col justify-end pb-12 md:pb-16 lg:pb-24 px-4 sm:px-6 lg:px-12 overflow-hidden">
-      {/* Background Logo */}
-      <div className="absolute top-1/4 right-0 opacity-[0.06] pointer-events-none hidden sm:block">
+      {/* Video Background */}
+      <div className="absolute inset-0 z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 w-full h-full object-cover opacity-30"
+        >
+          <source src="/videos/hero-background.mp4" type="video/mp4" />
+        </video>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/80 via-[#0a0908]/60 to-[#0a0908]" />
+      </div>
+
+      {/* Background Logo with overlay effect */}
+      <div className="absolute top-1/4 right-0 opacity-[0.08] pointer-events-none hidden sm:block z-[1] mix-blend-overlay">
         <Image
           src="/images/logo-hormiga.png"
           alt=""
@@ -34,7 +59,7 @@ export function HeroSection() {
         />
       </div>
 
-      
+
 
       {/* Main content */}
       <div className="relative z-10 max-w-[1600px] mx-auto w-full">
@@ -91,15 +116,29 @@ export function HeroSection() {
           </div>
         </h1>
 
-        {/* Tagline */}
-        <motion.p
+        {/* Tagline with rotating text */}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-8 text-gray-400 text-sm lg:text-base max-w-md leading-relaxed"
+          className="mt-8 text-sm lg:text-base max-w-md leading-relaxed"
         >
-          Dedicados a crear momentos únicos y experiencias que no se olvidan.
-        </motion.p>
+          <span className="text-gray-400">Dedicados a crear </span>
+          <div className="inline-block relative h-7 w-48 overflow-hidden align-middle">
+            <AnimatePresence mode="wait">
+              <motion.span
+                key={currentTextIndex}
+                initial={{ y: 30, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                exit={{ y: -30, opacity: 0 }}
+                transition={{ duration: 0.5 }}
+                className="absolute left-0 text-white font-semibold"
+              >
+                {rotatingTexts[currentTextIndex]}
+              </motion.span>
+            </AnimatePresence>
+          </div>
+        </motion.div>
 
         {/* CTA Buttons */}
         <motion.div
@@ -108,18 +147,12 @@ export function HeroSection() {
           transition={{ delay: 1, duration: 0.6 }}
           className="mt-10 flex flex-col sm:flex-row gap-4"
         >
-          <Link
-            href="/#eventos"
-            className="inline-flex items-center justify-center bg-white text-[#0a0908] px-6 sm:px-8 py-3 sm:py-4 text-[9px] sm:text-[10px] font-bold tracking-[.15em] sm:tracking-[.2em] uppercase hover:bg-white/90 transition-colors"
-          >
+          <InteractiveButton href="/#eventos" variant="primary">
             VER EVENTOS
-          </Link>
-          <Link
-            href="/#contacto"
-            className="inline-flex items-center justify-center border border-white text-white px-6 sm:px-8 py-3 sm:py-4 text-[9px] sm:text-[10px] font-bold tracking-[.15em] sm:tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
-          >
+          </InteractiveButton>
+          <InteractiveButton href="/#contacto" variant="secondary">
             TRABAJEMOS JUNTOS
-          </Link>
+          </InteractiveButton>
         </motion.div>
       </div>
 

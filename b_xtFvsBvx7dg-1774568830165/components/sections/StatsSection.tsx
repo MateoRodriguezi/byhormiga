@@ -65,33 +65,47 @@ function StatItem({ value, label, description, isNumber = true }: StatItemProps)
 export function StatsSection() {
   const stats = [
     {
-      value: 'EVENTS',
-      label: 'Organización & Producción',
-      description: 'Creamos eventos memorables de principio a fin, cuidando cada detalle.',
-      isNumber: false,
+      value: '50+',
+      label: 'Eventos Mensuales',
+      description: 'Organizamos más de 50 eventos cada mes en todo Uruguay.',
+      isNumber: true,
     },
     {
-      value: 'CREATIVE',
-      label: 'Diseño & Audiovisual',
-      description: 'Servicios creativos con un enfoque innovador y visualmente impactante.',
-      isNumber: false,
+      value: '200+',
+      label: 'Artistas',
+      description: 'Hemos trabajado con más de 200 artistas nacionales e internacionales.',
+      isNumber: true,
     },
     {
-      value: 'CORPORATE',
-      label: 'Alianzas & Branding',
-      description: 'Patrocinios y estrategias de marca para empresas que buscan destacar.',
-      isNumber: false,
+      value: '500+',
+      label: 'Fiestas Producidas',
+      description: 'Más de 500 fiestas producidas en 30 años de trayectoria.',
+      isNumber: true,
     },
   ]
 
   return (
-    <section className="bg-[#0a0908]">
-      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-0">
-        <div className="grid grid-cols-1 md:grid-cols-3">
+    <section className="bg-[#0a0908] py-12 lg:py-20">
+      <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
+        {/* Section title */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-16"
+        >
+          <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+            NUESTROS NÚMEROS
+          </span>
+        </motion.div>
+
+        {/* Stats grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {stats.map((stat, index) => (
             <div
               key={index}
-              className={`${index < stats.length - 1 ? 'border-b md:border-b-0 md:border-r border-white/[.08]' : ''}`}
+              className={`${index < stats.length - 1 ? 'border-b md:border-b-0 md:border-r border-white/[.08] pb-8 md:pb-0' : ''}`}
             >
               <StatItem {...stat} />
             </div>

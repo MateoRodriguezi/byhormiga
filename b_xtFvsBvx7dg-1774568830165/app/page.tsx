@@ -6,6 +6,7 @@ import { StatsSection } from '@/components/sections/StatsSection'
 import { EventsSection } from '@/components/sections/EventsSection'
 import { GallerySection } from '@/components/sections/GallerySection'
 import { PressSection } from '@/components/sections/PressSection'
+import { PartnersSection } from '@/components/sections/PartnersSection'
 import { ContactSection } from '@/components/sections/ContactSection'
 import { getEvents, getGallery, getPosts } from '@/lib/api'
 
@@ -26,6 +27,7 @@ export default async function HomePage() {
         <EventsSection events={events} />
         <GallerySection items={gallery} />
         <PressSection posts={posts} />
+        <PartnersSection />
         <ContactSection />
       </main>
       <Footer />
