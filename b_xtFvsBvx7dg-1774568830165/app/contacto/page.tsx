@@ -6,7 +6,7 @@ import { ContactSection } from '@/components/sections/ContactSection'
 
 export const metadata: Metadata = {
   title: 'Contacto | BYHORMIGA',
-  description: 'Contactá con BYHORMIGA para eventos, prensa y consultas generales.',
+  description: 'Contactá con BYHORMIGA para eventos, noticias y consultas generales.',
 }
 
 export default function ContactoPage() {

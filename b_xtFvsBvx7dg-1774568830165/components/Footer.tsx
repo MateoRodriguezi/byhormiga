@@ -6,7 +6,7 @@ import Image from 'next/image'
 const footerLinks = [
   { href: '/#eventos', label: 'EVENTOS' },
   { href: '/#galeria', label: 'GALERÍA' },
-  { href: '/#prensa', label: 'PRENSA' },
+  { href: '/#noticias', label: 'NOTICIAS' },
   { href: '/#contacto', label: 'CONTACTO' },
 ]
 

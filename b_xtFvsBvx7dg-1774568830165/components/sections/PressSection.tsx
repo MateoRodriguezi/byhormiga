@@ -23,14 +23,14 @@ function SectionHeader() {
     >
       <div>
         <span className="text-[9px] sm:text-[10px] tracking-[.2em] sm:tracking-[.25em] text-gray-500 uppercase font-mono">
-          03 — PRENSA
+          03 — NOTICIAS
         </span>
         <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
           NOTICIAS
         </h2>
       </div>
       <Link
-        href="/prensa"
+        href="/noticias"
         className="text-[10px] tracking-[.2em] text-white/60 uppercase hover:text-white transition-colors group"
       >
         Ver todas{' '}
@@ -79,7 +79,7 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
 
       {/* Read more link */}
       <Link
-        href={`/prensa/${post.slug}`}
+        href={`/noticias/${post.slug}`}
         className="inline-flex items-center gap-2 text-[10px] tracking-[.2em] text-white uppercase group/link"
       >
         LEER NOTA
@@ -91,7 +91,7 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
 
 export function PressSection({ posts }: PressSectionProps) {
   return (
-    <section id="prensa" className="bg-[#0a0908] py-16 sm:py-24 lg:py-32">
+    <section id="noticias" className="bg-[#0a0908] py-16 sm:py-24 lg:py-32">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
         <SectionHeader />
 
