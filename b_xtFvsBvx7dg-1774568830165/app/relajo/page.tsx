@@ -50,7 +50,7 @@ export default function RelajoPage() {
 
               {/* CTA to external site */}
               <Link
-                href="https://relajo.com.uy"
+                href="https://www.relajoperoconorden.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-3 bg-white text-[#0a0908] px-12 py-5 text-[11px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-colors"
@@ -60,7 +60,7 @@ export default function RelajoPage() {
               </Link>
 
               <p className="mt-6 text-xs text-gray-500">
-                Te redirigiremos a relajo.com.uy
+                Te redirigiremos a relajoperoconorden.com
               </p>
             </motion.div>
           </div>
