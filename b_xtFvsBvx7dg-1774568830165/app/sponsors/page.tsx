@@ -101,7 +101,7 @@ function SponsorCard({ sponsor, index }: { sponsor: typeof sponsors[0]; index: n
         onClick={() => setShowActivations(!showActivations)}
         className="w-full border border-white text-white px-6 py-3 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors mb-6"
       >
-        {showActivations ? 'OCULTAR ACTIVACIONES' : 'VER ACTIVACIONES'}
+        {showActivations ? 'OCULTAR SPONSORS' : 'VER SPONSORS'}
       </button>
 
       {/* Activations */}
