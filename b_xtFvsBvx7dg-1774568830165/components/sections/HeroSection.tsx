@@ -34,18 +34,9 @@ export function HeroSection() {
 
   return (
     <section className="relative min-h-screen bg-[#0a0908] flex flex-col justify-end pb-12 md:pb-16 lg:pb-24 px-4 sm:px-6 lg:px-12 overflow-hidden">
-      {/* Video Background */}
+      {/* Background gradient */}
       <div className="absolute inset-0 z-0">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 w-full h-full object-cover opacity-30"
-        >
-          <source src="/videos/hero-background.mp4" type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/80 via-[#0a0908]/60 to-[#0a0908]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908] via-[#0a0908] to-[#0a0908]" />
       </div>
 
       {/* Background Logo with overlay effect */}
