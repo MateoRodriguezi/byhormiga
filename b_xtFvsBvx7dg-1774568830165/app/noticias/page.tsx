@@ -1,3 +1,4 @@
+import Image from 'next/image'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import Link from 'next/link'
@@ -8,31 +9,39 @@ import type { Post } from '@/lib/types'
 function NewsCard({ news }: { news: Post }) {
   return (
     <article className="group border border-white/[.08] overflow-hidden hover:border-white/20 transition-all">
-      <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
-      </div>
-
-      <div className="p-6 lg:p-8">
-        <div className="flex items-center gap-2 text-gray-500 text-xs mb-4">
-          <Calendar className="w-3 h-3" />
-          <span>{news.date}</span>
+      <Link href={`/noticias/${news.slug}`} className="block">
+        <div className="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
+          {news.image ? (
+            <Image
+              src={news.image}
+              alt={news.title}
+              fill
+              className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          ) : null}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
         </div>
 
-        <h3 className="text-xl lg:text-2xl font-black text-white uppercase mb-4 leading-tight group-hover:text-white/80 transition-colors">
-          {news.title}
-        </h3>
+        <div className="p-6 lg:p-8">
+          <div className="flex items-center gap-2 text-gray-500 text-xs mb-4">
+            <Calendar className="w-3 h-3" />
+            <span>{news.date}</span>
+          </div>
 
-        {news.description && (
-          <p className="text-gray-400 text-sm leading-relaxed mb-6">{news.description}</p>
-        )}
+          <h3 className="text-xl lg:text-2xl font-black text-white uppercase mb-4 leading-tight group-hover:text-white/80 transition-colors">
+            {news.title}
+          </h3>
 
-        <Link
-          href={`/noticias/${news.slug}`}
-          className="inline-flex items-center text-[10px] font-bold tracking-[.2em] uppercase text-white hover:text-white/60 transition-colors"
-        >
-          LEER MÁS →
-        </Link>
-      </div>
+          {news.description && (
+            <p className="text-gray-400 text-sm leading-relaxed mb-6">{news.description}</p>
+          )}
+
+          <span className="inline-flex items-center text-[10px] font-bold tracking-[.2em] uppercase text-white transition-colors group-hover:text-white/60">
+            LEER MÁS →
+          </span>
+        </div>
+      </Link>
     </article>
   )
 }
