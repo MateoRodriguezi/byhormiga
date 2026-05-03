@@ -6,7 +6,7 @@ import type {
   PaginatedResponse,
   Post,
 } from './types'
-import { mockGallery, mockPosts } from './mocks'
+import { mockEvents, mockGallery, mockPosts } from './mocks'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -81,16 +81,26 @@ async function apiGetBySlug<T>(
 }
 
 export async function getEvents(): Promise<Event[]> {
-  return apiGetList<Event>('/api/events/')
+  try {
+    return await apiGetList<Event>('/api/events/')
+  } catch (error) {
+    console.warn('Events API failed, using mock data:', error)
+    return mockEvents
+  }
 }
 
 export async function getEventBySlug(slug: string): Promise<Event | undefined> {
-  return apiGetBySlug<Event>(`/api/events/${slug}/`)
+  try {
+    return await apiGetBySlug<Event>(`/api/events/${slug}/`)
+  } catch (error) {
+    console.warn(`Event API failed for slug "${slug}", returning undefined:`, error)
+    return undefined
+  }
 }
 
 export async function getGallery(): Promise<GalleryItem[]> {
   try {
-    return await apiGetList<GalleryItem>('/api/gallery/')
+    return await apiGetList<GalleryItem>('/api/events/gallery/')
   } catch (error) {
     console.warn('Gallery API failed, using mock data:', error)
     return mockGallery
