@@ -25,7 +25,7 @@ export default async function HomePage() {
         <HeroSection />
         <Ticker />
         <StatsSection />
-        <FeaturedEventsSection />
+        <FeaturedEventsSection events={events} />
         <EventsSection events={events} />
         <GallerySection items={gallery} />
         <PressSection posts={posts} />
