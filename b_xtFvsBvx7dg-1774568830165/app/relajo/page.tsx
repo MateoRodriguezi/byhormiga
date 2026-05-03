@@ -4,7 +4,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ExternalLink, ShoppingBag, Palette, TrendingUp } from 'lucide-react'
+import { ExternalLink, ShoppingBag } from 'lucide-react'
 
 const featuredProducts = [
   { name: 'Hoodie Crazy David', color: 'Negro', price: '$2.490' },
@@ -43,8 +43,7 @@ export default function RelajoPage() {
                 <span className="text-gray-600">CON ESTILO</span>
               </h1>
               <p className="mt-8 text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Diseños minimalistas, colores tierra y calidad premium.
-                La marca uruguaya que combina relajación con orden.
+                Ropa oversize, diseños que rompen el molde y una nueva línea de Stone Wash.
               </p>
             </motion.div>
           </div>
@@ -62,7 +61,6 @@ export default function RelajoPage() {
               <h2 className="text-4xl lg:text-6xl font-black text-white uppercase mb-4">
                 PRODUCTOS DESTACADOS
               </h2>
-              <p className="text-gray-400">Precio uniforme: <span className="text-white font-bold">$2.490 UYU</span></p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
@@ -117,26 +115,46 @@ export default function RelajoPage() {
           </div>
         </section>
 
-        {/* Features */}
-        <section className="bg-[#0a0908] py-20 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
-          <div className="max-w-[1200px] mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
-              <div>
-                <Palette className="w-10 h-10 text-white mx-auto mb-4" />
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-2">Colores Neutros</h4>
-                <p className="text-xs text-gray-500">Beige, Marrón, Blanco, Negro</p>
+        {/* Nosotros Section */}
+        <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+          <div className="max-w-[900px] mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-4xl lg:text-6xl font-black text-white uppercase mb-8">
+                Nosotros
+              </h2>
+              <div className="space-y-6 text-gray-400 leading-relaxed text-lg">
+                <p className="text-xl text-white font-bold">
+                  Bienvenidos al verdadero Relajo.
+                </p>
+                <p>
+                  Somos un grupo de amigos con un solo objetivo en mente: hacer un poco de relajo.
+                </p>
+                <p>
+                  Teníamos claro una sola cosa, queríamos crear algo distinto. Las preguntas fueron miles cuando arrancamos,
+                  pero te contamos la primera: ¿Qué?. Y, sin tenerla muy clara, nuestra respuesta fue simple: ropa oversize,
+                  diseños que rompan el molde y una nueva línea de Stone Wash que te hace volar la peluca.
+                </p>
+                <p>
+                  Nuestras prendas están hechas y pensadas para vos, mezclamos diseños copados y cortes fuera de lo común.
+                  Seguimos una onda relajada para cualquiera que se anime a jugar con prendas distintas y cancheras.
+                </p>
+                <p>
+                  Date una vuelta por nuestra colección y descubrí cómo tu ropa puede hablar por vos sin decir una sola palabra.
+                  Sabemos que no todo el mundo sigue las mismas reglas, así que si llegaste hasta acá te preguntamos:
+                </p>
+                <p className="text-2xl text-white font-black pt-4">
+                  ¿Quién dice que no se puede vestir con un poco de Relajo?
+                </p>
+                <p className="text-sm text-gray-500 italic">
+                  (ahora... que sea con un poco de orden).
+                </p>
               </div>
-              <div>
-                <TrendingUp className="w-10 h-10 text-white mx-auto mb-4" />
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-2">Diseño Minimalista</h4>
-                <p className="text-xs text-gray-500">Estilo casual pero estructurado</p>
-              </div>
-              <div>
-                <ShoppingBag className="w-10 h-10 text-white mx-auto mb-4" />
-                <h4 className="text-sm font-bold text-white uppercase tracking-wider mb-2">Calidad Premium</h4>
-                <p className="text-xs text-gray-500">Los mejores materiales</p>
-              </div>
-            </div>
+            </motion.div>
           </div>
         </section>
 
