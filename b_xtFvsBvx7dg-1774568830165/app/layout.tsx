@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { defaultMetadata } from '@/lib/metadata'
 import { OrganizationSchema } from '@/components/StructuredData'
+import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import './globals.css'
 
 const inter = Inter({
@@ -32,6 +33,7 @@ export default function RootLayout({
       <body className={`${inter.variable} font-sans antialiased bg-[#0a0908] text-white`}>
         <div className="film-grain" aria-hidden="true" />
         {children}
+        <ScrollToTop />
         <Analytics />
       </body>
     </html>
