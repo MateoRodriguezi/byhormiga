@@ -4,15 +4,40 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
-import { ExternalLink, ShoppingBag } from 'lucide-react'
+import Image from 'next/image'
+import { ExternalLink } from 'lucide-react'
 
 const featuredProducts = [
-  { name: 'Hoodie Crazy David', color: 'Negro', price: '$2.490' },
-  { name: 'Hoodie Quilombito', color: 'Negro', price: '$2.490' },
-  { name: 'Hoodie Full Classic', color: 'Crema', price: '$2.490' },
-  { name: 'Hoodie Essential', color: 'Blanco', price: '$2.490' },
-  { name: 'Hoodie POV', color: 'Crema', price: '$2.490' },
-  { name: 'Hoodie Satelite', color: 'Blanco / Negro', price: '$2.490' },
+  {
+    name: 'Hoodie Crazy David',
+    color: 'Negro',
+    image: 'https://f.fcdn.app/imgs/bb4a9b/www.relajoperoconorden.com/relauy/cce8/original/catalogo/H29725C_H29725C_1/800_1200/hoodie-crazy-david-negro-hoodie-crazy-david-negro.jpg'
+  },
+  {
+    name: 'Hoodie Quilombito',
+    color: 'Negro',
+    image: 'https://f.fcdn.app/imgs/8be745/www.relajoperoconorden.com/relauy/cc6b/original/catalogo/HOQUI_NEG_1/800_1200/hoodie-quilombito-negro.jpg'
+  },
+  {
+    name: 'Hoodie Full Classic',
+    color: 'Crema',
+    image: 'https://f.fcdn.app/imgs/ed0704/www.relajoperoconorden.com/relauy/b41d/original/catalogo/HOFC_CR_1/800_1200/hoodie-full-classic-crema.jpg'
+  },
+  {
+    name: 'Hoodie Essential',
+    color: 'Blanco',
+    image: 'https://f.fcdn.app/imgs/374d8e/www.relajoperoconorden.com/relauy/b691/original/catalogo/HOESS_BLA_1/800_1200/hoodie-essential-blanco.jpg'
+  },
+  {
+    name: 'Hoodie POV',
+    color: 'Crema',
+    image: 'https://f.fcdn.app/imgs/6492c1/www.relajoperoconorden.com/relauy/b413/original/catalogo/HOPOV_CR_1/800_1200/hoodie-pov-crema.jpg'
+  },
+  {
+    name: 'Hoodie Satelite',
+    color: 'Blanco',
+    image: 'https://f.fcdn.app/imgs/397c9a/www.relajoperoconorden.com/relauy/06c3/original/catalogo/HOSAT_BLA_1/800_1200/hoodie-satelite-blanco.jpg'
+  },
 ]
 
 const categories = [
@@ -73,10 +98,16 @@ export default function RelajoPage() {
                   transition={{ delay: index * 0.1 }}
                   className="group border border-white/[.08] hover:border-white/20 transition-all overflow-hidden"
                 >
-                  {/* Product image placeholder */}
-                  <div className="aspect-square bg-gradient-to-br from-stone-800 to-stone-900 flex items-center justify-center relative overflow-hidden">
+                  {/* Product image */}
+                  <div className="aspect-square relative overflow-hidden bg-stone-900">
+                    <Image
+                      src={product.image}
+                      alt={`${product.name} - ${product.color}`}
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-                    <ShoppingBag className="w-16 h-16 text-white/20" />
                     <div className="absolute bottom-4 left-4 right-4">
                       <span className="text-xs tracking-wider uppercase text-white/80">{product.color}</span>
                     </div>
@@ -84,8 +115,7 @@ export default function RelajoPage() {
 
                   {/* Product info */}
                   <div className="p-6">
-                    <h3 className="text-lg font-bold text-white uppercase mb-2">{product.name}</h3>
-                    <p className="text-2xl font-black text-white">{product.price}</p>
+                    <h3 className="text-lg font-bold text-white uppercase">{product.name}</h3>
                   </div>
                 </motion.div>
               ))}

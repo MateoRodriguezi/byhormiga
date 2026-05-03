@@ -68,8 +68,7 @@ export function Navbar() {
                   width={40}
                   height={40}
                   priority
-                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                  style={{ mixBlendMode: 'screen' }}
+                  className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 brightness-0 invert"
                 />
               </div>
               <span className={cn(
