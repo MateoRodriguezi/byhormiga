@@ -112,22 +112,24 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-8 text-base lg:text-lg max-w-md leading-relaxed"
+          className="mt-8 text-base lg:text-xl max-w-2xl leading-relaxed"
         >
-          <span className="text-gray-400">Dedicados a crear </span>
-          <div className="inline-block relative h-7 w-56 overflow-hidden align-middle">
-            <AnimatePresence mode="wait">
-              <motion.span
-                key={currentTextIndex}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                exit={{ y: -30, opacity: 0 }}
-                transition={{ duration: 0.5 }}
-                className="absolute left-0 text-white font-semibold"
-              >
-                {rotatingTexts[currentTextIndex]}
-              </motion.span>
-            </AnimatePresence>
+          <div className="flex flex-wrap items-baseline gap-2">
+            <span className="text-gray-400">Dedicados a crear</span>
+            <div className="relative inline-block min-w-[280px]">
+              <AnimatePresence mode="wait">
+                <motion.span
+                  key={currentTextIndex}
+                  initial={{ y: 20, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  exit={{ y: -20, opacity: 0 }}
+                  transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
+                  className="block text-white font-bold"
+                >
+                  {rotatingTexts[currentTextIndex]}
+                </motion.span>
+              </AnimatePresence>
+            </div>
           </div>
         </motion.div>
 
