@@ -30,9 +30,10 @@ export interface GalleryPhoto {
 
 export interface GalleryItem {
   id: string
+  slug: string
   event_name: string
   date: string
-  image: string
+  image?: string
   photos: GalleryPhoto[]
 }
 

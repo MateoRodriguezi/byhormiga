@@ -70,6 +70,7 @@ export const mockEvents: Event[] = [
 export const mockGallery: GalleryItem[] = [
   {
     id: '1',
+    slug: 'hormiga-negra-ix',
     event_name: 'HORMIGA NEGRA IX',
     date: 'MAR 2026',
     image: '/gallery/event-1.jpg',
@@ -77,6 +78,7 @@ export const mockGallery: GalleryItem[] = [
   },
   {
     id: '2',
+    slug: 'subterranea-vol-3',
     event_name: 'SUBTERRANEA VOL.3',
     date: 'FEB 2026',
     image: '/gallery/event-2.jpg',
@@ -84,6 +86,7 @@ export const mockGallery: GalleryItem[] = [
   },
   {
     id: '3',
+    slug: 'open-air-verano-2026',
     event_name: 'OPEN AIR VERANO',
     date: 'ENE 2026',
     image: '/gallery/event-3.jpg',
@@ -91,6 +94,7 @@ export const mockGallery: GalleryItem[] = [
   },
   {
     id: '4',
+    slug: 'nye-2026',
     event_name: 'NYE 2026',
     date: 'DIC 2025',
     image: '/gallery/event-4.jpg',
@@ -98,6 +102,7 @@ export const mockGallery: GalleryItem[] = [
   },
   {
     id: '5',
+    slug: 'hormiga-negra-viii',
     event_name: 'HORMIGA NEGRA VIII',
     date: 'NOV 2025',
     image: '/gallery/event-5.jpg',

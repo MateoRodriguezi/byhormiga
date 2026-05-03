@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { href: '/#eventos', label: 'EVENTOS' },
-  { href: '/#galeria', label: 'GALERIA' },
+  { href: '/galeria', label: 'GALERIA' },
   { href: '/nosotros', label: 'NOSOTROS' },
   { href: '/sponsors', label: 'SPONSORS' },
   { href: '/noticias', label: 'NOTICIAS' },

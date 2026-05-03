@@ -2,7 +2,9 @@
 
 import { useRef } from 'react'
 import { motion, useInView } from 'framer-motion'
+import Image from 'next/image'
 import Link from 'next/link'
+import { getGalleryCoverImage } from '@/lib/gallery'
 import type { GalleryItem } from '@/lib/types'
 
 interface GallerySectionProps {
@@ -36,6 +38,7 @@ function SectionHeader() {
 function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
+  const coverImage = getGalleryCoverImage(item)
 
   // Determine grid span classes based on item position
   const getGridClasses = () => {
@@ -52,25 +55,34 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : {}}
       transition={{ duration: 0.5, delay: index * 0.1 }}
-      className={`relative overflow-hidden group cursor-pointer ${getGridClasses()}`}
+      className={`relative overflow-hidden ${getGridClasses()}`}
       style={{ minHeight: index === 0 ? '400px' : '200px' }}
     >
-      {/* Abstract dark gradient placeholder */}
-      <div
-        className="absolute inset-0 transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
-        style={{
-          background: `linear-gradient(${135 + index * 30}deg, #0a0908 0%, #1a1a1a ${30 + index * 10}%, #0f0f0f 100%)`,
-        }}
-      />
+      <Link href={`/galeria/${item.slug}`} className="group absolute inset-0 block">
+        {coverImage ? (
+          <Image
+            src={coverImage}
+            alt={item.event_name}
+            fill
+            className="object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
+            sizes="(max-width: 1024px) 50vw, 25vw"
+          />
+        ) : (
+          <div
+            className="absolute inset-0 transition-all duration-500 group-hover:scale-[1.04]"
+            style={{
+              background: `linear-gradient(${135 + index * 30}deg, #0a0908 0%, #1a1a1a ${30 + index * 10}%, #0f0f0f 100%)`,
+            }}
+          />
+        )}
 
-      {/* Hover overlay */}
-      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/10 to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
 
-      {/* Content */}
-      <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-        <h3 className="text-sm font-bold text-white uppercase tracking-wide">{item.event_name}</h3>
-        <p className="mt-1 text-[10px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
-      </div>
+        <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+          <h3 className="text-sm font-bold text-white uppercase tracking-wide">{item.event_name}</h3>
+          <p className="mt-1 text-[10px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
+        </div>
+      </Link>
     </motion.div>
   )
 }
