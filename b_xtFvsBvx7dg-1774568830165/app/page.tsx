@@ -3,6 +3,7 @@ import { Footer } from '@/components/Footer'
 import { Ticker } from '@/components/Ticker'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { StatsSection } from '@/components/sections/StatsSection'
+import { FeaturedEventsSection } from '@/components/sections/FeaturedEventsSection'
 import { EventsSection } from '@/components/sections/EventsSection'
 import { GallerySection } from '@/components/sections/GallerySection'
 import { PressSection } from '@/components/sections/PressSection'
@@ -24,6 +25,7 @@ export default async function HomePage() {
         <HeroSection />
         <Ticker />
         <StatsSection />
+        <FeaturedEventsSection />
         <EventsSection events={events} />
         <GallerySection items={gallery} />
         <PressSection posts={posts} />
