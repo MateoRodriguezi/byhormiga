@@ -18,7 +18,7 @@ const letterVariants = {
   }),
 }
 
-const rotatingTexts = ['momentos únicos', 'experiencias inolvidables', 'conexiones genuinas']
+const rotatingTexts = ['momentos únicos', 'experiencias inolvidables']
 
 export function HeroSection() {
   const byLetters = ['B', 'Y']
@@ -112,10 +112,9 @@ export function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="mt-8 text-sm lg:text-base max-w-md leading-relaxed"
+          className="mt-8 text-base lg:text-lg max-w-md leading-relaxed"
         >
-          <span className="text-gray-400">Dedicados a crear </span>
-          <div className="inline-block relative h-7 w-48 overflow-hidden align-middle">
+          <div className="relative h-8 overflow-hidden">
             <AnimatePresence mode="wait">
               <motion.span
                 key={currentTextIndex}
@@ -123,7 +122,7 @@ export function HeroSection() {
                 animate={{ y: 0, opacity: 1 }}
                 exit={{ y: -30, opacity: 0 }}
                 transition={{ duration: 0.5 }}
-                className="absolute left-0 text-white font-semibold"
+                className="absolute left-0 text-white font-semibold uppercase tracking-wider"
               >
                 {rotatingTexts[currentTextIndex]}
               </motion.span>
