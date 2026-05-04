@@ -37,8 +37,10 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
                       <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
                     </div>
                   ) : (
-                    <div className="text-white/40 hover:text-white transition-colors text-2xl font-bold text-center">
-                      {sponsor.name}
+                    <div className="border border-white/20 hover:border-white/40 px-6 py-4 transition-all">
+                      <div className="text-white/70 hover:text-white transition-colors text-xl font-black text-center uppercase">
+                        {sponsor.name}
+                      </div>
                     </div>
                   )}
                 </div>
@@ -56,8 +58,10 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
                       <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
                     </div>
                   ) : (
-                    <div className="text-white/40 hover:text-white transition-colors text-2xl font-bold text-center">
-                      {sponsor.name}
+                    <div className="border border-white/20 hover:border-white/40 px-6 py-4 transition-all">
+                      <div className="text-white/70 hover:text-white transition-colors text-xl font-black text-center uppercase">
+                        {sponsor.name}
+                      </div>
                     </div>
                   )}
                 </div>
