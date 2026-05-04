@@ -5,7 +5,18 @@ import Image from 'next/image'
 import Link from 'next/link'
 import type { Sponsor } from '@/lib/types'
 
+const defaultSponsors: Sponsor[] = [
+  { id: 1, name: 'Speed', logo: null },
+  { id: 2, name: 'Pilsen', logo: null },
+  { id: 3, name: 'Coca Cola', logo: null },
+  { id: 4, name: 'Absolut', logo: null },
+  { id: 5, name: 'Red Bull', logo: null },
+  { id: 6, name: 'Beats', logo: null },
+]
+
 export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
+  const displaySponsors = sponsors?.length > 0 ? sponsors : defaultSponsors
+
   return (
     <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
       <div className="max-w-[1600px] mx-auto">
@@ -26,7 +37,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
         <div className="relative overflow-hidden">
           <div className="flex animate-scroll-partners">
             {/* First set */}
-            {sponsors.map((sponsor, index) => (
+            {displaySponsors.map((sponsor, index) => (
               <div
                 key={`first-${sponsor.id}-${index}`}
                 className="flex-shrink-0 mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300"
@@ -47,7 +58,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
-            {sponsors.map((sponsor, index) => (
+            {displaySponsors.map((sponsor, index) => (
               <div
                 key={`second-${sponsor.id}-${index}`}
                 className="flex-shrink-0 mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300"
