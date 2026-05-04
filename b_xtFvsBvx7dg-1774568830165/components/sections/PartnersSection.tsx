@@ -40,18 +40,16 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
             {displaySponsors.map((sponsor, index) => (
               <div
                 key={`first-${sponsor.id}-${index}`}
-                className="flex-shrink-0 mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300"
+                className="flex-shrink-0 mx-6 lg:mx-8"
               >
-                <div className="w-32 h-32 lg:w-40 lg:h-40 flex items-center justify-center">
+                <div className="flex items-center justify-center">
                   {sponsor.logo ? (
                     <div className="relative h-16 w-28 lg:h-20 lg:w-36 opacity-60 hover:opacity-100 transition-opacity">
                       <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
                     </div>
                   ) : (
-                    <div className="border border-white/20 hover:border-white/40 px-6 py-4 transition-all">
-                      <div className="text-white/70 hover:text-white transition-colors text-xl font-black text-center uppercase">
-                        {sponsor.name}
-                      </div>
+                    <div className="text-white/30 hover:text-white/60 transition-colors text-xs font-medium text-center uppercase tracking-wider">
+                      {sponsor.name}
                     </div>
                   )}
                 </div>
@@ -61,18 +59,16 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
             {displaySponsors.map((sponsor, index) => (
               <div
                 key={`second-${sponsor.id}-${index}`}
-                className="flex-shrink-0 mx-8 lg:mx-12 grayscale hover:grayscale-0 transition-all duration-300"
+                className="flex-shrink-0 mx-6 lg:mx-8"
               >
-                <div className="w-32 h-32 lg:w-40 lg:h-40 flex items-center justify-center">
+                <div className="flex items-center justify-center">
                   {sponsor.logo ? (
                     <div className="relative h-16 w-28 lg:h-20 lg:w-36 opacity-60 hover:opacity-100 transition-opacity">
                       <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
                     </div>
                   ) : (
-                    <div className="border border-white/20 hover:border-white/40 px-6 py-4 transition-all">
-                      <div className="text-white/70 hover:text-white transition-colors text-xl font-black text-center uppercase">
-                        {sponsor.name}
-                      </div>
+                    <div className="text-white/30 hover:text-white/60 transition-colors text-xs font-medium text-center uppercase tracking-wider">
+                      {sponsor.name}
                     </div>
                   )}
                 </div>
