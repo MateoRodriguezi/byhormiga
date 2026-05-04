@@ -117,7 +117,13 @@ export async function getPostBySlug(slug: string): Promise<Post | undefined> {
 }
 
 export async function getSponsors(): Promise<Sponsor[]> {
-  return apiGetList<Sponsor>('/api/partners/')
+  try {
+    return await apiGetList<Sponsor>('/api/partners/')
+  } catch (error) {
+    console.warn('Sponsors API failed, using mock data:', error)
+    const { mockSponsors } = await import('./mocks')
+    return mockSponsors
+  }
 }
 
 export async function submitContactForm(data: ContactFormData): Promise<ContactSuccessResponse> {

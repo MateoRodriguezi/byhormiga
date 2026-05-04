@@ -1,4 +1,4 @@
-import type { Event, GalleryItem, Post } from './types'
+import type { Event, GalleryItem, Post, Sponsor } from './types'
 
 // Mock data for events
 export const mockEvents: Event[] = [
@@ -108,6 +108,16 @@ export const mockGallery: GalleryItem[] = [
     image: '/gallery/event-5.jpg',
     photos: [],
   },
+]
+
+// Mock data for sponsors
+export const mockSponsors: Sponsor[] = [
+  { id: 1, name: 'Speed', logo: null },
+  { id: 2, name: 'Pilsen', logo: null },
+  { id: 3, name: 'Coca Cola', logo: null },
+  { id: 4, name: 'Absolut', logo: null },
+  { id: 5, name: 'Red Bull', logo: null },
+  { id: 6, name: 'Beats', logo: null },
 ]
 
 // Mock data for posts
