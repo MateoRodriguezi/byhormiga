@@ -109,7 +109,13 @@ export async function getGallery(): Promise<GalleryItem[]> {
 }
 
 export async function getPosts(): Promise<Post[]> {
-  return apiGetList<Post>('/api/posts/')
+  try {
+    return await apiGetList<Post>('/api/posts/')
+  } catch (error) {
+    console.warn('Posts API failed, using mock data:', error)
+    const { mockPosts } = await import('./mocks')
+    return mockPosts
+  }
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
