@@ -60,12 +60,10 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
     >
       <Link href={`/galeria/${item.slug}`} className="group absolute inset-0 block">
         {coverImage ? (
-          <Image
+          <img
             src={coverImage}
             alt={item.event_name}
-            fill
-            className="object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
-            sizes="(max-width: 1024px) 50vw, 25vw"
+            className="w-full h-full object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
           />
         ) : (
           <div
