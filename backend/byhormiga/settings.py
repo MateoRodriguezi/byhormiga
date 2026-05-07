@@ -153,6 +153,8 @@ AWS_S3_REGION_NAME = config("AWS_S3_REGION_NAME", default="")
 AWS_S3_ENDPOINT_URL = config("AWS_S3_ENDPOINT_URL", default="")
 AWS_S3_CUSTOM_DOMAIN = config("AWS_S3_CUSTOM_DOMAIN", default="")
 AWS_S3_URL_PROTOCOL = config("AWS_S3_URL_PROTOCOL", default="https:")
+AWS_DEFAULT_ACL = config("AWS_DEFAULT_ACL", default="public-read")
+AWS_QUERYSTRING_AUTH = config("AWS_QUERYSTRING_AUTH", default=False, cast=bool)
 
 if AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
