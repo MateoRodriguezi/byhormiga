@@ -25,7 +25,7 @@ function SectionHeader() {
     >
       <div>
         <span className="text-[9px] sm:text-[10px] tracking-[.2em] sm:tracking-[.25em] text-gray-500 uppercase font-mono">
-          02 — GALERÍA
+          GALERÍA
         </span>
         <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
           MOMENTOS

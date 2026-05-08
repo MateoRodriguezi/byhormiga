@@ -22,7 +22,7 @@ function SectionHeader() {
       className="mb-8 sm:mb-12 lg:mb-16"
     >
       <span className="text-[9px] sm:text-[10px] tracking-[.2em] sm:tracking-[.25em] text-gray-500 uppercase font-mono">
-        04 — CONTACTO
+        CONTACTO
       </span>
       <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
         HABLEMOS
