@@ -1,15 +1,15 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter } from 'next/font/google'
+import { Questrial } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { defaultMetadata } from '@/lib/metadata'
 import { OrganizationSchema } from '@/components/StructuredData'
 import { ScrollToTop } from '@/components/ui/ScrollToTop'
 import './globals.css'
 
-const inter = Inter({
+const questrial = Questrial({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '800', '900'],
-  variable: '--font-inter',
+  weight: ['400'],
+  variable: '--font-questrial',
 })
 
 export const metadata: Metadata = defaultMetadata
@@ -30,7 +30,7 @@ export default function RootLayout({
       <head>
         <OrganizationSchema />
       </head>
-      <body className={`${inter.variable} font-sans antialiased bg-[#0a0908] text-white`}>
+      <body className={`${questrial.variable} font-sans antialiased bg-[#0a0908] text-white`}>
         <div className="film-grain" aria-hidden="true" />
         {children}
         <ScrollToTop />
