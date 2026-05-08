@@ -1,6 +1,10 @@
 from rest_framework import serializers
 from .models import Event, EventPhoto, Venue
-from byhormiga.utils import SPANISH_MONTH_ABBR, format_spanish_month_year
+from byhormiga.utils import (
+    SPANISH_MONTH_ABBR,
+    build_media_proxy_url,
+    format_spanish_month_year,
+)
 
 
 class VenueSerializer(serializers.ModelSerializer):
@@ -20,7 +24,7 @@ class EventSerializer(serializers.ModelSerializer):
     month = serializers.SerializerMethodField()
     weekday = serializers.SerializerMethodField()
     status = serializers.CharField(source="frontend_status", read_only=True)
-    image = serializers.ImageField(source="poster", read_only=True)
+    image = serializers.SerializerMethodField()
     name = serializers.CharField(source="title", read_only=True)
     price = serializers.CharField(source="price_info", read_only=True)
 
@@ -62,18 +66,32 @@ class EventSerializer(serializers.ModelSerializer):
         }
         return weekdays[obj.date.weekday()]
 
+    def get_image(self, obj):
+        request = self.context.get("request")
+        if not request or not obj.poster:
+            return None
+        return build_media_proxy_url(request, obj.poster.name)
+
 
 class EventPhotoSerializer(serializers.ModelSerializer):
+    image = serializers.SerializerMethodField()
+
     class Meta:
         model = EventPhoto
         fields = ["id", "image", "caption", "order"]
+
+    def get_image(self, obj):
+        request = self.context.get("request")
+        if not request or not obj.image:
+            return None
+        return build_media_proxy_url(request, obj.image.name)
 
 
 class GalleryEventSerializer(serializers.ModelSerializer):
     slug = serializers.SlugField(read_only=True)
     event_name = serializers.CharField(source="title", read_only=True)
     date = serializers.SerializerMethodField()
-    image = serializers.ImageField(source="poster", read_only=True)
+    image = serializers.SerializerMethodField()
     photos = EventPhotoSerializer(many=True, read_only=True)
 
     class Meta:
@@ -82,3 +100,9 @@ class GalleryEventSerializer(serializers.ModelSerializer):
 
     def get_date(self, obj):
         return format_spanish_month_year(obj.date)
+
+    def get_image(self, obj):
+        request = self.context.get("request")
+        if not request or not obj.poster:
+            return None
+        return build_media_proxy_url(request, obj.poster.name)

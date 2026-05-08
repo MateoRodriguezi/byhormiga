@@ -6,6 +6,7 @@ from django.urls import path, reverse
 from django.utils.html import format_html
 from django.utils.text import get_valid_filename
 from unfold.admin import ModelAdmin
+from byhormiga.utils import build_media_proxy_url
 from .models import Post
 
 
@@ -82,7 +83,7 @@ class PostAdmin(ModelAdmin):
         storage_path = default_storage.save(
             f"blog/content/{filename}", ContentFile(image.read())
         )
-        return JsonResponse({"url": default_storage.url(storage_path)})
+        return JsonResponse({"url": build_media_proxy_url(request, storage_path)})
 
     @admin.display(description="Portada")
     def cover_thumbnail(self, obj):

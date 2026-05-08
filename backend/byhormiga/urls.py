@@ -7,6 +7,8 @@ from django.conf import settings
 from django.urls import include, path
 from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 
+from byhormiga.views import media_proxy_redirect
+
 api_v1_url_patterns = [
     path("events/", include("events.urls")),
     path("posts/", include("blog.urls")),
@@ -27,6 +29,7 @@ if settings.DEBUG:
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/", include(api_v1_url_patterns)),
+    path("media/<path:key>", media_proxy_redirect, name="media-proxy"),
 ]
 
 handler404 = "byhormiga.views.api_not_found"
