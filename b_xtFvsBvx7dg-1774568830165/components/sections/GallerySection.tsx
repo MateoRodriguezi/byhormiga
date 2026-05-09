@@ -1,8 +1,7 @@
 'use client'
 
-import { useRef } from 'react'
-import { motion, useInView } from 'framer-motion'
-import Image from 'next/image'
+import { useEffect, useRef, useState } from 'react'
+import { AnimatePresence, motion, useInView } from 'framer-motion'
 import Link from 'next/link'
 import { getGalleryCoverImage } from '@/lib/gallery'
 import type { GalleryItem } from '@/lib/types'
@@ -24,7 +23,7 @@ function SectionHeader() {
       className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16"
     >
       <div>
-        <span className="text-[9px] sm:text-[10px] tracking-[.2em] sm:tracking-[.25em] text-gray-500 uppercase font-mono">
+        <span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
           GALERÍA
         </span>
         <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
@@ -39,6 +38,24 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
   const ref = useRef<HTMLDivElement>(null)
   const isInView = useInView(ref, { once: true, margin: '-50px' })
   const coverImage = getGalleryCoverImage(item)
+  const galleryImages = [coverImage, ...item.photos.map((photo) => photo.image)].filter(
+    (image, imageIndex, images): image is string => Boolean(image) && images.indexOf(image) === imageIndex
+  )
+  const [isHovered, setIsHovered] = useState(false)
+  const [activeImageIndex, setActiveImageIndex] = useState(0)
+
+  useEffect(() => {
+    if (!isHovered || galleryImages.length < 2) {
+      setActiveImageIndex(0)
+      return
+    }
+
+    const interval = setInterval(() => {
+      setActiveImageIndex((currentIndex) => (currentIndex + 1) % galleryImages.length)
+    }, 900)
+
+    return () => clearInterval(interval)
+  }, [galleryImages.length, isHovered])
 
   // Determine grid span classes based on item position
   const getGridClasses = () => {
@@ -58,13 +75,25 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
       className={`relative overflow-hidden ${getGridClasses()}`}
       style={{ minHeight: index === 0 ? '400px' : '200px' }}
     >
-      <Link href={`/galeria/${item.slug}`} className="group absolute inset-0 block">
+      <Link
+        href={`/galeria/${item.slug}`}
+        className="group absolute inset-0 block"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
         {coverImage ? (
-          <img
-            src={coverImage}
-            alt={item.event_name}
-            className="w-full h-full object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
-          />
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={galleryImages[activeImageIndex]}
+              src={galleryImages[activeImageIndex]}
+              alt={item.event_name}
+              initial={{ opacity: 0.45 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0.45 }}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+              className="w-full h-full object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
+            />
+          </AnimatePresence>
         ) : (
           <div
             className="absolute inset-0 transition-all duration-500 group-hover:scale-[1.04]"

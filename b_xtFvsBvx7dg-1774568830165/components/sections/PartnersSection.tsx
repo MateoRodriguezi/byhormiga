@@ -17,6 +17,20 @@ const defaultSponsors: Sponsor[] = [
 export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   const displaySponsors = sponsors?.length > 0 ? sponsors : defaultSponsors
 
+  const renderSponsor = (sponsor: Sponsor) => (
+    <div className="flex flex-col items-center justify-center gap-3">
+      {sponsor.logo ? (
+        <div className="relative h-20 w-36 lg:h-24 lg:w-44 opacity-80 hover:opacity-100 transition-opacity">
+          <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
+        </div>
+      ) : null}
+
+      <div className="text-white text-sm lg:text-base font-medium text-center uppercase tracking-[0.2em]">
+        {sponsor.name}
+      </div>
+    </div>
+  )
+
   return (
     <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
       <div className="max-w-[1600px] mx-auto">
@@ -28,7 +42,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+          <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
             MARCAS QUE CONFIARON EN NOSOTROS
           </span>
         </motion.div>
@@ -42,17 +56,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
                 key={`first-${sponsor.id}-${index}`}
                 className="flex-shrink-0 mx-6 lg:mx-8"
               >
-                <div className="flex items-center justify-center">
-                  {sponsor.logo ? (
-                    <div className="relative h-16 w-28 lg:h-20 lg:w-36 opacity-60 hover:opacity-100 transition-opacity">
-                      <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
-                    </div>
-                  ) : (
-                    <div className="text-white/30 hover:text-white/60 transition-colors text-xs font-medium text-center uppercase tracking-wider">
-                      {sponsor.name}
-                    </div>
-                  )}
-                </div>
+                {renderSponsor(sponsor)}
               </div>
             ))}
             {/* Duplicate set for seamless loop */}
@@ -61,17 +65,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
                 key={`second-${sponsor.id}-${index}`}
                 className="flex-shrink-0 mx-6 lg:mx-8"
               >
-                <div className="flex items-center justify-center">
-                  {sponsor.logo ? (
-                    <div className="relative h-16 w-28 lg:h-20 lg:w-36 opacity-60 hover:opacity-100 transition-opacity">
-                      <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
-                    </div>
-                  ) : (
-                    <div className="text-white/30 hover:text-white/60 transition-colors text-xs font-medium text-center uppercase tracking-wider">
-                      {sponsor.name}
-                    </div>
-                  )}
-                </div>
+                {renderSponsor(sponsor)}
               </div>
             ))}
           </div>

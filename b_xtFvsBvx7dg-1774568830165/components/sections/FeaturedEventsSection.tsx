@@ -122,7 +122,7 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					transition={{ duration: 0.6 }}
 					className="mb-16"
 				>
-					<span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+					<span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
 						SELECCIÓN
 					</span>
 					<h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">

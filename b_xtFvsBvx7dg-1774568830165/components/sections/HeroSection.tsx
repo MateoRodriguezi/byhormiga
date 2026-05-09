@@ -5,24 +5,9 @@ import Image from "next/image";
 import { useState, useEffect } from "react";
 import { InteractiveButton } from "@/components/ui/InteractiveButton";
 
-const letterVariants = {
-	hidden: { y: 100, opacity: 0 },
-	visible: (i: number) => ({
-		y: 0,
-		opacity: 1,
-		transition: {
-			delay: i * 0.05,
-			duration: 0.6,
-			ease: [0.215, 0.61, 0.355, 1],
-		},
-	}),
-};
-
 const rotatingTexts = ["momentos únicos", "experiencias inolvidables"];
 
 export function HeroSection() {
-	const byLetters = ["B", "Y"];
-	const hormigaLetters = ["H", "O", "R", "M", "I", "G", "A"];
 	const [currentTextIndex, setCurrentTextIndex] = useState(0);
 	const [showContent, setShowContent] = useState(false);
 
@@ -90,45 +75,22 @@ export function HeroSection() {
 					<span className="w-8 h-px bg-gray-500" />
 				</motion.div>
 
-				{/* Main Title */}
-				<h1 className="overflow-hidden">
-					<div className="flex overflow-hidden justify-center">
-						{byLetters.map((letter, i) => (
-							<motion.span
-								key={i}
-								custom={i}
-								initial="hidden"
-								animate={showContent ? "visible" : "hidden"}
-								variants={letterVariants}
-								className="text-white font-black tracking-[-0.04em]"
-								style={{
-									fontSize: "clamp(48px, 14vw, 220px)",
-									lineHeight: 0.9,
-								}}
-							>
-								{letter}
-							</motion.span>
-						))}
-					</div>
-					<div className="flex overflow-hidden justify-center">
-						{hormigaLetters.map((letter, i) => (
-							<motion.span
-								key={i}
-								custom={i + byLetters.length}
-								initial="hidden"
-								animate={showContent ? "visible" : "hidden"}
-								variants={letterVariants}
-								className="text-stroke font-black tracking-[-0.04em]"
-								style={{
-									fontSize: "clamp(48px, 14vw, 220px)",
-									lineHeight: 0.9,
-								}}
-							>
-								{letter}
-							</motion.span>
-						))}
-					</div>
-				</h1>
+				{/* Main Logo */}
+				<motion.div
+					initial={{ opacity: 0, y: 40, scale: 0.92 }}
+					animate={showContent ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.92 }}
+					transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+					className="flex justify-center"
+				>
+					<Image
+						src="/images/logo.png"
+						alt="ByHormiga"
+						width={1400}
+						height={700}
+						priority
+						className="w-[min(84vw,900px)] h-auto object-contain brightness-0 invert"
+					/>
+				</motion.div>
 
 				{/* Tagline with rotating text */}
 				<motion.div
@@ -163,7 +125,7 @@ export function HeroSection() {
 					transition={{ delay: showContent ? 0.5 : 0, duration: 0.6 }}
 					className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
 				>
-					<InteractiveButton href="/#eventos" variant="primary">
+					<InteractiveButton href="/#eventos" variant="secondary">
 						VER EVENTOS
 					</InteractiveButton>
 					<InteractiveButton href="/#contacto" variant="secondary">

@@ -56,7 +56,7 @@ export default async function NoticiasPage() {
         <section className="relative min-h-[60vh] bg-[#0a0908] flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-24">
           <div className="max-w-[1600px] mx-auto w-full text-center">
             <div>
-              <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+              <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
                 ACTUALIDAD
               </span>
               <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">

@@ -60,7 +60,7 @@ export default function RelajoPage() {
               transition={{ duration: 0.8 }}
               className="text-center"
             >
-              <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+              <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
                 RELAJO PERO CON ORDEN
               </span>
               <h1 className="mt-6 text-5xl lg:text-8xl font-black tracking-tight text-white uppercase leading-tight">

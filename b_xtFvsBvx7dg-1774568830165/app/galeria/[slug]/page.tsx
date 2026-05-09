@@ -73,7 +73,7 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
             </div>
 
             <div>
-              <span className="block text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+              <span className="block text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
                 ARCHIVO VISUAL
               </span>
               <h1 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">

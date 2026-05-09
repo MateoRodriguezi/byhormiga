@@ -18,7 +18,7 @@ function HeroSection() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+          <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
             PARTNERSHIPS
           </span>
           <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
@@ -107,7 +107,7 @@ export default function SponsorsPage() {
               transition={{ duration: 0.6 }}
               className="text-center mb-16"
             >
-              <span className="text-[10px] tracking-[.25em] text-gray-500 uppercase font-mono">
+              <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
                 NUESTROS PARTNERS
               </span>
               <h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">

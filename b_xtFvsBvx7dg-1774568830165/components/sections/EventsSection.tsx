@@ -23,7 +23,7 @@ function SectionHeader() {
       className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 sm:gap-6 mb-8 sm:mb-12 lg:mb-16"
     >
       <div>
-        <span className="text-[9px] sm:text-[10px] tracking-[.2em] sm:tracking-[.25em] text-gray-500 uppercase font-mono">
+        <span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
           AGENDA
         </span>
         <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">

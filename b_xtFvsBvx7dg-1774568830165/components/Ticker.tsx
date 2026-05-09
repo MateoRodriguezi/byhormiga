@@ -17,12 +17,12 @@ export function Ticker() {
             <span key={j} className="flex items-center">
               <span
                 className={`text-[10px] tracking-[.25em] uppercase ${
-                  item.highlight ? 'text-white font-bold' : 'text-gray-500'
+                  item.highlight ? 'text-black font-extrabold' : 'text-black/90'
                 }`}
               >
                 {item.text}
               </span>
-              <span className="mx-6 text-white/30 text-[8px]">●</span>
+              <span className="mx-6 text-black/35 text-[8px]">●</span>
             </span>
           ))}
         </div>
@@ -31,7 +31,7 @@ export function Ticker() {
   )
 
   return (
-    <div className="w-full bg-[#111111] border-y border-white/[.08] py-4 overflow-hidden">
+    <div className="w-full bg-white border-y border-black/10 py-4 overflow-hidden">
       <div className="flex animate-ticker whitespace-nowrap">
         {tickerContent}
         {tickerContent}
