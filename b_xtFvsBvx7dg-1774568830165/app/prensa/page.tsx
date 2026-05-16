@@ -21,7 +21,7 @@ export default async function PrensaPage() {
           <div className="mb-16">
             <Link
               href="/"
-              className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
+				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
             >
               ← VOLVER AL INICIO
             </Link>
@@ -44,12 +44,12 @@ export default async function PrensaPage() {
                 <div className="absolute top-0 left-0 right-0 h-px bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
                 {/* Index number */}
-                <span className="absolute top-8 lg:top-12 right-8 lg:right-12 text-[10px] tracking-[.2em] text-gray-800 font-mono">
+				<span className="absolute top-8 lg:top-12 right-8 lg:right-12 text-[12px] tracking-[.2em] text-gray-800 font-mono">
                   {String(index + 1).padStart(2, '0')}
                 </span>
 
                 {/* Date */}
-                <time className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-6">
+				<time className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-6">
                   {post.date}
                 </time>
 
@@ -68,7 +68,7 @@ export default async function PrensaPage() {
                 {/* Read more link */}
                 <Link
                   href={`/prensa/${post.slug}`}
-                  className="inline-flex items-center gap-2 text-[10px] tracking-[.2em] text-white uppercase group/link"
+					className="inline-flex items-center gap-2 text-[12px] tracking-[.2em] text-white uppercase group/link"
                 >
                   LEER NOTA
                   <span className="inline-block transition-transform group-hover/link:translate-x-1">

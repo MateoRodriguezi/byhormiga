@@ -54,7 +54,7 @@ export default async function EventPage({ params }: EventPageProps) {
           {/* Back link */}
           <Link
             href="/eventos"
-            className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-8 inline-block"
+			className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-8 inline-block"
           >
             ← VOLVER A EVENTOS
           </Link>
@@ -93,7 +93,7 @@ export default async function EventPage({ params }: EventPageProps) {
               {/* Status badge */}
               <div className="mb-8">
                 <span
-                  className={`inline-block text-[10px] tracking-[.15em] uppercase px-4 py-2 border ${
+					className={`inline-block text-[12px] tracking-[.15em] uppercase px-4 py-2 border ${
                     event.status === 'en-venta'
                       ? 'border-white text-white'
                       : event.status === 'agotado'
@@ -130,7 +130,7 @@ export default async function EventPage({ params }: EventPageProps) {
               <div className="flex items-center gap-8">
                 {event.price && (
                   <div>
-                    <span className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-1">
+						<span className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-1">
                       Precio
                     </span>
                     <span className="text-2xl font-bold text-white">{event.price}</span>
@@ -142,7 +142,7 @@ export default async function EventPage({ params }: EventPageProps) {
                     href={event.ticket_url ?? '#'}
                     target={event.ticket_url ? '_blank' : undefined}
                     rel={event.ticket_url ? 'noopener noreferrer' : undefined}
-                    className="flex-1 lg:flex-none bg-white text-[#0a0908] px-12 py-4 text-[11px] font-bold tracking-[.15em] uppercase text-center hover:bg-white/90 transition-colors"
+					className="flex-1 lg:flex-none bg-white text-[#0a0908] px-12 py-4 text-[12px] font-bold tracking-[.15em] uppercase text-center hover:bg-white/90 transition-colors"
                   >
                     COMPRAR ENTRADAS
                   </a>

@@ -31,7 +31,7 @@ function SectionHeader() {
       </div>
       <Link
         href="/noticias"
-        className="text-[10px] tracking-[.2em] text-white/60 uppercase hover:text-white transition-colors group"
+		className="text-[12px] tracking-[.2em] text-white/60 uppercase hover:text-white transition-colors group"
       >
         Ver todas{' '}
         <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
@@ -56,12 +56,12 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
       <div className="absolute top-0 left-0 right-0 h-px bg-white origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500" />
 
       {/* Index number */}
-      <span className="absolute top-4 sm:top-6 lg:top-8 right-4 sm:right-6 lg:right-8 text-[9px] sm:text-[10px] tracking-[.15em] sm:tracking-[.2em] text-gray-800 font-mono">
+	  <span className="absolute top-4 sm:top-6 lg:top-8 right-4 sm:right-6 lg:right-8 text-[10px] sm:text-[12px] tracking-[.15em] sm:tracking-[.2em] text-gray-800 font-mono">
         {String(index + 1).padStart(2, '0')}
       </span>
 
       {/* Date */}
-      <time className="block text-[9px] sm:text-[10px] tracking-[.15em] sm:tracking-[.2em] text-gray-500 uppercase mb-3 sm:mb-4">
+	  <time className="block text-[10px] sm:text-[12px] tracking-[.15em] sm:tracking-[.2em] text-gray-500 uppercase mb-3 sm:mb-4">
         {post.date}
       </time>
 
@@ -80,7 +80,7 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
       {/* Read more link */}
       <Link
         href={`/noticias/${post.slug}`}
-        className="inline-flex items-center gap-2 text-[10px] tracking-[.2em] text-white uppercase group/link"
+		className="inline-flex items-center gap-2 text-[12px] tracking-[.2em] text-white uppercase group/link"
       >
         LEER NOTA
         <span className="inline-block transition-transform group-hover/link:translate-x-1">→</span>

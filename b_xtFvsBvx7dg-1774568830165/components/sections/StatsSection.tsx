@@ -60,7 +60,7 @@ function StatItem({
 			>
 				{displayValue}
 			</div>
-			<div className="mt-3 sm:mt-4 text-[10px] sm:text-[11px] font-bold tracking-[.15em] sm:tracking-[.2em] text-white uppercase">
+			<div className="mt-3 sm:mt-4 text-[12px] sm:text-[12px] font-bold tracking-[.15em] sm:tracking-[.2em] text-white uppercase">
 				{label}
 			</div>
 			<p className="mt-2 sm:mt-3 text-xs sm:text-sm text-gray-500 leading-relaxed max-w-xs">

@@ -17,7 +17,7 @@ export default function ContactoPage() {
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12 pb-12">
           <Link
             href="/"
-            className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
+				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
           >
             ← VOLVER AL INICIO
           </Link>

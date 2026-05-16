@@ -21,7 +21,7 @@ export function HeroSection() {
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setShowContent(true);
-		}, 2200);
+		}, 500);
 
 		return () => clearTimeout(timeout);
 	}, []);
@@ -78,7 +78,11 @@ export function HeroSection() {
 				{/* Main Logo */}
 				<motion.div
 					initial={{ opacity: 0, y: 40, scale: 0.92 }}
-					animate={showContent ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 40, scale: 0.92 }}
+					animate={
+						showContent
+							? { opacity: 1, y: 0, scale: 1 }
+							: { opacity: 0, y: 40, scale: 0.92 }
+					}
 					transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
 					className="flex justify-center"
 				>
@@ -137,7 +141,7 @@ export function HeroSection() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 					transition={{ delay: showContent ? 0.65 : 0, duration: 0.6 }}
-					className="mt-6 text-[10px] tracking-[.2em] text-white uppercase text-center"
+					className="mt-6 text-[12px] tracking-[.2em] text-white uppercase text-center"
 				>
 					Montevideo, Uruguay
 				</motion.span>
@@ -150,7 +154,7 @@ export function HeroSection() {
 				transition={{ delay: showContent ? 0.7 : 0, duration: 0.6 }}
 				className="absolute bottom-8 right-6 lg:right-12 hidden lg:flex flex-col items-center gap-4"
 			>
-				<span className="text-[10px] tracking-[.25em] text-gray-500 uppercase origin-center rotate-90 translate-y-6">
+				<span className="text-[12px] tracking-[.25em] text-gray-500 uppercase origin-center rotate-90 translate-y-6">
 					SCROLL
 				</span>
 				<div className="w-px h-16 bg-white/20 relative overflow-hidden mt-8">

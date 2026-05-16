@@ -73,7 +73,7 @@ export function Navbar() {
               </div>
               <span className={cn(
                 "font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase transition-all duration-500",
-                isScrolled ? "text-[10px] sm:text-xs" : "text-xs sm:text-sm"
+				isScrolled ? "text-[12px] sm:text-xs" : "text-xs sm:text-sm"
               )}>
                 BYHORMIGA
               </span>
@@ -85,7 +85,7 @@ export function Navbar() {
                 <Link
                   key={link.href}
                   href={link.href}
-                  className="text-[10px] font-medium tracking-[.25em] text-white/70 uppercase hover:text-white transition-colors"
+					className="text-[12px] font-medium tracking-[.25em] text-white/70 uppercase hover:text-white transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -96,7 +96,7 @@ export function Navbar() {
             <Link
               href="/#contacto"
               className={cn(
-                "hidden lg:block border border-white text-[10px] font-medium tracking-[.25em] uppercase text-white hover:bg-white hover:text-[#0a0908] transition-all duration-300",
+				"hidden lg:block border border-white text-[12px] font-medium tracking-[.25em] uppercase text-white hover:bg-white hover:text-[#0a0908] transition-all duration-300",
                 isScrolled ? "px-5 py-2" : "px-6 py-2.5"
               )}
             >

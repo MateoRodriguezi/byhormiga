@@ -23,7 +23,7 @@ export default async function GaleriaPage() {
           <div className="mb-16">
             <Link
               href="/"
-              className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
+				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
             >
               ← VOLVER AL INICIO
             </Link>
@@ -72,7 +72,7 @@ export default async function GaleriaPage() {
                   <h3 className="text-xs lg:text-sm font-bold text-white uppercase tracking-wide">
                     {item.event_name}
                   </h3>
-                  <p className="mt-1 text-[9px] lg:text-[10px] tracking-[.2em] text-gray-400 uppercase">
+					<p className="mt-1 text-[10px] lg:text-[12px] tracking-[.2em] text-gray-400 uppercase">
                     {item.date}
                   </p>
                 </div>

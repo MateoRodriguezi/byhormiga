@@ -22,9 +22,6 @@ function SectionHeader() {
 			<span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
 				CONTACTO
 			</span>
-			<h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
-				TRABAJEMOS JUNTOS
-			</h2>
 		</motion.div>
 	);
 }
@@ -91,7 +88,7 @@ export function ContactSection() {
 						{/* Contact details */}
 						<div className="space-y-6 mb-12">
 							<div>
-								<span className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-1">
+								<span className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-1">
 									Email
 								</span>
 								<a
@@ -102,7 +99,7 @@ export function ContactSection() {
 								</a>
 							</div>
 							<div>
-								<span className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-1">
+								<span className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-1">
 									Teléfono
 								</span>
 								<a
@@ -113,7 +110,7 @@ export function ContactSection() {
 								</a>
 							</div>
 							<div>
-								<span className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-1">
+								<span className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-1">
 									Dirección
 								</span>
 								<p className="text-white">Av. Burgues 3169, Montevideo</p>
@@ -128,7 +125,7 @@ export function ContactSection() {
 									href={link.href}
 									target="_blank"
 									rel="noopener noreferrer"
-									className="w-12 h-12 border border-white/20 flex items-center justify-center text-[10px] font-bold tracking-[.1em] text-white/60 hover:bg-white/10 hover:text-white transition-all"
+									className="w-12 h-12 border border-white/20 flex items-center justify-center text-[12px] font-bold tracking-[.1em] text-white/60 hover:bg-white/10 hover:text-white transition-all"
 								>
 									{link.label}
 								</a>
@@ -156,27 +153,27 @@ export function ContactSection() {
 										<label htmlFor="name" className="sr-only">
 											Nombre
 										</label>
-										<input
-											type="text"
-											id="name"
-											name="name"
-											required
-											placeholder="NOMBRE"
-											className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[10px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors"
-										/>
+									<input
+										type="text"
+										id="name"
+										name="name"
+										required
+										placeholder="NOMBRE"
+										className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[12px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors"
+									/>
 									</div>
 									<div>
 										<label htmlFor="email" className="sr-only">
 											Email
 										</label>
-										<input
-											type="email"
-											id="email"
-											name="email"
-											required
-											placeholder="EMAIL"
-											className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[10px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors"
-										/>
+									<input
+										type="email"
+										id="email"
+										name="email"
+										required
+										placeholder="EMAIL"
+										className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[12px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors"
+									/>
 									</div>
 								</div>
 
@@ -184,34 +181,34 @@ export function ContactSection() {
 									<label htmlFor="subject" className="sr-only">
 										Asunto
 									</label>
-									<input
-										type="text"
-										id="subject"
-										name="subject"
-										required
-										placeholder="ASUNTO"
-										className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[10px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors"
-									/>
+								<input
+									type="text"
+									id="subject"
+									name="subject"
+									required
+									placeholder="ASUNTO"
+									className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[12px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors"
+								/>
 								</div>
 
 								<div>
 									<label htmlFor="message" className="sr-only">
 										Mensaje
 									</label>
-									<textarea
-										id="message"
-										name="message"
-										required
-										rows={6}
-										placeholder="MENSAJE"
-										className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[10px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors resize-none"
-									/>
+								<textarea
+									id="message"
+									name="message"
+									required
+									rows={6}
+									placeholder="MENSAJE"
+									className="w-full bg-white/[.03] border border-white/[.08] px-4 py-4 text-sm text-white placeholder:text-gray-600 placeholder:text-[12px] placeholder:tracking-[.2em] focus:border-white/30 focus:outline-none transition-colors resize-none"
+								/>
 								</div>
 
 								<button
 									type="submit"
 									disabled={isSubmitting}
-									className="w-full bg-white text-[#0a0908] py-4 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+								className="w-full bg-white text-[#0a0908] py-4 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
 								>
 									{isSubmitting ? "ENVIANDO..." : "ENVIAR MENSAJE"}
 								</button>

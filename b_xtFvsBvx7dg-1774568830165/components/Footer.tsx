@@ -24,7 +24,7 @@ export function Footer() {
               height={32}
               className="w-6 h-6 sm:w-8 sm:h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity"
             />
-            <span className="text-[10px] sm:text-xs font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase">
+			<span className="text-[12px] sm:text-xs font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase">
               BYHORMIGA
             </span>
           </Link>
@@ -35,7 +35,7 @@ export function Footer() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="text-[9px] sm:text-[10px] font-medium tracking-[.2em] sm:tracking-[.25em] text-white/50 uppercase hover:text-white transition-colors"
+				className="text-[10px] sm:text-[12px] font-medium tracking-[.2em] sm:tracking-[.25em] text-white/50 uppercase hover:text-white transition-colors"
               >
                 {link.label}
               </Link>
@@ -43,7 +43,7 @@ export function Footer() {
           </nav>
 
           {/* Copyright */}
-          <p className="text-[8px] sm:text-[10px] tracking-[.1em] sm:tracking-[.15em] text-white/40 uppercase text-center lg:text-right">
+			<p className="text-[9px] sm:text-[12px] tracking-[.1em] sm:tracking-[.15em] text-white/40 uppercase text-center lg:text-right">
             © 2026 · Montevideo, Uruguay
           </p>
         </div>

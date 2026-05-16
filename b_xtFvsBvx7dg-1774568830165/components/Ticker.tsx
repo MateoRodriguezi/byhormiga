@@ -16,13 +16,13 @@ export function Ticker() {
           {items.map((item, j) => (
             <span key={j} className="flex items-center">
               <span
-                className={`text-[10px] tracking-[.25em] uppercase ${
+					className={`text-[12px] tracking-[.25em] uppercase ${
                   item.highlight ? 'text-black font-extrabold' : 'text-black/90'
                 }`}
               >
                 {item.text}
               </span>
-              <span className="mx-6 text-black/35 text-[8px]">●</span>
+				<span className="mx-6 text-black/35 text-[9px]">●</span>
             </span>
           ))}
         </div>

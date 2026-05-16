@@ -208,7 +208,7 @@ export default function RelajoPage() {
                 href="https://www.relajoperoconorden.com/hoodies"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-white text-[#0a0908] px-12 py-5 text-[11px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-colors"
+				className="inline-flex items-center gap-3 bg-white text-[#0a0908] px-12 py-5 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-colors"
               >
                 IR A LA TIENDA
                 <ExternalLink className="w-4 h-4" />

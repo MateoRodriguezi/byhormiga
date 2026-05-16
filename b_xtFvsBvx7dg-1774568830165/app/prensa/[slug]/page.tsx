@@ -46,14 +46,14 @@ export default async function PostPage({ params }: PostPageProps) {
           {/* Back link */}
           <Link
             href="/prensa"
-            className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-8 inline-block"
+			className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-8 inline-block"
           >
             ← VOLVER A PRENSA
           </Link>
 
           {/* Article Header */}
           <header className="mt-8 mb-12">
-            <time className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-6">
+			<time className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-6">
               {post.date}
             </time>
             <h1 className="text-3xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
@@ -97,7 +97,7 @@ export default async function PostPage({ params }: PostPageProps) {
           <div className="mt-16 pt-8 border-t border-white/[.08] flex justify-between items-center">
             <Link
               href="/prensa"
-              className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors"
+				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors"
             >
               ← MÁS NOTICIAS
             </Link>

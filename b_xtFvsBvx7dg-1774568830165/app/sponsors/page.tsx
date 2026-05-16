@@ -62,7 +62,7 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
           href={sponsor.website_url}
           target="_blank"
           rel="noreferrer"
-          className="w-full inline-flex items-center justify-center border border-white text-white px-6 py-3 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
+			className="w-full inline-flex items-center justify-center border border-white text-white px-6 py-3 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
         >
           VER SITIO
         </Link>

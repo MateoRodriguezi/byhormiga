@@ -55,7 +55,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 					className="absolute top-6 right-6"
 				>
 					<span
-						className={`text-[9px] tracking-[.2em] uppercase px-3 py-1.5 border ${
+						className={`text-[10px] tracking-[.2em] uppercase px-3 py-1.5 border ${
 							event.status === "en-venta"
 								? "border-white text-white bg-white/10 backdrop-blur-sm"
 								: "border-gray-600 text-gray-400 bg-gray-900/50 backdrop-blur-sm"
@@ -92,7 +92,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 				{/* CTA Button */}
 				<Link
 					href={`/eventos/${event.slug}`}
-					className="inline-flex items-center justify-center bg-white text-[#0a0908] px-6 py-3 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100"
+					className="inline-flex items-center justify-center bg-white text-[#0a0908] px-6 py-3 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100"
 				>
 					{event.status === "en-venta" ? "COMPRAR ENTRADAS" : "MÁS INFO"}
 				</Link>

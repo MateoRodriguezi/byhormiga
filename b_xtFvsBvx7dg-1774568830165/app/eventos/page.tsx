@@ -28,7 +28,7 @@ export default async function EventosPage() {
           <div className="mb-16">
             <Link
               href="/"
-              className="text-[10px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
+				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
             >
               ← VOLVER AL INICIO
             </Link>
@@ -53,7 +53,7 @@ export default async function EventosPage() {
                   {/* Date Column */}
                   <div className="w-full lg:w-[120px] shrink-0">
                     <div className="text-4xl lg:text-5xl font-black text-white">{event.day ?? '--'}</div>
-                    <div className="text-[10px] tracking-[.2em] text-gray-500 uppercase">
+					<div className="text-[12px] tracking-[.2em] text-gray-500 uppercase">
                       {event.month ?? 'TBA'} · {event.weekday ?? 'TBA'}
                     </div>
                   </div>
@@ -65,7 +65,7 @@ export default async function EventosPage() {
                         {event.name}
                       </h2>
                       {event.featured && (
-                        <span className="text-[8px] tracking-[.2em] text-white/40 uppercase border border-white/20 px-2 py-0.5">
+						<span className="text-[9px] tracking-[.2em] text-white/40 uppercase border border-white/20 px-2 py-0.5">
                           FEATURED
                         </span>
                       )}
@@ -82,7 +82,7 @@ export default async function EventosPage() {
                   {/* Status */}
                   <div className="lg:w-[140px] shrink-0">
                     <span
-                      className={`inline-block text-[10px] tracking-[.15em] uppercase px-3 py-1.5 border ${
+						className={`inline-block text-[12px] tracking-[.15em] uppercase px-3 py-1.5 border ${
                         event.status === 'en-venta'
                           ? 'border-white text-white'
                           : event.status === 'agotado'
@@ -102,7 +102,7 @@ export default async function EventosPage() {
                     {event.status === 'en-venta' && (
                       <Link
                         href={`/eventos/${event.slug}`}
-                        className="bg-white text-[#0a0908] px-6 py-3 text-[10px] font-bold tracking-[.15em] uppercase hover:bg-white/90 transition-colors"
+						className="bg-white text-[#0a0908] px-6 py-3 text-[12px] font-bold tracking-[.15em] uppercase hover:bg-white/90 transition-colors"
                       >
                         COMPRAR
                       </Link>

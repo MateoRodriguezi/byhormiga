@@ -32,7 +32,7 @@ function SectionHeader() {
       </div>
       <Link
         href="/eventos"
-        className="text-[10px] tracking-[.2em] text-white/60 uppercase hover:text-white transition-colors group"
+		className="text-[12px] tracking-[.2em] text-white/60 uppercase hover:text-white transition-colors group"
       >
         Ver todos{' '}
         <span className="inline-block transition-transform group-hover:translate-x-1">→</span>
@@ -66,7 +66,7 @@ function EventRow({ event, index }: { event: Event; index: number }) {
         {/* Date Column */}
         <div className="w-full lg:w-[100px] shrink-0">
           <div className="text-2xl sm:text-3xl lg:text-4xl font-black text-white">{event.day}</div>
-          <div className="text-[9px] sm:text-[10px] tracking-[.15em] sm:tracking-[.2em] text-gray-500 uppercase">
+		  <div className="text-[10px] sm:text-[12px] tracking-[.15em] sm:tracking-[.2em] text-gray-500 uppercase">
             {event.month} · {event.weekday}
           </div>
         </div>
@@ -78,7 +78,7 @@ function EventRow({ event, index }: { event: Event; index: number }) {
               {event.name}
             </h3>
             {event.featured && (
-              <span className="text-[8px] tracking-[.2em] text-white/40 uppercase border border-white/20 px-2 py-0.5">
+			  <span className="text-[9px] tracking-[.2em] text-white/40 uppercase border border-white/20 px-2 py-0.5">
                 FEATURED
               </span>
             )}
@@ -92,7 +92,7 @@ function EventRow({ event, index }: { event: Event; index: number }) {
         {/* Status - Hidden on mobile */}
         <div className="hidden lg:block w-[140px] shrink-0">
           <span
-            className={`inline-block text-[10px] tracking-[.15em] uppercase px-3 py-1.5 border ${
+			className={`inline-block text-[12px] tracking-[.15em] uppercase px-3 py-1.5 border ${
               event.status === 'en-venta'
                 ? 'border-white text-white'
                 : event.status === 'agotado'
@@ -112,16 +112,16 @@ function EventRow({ event, index }: { event: Event; index: number }) {
           {event.status === 'en-venta' ? (
             <Link
               href={`/eventos/${event.slug}`}
-              className="bg-white text-[#0a0908] px-5 py-2.5 text-[10px] font-bold tracking-[.15em] uppercase hover:bg-white/90 transition-colors"
+				className="bg-white text-[#0a0908] px-5 py-2.5 text-[12px] font-bold tracking-[.15em] uppercase hover:bg-white/90 transition-colors"
             >
               COMPRAR
             </Link>
           ) : event.status === 'agotado' ? (
-            <span className="text-[10px] tracking-[.15em] text-gray-600 uppercase lg:hidden">
+			<span className="text-[12px] tracking-[.15em] text-gray-600 uppercase lg:hidden">
               AGOTADO
             </span>
           ) : (
-            <span className="text-[10px] tracking-[.15em] text-gray-600 uppercase">
+			<span className="text-[12px] tracking-[.15em] text-gray-600 uppercase">
               PRÓXIMAMENTE
             </span>
           )}

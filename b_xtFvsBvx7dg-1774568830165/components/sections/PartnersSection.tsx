@@ -81,7 +81,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
         >
           <Link
             href="/sponsors"
-            className="inline-flex items-center justify-center border border-white text-white px-8 py-4 text-[10px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
+				className="inline-flex items-center justify-center border border-white text-white px-8 py-4 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
           >
             VER SPONSORS
           </Link>

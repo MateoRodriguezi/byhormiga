@@ -52,7 +52,7 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
           <Link
             href="/galeria"
-            className="mb-8 inline-block text-[10px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
+			className="mb-8 inline-block text-[12px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
           >
             ← VOLVER A GALERÍA
           </Link>
@@ -79,7 +79,7 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
               <h1 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
                 {item.event_name}
               </h1>
-              <p className="mt-4 text-[11px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
+			  <p className="mt-4 text-[12px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
               <p className="mt-8 max-w-xl text-sm leading-relaxed text-gray-400">
                 Registro visual del evento con una selección de escenas, atmósferas y momentos capturados en vivo.
               </p>

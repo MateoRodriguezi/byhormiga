@@ -37,7 +37,7 @@ function NewsCard({ news }: { news: Post }) {
             <p className="text-gray-400 text-sm leading-relaxed mb-6">{news.description}</p>
           )}
 
-          <span className="inline-flex items-center text-[10px] font-bold tracking-[.2em] uppercase text-white transition-colors group-hover:text-white/60">
+			<span className="inline-flex items-center text-[12px] font-bold tracking-[.2em] uppercase text-white transition-colors group-hover:text-white/60">
             LEER MÁS →
           </span>
         </div>

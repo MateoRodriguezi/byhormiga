@@ -46,13 +46,13 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
         <div className="mx-auto max-w-[980px] px-6 lg:px-12">
           <Link
             href="/noticias"
-            className="mb-8 inline-block text-[10px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
+			className="mb-8 inline-block text-[12px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
           >
             ← VOLVER A NOTICIAS
           </Link>
 
           <header className="mt-8 mb-12 border-b border-white/[.08] pb-10">
-            <time className="block text-[10px] tracking-[.2em] text-gray-500 uppercase mb-6">
+			<time className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-6">
               {post.date}
             </time>
             <h1 className="text-3xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
@@ -96,7 +96,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
           <div className="mt-16 border-t border-white/[.08] pt-8">
             <Link
               href="/noticias"
-              className="text-[10px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
+				className="text-[12px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
             >
               ← MÁS NOTICIAS
             </Link>

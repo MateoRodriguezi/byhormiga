@@ -20,7 +20,7 @@ export function InteractiveButton({
   className = '',
 }: InteractiveButtonProps) {
   const baseClasses =
-    'group relative inline-flex items-center justify-center px-8 py-4 text-[10px] font-bold tracking-[.2em] uppercase overflow-hidden transition-all duration-500'
+	'group relative inline-flex items-center justify-center px-8 py-4 text-[12px] font-bold tracking-[.2em] uppercase overflow-hidden transition-all duration-500'
 
   const variantClasses = {
     primary:
