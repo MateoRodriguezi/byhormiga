@@ -78,15 +78,6 @@ function EventCard({ event, index }: { event: Event; index: number }) {
         {/* Gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent opacity-80" />
 
-        {/* Featured badge */}
-        {event.featured && (
-          <div className="absolute top-4 right-4">
-            <span className="bg-white text-black text-[10px] tracking-[.2em] uppercase px-3 py-1.5 font-bold">
-              FEATURED
-            </span>
-          </div>
-        )}
-
         {/* Date badge */}
         {event.day && event.month && (
           <div className="absolute top-4 left-4 bg-white/10 backdrop-blur-sm border border-white/20 px-4 py-3 text-center min-w-[70px]">
