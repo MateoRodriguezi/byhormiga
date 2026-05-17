@@ -2,6 +2,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { Ticker } from '@/components/Ticker'
 import { HeroSection } from '@/components/sections/HeroSection'
+import { AboutSection } from '@/components/sections/AboutSection'
 import { StatsSection } from '@/components/sections/StatsSection'
 import { FeaturedEventsSection } from '@/components/sections/FeaturedEventsSection'
 import { EventsSection } from '@/components/sections/EventsSection'
@@ -25,6 +26,7 @@ export default async function HomePage() {
       <main>
         <HeroSection />
         <Ticker />
+        <AboutSection />
         <StatsSection />
         <FeaturedEventsSection events={events} />
         <EventsSection events={events} />
