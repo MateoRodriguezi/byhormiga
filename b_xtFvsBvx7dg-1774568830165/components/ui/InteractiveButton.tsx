@@ -8,7 +8,7 @@ interface InteractiveButtonProps {
   href?: string
   onClick?: () => void
   children: ReactNode
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'outline'
   className?: string
 }
 
@@ -27,6 +27,8 @@ export function InteractiveButton({
       'bg-white text-[#0a0908] hover:bg-[#0a0908] hover:text-white border border-white',
     secondary:
       'bg-[#0a0908] text-white hover:bg-white hover:text-[#0a0908] border border-white',
+    outline:
+      'bg-transparent text-white hover:bg-white hover:text-[#0a0908] border border-white',
   }
 
   const classes = `${baseClasses} ${variantClasses[variant]} ${className}`
