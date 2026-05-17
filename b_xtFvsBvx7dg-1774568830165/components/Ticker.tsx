@@ -6,7 +6,6 @@ export function Ticker() {
     { text: 'EVENTS', highlight: false },
     { text: 'CREATIVE', highlight: false },
     { text: 'CORPORATE', highlight: false },
-    { text: 'MONTEVIDEO', highlight: false },
   ]
 
   const tickerContent = (

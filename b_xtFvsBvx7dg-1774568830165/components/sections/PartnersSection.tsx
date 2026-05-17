@@ -18,14 +18,14 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   const displaySponsors = sponsors?.length > 0 ? sponsors : defaultSponsors
 
   const renderSponsor = (sponsor: Sponsor) => (
-    <div className="flex flex-col items-center justify-center gap-3">
+    <div className="flex flex-col items-center justify-center gap-4">
       {sponsor.logo ? (
-        <div className="relative h-20 w-36 lg:h-24 lg:w-44 opacity-80 hover:opacity-100 transition-opacity">
-          <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
+        <div className="relative h-28 w-48 lg:h-36 lg:w-60 opacity-100 hover:opacity-90 transition-opacity">
+          <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain brightness-0 invert" />
         </div>
       ) : null}
 
-      <div className="text-white text-sm lg:text-base font-medium text-center uppercase tracking-[0.2em]">
+      <div className="text-white text-lg lg:text-xl font-bold text-center uppercase tracking-[0.25em]">
         {sponsor.name}
       </div>
     </div>
@@ -42,7 +42,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
+          <span className="text-sm sm:text-base lg:text-lg tracking-[.25em] text-white uppercase font-mono font-semibold">
             MARCAS QUE CONFIARON EN NOSOTROS
           </span>
         </motion.div>
