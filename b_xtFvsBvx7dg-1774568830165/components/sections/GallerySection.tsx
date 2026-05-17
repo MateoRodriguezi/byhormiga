@@ -58,7 +58,7 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
 			setActiveImageIndex(
 				(currentIndex) => (currentIndex + 1) % galleryImages.length,
 			);
-		}, 900);
+		}, 600);
 
 		return () => clearInterval(interval);
 	}, [galleryImages.length, isHovered]);

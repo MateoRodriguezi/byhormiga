@@ -21,7 +21,7 @@ export function HeroSection() {
 	useEffect(() => {
 		const timeout = setTimeout(() => {
 			setShowContent(true);
-		}, 500);
+		}, 100);
 
 		return () => clearTimeout(timeout);
 	}, []);
@@ -83,7 +83,7 @@ export function HeroSection() {
 							? { opacity: 1, y: 0, scale: 1 }
 							: { opacity: 0, y: 40, scale: 0.92 }
 					}
-					transition={{ duration: 0.9, ease: [0.215, 0.61, 0.355, 1] }}
+					transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
 					className="flex justify-center"
 				>
 					<Image
