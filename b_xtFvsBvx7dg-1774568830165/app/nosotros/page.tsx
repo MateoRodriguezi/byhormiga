@@ -137,38 +137,72 @@ function AboutSection() {
 					})}
 				</div>
 
-				<motion.div
-					initial={{ opacity: 0, y: 30 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ duration: 0.6 }}
-					className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-14 lg:mt-20"
-				>
-					<div className="border border-white/[.08] p-8 text-center">
-						<div className="text-5xl font-black text-white mb-2">30+</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase">
+				{/* Stats Cards with Interactive Hover */}
+				<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-14 lg:mt-20">
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.6, delay: 0 }}
+						whileHover={{ scale: 1.05, y: -8 }}
+						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
+					>
+						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
+							30+
+						</div>
+						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
 							Años
 						</div>
-					</div>
-					<div className="border border-white/[.08] p-8 text-center">
-						<div className="text-5xl font-black text-white mb-2">500+</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase">
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.6, delay: 0.1 }}
+						whileHover={{ scale: 1.05, y: -8 }}
+						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
+					>
+						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
+							500+
+						</div>
+						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
 							Eventos
 						</div>
-					</div>
-					<div className="border border-white/[.08] p-8 text-center">
-						<div className="text-5xl font-black text-white mb-2">200+</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase">
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.6, delay: 0.2 }}
+						whileHover={{ scale: 1.05, y: -8 }}
+						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
+					>
+						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
+							200+
+						</div>
+						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
 							Artistas
 						</div>
-					</div>
-					<div className="border border-white/[.08] p-8 text-center">
-						<div className="text-5xl font-black text-white mb-2">50+</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase">
+					</motion.div>
+
+					<motion.div
+						initial={{ opacity: 0, y: 30 }}
+						whileInView={{ opacity: 1, y: 0 }}
+						viewport={{ once: true }}
+						transition={{ duration: 0.6, delay: 0.3 }}
+						whileHover={{ scale: 1.05, y: -8 }}
+						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
+					>
+						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
+							50+
+						</div>
+						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
 							Por Mes
 						</div>
-					</div>
-				</motion.div>
+					</motion.div>
+				</div>
 			</div>
 		</section>
 	);
