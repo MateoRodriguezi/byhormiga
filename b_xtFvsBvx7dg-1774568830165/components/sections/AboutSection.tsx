@@ -64,12 +64,29 @@ export function AboutSection() {
           </h2>
         </motion.div>
 
+        {/* Intro con texto destacado */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="max-w-4xl mx-auto mb-20 lg:mb-32"
+        >
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed text-center">
+            ByHormiga nació en 1996 con una misión clara:{' '}
+            <span className="text-white font-bold">
+              crear momentos únicos que las personas recordarán para siempre.
+            </span>{' '}
+            Lo que comenzó como una pequeña productora de eventos se ha convertido en la empresa
+            líder de entretenimiento en Uruguay.
+          </p>
+        </motion.div>
+
         {/* Section 1: Estadísticas - Image Left, Text Right */}
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 lg:mb-32">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
             className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800"
           >
             {/* Placeholder - reemplazar con imagen real */}
@@ -81,7 +98,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
             className="space-y-6"
           >
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
@@ -101,7 +118,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
             className="space-y-6 lg:order-1"
           >
             <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
@@ -117,7 +134,7 @@ export function AboutSection() {
           <motion.div
             initial={{ opacity: 0, x: 30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-800 via-black to-gray-900 lg:order-2"
           >
             {/* Placeholder - reemplazar con imagen real */}
