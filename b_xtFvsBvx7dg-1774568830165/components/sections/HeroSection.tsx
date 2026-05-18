@@ -72,8 +72,7 @@ export function HeroSection() {
 					transition={{ duration: 0.6 }}
 					className="flex items-center gap-4 mb-6 justify-center"
 				>
-					<span className="w-8 h-px bg-gray-500" />
-				</motion.div>
+					</motion.div>
 
 				{/* Main Logo */}
 				<motion.div
@@ -101,11 +100,11 @@ export function HeroSection() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 					transition={{ delay: showContent ? 0.35 : 0, duration: 0.6 }}
-					className="mt-8 text-base lg:text-xl max-w-2xl leading-relaxed flex flex-col items-center"
+					className="mt-8 text-base lg:text-xl max-w-2xl leading-relaxed"
 				>
-					<div className="flex flex-wrap items-baseline justify-center gap-2 text-center">
+					<div className="flex flex-col sm:flex-row items-center justify-center gap-x-2 gap-y-1 text-center">
 						<span className="text-gray-400">Dedicados a crear</span>
-						<div className="relative inline-block min-w-[280px] text-center">
+						<div className="relative inline-block text-center">
 							<AnimatePresence mode="wait">
 								<motion.span
 									key={currentTextIndex}
