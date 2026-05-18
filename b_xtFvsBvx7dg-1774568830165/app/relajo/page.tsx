@@ -2,6 +2,7 @@
 
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { Ticker } from '@/components/ui/Ticker'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -46,36 +47,72 @@ const categories = [
   { name: 'Personalizados', description: 'Diseños únicos para tu grupo' },
 ]
 
+const tickerItems = ['Hoodies', 'Remerones', 'Style', 'Oversize']
+
 export default function RelajoPage() {
   return (
     <>
       <Navbar />
       <main>
-        {/* Hero Section */}
-        <section className="relative min-h-[70vh] bg-[#0a0908] flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-24 pb-12">
-          <div className="max-w-[1400px] mx-auto w-full">
+        {/* Hero Section - Clean logo only */}
+        <section className="relative min-h-screen bg-white flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 pt-24 pb-12">
+          <div className="flex-1 flex items-center justify-center w-full">
             <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
+              initial={{ opacity: 0, y: 40, scale: 0.92 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
               className="text-center"
             >
-              <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
-                RELAJO PERO CON ORDEN
-              </span>
-              <h1 className="mt-6 text-5xl lg:text-8xl font-black tracking-tight text-white uppercase leading-tight">
-                HOODIES<br />
-                <span className="text-gray-600">CON ESTILO</span>
-              </h1>
-              <p className="mt-8 text-lg lg:text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-                Ropa oversize, diseños que rompen el molde y una nueva línea de Stone Wash.
-              </p>
+              {/* Logo - AGREGAR LA IMAGEN DEL LOGO AQUÍ */}
+              <div className="flex justify-center mb-8">
+                {/* Placeholder - Replace with actual logo */}
+                <div className="text-8xl md:text-9xl lg:text-[12rem] font-black text-black uppercase tracking-tighter leading-none">
+                  RELAJO
+                </div>
+                {/* Cuando tengas el logo, usa esto:
+                <Image
+                  src="/images/relajo-logo.png"
+                  alt="Relajo"
+                  width={1200}
+                  height={400}
+                  priority
+                  className="w-[min(84vw,1000px)] h-auto object-contain"
+                />
+                */}
+              </div>
+
+              <motion.p
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.3, duration: 0.6 }}
+                className="text-sm md:text-base tracking-[.25em] text-black/60 uppercase font-mono"
+              >
+                PERO CON ORDEN
+              </motion.p>
             </motion.div>
           </div>
+
+          {/* Scroll indicator */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7, duration: 0.6 }}
+            className="absolute bottom-8 left-1/2 -translate-x-1/2 hidden lg:flex flex-col items-center gap-4"
+          >
+            <span className="text-[10px] tracking-[.25em] text-black/40 uppercase">
+              SCROLL
+            </span>
+            <div className="w-px h-16 bg-black/10 relative overflow-hidden">
+              <div className="absolute inset-0 bg-black/40 animate-scroll-line" />
+            </div>
+          </motion.div>
         </section>
 
+        {/* Ticker Section */}
+        <Ticker items={tickerItems} speed={20} />
+
         {/* Products Grid */}
-        <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+        <section className="bg-white py-20 lg:py-32 px-4 sm:px-6 lg:px-12">
           <div className="max-w-[1600px] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -83,7 +120,7 @@ export default function RelajoPage() {
               viewport={{ once: true }}
               className="text-center mb-16"
             >
-              <h2 className="text-4xl lg:text-6xl font-black text-white uppercase mb-4">
+              <h2 className="text-4xl lg:text-6xl font-black text-black uppercase mb-4">
                 PRODUCTOS DESTACADOS
               </h2>
             </motion.div>
@@ -96,10 +133,10 @@ export default function RelajoPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
-                  className="group border border-white/[.08] hover:border-white/20 transition-all overflow-hidden"
+                  className="group border border-black/10 hover:border-black/30 transition-all overflow-hidden bg-stone-50"
                 >
                   {/* Product image */}
-                  <div className="aspect-square relative overflow-hidden bg-stone-900">
+                  <div className="aspect-square relative overflow-hidden bg-stone-100">
                     <Image
                       src={product.image}
                       alt={`${product.name} - ${product.color}`}
@@ -109,13 +146,13 @@ export default function RelajoPage() {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                     <div className="absolute bottom-4 left-4 right-4">
-                      <span className="text-xs tracking-wider uppercase text-white/80">{product.color}</span>
+                      <span className="text-xs tracking-wider uppercase text-white/90">{product.color}</span>
                     </div>
                   </div>
 
                   {/* Product info */}
-                  <div className="p-6">
-                    <h3 className="text-lg font-bold text-white uppercase">{product.name}</h3>
+                  <div className="p-6 bg-white">
+                    <h3 className="text-lg font-bold text-black uppercase">{product.name}</h3>
                   </div>
                 </motion.div>
               ))}
@@ -124,7 +161,7 @@ export default function RelajoPage() {
         </section>
 
         {/* Categories */}
-        <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+        <section className="bg-stone-50 py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-y border-black/10">
           <div className="max-w-[1400px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {categories.map((category, index) => (
@@ -134,11 +171,11 @@ export default function RelajoPage() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.15 }}
-                  className="border border-white/[.08] p-8 lg:p-10 text-center"
+                  className="border border-black/10 p-8 lg:p-10 text-center bg-white"
                 >
-                  <div className="text-4xl font-black text-white mb-4">{String(index + 1).padStart(2, '0')}</div>
-                  <h3 className="text-2xl font-bold text-white uppercase mb-3">{category.name}</h3>
-                  <p className="text-sm text-gray-400">{category.description}</p>
+                  <div className="text-4xl font-black text-black mb-4">{String(index + 1).padStart(2, '0')}</div>
+                  <h3 className="text-2xl font-bold text-black uppercase mb-3">{category.name}</h3>
+                  <p className="text-sm text-black/60">{category.description}</p>
                 </motion.div>
               ))}
             </div>
@@ -146,7 +183,7 @@ export default function RelajoPage() {
         </section>
 
         {/* Nosotros Section */}
-        <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+        <section className="bg-white py-20 lg:py-32 px-4 sm:px-6 lg:px-12">
           <div className="max-w-[900px] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -154,11 +191,11 @@ export default function RelajoPage() {
               viewport={{ once: true }}
               className="text-center"
             >
-              <h2 className="text-4xl lg:text-6xl font-black text-white uppercase mb-8">
+              <h2 className="text-4xl lg:text-6xl font-black text-black uppercase mb-8">
                 Nosotros
               </h2>
-              <div className="space-y-6 text-gray-400 leading-relaxed text-lg">
-                <p className="text-xl text-white font-bold">
+              <div className="space-y-6 text-black/70 leading-relaxed text-lg">
+                <p className="text-xl text-black font-bold">
                   Bienvenidos al verdadero Relajo.
                 </p>
                 <p>
@@ -177,10 +214,10 @@ export default function RelajoPage() {
                   Date una vuelta por nuestra colección y descubrí cómo tu ropa puede hablar por vos sin decir una sola palabra.
                   Sabemos que no todo el mundo sigue las mismas reglas, así que si llegaste hasta acá te preguntamos:
                 </p>
-                <p className="text-2xl text-white font-black pt-4">
+                <p className="text-2xl text-black font-black pt-4">
                   ¿Quién dice que no se puede vestir con un poco de Relajo?
                 </p>
-                <p className="text-sm text-gray-500 italic">
+                <p className="text-sm text-black/40 italic">
                   (ahora... que sea con un poco de orden).
                 </p>
               </div>
@@ -189,17 +226,17 @@ export default function RelajoPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+        <section className="bg-stone-50 py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-black/10">
           <div className="max-w-[800px] mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
             >
-              <h2 className="text-3xl lg:text-5xl font-black text-white uppercase mb-8">
+              <h2 className="text-3xl lg:text-5xl font-black text-black uppercase mb-8">
                 Comprá online
               </h2>
-              <p className="text-gray-400 mb-12">
+              <p className="text-black/60 mb-12">
                 Visitá nuestra tienda online para ver todos los modelos disponibles,
                 elegir tu talle y realizar tu pedido.
               </p>
@@ -208,13 +245,13 @@ export default function RelajoPage() {
                 href="https://www.relajoperoconorden.com/hoodies"
                 target="_blank"
                 rel="noopener noreferrer"
-				className="inline-flex items-center gap-3 bg-white text-[#0a0908] px-12 py-5 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-colors"
+                className="inline-flex items-center gap-3 bg-black text-white px-12 py-5 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-black/90 transition-colors"
               >
                 IR A LA TIENDA
                 <ExternalLink className="w-4 h-4" />
               </Link>
 
-              <p className="mt-6 text-xs text-gray-500">
+              <p className="mt-6 text-xs text-black/40">
                 relajoperoconorden.com
               </p>
             </motion.div>
