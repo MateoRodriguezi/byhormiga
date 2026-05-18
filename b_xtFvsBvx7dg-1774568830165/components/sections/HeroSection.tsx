@@ -129,11 +129,11 @@ export function HeroSection() {
 					transition={{ delay: showContent ? 0.5 : 0, duration: 0.6 }}
 					className="mt-10 flex flex-col sm:flex-row gap-4 justify-center"
 				>
-					<InteractiveButton href="/#eventos" variant="outline">
+					<InteractiveButton href="/#contacto" variant="outline">
 						Trabajemos juntos
 					</InteractiveButton>
-					<InteractiveButton href="/#contacto" variant="outline">
-						Contactanos
+					<InteractiveButton href="/#eventos" variant="outline">
+						Ver Eventos
 					</InteractiveButton>
 				</motion.div>
 

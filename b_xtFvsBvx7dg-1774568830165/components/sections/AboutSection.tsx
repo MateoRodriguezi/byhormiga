@@ -3,11 +3,13 @@
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 
-// Placeholder gradients hasta que se agreguen imágenes reales
-const backgroundGradients = [
-  'linear-gradient(135deg, #1a1a1a 0%, #0a0908 50%, #1a1a1a 100%)',
-  'linear-gradient(225deg, #0f0f0f 0%, #0a0908 50%, #1f1f1f 100%)',
-  'linear-gradient(315deg, #171717 0%, #0a0908 50%, #141414 100%)',
+// Imágenes de fondo que van rotando
+const backgroundImages = [
+  '/mock-photos/event-1.jpeg',
+  '/mock-photos/event-2.jpeg',
+  '/mock-photos/event-3.jpeg',
+  '/mock-photos/event-4.jpeg',
+  '/mock-photos/event-5.jpg',
 ]
 
 export function AboutSection() {
@@ -18,7 +20,7 @@ export function AboutSection() {
   // Cambiar imagen de fondo cada 5 segundos
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentBgIndex((prev) => (prev + 1) % backgroundGradients.length)
+      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length)
     }, 5000)
     return () => clearInterval(interval)
   }, [])
@@ -31,20 +33,21 @@ export function AboutSection() {
           <motion.div
             key={currentBgIndex}
             initial={{ opacity: 0 }}
-            animate={{ opacity: 0.08 }}
+            animate={{ opacity: 0.04 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 1.5 }}
+            transition={{ duration: 2 }}
             className="absolute inset-0"
           >
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 bg-cover bg-center"
               style={{
-                background: backgroundGradients[currentBgIndex],
+                backgroundImage: `url(${backgroundImages[currentBgIndex]})`,
+                filter: 'grayscale(0.8)',
               }}
             />
           </motion.div>
         </AnimatePresence>
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/80 via-[#0a0908]/60 to-[#0a0908]" />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/85 via-[#0a0908]/70 to-[#0a0908]" />
       </div>
 
       <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-12">
