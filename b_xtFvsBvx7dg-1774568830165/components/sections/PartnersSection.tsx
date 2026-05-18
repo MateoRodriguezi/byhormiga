@@ -1,9 +1,19 @@
 'use client'
 
-import { motion } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
+import { useState, useEffect } from 'react'
 import type { Sponsor } from '@/lib/types'
+
+// Imágenes de fondo que van rotando
+const backgroundImages = [
+  '/mock-photos/event-1.jpeg',
+  '/mock-photos/event-2.jpeg',
+  '/mock-photos/event-3.jpeg',
+  '/mock-photos/event-4.jpeg',
+  '/mock-photos/event-5.jpg',
+]
 
 const defaultSponsors: Sponsor[] = [
   { id: 1, name: 'Speed', logo: null },
@@ -16,6 +26,15 @@ const defaultSponsors: Sponsor[] = [
 
 export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   const displaySponsors = sponsors?.length > 0 ? sponsors : defaultSponsors
+  const [currentBgIndex, setCurrentBgIndex] = useState(0)
+
+  // Cambiar imagen de fondo cada 6 segundos
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentBgIndex((prev) => (prev + 1) % backgroundImages.length)
+    }, 6000)
+    return () => clearInterval(interval)
+  }, [])
 
   const renderSponsor = (sponsor: Sponsor) => (
     <div className="flex flex-col items-center justify-center gap-4">
@@ -32,15 +51,38 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   )
 
   return (
-    <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
-      <div className="max-w-[1600px] mx-auto">
+    <section className="relative bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08] overflow-hidden">
+      {/* Background images con baja opacidad que van cambiando */}
+      <div className="absolute inset-0 z-0">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={currentBgIndex}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 0.04 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2 }}
+            className="absolute inset-0"
+          >
+            <div
+              className="absolute inset-0 bg-cover bg-center"
+              style={{
+                backgroundImage: `url(${backgroundImages[currentBgIndex]})`,
+                filter: 'grayscale(0.8)',
+              }}
+            />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/85 via-[#0a0908]/70 to-[#0a0908]" />
+      </div>
+
+      <div className="relative z-10 max-w-[1600px] mx-auto">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-20 lg:mb-24"
         >
           <span className="text-sm sm:text-base lg:text-lg tracking-[.25em] text-white uppercase font-mono font-semibold">
             MARCAS QUE CONFIARON EN NOSOTROS
