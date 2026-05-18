@@ -65,14 +65,6 @@ export function HeroSection() {
 
 			{/* Main content */}
 			<div className="relative z-10 max-w-[1600px] mx-auto w-full flex flex-col items-center text-center">
-				{/* Overline */}
-				<motion.div
-					initial={{ opacity: 0, y: 24 }}
-					animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-					transition={{ duration: 0.6 }}
-					className="flex items-center gap-4 mb-6 justify-center"
-				>
-					</motion.div>
 
 				{/* Main Logo */}
 				<motion.div
