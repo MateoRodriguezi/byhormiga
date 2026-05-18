@@ -56,29 +56,23 @@ export default function RelajoPage() {
       <main>
         {/* Hero Section - Clean logo only */}
         <section className="relative min-h-screen bg-white flex flex-col justify-center items-center px-4 sm:px-6 lg:px-12 pt-24 pb-12">
-          <div className="flex-1 flex items-center justify-center w-full">
+          <div className="absolute inset-0 flex items-center justify-center">
             <motion.div
               initial={{ opacity: 0, y: 40, scale: 0.92 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               transition={{ duration: 0.8, ease: [0.215, 0.61, 0.355, 1] }}
-              className="text-center"
+              className="flex flex-col items-center justify-center"
             >
-              {/* Logo - AGREGAR LA IMAGEN DEL LOGO AQUÍ */}
+              {/* Logo */}
               <div className="flex justify-center mb-8">
-                {/* Placeholder - Replace with actual logo */}
-                <div className="text-8xl md:text-9xl lg:text-[12rem] font-black text-black uppercase tracking-tighter leading-none">
-                  RELAJO
-                </div>
-                {/* Cuando tengas el logo, usa esto:
                 <Image
-                  src="/images/relajo-logo.png"
+                  src="/images/Recurso 4.png"
                   alt="Relajo"
                   width={1200}
-                  height={400}
+                  height={300}
                   priority
-                  className="w-[min(84vw,1000px)] h-auto object-contain"
+                  className="w-[min(90vw,1000px)] h-auto object-contain"
                 />
-                */}
               </div>
 
               <motion.p
