@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '/#eventos', label: 'EVENTOS' },
+  { href: '/eventos', label: 'EVENTOS' },
   { href: '/galeria', label: 'GALERIA' },
   { href: '/nosotros', label: 'NOSOTROS' },
   { href: '/sponsors', label: 'SPONSORS' },
