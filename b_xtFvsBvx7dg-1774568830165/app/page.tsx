@@ -25,7 +25,7 @@ export default async function HomePage() {
       <Navbar />
       <main>
         <HeroSection />
-        <Ticker />
+        <Ticker sponsors={sponsors} />
         <AboutSection />
         <StatsSection />
         <FeaturedEventsSection events={events} />
