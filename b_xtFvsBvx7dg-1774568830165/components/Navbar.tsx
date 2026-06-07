@@ -7,17 +7,24 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { cn } from '@/lib/utils'
 
 const navLinks = [
-  { href: '/eventos', label: 'EVENTOS' },
-  { href: '/galeria', label: 'GALERIA' },
   { href: '/nosotros', label: 'NOSOTROS' },
-  { href: '/sponsors', label: 'SPONSORS' },
+  {
+    href: '/eventos',
+    label: 'EVENTOS',
+    submenu: [
+      { href: '/eventos/activos', label: 'ACTIVOS' },
+      { href: '/eventos/todos', label: 'TODOS' },
+    ]
+  },
+  { href: '/momentos', label: 'MOMENTOS' },
   { href: '/noticias', label: 'NOTICIAS' },
-  { href: '/relajo', label: 'RELAJO' },
+  { href: '/sponsors', label: 'SPONSORS' },
 ]
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+  const [openSubmenu, setOpenSubmenu] = useState<string | null>(null)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -82,13 +89,49 @@ export function Navbar() {
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-12">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-					className="text-[12px] font-medium tracking-[.25em] text-white/70 uppercase hover:text-white transition-colors"
-                >
-                  {link.label}
-                </Link>
+                'submenu' in link ? (
+                  <div
+                    key={link.href}
+                    className="relative"
+                    onMouseEnter={() => setOpenSubmenu(link.label)}
+                    onMouseLeave={() => setOpenSubmenu(null)}
+                  >
+                    <button
+                      className="text-[12px] font-medium tracking-[.25em] text-white/70 uppercase hover:text-white transition-colors"
+                    >
+                      {link.label}
+                    </button>
+                    <AnimatePresence>
+                      {openSubmenu === link.label && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          transition={{ duration: 0.2 }}
+                          className="absolute top-full left-0 mt-4 bg-[#0a0908] border border-white/10 shadow-2xl min-w-[160px] py-2"
+                        >
+                          {link.submenu.map((sublink) => (
+                            <Link
+                              key={sublink.href}
+                              href={sublink.href}
+                              className="block px-5 py-2.5 text-[11px] tracking-[.2em] text-white/70 uppercase hover:text-white hover:bg-white/5 transition-colors"
+                            >
+                              {sublink.label}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="text-[12px] font-medium tracking-[.25em] text-white/70 uppercase hover:text-white transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
             </div>
 
@@ -144,16 +187,51 @@ export function Navbar() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: index * 0.1, duration: 0.4 }}
+                  className="flex flex-col items-center gap-4"
                 >
-                  <Link
-                    href={link.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase hover:text-white/60 transition-colors"
-                  >
-                    {link.label}
-                  </Link>
+                  {'submenu' in link ? (
+                    <>
+                      <span className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase">
+                        {link.label}
+                      </span>
+                      <div className="flex flex-col items-center gap-3">
+                        {link.submenu.map((sublink) => (
+                          <Link
+                            key={sublink.href}
+                            href={sublink.href}
+                            onClick={() => setIsMobileMenuOpen(false)}
+                            className="text-lg text-white/70 uppercase hover:text-white transition-colors tracking-wider"
+                          >
+                            {sublink.label}
+                          </Link>
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <Link
+                      href={link.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase hover:text-white/60 transition-colors"
+                    >
+                      {link.label}
+                    </Link>
+                  )}
                 </motion.div>
               ))}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ delay: navLinks.length * 0.1, duration: 0.4 }}
+              >
+                <Link
+                  href="/#contacto"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight text-white uppercase hover:text-white/60 transition-colors"
+                >
+                  CONTACTO
+                </Link>
+              </motion.div>
             </nav>
           </motion.div>
         )}

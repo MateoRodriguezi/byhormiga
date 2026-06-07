@@ -7,7 +7,7 @@ import { getGalleryCoverImage } from '@/lib/gallery'
 import { getGallery } from '@/lib/api'
 
 export const metadata: Metadata = {
-  title: 'Galería | BYHORMIGA',
+  title: 'Momentos | BYHORMIGA',
   description: 'Momentos capturados en los eventos de BYHORMIGA.',
 }
 
@@ -31,7 +31,7 @@ export default async function GaleriaPage() {
               ARCHIVO VISUAL
             </span>
             <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
-              GALERÍA
+              MOMENTOS
             </h1>
           </div>
 
@@ -41,7 +41,7 @@ export default async function GaleriaPage() {
               {gallery.map((item, index) => (
               <Link
                 key={item.id}
-                href={`/galeria/${item.slug}`}
+                href={`/momentos/${item.slug}`}
                 className={`relative overflow-hidden group block ${
                   index === 0 ? 'col-span-2 row-span-2' : ''
                 }`}

@@ -30,9 +30,22 @@ class Event(TimeStampMixin):
         ("sold_out", "Agotado"),
     ]
 
+    CATEGORY_CHOICES = [
+        ("matinee", "Matineé (12-15 años)"),
+        ("plus15", "+15 (15-17 años)"),
+        ("plus18", "+18 (18+ años)"),
+        ("coproduccion_internacional", "Co-Producción Internacional"),
+        ("coproduccion_nacional", "Co-Producción Nacional"),
+    ]
+
     title = models.CharField(max_length=200, verbose_name="Título")
     slug = models.SlugField(max_length=200, unique=True, verbose_name="Slug")
     description = models.TextField(verbose_name="Descripción")
+    long_description = models.TextField(
+        blank=True,
+        verbose_name="Descripción larga",
+        help_text="Descripción detallada para la página de categorías"
+    )
     date = models.DateTimeField(verbose_name="Fecha y hora")
     venue = models.ForeignKey(
         Venue, on_delete=models.PROTECT, related_name="events", verbose_name="Venue"
@@ -43,12 +56,45 @@ class Event(TimeStampMixin):
         null=True,
         verbose_name="Poster",
     )
+    logo = models.ImageField(
+        upload_to="events/logos/",
+        blank=True,
+        null=True,
+        verbose_name="Logo del evento",
+        help_text="Logo para mostrar en la página de categorías"
+    )
     ticket_url = models.URLField(blank=True, null=True, verbose_name="URL de tickets")
     price_info = models.CharField(
         max_length=200, blank=True, verbose_name="Información de precio"
     )
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="draft", verbose_name="Estado"
+    )
+    category = models.CharField(
+        max_length=50,
+        choices=CATEGORY_CHOICES,
+        blank=True,
+        null=True,
+        verbose_name="Categoría",
+        help_text="Categoría del evento para organización"
+    )
+    average_attendance = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Promedio de asistencia",
+        help_text="Promedio de personas por apertura"
+    )
+    frequency = models.CharField(
+        max_length=100,
+        blank=True,
+        verbose_name="Frecuencia",
+        help_text="Ej: Mensual, Trimestral, Anual"
+    )
+    active_since = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Activo desde (año)",
+        help_text="Año de inicio del evento"
     )
     featured = models.BooleanField(
         default=False,

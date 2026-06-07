@@ -73,22 +73,22 @@ function StatItem({
 export function StatsSection() {
 	const stats = [
 		{
-			value: "50+",
-			label: "Eventos Mensuales",
-			description: "Organizamos más de 50 eventos cada mes en todo Uruguay.",
+			value: "+200",
+			label: "eventos anuales",
+			description: "Producimos más de 200 eventos al año en distintos puntos de Uruguay.",
 			isNumber: true,
 		},
 		{
-			value: "200+",
-			label: "Artistas",
+			value: "+150",
+			label: "artistas anuales",
 			description:
-				"Hemos trabajado con más de 200 artistas nacionales e internacionales.",
+				"Trabajamos junto a más de 150 artistas nacionales e internacionales, provenientes de Puerto Rico, Colombia, Estados Unidos y otros países.",
 			isNumber: true,
 		},
 		{
-			value: "500+",
-			label: "Fiestas Producidas",
-			description: "Más de 500 fiestas producidas en 30 años de trayectoria.",
+			value: "+200.000",
+			label: "tickets anuales",
+			description: "Más de 200.000 personas forman parte de nuestras experiencias cada año.",
 			isNumber: true,
 		},
 	];

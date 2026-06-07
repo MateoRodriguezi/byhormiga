@@ -26,11 +26,11 @@ export async function generateMetadata({ params }: GalleryDetailPageProps): Prom
   const item = await getGalleryItem(slug)
 
   if (!item) {
-    return { title: 'Galería no encontrada | BYHORMIGA' }
+    return { title: 'Momento no encontrado | BYHORMIGA' }
   }
 
   return {
-    title: `${item.event_name} | Galería BYHORMIGA`,
+    title: `${item.event_name} | Momentos BYHORMIGA`,
     description: `Archivo visual de ${item.event_name}.`,
   }
 }
@@ -51,10 +51,10 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
       <main className="min-h-screen bg-[#0a0908] pt-32 pb-24">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
           <Link
-            href="/galeria"
+            href="/momentos"
 			className="mb-8 inline-block text-[12px] tracking-[.2em] text-gray-500 uppercase transition-colors hover:text-white"
           >
-            ← VOLVER A GALERÍA
+            ← VOLVER A MOMENTOS
           </Link>
 
           <div className="mb-16 grid grid-cols-1 gap-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(320px,420px)] lg:items-end lg:gap-16">
@@ -109,7 +109,7 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
             </div>
           ) : (
             <div className="border border-white/[.08] bg-[#111111] px-6 py-10 text-center">
-              <p className="text-sm text-gray-400">Todavía no hay fotos adicionales publicadas para esta galería.</p>
+              <p className="text-sm text-gray-400">Todavía no hay fotos adicionales publicadas para este momento.</p>
             </div>
           )}
         </div>

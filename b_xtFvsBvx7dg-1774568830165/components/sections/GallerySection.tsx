@@ -24,7 +24,7 @@ function SectionHeader() {
 		>
 			<div>
 				<span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
-					GALERÍA
+					NUESTRA TRAYECTORIA
 				</span>
 				<h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
 					MOMENTOS
@@ -82,7 +82,7 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
 			style={{ minHeight: index === 0 ? "400px" : "200px" }}
 		>
 			<Link
-				href={`/galeria/${item.slug}`}
+				href={`/momentos/${item.slug}`}
 				className="group absolute inset-0 block"
 				onMouseEnter={() => setIsHovered(true)}
 				onMouseLeave={() => setIsHovered(false)}
@@ -129,7 +129,7 @@ export function GallerySection({ items }: GallerySectionProps) {
 	const isInView = useInView(ref, { once: true, margin: "-100px" });
 
 	return (
-		<section id="galeria" className="bg-[#0a0908] py-16 sm:py-24 lg:py-32">
+		<section id="momentos" className="bg-[#0a0908] py-16 sm:py-24 lg:py-32">
 			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
 				<SectionHeader />
 
@@ -149,10 +149,10 @@ export function GallerySection({ items }: GallerySectionProps) {
 					className="mt-12 lg:mt-16 text-center"
 				>
 					<Link
-						href="/galeria"
+						href="/momentos"
 						className="inline-flex items-center justify-center border border-white/30 text-white px-8 py-4 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
 					>
-						VER GALERÍA COMPLETA
+						VER TODOS LOS MOMENTOS
 					</Link>
 				</motion.div>
 			</div>

@@ -69,80 +69,36 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-4xl mx-auto mb-20 lg:mb-32"
+          className="max-w-5xl mx-auto mb-12 lg:mb-20"
         >
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed text-center">
-            ByHormiga nació en 1996 con una misión clara:{' '}
-            <span className="text-white font-bold">
-              crear momentos únicos que las personas recordarán para siempre.
-            </span>{' '}
-            Lo que comenzó como una pequeña productora de eventos se ha convertido en la empresa
-            líder de entretenimiento en Uruguay.
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
+            Somos una productora de eventos y entretenimiento en Uruguay, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en un referente del entretenimiento, desarrollando formatos innovadores para distintos públicos, con impacto, recordación y conexión emocional.
           </p>
         </motion.div>
 
-        {/* Section 1: Estadísticas - Image Left, Text Right */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-20 lg:mb-32">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-900 via-black to-gray-800"
-          >
-            {/* Placeholder - reemplazar con imagen real */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-20">
-              <span className="text-6xl font-black text-white">500+</span>
-            </div>
-          </motion.div>
+        {/* Section 1: Descripción adicional */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.3 }}
+          className="max-w-5xl mx-auto mb-20 lg:mb-32"
+        >
+          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+            Al año producimos un promedio de más de 200 eventos, trabajamos junto a más de 150 artistas nacionales e internacionales y convocamos a más de 200.000 personas. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
+          </p>
+        </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="space-y-6"
-          >
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
-              Hemos producido más de{' '}
-              <span className="text-white font-bold text-2xl lg:text-3xl">500 eventos</span>,
-              trabajado con más de{' '}
-              <span className="text-white font-bold text-2xl lg:text-3xl">200 artistas</span>{' '}
-              nacionales e internacionales, y creando{' '}
-              <span className="text-white font-bold">experiencias para miles de personas</span> que
-              confían en nosotros para los momentos más importantes de sus vidas.
-            </p>
-          </motion.div>
-        </div>
-
-        {/* Section 2: Filosofía - Text Left, Image Right */}
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.5 }}
-            className="space-y-6 lg:order-1"
-          >
-            <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
-              Nuestra filosofía es simple: cada evento es una oportunidad para crear algo
-              extraordinario.{' '}
-              <span className="text-white font-bold">
-                Combinamos creatividad, tecnología y pasión
-              </span>{' '}
-              para entregar experiencias que superan las expectativas.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-gray-800 via-black to-gray-900 lg:order-2"
-          >
-            {/* Placeholder - reemplazar con imagen real */}
-            <div className="absolute inset-0 flex items-center justify-center opacity-20">
-              <span className="text-6xl font-black text-white">∞</span>
-            </div>
-          </motion.div>
-        </div>
+        {/* Section 2: Filosofía */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="max-w-5xl mx-auto"
+        >
+          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+            Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, combinamos creatividad, tecnología y pasión para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.
+          </p>
+        </motion.div>
       </div>
     </section>
   )
