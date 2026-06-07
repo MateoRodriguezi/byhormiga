@@ -9,6 +9,29 @@ import { useEffect, useState } from 'react'
 import { getSponsors } from '@/lib/api'
 import type { Sponsor } from '@/lib/types'
 
+const defaultSponsors: Sponsor[] = [
+  { id: 1, name: 'Absolut', logo: '/sponsors/absolut.png' },
+  { id: 2, name: 'Animal', logo: '/sponsors/animal.png' },
+  { id: 3, name: 'Axe', logo: '/sponsors/axe.png' },
+  { id: 4, name: 'Baly', logo: '/sponsors/baly.png' },
+  { id: 5, name: 'Beefeater', logo: '/sponsors/beefeater.png' },
+  { id: 6, name: 'Buhero Fernet', logo: '/sponsors/buherofernet.png' },
+  { id: 7, name: 'Burger King', logo: '/sponsors/burgerking.png' },
+  { id: 8, name: 'Chivas', logo: '/sponsors/chivas.png' },
+  { id: 9, name: 'Dr Lemon', logo: '/sponsors/drlemon.png' },
+  { id: 10, name: 'Estrella Galicia', logo: '/sponsors/estrellagalicia.png' },
+  { id: 11, name: 'James', logo: '/sponsors/james.png' },
+  { id: 12, name: 'Johnnie Walker', logo: '/sponsors/johnnie.png' },
+  { id: 13, name: 'McDonald\'s', logo: '/sponsors/mc.png' },
+  { id: 14, name: 'Planet', logo: '/sponsors/planet.png' },
+  { id: 15, name: 'Relajo', logo: '/sponsors/relajo.png' },
+  { id: 16, name: 'Santander', logo: '/sponsors/santander.png' },
+  { id: 17, name: 'Speed', logo: '/sponsors/speed.png' },
+  { id: 18, name: 'Takis', logo: '/sponsors/takis.png' },
+  { id: 19, name: 'Topline', logo: '/sponsors/topline.png' },
+  { id: 20, name: 'Travel Rock', logo: '/sponsors/travelrock.png' },
+]
+
 function HeroSection() {
   return (
     <section className="relative min-h-[60vh] bg-[#0a0908] flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-24">
@@ -72,7 +95,7 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
 }
 
 export default function SponsorsPage() {
-  const [sponsors, setSponsors] = useState<Sponsor[]>([])
+  const [sponsors, setSponsors] = useState<Sponsor[]>(defaultSponsors)
 
   useEffect(() => {
     let active = true
@@ -80,11 +103,14 @@ export default function SponsorsPage() {
     getSponsors()
       .then((data) => {
         if (active) {
-          setSponsors(data)
+          setSponsors(data.length > 0 ? data : defaultSponsors)
         }
       })
       .catch((error) => {
         console.error('Sponsors API failed:', error)
+        if (active) {
+          setSponsors(defaultSponsors)
+        }
       })
 
     return () => {
@@ -116,11 +142,6 @@ export default function SponsorsPage() {
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {sponsors.length === 0 && (
-                <div className="md:col-span-2 lg:col-span-3 border border-white/[.08] p-8 text-center text-gray-500 uppercase tracking-[.15em] text-xs">
-                  No hay sponsors disponibles por el momento
-                </div>
-              )}
               {sponsors.map((sponsor, index) => (
                 <SponsorCard key={sponsor.id} sponsor={sponsor} index={index} />
               ))}

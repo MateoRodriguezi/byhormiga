@@ -59,9 +59,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
             alt={sponsor.name}
             fill
             className="object-contain brightness-0 invert"
-            onError={(e) => {
-              e.currentTarget.style.display = 'none';
-            }}
+            sizes="(max-width: 768px) 160px, 192px"
           />
         </div>
       ) : (
