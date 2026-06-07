@@ -169,10 +169,6 @@ function CategorySection({
                     fill
                     className="object-contain object-left brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    onError={(e) => {
-                      // Si falla la carga de la imagen, ocultar el contenedor
-                      e.currentTarget.style.display = 'none';
-                    }}
                   />
                 </div>
               </div>
