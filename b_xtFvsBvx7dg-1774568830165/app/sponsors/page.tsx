@@ -5,8 +5,6 @@ import { Footer } from '@/components/Footer'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
 import Link from 'next/link'
-import { useEffect, useState } from 'react'
-import { getSponsors } from '@/lib/api'
 import type { Sponsor } from '@/lib/types'
 
 const defaultSponsors: Sponsor[] = [
@@ -95,28 +93,7 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
 }
 
 export default function SponsorsPage() {
-  const [sponsors, setSponsors] = useState<Sponsor[]>(defaultSponsors)
-
-  useEffect(() => {
-    let active = true
-
-    getSponsors()
-      .then((data) => {
-        if (active) {
-          setSponsors(data.length > 0 ? data : defaultSponsors)
-        }
-      })
-      .catch((error) => {
-        console.error('Sponsors API failed:', error)
-        if (active) {
-          setSponsors(defaultSponsors)
-        }
-      })
-
-    return () => {
-      active = false
-    }
-  }, [])
+  const sponsors = defaultSponsors
 
   return (
     <>
