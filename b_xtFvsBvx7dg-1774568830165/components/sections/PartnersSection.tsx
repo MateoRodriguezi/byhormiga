@@ -16,12 +16,26 @@ const backgroundImages = [
 ]
 
 const defaultSponsors: Sponsor[] = [
-  { id: 1, name: 'Speed', logo: null },
-  { id: 2, name: 'Pilsen', logo: null },
-  { id: 3, name: 'Coca Cola', logo: null },
-  { id: 4, name: 'Absolut', logo: null },
-  { id: 5, name: 'Red Bull', logo: null },
-  { id: 6, name: 'Beats', logo: null },
+  { id: 1, name: 'Absolut', logo: '/sponsors/absolut.png' },
+  { id: 2, name: 'Animal', logo: '/sponsors/animal.png' },
+  { id: 3, name: 'Axe', logo: '/sponsors/axe.png' },
+  { id: 4, name: 'Baly', logo: '/sponsors/baly.png' },
+  { id: 5, name: 'Beefeater', logo: '/sponsors/beefeater.png' },
+  { id: 6, name: 'Buhero Fernet', logo: '/sponsors/buherofernet.png' },
+  { id: 7, name: 'Burger King', logo: '/sponsors/burgerking.png' },
+  { id: 8, name: 'Chivas', logo: '/sponsors/chivas.png' },
+  { id: 9, name: 'Dr Lemon', logo: '/sponsors/drlemon.png' },
+  { id: 10, name: 'Estrella Galicia', logo: '/sponsors/estrellagalicia.png' },
+  { id: 11, name: 'James', logo: '/sponsors/james.png' },
+  { id: 12, name: 'Johnnie Walker', logo: '/sponsors/johnnie.png' },
+  { id: 13, name: 'McDonald\'s', logo: '/sponsors/mc.png' },
+  { id: 14, name: 'Planet', logo: '/sponsors/planet.png' },
+  { id: 15, name: 'Relajo', logo: '/sponsors/relajo.png' },
+  { id: 16, name: 'Santander', logo: '/sponsors/santander.png' },
+  { id: 17, name: 'Speed', logo: '/sponsors/speed.png' },
+  { id: 18, name: 'Takis', logo: '/sponsors/takis.png' },
+  { id: 19, name: 'Topline', logo: '/sponsors/topline.png' },
+  { id: 20, name: 'Travel Rock', logo: '/sponsors/travelrock.png' },
 ]
 
 export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
@@ -37,16 +51,24 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   }, [])
 
   const renderSponsor = (sponsor: Sponsor) => (
-    <div className="flex flex-col items-center justify-center gap-4">
+    <div className="flex items-center justify-center">
       {sponsor.logo ? (
-        <div className="relative h-28 w-48 lg:h-36 lg:w-60 opacity-100 hover:opacity-90 transition-opacity">
-          <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain brightness-0 invert" />
+        <div className="relative h-16 w-40 lg:h-20 lg:w-48 opacity-70 hover:opacity-100 transition-opacity">
+          <Image
+            src={sponsor.logo}
+            alt={sponsor.name}
+            fill
+            className="object-contain brightness-0 invert"
+            onError={(e) => {
+              e.currentTarget.style.display = 'none';
+            }}
+          />
         </div>
-      ) : null}
-
-      <div className="text-white text-lg lg:text-xl font-bold text-center uppercase tracking-[0.25em]">
-        {sponsor.name}
-      </div>
+      ) : (
+        <div className="text-white text-sm lg:text-base font-bold text-center uppercase tracking-[0.2em]">
+          {sponsor.name}
+        </div>
+      )}
     </div>
   )
 
