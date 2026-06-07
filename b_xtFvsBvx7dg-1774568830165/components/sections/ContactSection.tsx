@@ -3,7 +3,7 @@
 import { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
 import { submitContactForm } from "@/lib/api";
-import { AntLogo } from "../AntLogo";
+import Image from "next/image";
 
 const socialLinks = [{ label: "IG", href: "https://instagram.com/by.hormiga" }];
 
@@ -72,7 +72,13 @@ export function ContactSection() {
 					<div className="relative">
 						{/* Watermark logo */}
 						<div className="absolute -left-8 top-0 opacity-[0.04] pointer-events-none hidden lg:block">
-							<AntLogo size="lg" />
+							<Image
+								src="/images/logo-hormiga.png"
+								alt="BYHORMIGA"
+								width={200}
+								height={200}
+								className="w-48 h-48"
+							/>
 						</div>
 
 						{/* Large typographic statement */}
