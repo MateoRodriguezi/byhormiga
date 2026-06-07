@@ -125,9 +125,10 @@ const coproduccionInternacional: EventData[] = [
 ]
 
 const coproduccionNacional = [
-  { name: 'Co-Producción Nacional 1', logo: '/logos/coprod-nacional-1.png' },
-  { name: 'Co-Producción Nacional 2', logo: '/logos/coprod-nacional-2.png' },
-  { name: 'Co-Producción Nacional 3', logo: '/logos/coprod-nacional-3.png' },
+  { name: 'After Pacha', logo: '/logos/after-pacha.png' },
+  { name: 'Beerhouse', logo: '/logos/beerhouse.png' },
+  { name: 'Casauma', logo: '/logos/casauma.png' },
+  { name: 'Cordón Beer', logo: '/logos/cordonbeer.png' },
 ]
 
 function CategorySection({
@@ -158,7 +159,7 @@ function CategorySection({
             key={index}
             className="group relative border border-white/10 bg-gradient-to-br from-[#0a0908] to-[#1a1a1a] p-8 hover:border-white/30 transition-all duration-300"
           >
-            {/* Logo */}
+            {/* Logo - solo mostrar si existe */}
             {event.logo && (
               <div className="mb-6 h-24 flex items-center justify-start">
                 <div className="relative w-full h-full">
@@ -168,13 +169,17 @@ function CategorySection({
                     fill
                     className="object-contain object-left brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    onError={(e) => {
+                      // Si falla la carga de la imagen, ocultar el contenedor
+                      e.currentTarget.style.display = 'none';
+                    }}
                   />
                 </div>
               </div>
             )}
 
             {/* Event Name */}
-            <h3 className="text-xl font-bold text-white uppercase tracking-wide mb-4">
+            <h3 className={`text-xl font-bold text-white uppercase tracking-wide ${event.logo ? 'mb-4' : 'mb-6'}`}>
               {event.name}
             </h3>
 
