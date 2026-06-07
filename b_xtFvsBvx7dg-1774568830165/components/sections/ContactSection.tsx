@@ -81,7 +81,7 @@ export function ContactSection() {
 								TRABAJEMOS JUNTOS
 							</h3>
 							<p className="mt-2 text-2xl sm:text-3xl lg:text-5xl font-black text-stroke uppercase tracking-tight leading-none">
-								CONTACTANOS.
+								CONTÁCTANOS.
 							</p>
 						</div>
 
