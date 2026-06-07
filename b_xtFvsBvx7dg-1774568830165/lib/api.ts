@@ -126,9 +126,8 @@ export async function getSponsors(): Promise<Sponsor[]> {
   try {
     return await apiGetList<Sponsor>('/api/partners/')
   } catch (error) {
-    console.warn('Sponsors API failed, using mock data:', error)
-    const { mockSponsors } = await import('./mocks')
-    return mockSponsors
+    console.warn('Sponsors API failed, returning empty array (will use defaultSponsors from PartnersSection):', error)
+    return []
   }
 }
 

@@ -437,39 +437,8 @@ export const mockGallery: GalleryItem[] = [
   },
 ]
 
-// Mock data for sponsors
-export const mockSponsors: Sponsor[] = [
-  {
-    id: 1,
-    name: 'Speed',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/Speed_Energy.svg/200px-Speed_Energy.svg.png',
-  },
-  {
-    id: 2,
-    name: 'Pilsen',
-    logo: 'https://images.unsplash.com/photo-1608270586620-248524c67de9?w=200&h=100&fit=crop&q=80',
-  },
-  {
-    id: 3,
-    name: 'Coca Cola',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/ce/Coca-Cola_logo.svg/200px-Coca-Cola_logo.svg.png',
-  },
-  {
-    id: 4,
-    name: 'Absolut',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Absolut_Vodka_logo.svg/200px-Absolut_Vodka_logo.svg.png',
-  },
-  {
-    id: 5,
-    name: 'Red Bull',
-    logo: 'https://upload.wikimedia.org/wikipedia/en/thumb/6/64/Red_Bull_logo.svg/200px-Red_Bull_logo.svg.png',
-  },
-  {
-    id: 6,
-    name: 'Beats',
-    logo: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f2/Beats_logo_2021.svg/200px-Beats_logo_2021.svg.png',
-  },
-]
+// Mock data for sponsors - REMOVED - usar solo los sponsors reales del defaultSponsors en PartnersSection
+export const mockSponsors: Sponsor[] = []
 
 // Mock data for posts
 export const mockPosts: Post[] = [
