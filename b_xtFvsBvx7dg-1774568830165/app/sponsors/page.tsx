@@ -30,31 +30,6 @@ const defaultSponsors: Sponsor[] = [
   { id: 20, name: 'Travel Rock', logo: '/sponsors/travelrock.png' },
 ]
 
-function HeroSection() {
-  return (
-    <section className="relative min-h-[60vh] bg-[#0a0908] flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-24">
-      <div className="max-w-[1600px] mx-auto w-full text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
-            PARTNERSHIPS
-          </span>
-          <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
-            SPONSORS
-          </h1>
-          <p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Marcas que confían en nosotros para crear experiencias únicas y conectar
-            con su audiencia de manera auténtica.
-          </p>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
-
 function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
   return (
     <motion.div
@@ -99,23 +74,24 @@ export default function SponsorsPage() {
     <>
       <Navbar />
       <main>
-        <HeroSection />
-
-        <section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12">
+        <section className="bg-[#0a0908] py-32 lg:py-40 px-4 sm:px-6 lg:px-12">
           <div className="max-w-[1600px] mx-auto">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-16"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-center mb-20"
             >
               <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
-                NUESTROS PARTNERS
-              </span>
-              <h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
                 MARCAS ALIADAS
-              </h2>
+              </span>
+              <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
+                SPONSORS
+              </h1>
+              <p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+                Marcas que confían en nosotros para crear experiencias únicas y conectar
+                con su audiencia de manera auténtica.
+              </p>
             </motion.div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
