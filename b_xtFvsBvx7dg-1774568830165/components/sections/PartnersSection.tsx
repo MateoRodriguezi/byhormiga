@@ -53,12 +53,12 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   const renderSponsor = (sponsor: Sponsor) => (
     <div className="flex items-center justify-center">
       {sponsor.logo ? (
-        <div className="relative h-16 w-40 lg:h-20 lg:w-48 opacity-70 hover:opacity-100 transition-opacity">
+        <div className="relative h-16 w-40 lg:h-20 lg:w-48 opacity-80 hover:opacity-100 transition-opacity">
           <Image
             src={sponsor.logo}
             alt={sponsor.name}
             fill
-            className="object-contain brightness-0 invert"
+            className="object-contain"
             sizes="(max-width: 768px) 160px, 192px"
           />
         </div>
