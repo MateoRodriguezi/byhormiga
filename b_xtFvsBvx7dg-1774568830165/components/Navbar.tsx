@@ -63,7 +63,7 @@ export function Navbar() {
             {/* Logo */}
             <Link
               href="/"
-              className="flex items-center gap-2 sm:gap-3 group"
+              className="flex items-center group"
             >
               <div className={cn(
                 "transition-all duration-500",
@@ -78,12 +78,6 @@ export function Navbar() {
                   className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300 brightness-0 invert"
                 />
               </div>
-              <span className={cn(
-                "font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase transition-all duration-500",
-				isScrolled ? "text-[12px] sm:text-xs" : "text-xs sm:text-sm"
-              )}>
-                BYHORMIGA
-              </span>
             </Link>
 
             {/* Desktop Navigation */}
