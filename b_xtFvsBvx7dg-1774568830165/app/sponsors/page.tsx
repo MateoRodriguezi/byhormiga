@@ -4,7 +4,6 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import Link from 'next/link'
 import type { Sponsor } from '@/lib/types'
 
 const defaultSponsors: Sponsor[] = [
@@ -51,18 +50,7 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
       </div>
 
       {/* Description */}
-      <p className="text-gray-400 text-center mb-8">Partner oficial de BYHORMIGA</p>
-
-      {sponsor.website_url && (
-        <Link
-          href={sponsor.website_url}
-          target="_blank"
-          rel="noreferrer"
-			className="w-full inline-flex items-center justify-center border border-white text-white px-6 py-3 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
-        >
-          VER SITIO
-        </Link>
-      )}
+      <p className="text-gray-400 text-center">Partner oficial de BYHORMIGA</p>
     </motion.div>
   )
 }
