@@ -11,8 +11,91 @@ export const metadata: Metadata = {
   description: 'Momentos capturados en los eventos de BYHORMIGA.',
 }
 
+// Categorías de momentos
+const categories = [
+  {
+    title: 'Antel Arena wonder / Oversize / Polenta',
+    keywords: ['antel', 'arena', 'wonder antel', 'oversize antel', 'polenta antel']
+  },
+  {
+    title: 'Artistas internacionales',
+    keywords: ['internacional', 'artista']
+  },
+  {
+    title: 'Oversize carpa',
+    keywords: ['oversize carpa', 'carpa']
+  },
+  {
+    title: 'Wonder',
+    keywords: ['wonder']
+  },
+  {
+    title: 'Hit the beach - Nadie dice nada',
+    keywords: ['hit the beach', 'nadie dice nada']
+  },
+]
+
+function GalleryCard({ item, index }: { item: any; index: number }) {
+  return (
+    <Link
+      key={item.id}
+      href={`/momentos/${item.slug}`}
+      className={`relative overflow-hidden group block ${
+        index === 0 ? 'col-span-2 row-span-2' : ''
+      }`}
+      style={{ minHeight: index === 0 ? '400px' : '200px' }}
+    >
+      {getGalleryCoverImage(item) ? (
+        <Image
+          src={getGalleryCoverImage(item)!}
+          alt={item.event_name}
+          fill
+          className="object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
+          sizes="(max-width: 1024px) 50vw, 25vw"
+        />
+      ) : (
+        <div
+          className="absolute inset-0 transition-all duration-500 group-hover:scale-[1.04]"
+          style={{
+            background: `linear-gradient(${135 + index * 25}deg, #0a0908 0%, #1a1a1a ${
+              25 + index * 8
+            }%, #0f0f0f 100%)`,
+          }}
+        />
+      )}
+
+      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+
+      <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+        <h3 className="text-xs lg:text-sm font-bold text-white uppercase tracking-wide">
+          {item.event_name}
+        </h3>
+        <p className="mt-1 text-[10px] lg:text-[12px] tracking-[.2em] text-gray-400 uppercase">
+          {item.date}
+        </p>
+      </div>
+    </Link>
+  )
+}
+
 export default async function GaleriaPage() {
-  const gallery = await getGallery()
+  const allGallery = await getGallery()
+
+  // Agrupar galerías por categoría
+  const categorizedGallery = categories.map(category => ({
+    ...category,
+    items: allGallery.filter(item =>
+      category.keywords.some(keyword =>
+        item.event_name.toLowerCase().includes(keyword.toLowerCase()) ||
+        item.slug.toLowerCase().includes(keyword.toLowerCase())
+      )
+    )
+  })).filter(cat => cat.items.length > 0)
+
+  // Galerías que no coinciden con ninguna categoría
+  const uncategorizedGallery = allGallery.filter(item =>
+    !categorizedGallery.some(cat => cat.items.includes(item))
+  )
 
   return (
     <>
@@ -23,61 +106,47 @@ export default async function GaleriaPage() {
           <div className="mb-16">
             <Link
               href="/"
-				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
+              className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
             >
               ← VOLVER AL INICIO
             </Link>
             <span className="block text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono mt-8">
-              ARCHIVO VISUAL
+              Galería
             </span>
             <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
               MOMENTOS
             </h1>
           </div>
 
-          {/* Gallery Grid */}
-          {gallery.length ? (
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-[3px]">
-              {gallery.map((item, index) => (
-              <Link
-                key={item.id}
-                href={`/momentos/${item.slug}`}
-                className={`relative overflow-hidden group block ${
-                  index === 0 ? 'col-span-2 row-span-2' : ''
-                }`}
-                style={{ minHeight: index === 0 ? '400px' : '200px' }}
-              >
-                {getGalleryCoverImage(item) ? (
-                  <Image
-                    src={getGalleryCoverImage(item)!}
-                    alt={item.event_name}
-                    fill
-                    className="object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
-                    sizes="(max-width: 1024px) 50vw, 25vw"
-                  />
-                ) : (
-                  <div
-                    className="absolute inset-0 transition-all duration-500 group-hover:scale-[1.04]"
-                    style={{
-                      background: `linear-gradient(${135 + index * 25}deg, #0a0908 0%, #1a1a1a ${
-                        25 + index * 8
-                      }%, #0f0f0f 100%)`,
-                    }}
-                  />
-                )}
-
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-
-                <div className="absolute bottom-0 left-0 right-0 p-4 lg:p-6 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                  <h3 className="text-xs lg:text-sm font-bold text-white uppercase tracking-wide">
-                    {item.event_name}
-                  </h3>
-					<p className="mt-1 text-[10px] lg:text-[12px] tracking-[.2em] text-gray-400 uppercase">
-                    {item.date}
-                  </p>
-                </div>
-              </Link>
+          {/* Categorized Gallery Sections */}
+          {categorizedGallery.length > 0 ? (
+            <div className="space-y-16">
+              {categorizedGallery.map((category, catIndex) => (
+                <section key={catIndex}>
+                  <h2 className="text-2xl lg:text-3xl font-black text-white uppercase tracking-tight mb-8">
+                    {category.title}
+                  </h2>
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-[3px]">
+                    {category.items.map((item, index) => (
+                      <GalleryCard key={item.id} item={item} index={index} />
+                    ))}
+                  </div>
+                </section>
               ))}
+
+              {/* Uncategorized items */}
+              {uncategorizedGallery.length > 0 && (
+                <section>
+                  <h2 className="text-2xl lg:text-3xl font-black text-white uppercase tracking-tight mb-8">
+                    Otros momentos
+                  </h2>
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-[3px]">
+                    {uncategorizedGallery.map((item, index) => (
+                      <GalleryCard key={item.id} item={item} index={index} />
+                    ))}
+                  </div>
+                </section>
+              )}
             </div>
           ) : (
             <div className="border border-white/[.08] bg-[#111111] px-6 py-12 text-center">
