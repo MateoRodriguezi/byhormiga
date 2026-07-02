@@ -16,7 +16,19 @@ const defaultSponsors: Sponsor[] = [
   { id: 7, name: 'Burger King', logo: '/sponsors/burgerking.png', website_url: 'https://www.burgerking.com.uy' },
   { id: 8, name: 'Chivas', logo: '/sponsors/chivas.png', website_url: 'https://www.chivas.com' },
   { id: 9, name: 'Dr Lemon', logo: '/sponsors/drlemon.png', website_url: 'https://www.instagram.com/drlemon.uy' },
-  { id: 10, name: 'Estrella Galicia', logo: '/sponsors/estrellagalicia.png', website_url: 'https://www.estrellagalicia.es' },
+  {
+    id: 10,
+    name: 'Estrella Galicia',
+    logo: '/sponsors/estrellagalicia.png',
+    website_url: 'https://www.estrellagalicia.es',
+    activations: [
+      {
+        title: 'Estrella Galicia en nuestros eventos',
+        description: 'Presencia activa de la marca en el punto de venta y en la experiencia del público durante cada apertura.',
+        images: ['/mock-photos/event-1.jpeg', '/mock-photos/event-2.jpeg'],
+      },
+    ],
+  },
   { id: 11, name: 'Jameson', logo: '/sponsors/james.png', website_url: 'https://www.jamesonwhiskey.com' },
   { id: 12, name: 'Johnnie Walker', logo: '/sponsors/johnnie.png', website_url: 'https://www.johnniewalker.com' },
   { id: 13, name: 'McDonald\'s', logo: '/sponsors/mc.png', website_url: 'https://www.mcdonalds.com.uy' },
@@ -51,6 +63,27 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
 
       {/* Description */}
       <p className="text-gray-400 text-center">Partner oficial de BYHORMIGA</p>
+
+      {/* Activaciones de marca */}
+      {sponsor.activations && sponsor.activations.length > 0 && (
+        <div className="mt-8 pt-8 border-t border-white/[.08] space-y-6">
+          {sponsor.activations.map((activation, i) => (
+            <div key={i}>
+              {activation.images && activation.images.length > 0 && (
+                <div className="grid grid-cols-2 gap-2 mb-4">
+                  {activation.images.map((image, imgIndex) => (
+                    <div key={imgIndex} className="relative aspect-square overflow-hidden">
+                      <Image src={image} alt={activation.title} fill className="object-cover" />
+                    </div>
+                  ))}
+                </div>
+              )}
+              <p className="text-sm font-bold text-white uppercase tracking-wide mb-1">{activation.title}</p>
+              <p className="text-sm text-gray-400 leading-relaxed">{activation.description}</p>
+            </div>
+          ))}
+        </div>
+      )}
     </motion.div>
   )
 }
@@ -74,11 +107,23 @@ export default function SponsorsPage() {
                 MARCAS ALIADAS
               </span>
               <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
-                SPONSORS
+                Marcas que eligen experiencias auténticas
               </h1>
-              <p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-                Marcas que confían en nosotros para crear experiencias únicas y conectar
-                con su audiencia de manera auténtica.
+            </motion.div>
+
+            {/* Video general + texto */}
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6 }}
+              className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-24 lg:mb-32"
+            >
+              <video autoPlay loop muted playsInline className="w-full aspect-video object-cover">
+                <source src="/videos/hero-background.mp4" type="video/mp4" />
+              </video>
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed">
+                Desarrollamos acciones de marca que reflejan la esencia de cada sponsor y elevan la experiencia del evento.
               </p>
             </motion.div>
 

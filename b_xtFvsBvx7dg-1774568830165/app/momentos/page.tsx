@@ -14,24 +14,32 @@ export const metadata: Metadata = {
 // Categorías de momentos
 const categories = [
   {
-    title: 'Antel Arena wonder / Oversize / Polenta',
-    keywords: ['antel', 'arena', 'wonder antel', 'oversize antel', 'polenta antel']
+    title: 'Antel Arena',
+    keywords: ['antel arena', 'polenta antel', 'wonder antel', 'oversize antel', 'mega wonder'],
+    subtitle: 'Polenta en Antel Arena · Mega Wonder en Antel Arena (2025) · Oversize en Antel Arena (2025 / 2024)',
   },
   {
-    title: 'Artistas internacionales',
-    keywords: ['internacional', 'artista']
+    title: 'Floripa',
+    keywords: ['floripa'],
+    subtitle: '4 años consecutivos formando parte de Floripa, el Festival de Planet 01.',
   },
   {
-    title: 'Oversize carpa',
-    keywords: ['oversize carpa', 'carpa']
+    title: 'Artistas Internacionales',
+    keywords: ['artista internacional', 'internacional'],
+    subtitle: 'De la Ghetto, Darell, Guayana, Kevin Roldan, Jere Klein, Lauty Gram, Luck Ra, La Joaqui, L-Gante, FMK.',
   },
   {
-    title: 'Wonder',
-    keywords: ['wonder']
+    title: 'Artistas Nacionales',
+    keywords: ['artista nacional', 'nacional'],
+    subtitle: 'Marama, Luana, The La Planta, La Nueva Escuela, Zeballos.',
   },
   {
-    title: 'Hit the beach - Nadie dice nada',
-    keywords: ['hit the beach', 'nadie dice nada']
+    title: 'Hit The Beach',
+    keywords: ['hit the beach'],
+  },
+  {
+    title: 'Oversize - El Jagüel, Punta Del Este',
+    keywords: ['oversize el jaguel', 'el jaguel', 'oversize punta del este'],
   },
 ]
 
@@ -123,9 +131,12 @@ export default async function GaleriaPage() {
             <div className="space-y-16">
               {categorizedGallery.map((category, catIndex) => (
                 <section key={catIndex}>
-                  <h2 className="text-2xl lg:text-3xl font-black text-white uppercase tracking-tight mb-8">
+                  <h2 className={`text-2xl lg:text-3xl font-black text-white uppercase tracking-tight ${category.subtitle ? 'mb-2' : 'mb-8'}`}>
                     {category.title}
                   </h2>
+                  {category.subtitle && (
+                    <p className="text-sm text-gray-400 mb-8 max-w-3xl">{category.subtitle}</p>
+                  )}
                   <div className="grid grid-cols-2 lg:grid-cols-4 gap-[3px]">
                     {category.items.map((item, index) => (
                       <GalleryCard key={item.id} item={item} index={index} />

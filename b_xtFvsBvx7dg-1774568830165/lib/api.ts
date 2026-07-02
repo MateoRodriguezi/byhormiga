@@ -119,7 +119,12 @@ export async function getPosts(): Promise<Post[]> {
 }
 
 export async function getPostBySlug(slug: string): Promise<Post | undefined> {
-  return apiGetBySlug<Post>(`/api/posts/${slug}/`)
+  try {
+    return await apiGetBySlug<Post>(`/api/posts/${slug}/`)
+  } catch (error) {
+    console.warn(`Post API failed for slug "${slug}", returning undefined:`, error)
+    return undefined
+  }
 }
 
 export async function getSponsors(): Promise<Sponsor[]> {

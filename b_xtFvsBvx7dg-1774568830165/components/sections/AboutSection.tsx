@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
+import { RotatingPhotos } from '@/components/RotatingPhotos'
 
 // Imágenes de fondo que van rotando
 const backgroundImages = [
@@ -10,6 +11,12 @@ const backgroundImages = [
   '/mock-photos/event-3.jpeg',
   '/mock-photos/event-4.jpeg',
   '/mock-photos/event-5.jpg',
+]
+
+// Fotos que van rotando en cada sector de "Quiénes somos"
+const sectorPhotos = [
+  ['/mock-photos/event-1.jpeg', '/mock-photos/event-3.jpeg', '/mock-photos/event-5.jpg'],
+  ['/mock-photos/event-2.jpeg', '/mock-photos/event-4.jpeg', '/mock-photos/event-1.jpeg'],
 ]
 
 export function AboutSection() {
@@ -69,7 +76,7 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-5xl mx-auto mb-12 lg:mb-20"
+          className="max-w-5xl mx-auto mb-20 lg:mb-32 text-center"
         >
           <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
             Somos una productora de eventos y entretenimiento en Uruguay, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en un referente del entretenimiento, desarrollando formatos innovadores para distintos públicos, con impacto, recordación y conexión emocional.
@@ -81,11 +88,16 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-5xl mx-auto mb-20 lg:mb-32"
+          className="max-w-6xl mx-auto mb-20 lg:mb-32 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         >
-          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-            Al año producimos un promedio de más de 200 eventos, trabajamos junto a más de 150 artistas nacionales e internacionales y convocamos a más de 200.000 personas. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
-          </p>
+          <div className="lg:order-2">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+              Al año producimos un promedio de más de 200 eventos, trabajamos junto a más de 150 artistas nacionales e internacionales y convocamos a más de 200.000 personas. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
+            </p>
+          </div>
+          <div className="lg:order-1">
+            <RotatingPhotos images={sectorPhotos[0]} alt="Eventos ByHormiga" />
+          </div>
         </motion.div>
 
         {/* Section 2: Filosofía */}
@@ -93,11 +105,16 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-5xl mx-auto"
+          className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         >
-          <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
-            Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, combinamos creatividad, tecnología y pasión para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.
-          </p>
+          <div>
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+              Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, combinamos creatividad, tecnología y pasión para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.
+            </p>
+          </div>
+          <div>
+            <RotatingPhotos images={sectorPhotos[1]} alt="Producción ByHormiga" />
+          </div>
         </motion.div>
       </div>
     </section>
