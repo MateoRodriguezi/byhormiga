@@ -6,17 +6,17 @@ import { RotatingPhotos } from '@/components/RotatingPhotos'
 
 // Imágenes de fondo que van rotando
 const backgroundImages = [
-  '/mock-photos/event-1.jpeg',
-  '/mock-photos/event-2.jpeg',
-  '/mock-photos/event-3.jpeg',
-  '/mock-photos/event-4.jpeg',
-  '/mock-photos/event-5.jpg',
+  '/mock-photos/about-1.jpg',
+  '/mock-photos/about-2.jpg',
+  '/mock-photos/about-3.jpg',
+  '/mock-photos/about-4.jpg',
+  '/mock-photos/about-5.jpg',
 ]
 
 // Fotos que van rotando en cada sector de "Quiénes somos"
 const sectorPhotos = [
-  ['/mock-photos/event-1.jpeg', '/mock-photos/event-3.jpeg', '/mock-photos/event-5.jpg'],
-  ['/mock-photos/event-2.jpeg', '/mock-photos/event-4.jpeg', '/mock-photos/event-1.jpeg'],
+  ['/mock-photos/about-6.jpg', '/mock-photos/about-7.jpg', '/mock-photos/about-8.jpg'],
+  ['/mock-photos/about-9.jpg', '/mock-photos/about-10.jpg', '/mock-photos/about-11.jpg'],
 ]
 
 export function AboutSection() {
