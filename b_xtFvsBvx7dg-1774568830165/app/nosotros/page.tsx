@@ -38,7 +38,7 @@ const storyBlocks = [
 				. Lo que comenzó como una pequeña productora de eventos se ha convertido en la empresa líder de entretenimiento en Uruguay.
 			</>
 		),
-		image: "/mock-photos/event-1.jpeg",
+		image: "/mock-photos/about-4.jpg",
 	},
 	{
 		title: "Un crecimiento sostenido",
@@ -47,7 +47,7 @@ const storyBlocks = [
 				Hemos producido más de <span className="font-bold text-white">500 eventos</span>, trabajado con más de <span className="font-bold text-white">200 artistas</span> nacionales e internacionales, y creado <span className="font-bold text-white">experiencias para miles de personas</span> que confían en nosotros para los momentos más importantes de sus vidas.
 			</>
 		),
-		image: "/mock-photos/event-2.jpeg",
+		image: "/mock-photos/about-6.jpg",
 	},
 	{
 		title: "Nuestra forma de hacer",
@@ -56,7 +56,7 @@ const storyBlocks = [
 				Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. <span className="font-bold text-white">Combinamos creatividad, tecnología y pasión</span> para entregar experiencias que superan las expectativas.
 			</>
 		),
-		image: "/mock-photos/event-4.jpeg",
+		image: "/mock-photos/about-11.jpg",
 	},
 ];
 
