@@ -101,6 +101,13 @@ class Event(TimeStampMixin):
         verbose_name="Destacado",
         help_text="Marcar si el evento debe aparecer destacado",
     )
+    recap_video = models.FileField(
+        upload_to="events/videos/",
+        blank=True,
+        null=True,
+        verbose_name="Video recap",
+        help_text="Video resumen del evento para la galeria de momentos",
+    )
 
     class Meta:
         verbose_name = "Evento"

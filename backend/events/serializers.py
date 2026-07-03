@@ -92,11 +92,12 @@ class GalleryEventSerializer(serializers.ModelSerializer):
     event_name = serializers.CharField(source="title", read_only=True)
     date = serializers.SerializerMethodField()
     image = serializers.SerializerMethodField()
+    recap_video = serializers.SerializerMethodField()
     photos = EventPhotoSerializer(many=True, read_only=True)
 
     class Meta:
         model = Event
-        fields = ["id", "slug", "event_name", "date", "image", "photos"]
+        fields = ["id", "slug", "event_name", "date", "image", "recap_video", "photos"]
 
     def get_date(self, obj):
         return format_spanish_month_year(obj.date)
@@ -106,3 +107,9 @@ class GalleryEventSerializer(serializers.ModelSerializer):
         if not request or not obj.poster:
             return None
         return build_media_proxy_url(request, obj.poster.name)
+
+    def get_recap_video(self, obj):
+        request = self.context.get("request")
+        if not request or not obj.recap_video:
+            return None
+        return build_media_proxy_url(request, obj.recap_video.name)

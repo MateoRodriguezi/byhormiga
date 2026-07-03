@@ -85,7 +85,7 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
             "Detalles del evento",
             {"fields": ("date", "venue", "price_info", "ticket_url")},
         ),
-        ("Visual", {"fields": ("poster", "poster_preview")}),
+        ("Visual", {"fields": ("poster", "poster_preview", "recap_video")}),
         ("Estado", {"fields": ("status",)}),
         (
             "Metadatos",

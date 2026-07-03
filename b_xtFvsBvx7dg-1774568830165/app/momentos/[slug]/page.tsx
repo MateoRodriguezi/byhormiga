@@ -86,6 +86,17 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
             </div>
           </div>
 
+          {item.recap_video ? (
+            <div className="mb-16 aspect-video overflow-hidden bg-black">
+              <video
+                src={item.recap_video}
+                controls
+                playsInline
+                className="w-full h-full object-contain"
+              />
+            </div>
+          ) : null}
+
           {item.photos.length ? (
             <div className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3">
               {item.photos.map((photo) => (

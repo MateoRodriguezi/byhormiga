@@ -34,6 +34,7 @@ export interface GalleryItem {
   event_name: string
   date: string
   image?: string
+  recap_video?: string
   photos: GalleryPhoto[]
 }
 

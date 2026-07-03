@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Image from 'next/image'
 import Link from 'next/link'
+import { Play } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { getGalleryCoverImage } from '@/lib/gallery'
@@ -71,6 +72,12 @@ function GalleryCard({ item, index }: { item: any; index: number }) {
           }}
         />
       )}
+
+      {item.recap_video ? (
+        <div className="absolute top-3 right-3 lg:top-4 lg:right-4 flex items-center justify-center w-8 h-8 lg:w-10 lg:h-10 rounded-full bg-black/60 backdrop-blur-sm border border-white/20">
+          <Play className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-white fill-white" />
+        </div>
+      ) : null}
 
       <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
 
