@@ -14,7 +14,7 @@ function BrandCard({ brand }: { brand: Brand }) {
   return (
     <Link
       href={`/eventos/todos/${brand.slug}`}
-      className="group relative block overflow-hidden border border-white/10 bg-gradient-to-br from-[#0a0908] to-[#1a1a1a] p-8 hover:border-white/30 transition-all duration-300"
+      className="group relative block overflow-hidden border border-white/10 bg-gradient-to-br from-[#0a0908] to-[#1a1a1a] min-h-[280px] hover:border-white/30 transition-all duration-300"
     >
       {brand.heroImage ? (
         <Image
@@ -27,26 +27,24 @@ function BrandCard({ brand }: { brand: Brand }) {
       ) : null}
       <div className="absolute inset-0 bg-gradient-to-t from-[#0a0908] via-[#0a0908]/70 to-[#0a0908]/40" />
 
-      <div className="relative">
+      <div className="relative h-full flex flex-col items-center justify-center gap-6 p-8 text-center">
         {brand.logo ? (
-          <div className="mb-6 h-24 flex items-center justify-start">
-            <div className="relative w-full h-full">
+          <div className="h-20 w-full flex items-center justify-center">
+            <div className="relative h-full w-full">
               <Image
                 src={brand.logo}
                 alt={brand.name}
                 fill
-                className="object-contain object-left brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
+                className="object-contain brightness-0 invert opacity-80 group-hover:opacity-100 transition-opacity"
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               />
             </div>
           </div>
         ) : (
-          <h3 className="text-xl font-bold text-white uppercase tracking-wide mb-4">{brand.name}</h3>
+          <h3 className="text-2xl font-bold text-white uppercase tracking-wide">{brand.name}</h3>
         )}
 
-        <p className="text-sm text-gray-400 leading-relaxed">{brand.cardDescription}</p>
-
-        <span className="mt-6 inline-block text-[11px] tracking-[.2em] text-white/60 uppercase group-hover:text-white transition-colors">
+        <span className="inline-block text-[11px] tracking-[.2em] text-white/60 uppercase group-hover:text-white transition-colors">
           Ver más →
         </span>
       </div>

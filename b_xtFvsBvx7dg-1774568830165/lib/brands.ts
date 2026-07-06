@@ -270,6 +270,7 @@ export const brands: Brand[] = [
     cardDescription:
       'Con una edición trimestral y un promedio de 4.000 personas por apertura, desde 2025 ofrece una experiencia masiva, cuidada y profesional.',
     heroVideo: '/brands/la-festa/recap.mp4',
+    heroImage: '/brands/la-festa/hero-card.jpg',
     destacado:
       'Desde 2025 ofrece una experiencia masiva, cuidada y profesional para el entretenimiento de adolescentes.',
     photos: [],
@@ -327,6 +328,7 @@ export const brands: Brand[] = [
     cardDescription:
       'Es una fiesta para público de 18 a 25 años, activa desde 2016. Con una edición semanal y un promedio de 1.500 personas por apertura, es una de las propuestas más constantes de la noche.',
     heroVideo: '/brands/china/hero.mp4',
+    heroImage: '/brands/china/hero-card.jpg',
     destacado:
       'Desde 2016, China es una de las fiestas más populares de la noche uruguaya, reconocida por su convocatoria amplia y constante.',
     photos: [
@@ -428,6 +430,7 @@ export const brands: Brand[] = [
     cardDescription:
       'Es una fiesta para público de 18 a 25 años, activa desde 2022. Con 6 ediciones anuales y un promedio de 3.500 personas por apertura, se destaca por su gran escala y alta convocatoria.',
     heroVideo: '/brands/oversize/hero.mp4',
+    heroImage: '/brands/oversize/hero-card.jpg',
     destacado:
       'Activa desde 2022 se destaca por su gran escala y alta convocatoria juvenil.',
     photos: [
@@ -569,6 +572,7 @@ export const brands: Brand[] = [
     cardDescription:
       'Es una fiesta Argentina para público de 20 a 30 años, producimos una edición mensual en Uruguay. Promedia 1.300 personas por apertura y se consolida como una marca fuerte dentro del entretenimiento nocturno.',
     heroVideo: '/brands/polenta/hero.mp4',
+    heroImage: '/brands/polenta/hero-card.jpg',
     destacado:
       'Polenta es una fiesta argentina de gran convocatoria que desembarca en Uruguay en 2024, co-producida localmente por By Hormiga.',
     photos: [
@@ -657,6 +661,7 @@ export const brands: Brand[] = [
     cardDescription:
       'Es una marca Argentina orientada a público de 18 a 25 años, con una edición bimensual en Uruguay. Promedia 1.500 personas por apertura y se caracteriza por su energía, continuidad y conexión con el público joven.',
     heroVideo: '/brands/nonstop/hero.mp4',
+    heroImage: '/brands/nonstop/hero-card.jpg',
     // NOTA: el texto "destacado" de esta marca en el brief original quedó copiado del de
     // Caserío ("Caserio es una fiesta argentina..."). Corregido aquí con el nombre correcto
     // hasta que el cliente confirme la copy definitiva de Non Stop.
