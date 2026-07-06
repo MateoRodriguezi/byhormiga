@@ -326,27 +326,50 @@ export const brands: Brand[] = [
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 25 años, activa desde 2016. Con una edición semanal y un promedio de 1.500 personas por apertura, es una de las propuestas más constantes de la noche.',
-    heroImage: PLACEHOLDER_PHOTOS[3],
+    heroVideo: '/brands/china/hero.mp4',
     destacado:
       'Desde 2016, China es una de las fiestas más populares de la noche uruguaya, reconocida por su convocatoria amplia y constante.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/china/section1-1.jpg',
+      '/brands/china/section1-2.jpg',
+      '/brands/china/section1-3.jpg',
+      '/brands/china/section1-4.jpg',
+      '/brands/china/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Con una edición semanal y un promedio de 1.500 personas por apertura, se consolidó como un punto de encuentro dentro de la escena nocturna local.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/china/section1-1.jpg',
+          '/brands/china/section1-2.jpg',
+          '/brands/china/section1-3.jpg',
+          '/brands/china/section1-4.jpg',
+          '/brands/china/section1-5.jpg',
+        ],
       },
       {
         side: 'left',
         text: 'Cada edición combina planificación, coordinación técnica, puesta en escena, comunicación, gestión de artistas y experiencia del público, construyendo una propuesta masiva con identidad propia.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/china/section2-1.jpg',
+          '/brands/china/section2-2.jpg',
+          '/brands/china/section2-3.jpg',
+        ],
       },
       {
         side: 'right',
         text: 'Grandes artistas nacionales e internacionales han pasado por el escenario de La China, ofreciendo shows de alto nivel para la noche uruguaya.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/china/section3-1.jpg',
+          '/brands/china/section3-2.jpg',
+          '/brands/china/section3-3.jpg',
+          '/brands/china/section3-4.jpg',
+          '/brands/china/section3-5.jpg',
+        ],
       },
     ],
+    closingImage: '/brands/china/closing.jpg',
     closingText:
       'Una experiencia consolidada dentro de la noche uruguaya, donde producción, música y convocatoria se combinan en cada edición.',
   },
@@ -356,24 +379,45 @@ export const brands: Brand[] = [
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 22 años, activa desde 2024. Con una edición bimensual y un promedio de 1.000 personas por apertura, se consolida como una propuesta joven, intensa y de alta convocatoria.',
-    heroImage: PLACEHOLDER_PHOTOS[4],
+    heroImage: '/brands/mala/hero.jpg',
     destacado:
       'Desde 2024, NoSeasMala se consolida como una propuesta joven, intensa y de alta convocatoria.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/mala/section1-1.jpg',
+      '/brands/mala/section1-2.jpg',
+      '/brands/mala/section1-3.jpg',
+      '/brands/mala/section1-4.jpg',
+      '/brands/mala/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Realizamos una edición mensual con un promedio de 1000 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/mala/section1-1.jpg',
+          '/brands/mala/section1-2.jpg',
+          '/brands/mala/section1-3.jpg',
+          '/brands/mala/section1-4.jpg',
+          '/brands/mala/section1-5.jpg',
+        ],
       },
       {
         side: 'left',
         text: 'Cada edición combina planificación, coordinación técnica, puesta en escena, comunicación, gestión de artistas y experiencia del público, construyendo una propuesta masiva con identidad propia.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/mala/section2-1.jpg',
+          '/brands/mala/section2-2.jpg',
+          '/brands/mala/section2-3.jpg',
+          '/brands/mala/section2-4.jpg',
+          '/brands/mala/section2-5.jpg',
+        ],
       },
     ],
-    venues: [{ name: 'Montevideo Music Box' }, { name: 'Sala Maldonado' }],
-    closingImage: PLACEHOLDER_PHOTOS[0],
+    venues: [
+      { name: 'Montevideo Music Box', image: '/brands/mala/venue-musicbox.jpg' },
+      { name: 'Sala Maldonado', image: '/brands/mala/venue-salamaldonado.jpg' },
+    ],
+    closingImage: '/brands/mala/closing.jpg',
     closingText:
       'Una experiencia consolidada dentro de la noche uruguaya, donde producción, música y convocatoria se combinan en cada edición.',
   },
@@ -383,21 +427,38 @@ export const brands: Brand[] = [
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 25 años, activa desde 2022. Con 6 ediciones anuales y un promedio de 3.500 personas por apertura, se destaca por su gran escala y alta convocatoria.',
-    heroVideo: undefined,
-    heroImage: PLACEHOLDER_PHOTOS[1],
+    heroVideo: '/brands/oversize/hero.mp4',
     destacado:
       'Activa desde 2022 se destaca por su gran escala y alta convocatoria juvenil.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/oversize/section1-1.jpg',
+      '/brands/oversize/section1-2.jpg',
+      '/brands/oversize/section1-3.jpg',
+      '/brands/oversize/section1-4.jpg',
+      '/brands/oversize/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Realizamos aproximadamente 6 ediciones anuales con un promedio de 3.500 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/oversize/section1-1.jpg',
+          '/brands/oversize/section1-2.jpg',
+          '/brands/oversize/section1-3.jpg',
+          '/brands/oversize/section1-4.jpg',
+          '/brands/oversize/section1-5.jpg',
+        ],
       },
       {
         side: 'right',
         text: 'Proporcionamos una producción innovadora, generando diferentes temáticas para cada edición para otorgar una diversión asegurada.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/oversize/section2-1.jpg',
+          '/brands/oversize/section2-2.jpg',
+          '/brands/oversize/section2-3.jpg',
+          '/brands/oversize/section2-4.jpg',
+          '/brands/oversize/section2-5.jpg',
+        ],
       },
     ],
     venuesIntro:
@@ -412,7 +473,7 @@ export const brands: Brand[] = [
       { name: 'Museo Oceanográfico' },
       { name: 'Chacra Lacrosse' },
     ],
-    closingImage: PLACEHOLDER_PHOTOS[2],
+    closingImage: '/brands/oversize/closing.jpg',
     closingText:
       'Una experiencia consolidada dentro de la noche uruguaya, donde producción, música y convocatoria se combinan en cada edición.',
   },
