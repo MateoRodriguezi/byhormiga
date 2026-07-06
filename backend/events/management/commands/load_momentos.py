@@ -193,14 +193,14 @@ class Command(BaseCommand):
                 "venue": spec["venue"],
                 "date": parse_local_datetime(spec["date"]),
                 "description": spec["description"],
-                "status": "published",
+                "status": "draft",
             },
         )
         if not created:
             event.venue = spec["venue"]
             event.date = parse_local_datetime(spec["date"])
             event.description = spec["description"]
-            event.status = "published"
+            event.status = "draft"
             event.save()
 
         self.stdout.write(f"Evento: {event.title} ({'creado' if created else 'actualizado'})")
@@ -212,6 +212,8 @@ class Command(BaseCommand):
             )
         else:
             if force:
+                for photo in event.photos.all():
+                    photo.image.delete(save=False)
                 event.photos.all().delete()
             photos_dir = spec["photos_dir"]
             if not photos_dir.exists():
@@ -237,6 +239,8 @@ class Command(BaseCommand):
             elif not video_path.exists():
                 self.stdout.write(self.style.WARNING(f"  -> video no encontrado: {video_path}"))
             else:
+                if event.recap_video:
+                    event.recap_video.delete(save=False)
                 with open(video_path, "rb") as fh:
                     event.recap_video.save(video_path.name, File(fh), save=True)
                 self.stdout.write("  -> video recap cargado")
