@@ -125,24 +125,46 @@ export const brands: Brand[] = [
     category: 'matinee',
     cardDescription:
       'Con una edición trimestral y un promedio de 800 personas por apertura, desde 2023 se consolida como una propuesta de entretenimiento para menores, pensada desde la música, la producción y la seguridad.',
-    heroImage: PLACEHOLDER_PHOTOS[1],
+    heroImage: '/brands/mood/hero.jpg',
     destacado:
       'Desde 2023, Mood se consolida como una propuesta de entretenimiento para menores de edad, pensada desde la música, la producción y la seguridad.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/mood/section1-1.jpg',
+      '/brands/mood/section1-2.jpg',
+      '/brands/mood/section1-3.jpg',
+      '/brands/mood/section1-4.jpg',
+      '/brands/mood/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Realizamos una edición trimestral, con una convocatoria promedio de 800 personas por evento.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/mood/section1-1.jpg',
+          '/brands/mood/section1-2.jpg',
+          '/brands/mood/section1-3.jpg',
+          '/brands/mood/section1-4.jpg',
+          '/brands/mood/section1-5.jpg',
+        ],
       },
       {
         side: 'right',
         text: 'Desarrollamos una producción innovadora, creando diferentes temáticas para cada edición y ofreciendo una experiencia dinámica, segura y divertida.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/mood/section2-1.jpg',
+          '/brands/mood/section2-2.jpg',
+          '/brands/mood/section2-3.jpg',
+          '/brands/mood/section2-4.jpg',
+          '/brands/mood/section2-5.jpg',
+        ],
       },
     ],
-    venues: [{ name: 'Carrasco' }, { name: 'Punta Del Este' }, { name: 'Kibón' }],
-    closingImage: PLACEHOLDER_PHOTOS[2],
+    venues: [
+      { name: 'Carrasco', image: '/brands/mood/venue-carrasco.jpg' },
+      { name: 'Punta Del Este', image: '/brands/mood/venue-puntadeleste.jpg' },
+      { name: 'Kibón', image: '/brands/mood/venue-kibon.jpg' },
+    ],
+    closingImage: '/brands/mood/closing.jpg',
     closingText:
       'Contamos con seguridad, autorizaciones y todos los protocolos necesarios para el desarrollo de cada evento, generando un entorno cuidado y adecuado para el entretenimiento de menores de edad.',
   },
