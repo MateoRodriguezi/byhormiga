@@ -96,16 +96,19 @@ function GalleryCard({ item, index }: { item: any; index: number }) {
 export default async function GaleriaPage() {
   const allGallery = await getGallery()
 
-  // Agrupar galerías por categoría
-  const categorizedGallery = categories.map(category => ({
-    ...category,
-    items: allGallery.filter(item =>
+  // Agrupar galerías por categoría (cada item pertenece a una sola categoría: la primera que matchea)
+  const usedItemIds = new Set<string>()
+  const categorizedGallery = categories.map(category => {
+    const items = allGallery.filter(item =>
+      !usedItemIds.has(item.id) &&
       category.keywords.some(keyword =>
         item.event_name.toLowerCase().includes(keyword.toLowerCase()) ||
         item.slug.toLowerCase().includes(keyword.toLowerCase())
       )
     )
-  })).filter(cat => cat.items.length > 0)
+    items.forEach(item => usedItemIds.add(item.id))
+    return { ...category, items }
+  }).filter(cat => cat.items.length > 0)
 
   // Galerías que no coinciden con ninguna categoría
   const uncategorizedGallery = allGallery.filter(item =>
