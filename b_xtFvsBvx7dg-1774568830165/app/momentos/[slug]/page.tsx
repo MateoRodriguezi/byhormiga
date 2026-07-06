@@ -79,7 +79,6 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
               <h1 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
                 {item.event_name}
               </h1>
-			  <p className="mt-4 text-[12px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
             </div>
           </div>
 

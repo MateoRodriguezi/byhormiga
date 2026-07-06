@@ -85,9 +85,6 @@ function GalleryCard({ item, index }: { item: any; index: number }) {
         <h3 className="text-xs lg:text-sm font-bold text-white uppercase tracking-wide">
           {item.event_name}
         </h3>
-        <p className="mt-1 text-[10px] lg:text-[12px] tracking-[.2em] text-gray-400 uppercase">
-          {item.date}
-        </p>
       </div>
     </Link>
   )
