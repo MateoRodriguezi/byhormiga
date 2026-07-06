@@ -269,7 +269,8 @@ export default function NosotrosPage() {
 			<main>
 				<HeroSection />
 				<AboutSection />
-				<TeamSection />
+				{/* Oculta temporalmente: todavia no hay contenido real del equipo cargado */}
+				{/* <TeamSection /> */}
 			</main>
 			<Footer />
 		</>

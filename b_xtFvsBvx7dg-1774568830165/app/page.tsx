@@ -6,16 +6,15 @@ import { AboutSection } from '@/components/sections/AboutSection'
 import { StatsSection } from '@/components/sections/StatsSection'
 import { FeaturedEventsSection } from '@/components/sections/FeaturedEventsSection'
 import { GallerySection } from '@/components/sections/GallerySection'
-import { PressSection } from '@/components/sections/PressSection'
+// import { PressSection } from '@/components/sections/PressSection'
 import { PartnersSection } from '@/components/sections/PartnersSection'
 import { ContactSection } from '@/components/sections/ContactSection'
-import { getEvents, getGallery, getPosts } from '@/lib/api'
+import { getEvents, getGallery } from '@/lib/api'
 
 export default async function HomePage() {
-  const [events, gallery, posts] = await Promise.all([
+  const [events, gallery] = await Promise.all([
     getEvents(),
     getGallery(),
-    getPosts(),
   ])
 
   return (
@@ -28,7 +27,8 @@ export default async function HomePage() {
         <StatsSection />
         <FeaturedEventsSection events={events} />
         <GallerySection items={gallery} />
-        <PressSection posts={posts} />
+        {/* Ocultada temporalmente: todavia no hay contenido de noticias/prensa cargado */}
+        {/* <PressSection posts={posts} /> */}
         <PartnersSection sponsors={[]} />
         <ContactSection />
       </main>
