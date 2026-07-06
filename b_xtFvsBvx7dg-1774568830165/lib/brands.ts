@@ -464,14 +464,14 @@ export const brands: Brand[] = [
     venuesIntro:
       'Oversize se ha desarrollado en diferentes venues, llevando su convocatoria y energía a distintos puntos del mapa, tanto dentro como fuera de Uruguay.',
     venues: [
-      { name: 'Antel Arena' },
-      { name: 'Floripa' },
-      { name: 'Punta Del Este' },
-      { name: 'Rambla de Punta Carretas Golf' },
-      { name: 'Plaza de Toros, Colonia' },
-      { name: 'Melo, Cerro Largo' },
-      { name: 'Museo Oceanográfico' },
-      { name: 'Chacra Lacrosse' },
+      { name: 'Antel Arena', image: '/brands/oversize/venue-antelarena.jpg' },
+      { name: 'Floripa', image: '/brands/oversize/venue-floripa.jpg' },
+      { name: 'Punta Del Este', image: '/brands/oversize/venue-puntadeleste.jpg' },
+      { name: 'Rambla de Punta Carretas Golf', image: '/brands/oversize/venue-rambladepc.jpg' },
+      { name: 'Plaza de Toros, Colonia', image: '/brands/oversize/venue-colonia.jpg' },
+      { name: 'Melo, Cerro Largo', image: '/brands/oversize/venue-melo.jpg' },
+      { name: 'Museo Oceanográfico', image: '/brands/oversize/venue-museo.jpg' },
+      { name: 'Chacra Lacrosse', image: '/brands/oversize/venue-lacrosse.jpg' },
     ],
     closingImage: '/brands/oversize/closing.jpg',
     closingText:
@@ -502,18 +502,30 @@ export const brands: Brand[] = [
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 30 a 45 años, con una trayectoria de 25 años y una edición actualizada en 2025. Con un promedio de 800 personas por apertura, mantiene una propuesta reconocida y vigente.',
-    heroImage: PLACEHOLDER_PHOTOS[3],
+    heroImage: '/brands/orca/hero.jpg',
     destacado:
       'Con una trayectoria de 25 años y una edición en 2025 actualizada, mantiene una propuesta reconocida y vigente.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/orca/section1-1.jpg',
+      '/brands/orca/section1-2.jpg',
+      '/brands/orca/section1-3.jpg',
+      '/brands/orca/section1-4.jpg',
+      '/brands/orca/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Es una fiesta para público de 30 a 45 años, con un promedio de 800 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/orca/section1-1.jpg',
+          '/brands/orca/section1-2.jpg',
+          '/brands/orca/section1-3.jpg',
+          '/brands/orca/section1-4.jpg',
+          '/brands/orca/section1-5.jpg',
+        ],
       },
     ],
-    closingImage: PLACEHOLDER_PHOTOS[4],
+    closingImage: '/brands/orca/closing.jpg',
     closingText:
       'Una experiencia consolidada dentro de la noche uruguaya, donde producción, música y convocatoria se combinan en cada edición.',
   },
@@ -523,17 +535,29 @@ export const brands: Brand[] = [
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 30 años, activa desde 2023. Con una edición anual en Punta del Este, propone una experiencia de temporada en formato playa.',
-    heroImage: PLACEHOLDER_PHOTOS[0],
+    heroImage: '/brands/hit-the-beach/hero.jpg',
     destacado: 'Activa desde 2023 propone una experiencia de temporada en formato playa.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/hit-the-beach/section1-1.jpg',
+      '/brands/hit-the-beach/section1-2.jpg',
+      '/brands/hit-the-beach/section1-3.jpg',
+      '/brands/hit-the-beach/section1-4.jpg',
+      '/brands/hit-the-beach/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Festival de verano en Punta del Este dirigido a un público juvenil de 18 a 30 años. En cada apertura convocamos un promedio de 3.000 personas.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/hit-the-beach/section1-1.jpg',
+          '/brands/hit-the-beach/section1-2.jpg',
+          '/brands/hit-the-beach/section1-3.jpg',
+          '/brands/hit-the-beach/section1-4.jpg',
+          '/brands/hit-the-beach/section1-5.jpg',
+        ],
       },
     ],
-    closingVideo: undefined,
+    closingImage: '/brands/hit-the-beach/closing.jpg',
     closingText:
       'Una propuesta destacada dentro de la escena de festivales en Uruguay, que combina producción, música y una gran convocatoria en cada edición.',
   },
@@ -544,28 +568,46 @@ export const brands: Brand[] = [
     category: 'coproduccion_internacional',
     cardDescription:
       'Es una fiesta Argentina para público de 20 a 30 años, producimos una edición mensual en Uruguay. Promedia 1.300 personas por apertura y se consolida como una marca fuerte dentro del entretenimiento nocturno.',
-    heroImage: PLACEHOLDER_PHOTOS[1],
+    heroVideo: '/brands/polenta/hero.mp4',
     destacado:
       'Polenta es una fiesta argentina de gran convocatoria que desembarca en Uruguay en 2024, co-producida localmente por By Hormiga.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/polenta/section1-1.jpg',
+      '/brands/polenta/section1-2.jpg',
+      '/brands/polenta/section1-3.jpg',
+      '/brands/polenta/section1-4.jpg',
+      '/brands/polenta/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Dirigida a jóvenes de 20 a 30 años, la propuesta cuenta con ediciones mensuales en Uruguay y una convocatoria promedio de 1.300 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/polenta/section1-1.jpg',
+          '/brands/polenta/section1-2.jpg',
+          '/brands/polenta/section1-3.jpg',
+          '/brands/polenta/section1-4.jpg',
+          '/brands/polenta/section1-5.jpg',
+        ],
       },
       {
         side: 'right',
         text: 'La experiencia se destaca por una puesta en escena de alto impacto, con shows de luces láser, bailarines y una producción visual pensada para potenciar la energía de cada edición.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/polenta/section2-1.jpg',
+          '/brands/polenta/section2-2.jpg',
+          '/brands/polenta/section2-3.jpg',
+          '/brands/polenta/section2-4.jpg',
+          '/brands/polenta/section2-5.jpg',
+        ],
       },
     ],
     venues: [
-      { name: 'Antel Arena' },
-      { name: 'Punta Del Este' },
-      { name: 'Montevideo Music Box' },
+      { name: 'Antel Arena', image: '/brands/polenta/venue-antelarena.jpg' },
+      { name: 'Punta Del Este', image: '/brands/polenta/venue-puntadeleste.jpg' },
+      { name: 'Montevideo Music Box', image: '/brands/polenta/venue-musicbox.jpg' },
     ],
-    closingImage: PLACEHOLDER_PHOTOS[2],
+    closingImage: '/brands/polenta/closing.jpg',
     closingText:
       'Una propuesta consolidada dentro de la noche argentina y uruguaya, donde producción, música y convocatoria se combinan en cada edición para crear una experiencia de alto impacto.',
   },
@@ -576,18 +618,34 @@ export const brands: Brand[] = [
     category: 'coproduccion_internacional',
     cardDescription:
       'Llega desde Argentina con una experiencia para público de 20 a 30 años. Con una edición mensual en Uruguay y un promedio de 1.200 personas por apertura, se destaca por su identidad propia y alta convocatoria.',
-    heroImage: PLACEHOLDER_PHOTOS[3],
+    heroImage: '/brands/caserio/hero.jpg',
     destacado:
       'Caserio es una fiesta argentina de gran convocatoria que llega a Uruguay en 2024, co-producida localmente por By Hormiga.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/caserio/section1-1.jpg',
+      '/brands/caserio/section1-2.jpg',
+      '/brands/caserio/section1-3.jpg',
+      '/brands/caserio/section1-4.jpg',
+      '/brands/caserio/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Dirigida a jóvenes de 20 a 30 años, la propuesta cuenta con ediciones mensuales y una convocatoria promedio de 1.200 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/caserio/section1-1.jpg',
+          '/brands/caserio/section1-2.jpg',
+          '/brands/caserio/section1-3.jpg',
+          '/brands/caserio/section1-4.jpg',
+          '/brands/caserio/section1-5.jpg',
+        ],
       },
     ],
-    venues: [{ name: 'Sala Maldonado' }, { name: 'Montevideo Music Box' }],
+    venues: [
+      { name: 'Sala Maldonado', image: '/brands/caserio/venue-salamaldonado.jpg' },
+      { name: 'Montevideo Music Box', image: '/brands/caserio/venue-musicbox.jpg' },
+    ],
+    closingVideo: '/brands/caserio/closing.mp4',
     closingText:
       'Una propuesta consolidada dentro de la noche argentina y uruguaya, donde producción, música y convocatoria se combinan en cada edición para crear una experiencia de alto impacto.',
   },
@@ -598,20 +656,33 @@ export const brands: Brand[] = [
     category: 'coproduccion_internacional',
     cardDescription:
       'Es una marca Argentina orientada a público de 18 a 25 años, con una edición bimensual en Uruguay. Promedia 1.500 personas por apertura y se caracteriza por su energía, continuidad y conexión con el público joven.',
-    heroImage: PLACEHOLDER_PHOTOS[4],
+    heroVideo: '/brands/nonstop/hero.mp4',
     // NOTA: el texto "destacado" de esta marca en el brief original quedó copiado del de
     // Caserío ("Caserio es una fiesta argentina..."). Corregido aquí con el nombre correcto
     // hasta que el cliente confirme la copy definitiva de Non Stop.
     destacado:
       'Non Stop es una fiesta argentina de gran convocatoria que llega a Uruguay en 2024, co-producida localmente por By Hormiga.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/nonstop/section1-1.jpg',
+      '/brands/nonstop/section1-2.jpg',
+      '/brands/nonstop/section1-3.jpg',
+      '/brands/nonstop/section1-4.jpg',
+      '/brands/nonstop/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Dirigida a jóvenes de 18 a 25 años, la propuesta cuenta con ediciones mensuales y una convocatoria promedio de 1.500 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/nonstop/section1-1.jpg',
+          '/brands/nonstop/section1-2.jpg',
+          '/brands/nonstop/section1-3.jpg',
+          '/brands/nonstop/section1-4.jpg',
+          '/brands/nonstop/section1-5.jpg',
+        ],
       },
     ],
+    closingImage: '/brands/nonstop/closing.jpg',
     closingText:
       'Una propuesta consolidada dentro de la noche argentina y uruguaya, donde producción, música y convocatoria se combinan en cada edición para crear una experiencia de alto impacto.',
   },
@@ -622,17 +693,30 @@ export const brands: Brand[] = [
     category: 'coproduccion_internacional',
     cardDescription:
       'Fiesta de Argentina orientada a público de 25 a 35 años, con una edición bimensual en Uruguay. Promedia 800 personas por apertura y se caracteriza por su energía, continuidad y conexión con el público joven.',
-    heroImage: PLACEHOLDER_PHOTOS[0],
+    heroImage: '/brands/hay-plan/hero.jpg',
     destacado:
       'Hay Plan es una fiesta argentina de gran convocatoria que se desarrolla en Uruguay en formato de co-producción local junto a By Hormiga.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/hay-plan/section1-1.jpg',
+      '/brands/hay-plan/section1-2.jpg',
+      '/brands/hay-plan/section1-3.jpg',
+      '/brands/hay-plan/section1-4.jpg',
+      '/brands/hay-plan/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Dirigida a un público de 25 a 35 años, la propuesta cuenta con ediciones trimestrales y una convocatoria promedio de 800 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/hay-plan/section1-1.jpg',
+          '/brands/hay-plan/section1-2.jpg',
+          '/brands/hay-plan/section1-3.jpg',
+          '/brands/hay-plan/section1-4.jpg',
+          '/brands/hay-plan/section1-5.jpg',
+        ],
       },
     ],
+    closingImage: '/brands/hay-plan/closing.jpg',
     closingText:
       'Una propuesta consolidada dentro de la noche argentina y uruguaya, donde producción, música y convocatoria se combinan en cada edición para crear una experiencia de alto impacto.',
   },
