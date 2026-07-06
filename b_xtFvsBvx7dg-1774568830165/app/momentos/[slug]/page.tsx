@@ -80,9 +80,6 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
                 {item.event_name}
               </h1>
 			  <p className="mt-4 text-[12px] tracking-[.2em] text-gray-400 uppercase">{item.date}</p>
-              <p className="mt-8 max-w-xl text-sm leading-relaxed text-gray-400">
-                Registro visual del evento con una selección de escenas, atmósferas y momentos capturados en vivo.
-              </p>
             </div>
           </div>
 
