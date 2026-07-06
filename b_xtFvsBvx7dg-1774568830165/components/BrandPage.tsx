@@ -62,7 +62,14 @@ function SectionBlock({ side, text, images, video, label }: Brand['sections'][nu
             <p className="text-center text-xs tracking-[.25em] text-gray-500 uppercase mb-6">{label}</p>
           )}
           {video ? (
-            <video autoPlay loop muted playsInline className="w-full aspect-video object-cover">
+            <video
+              autoPlay
+              loop
+              muted
+              playsInline
+              controls
+              className="mx-auto max-h-[85vh] w-auto max-w-full bg-black object-contain"
+            >
               <source src={video} type="video/mp4" />
             </video>
           ) : images && images.length > 0 ? (

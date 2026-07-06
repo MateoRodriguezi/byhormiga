@@ -174,29 +174,54 @@ export const brands: Brand[] = [
     category: 'plus15',
     cardDescription:
       'Con una edición trimestral y un promedio de 1.300 personas por apertura, desde 2023 se posiciona como una propuesta consolidada dentro del entretenimiento para adolescentes en Uruguay.',
-    heroImage: PLACEHOLDER_PHOTOS[2],
+    heroImage: '/brands/madness/hero.jpg',
     destacado:
       'Desde 2023, Madness se posiciona como una propuesta consolidada dentro del entretenimiento para adolescentes en Uruguay.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/madness/section1-1.jpg',
+      '/brands/madness/section1-2.jpg',
+      '/brands/madness/section1-3.jpg',
+      '/brands/madness/section1-4.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Realizamos una edición trimestral, con una convocatoria promedio de 1.300 personas por evento.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/madness/section1-1.jpg',
+          '/brands/madness/section1-2.jpg',
+          '/brands/madness/section1-3.jpg',
+          '/brands/madness/section1-4.jpg',
+        ],
       },
       {
         side: 'right',
         text: 'Desarrollamos una producción innovadora, creando diferentes temáticas para cada edición y ofreciendo una experiencia dinámica, segura y memorable.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/madness/section2-1.jpg',
+          '/brands/madness/section2-2.jpg',
+          '/brands/madness/section2-3.jpg',
+          '/brands/madness/section2-4.jpg',
+          '/brands/madness/section2-5.jpg',
+        ],
       },
       {
         side: 'left',
         text: 'En algunas de nuestras ediciones contamos con shows de artistas nacionales e internacionales, potenciando la experiencia y generando una mayor conexión con el público.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/madness/section3-1.jpg',
+          '/brands/madness/section3-2.jpg',
+          '/brands/madness/section3-3.jpg',
+          '/brands/madness/section3-4.jpg',
+          '/brands/madness/section3-5.jpg',
+        ],
       },
     ],
-    venues: [{ name: 'Montevideo Music Box' }, { name: 'Punta Del Este' }],
-    closingImage: PLACEHOLDER_PHOTOS[3],
+    venues: [
+      { name: 'Montevideo Music Box', image: '/brands/madness/venue-musicbox.jpg' },
+      { name: 'Punta Del Este', image: '/brands/madness/venue-puntadeleste.jpg' },
+    ],
+    closingImage: '/brands/madness/closing.jpg',
     closingText:
       'Contamos con seguridad, autorizaciones y todos los protocolos necesarios para el desarrollo de cada evento, generando un entorno cuidado y adecuado para el entretenimiento de menores de edad.',
   },
@@ -206,19 +231,35 @@ export const brands: Brand[] = [
     category: 'plus15',
     cardDescription:
       'Activa desde 2023, con una edición trimestral y un promedio de 1.200 personas por apertura, ofrece una experiencia de alta convocatoria en un entorno seguro y profesional.',
-    heroImage: PLACEHOLDER_PHOTOS[3],
+    heroImage: '/brands/close/hero.jpg',
     destacado:
       'Desde 2023, .CLOSE ofrece una experiencia de alta convocatoria para adolescentes, desarrollada en un entorno seguro, cuidado y profesional.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/close/section1-1.jpg',
+      '/brands/close/section1-2.jpg',
+      '/brands/close/section1-3.jpg',
+      '/brands/close/section1-4.jpg',
+      '/brands/close/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Producimos una edición trimestral y un promedio de 1200 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/close/section1-1.jpg',
+          '/brands/close/section1-2.jpg',
+          '/brands/close/section1-3.jpg',
+          '/brands/close/section1-4.jpg',
+          '/brands/close/section1-5.jpg',
+        ],
       },
     ],
-    venues: [{ name: 'Hangar 33' }, { name: 'Carrasco' }, { name: 'Punta Del Este' }],
-    closingImage: PLACEHOLDER_PHOTOS[4],
+    venues: [
+      { name: 'Hangar 33', image: '/brands/close/venue-hangar33.jpg' },
+      { name: 'Carrasco', image: '/brands/close/venue-carrasco.jpg' },
+      { name: 'Punta Del Este', image: '/brands/close/venue-puntadeleste.jpg' },
+    ],
+    closingImage: '/brands/close/closing.jpg',
     closingText:
       'Contamos con seguridad, autorizaciones y todos los protocolos necesarios para el desarrollo de cada evento, generando un entorno cuidado y adecuado para el entretenimiento de menores de edad.',
   },
@@ -228,22 +269,21 @@ export const brands: Brand[] = [
     category: 'plus15',
     cardDescription:
       'Con una edición trimestral y un promedio de 4.000 personas por apertura, desde 2025 ofrece una experiencia masiva, cuidada y profesional.',
-    heroImage: PLACEHOLDER_PHOTOS[0],
+    heroVideo: '/brands/la-festa/recap.mp4',
     destacado:
       'Desde 2025 ofrece una experiencia masiva, cuidada y profesional para el entretenimiento de adolescentes.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [],
     sections: [
       {
         side: 'right',
         text: 'Realizamos una edición trimestral con un promedio de 4000 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
       },
       {
         side: 'full',
         label: 'Última edición en Rambla del Kibón',
+        video: '/brands/la-festa/recap.mp4',
       },
     ],
-    closingImage: PLACEHOLDER_PHOTOS[1],
     closingText:
       'Contamos con seguridad, autorizaciones y todos los protocolos necesarios para la producción de la misma. Generando un ambiente conciliado para el entretenimiento de menores de edad.',
   },
@@ -253,18 +293,30 @@ export const brands: Brand[] = [
     category: 'plus15',
     cardDescription:
       'Desde 2026 ofrece una experiencia masiva, cuidada y profesional para el entretenimiento de adolescentes.',
-    heroImage: PLACEHOLDER_PHOTOS[1],
+    heroImage: '/brands/code/hero.jpg',
     destacado:
       'Desde 2026 ofrece una experiencia masiva, cuidada y profesional para el entretenimiento de adolescentes.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/code/section1-1.jpg',
+      '/brands/code/section1-2.jpg',
+      '/brands/code/section1-3.jpg',
+      '/brands/code/section1-4.jpg',
+      '/brands/code/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Realizamos una edición trimestral con un promedio de 3000 personas por apertura.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/code/section1-1.jpg',
+          '/brands/code/section1-2.jpg',
+          '/brands/code/section1-3.jpg',
+          '/brands/code/section1-4.jpg',
+          '/brands/code/section1-5.jpg',
+        ],
       },
     ],
-    closingImage: PLACEHOLDER_PHOTOS[2],
+    closingImage: '/brands/code/closing.jpg',
     closingText:
       'Contamos con seguridad, autorizaciones y todos los protocolos necesarios para la producción de la misma. Generando un ambiente conciliado para el entretenimiento de menores de edad.',
   },
