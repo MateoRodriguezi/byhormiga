@@ -119,7 +119,7 @@ export function ContactSection() {
 								<span className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-1">
 									Dirección
 								</span>
-								<p className="text-white">Av. Burgues 3169, Montevideo</p>
+								<p className="text-white">Paysandú 1091, Montevideo</p>
 							</div>
 						</div>
 
