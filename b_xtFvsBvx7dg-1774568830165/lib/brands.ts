@@ -64,34 +64,58 @@ export const brands: Brand[] = [
     cardDescription:
       'Con una edición mensual y un promedio de 1.300 personas por apertura, desde 2019 se posiciona como una propuesta consolidada dentro del entretenimiento para menores en Uruguay.',
     heroVideo: undefined,
-    heroImage: PLACEHOLDER_PHOTOS[0],
+    heroImage: '/brands/wonder/hero.jpg',
     destacado:
       'Desde 2019, Wonder se ha consolidado como una de las propuestas referentes en entretenimiento para menores de edad en Uruguay.',
-    photos: PLACEHOLDER_PHOTOS,
+    photos: [
+      '/brands/wonder/section1-1.jpg',
+      '/brands/wonder/section1-2.jpg',
+      '/brands/wonder/section1-3.jpg',
+      '/brands/wonder/section1-4.jpg',
+      '/brands/wonder/section1-5.jpg',
+    ],
     sections: [
       {
         side: 'right',
         text: 'Llevamos adelante una edición mensual con una convocatoria promedio de 1.300 personas por evento.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/wonder/section1-1.jpg',
+          '/brands/wonder/section1-2.jpg',
+          '/brands/wonder/section1-3.jpg',
+          '/brands/wonder/section1-4.jpg',
+          '/brands/wonder/section1-5.jpg',
+        ],
       },
       {
         side: 'left',
         text: 'Cada edición propone una experiencia diferente, con temáticas innovadoras y una producción pensada para sorprender en cada encuentro.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/wonder/section2-1.jpg',
+          '/brands/wonder/section2-2.jpg',
+          '/brands/wonder/section2-3.jpg',
+          '/brands/wonder/section2-4.jpg',
+          '/brands/wonder/section2-5.jpg',
+        ],
       },
       {
         side: 'right',
         text: 'A lo largo de sus ediciones, Wonder ha contado con la presencia de destacados artistas nacionales e internacionales, potenciando la experiencia y la conexión con su público.',
-        images: PLACEHOLDER_PHOTOS,
+        images: [
+          '/brands/wonder/section3-1.jpg',
+          '/brands/wonder/section3-2.jpg',
+          '/brands/wonder/section3-3.jpg',
+          '/brands/wonder/section3-4.jpg',
+          '/brands/wonder/section3-5.jpg',
+        ],
       },
     ],
     venues: [
-      { name: 'Montevideo Music Box' },
-      { name: 'Rambla de Punta Carretas Golf' },
-      { name: 'Antel Arena' },
-      { name: 'Punta Del Este' },
+      { name: 'Montevideo Music Box', image: '/brands/wonder/venue-musicbox.jpg' },
+      { name: 'Rambla de Punta Carretas Golf', image: '/brands/wonder/venue-clubdegolf.jpg' },
+      { name: 'Antel Arena', image: '/brands/wonder/venue-antelarena.jpg' },
+      { name: 'Punta Del Este', image: '/brands/wonder/venue-puntadeleste.jpg' },
     ],
-    closingImage: PLACEHOLDER_PHOTOS[1],
+    closingImage: '/brands/wonder/closing.jpg',
     closingText:
       'Trabajamos con todas las medidas de seguridad, habilitaciones y protocolos necesarios para garantizar un espacio de entretenimiento cuidado, confiable y adecuado para menores de edad.',
   },
