@@ -91,10 +91,7 @@ export default function TodosEventosPage() {
             >
               ← VOLVER AL INICIO
             </Link>
-            <span className="block text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono mt-8">
-              PORTAFOLIO COMPLETO
-            </span>
-            <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
+            <h1 className="mt-8 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
               Nuestras producciones
             </h1>
             <p className="mt-6 text-lg text-gray-400 max-w-3xl leading-relaxed">
