@@ -25,6 +25,11 @@ CSRF_TRUSTED_ORIGINS = [
     "https://*.railway.app",
 ]
 
+# Railway terminates TLS and proxies to Django over plain HTTP, forwarding this
+# header. Without it, request.is_secure() is False and request.build_absolute_uri()
+# (used to build media/gallery image URLs) returns http:// links instead of https://.
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+
 # Application definition
 
 INSTALLED_APPS = [
