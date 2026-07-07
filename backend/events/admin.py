@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils import timezone
 from django.utils.html import format_html
 from adminsortable2.admin import SortableAdminBase, SortableInlineAdminMixin
 from unfold.admin import ModelAdmin, TabularInline
@@ -19,8 +20,19 @@ WEEKDAY_ABBR = {
 class EventPhotoInline(SortableInlineAdminMixin, TabularInline):
     model = EventPhoto
     extra = 1
-    fields = ["image", "caption", "order"]
+    fields = ["thumbnail", "image", "caption", "order"]
+    readonly_fields = ["thumbnail"]
     ordering = ["order"]
+
+    @admin.display(description="")
+    def thumbnail(self, obj):
+        """Miniatura de la foto para reconocerla de un vistazo al reordenar"""
+        if obj.pk and obj.image:
+            return format_html(
+                '<img src="{}" width="56" height="56" style="object-fit: cover; border-radius: 4px;" />',
+                obj.image.url,
+            )
+        return "—"
 
 
 @admin.register(Venue)
@@ -58,13 +70,17 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
         "title",
         "formatted_date",
         "venue",
-        "status_badge",
-        "featured_badge",
+        "status",
+        "featured",
+        "visibility_info",
     ]
+    list_display_links = ["title"]
+    list_editable = ["status", "featured"]
     list_filter = ["status", "featured", "venue", "date"]
     search_fields = ["title", "description"]
+    autocomplete_fields = ["venue"]
     prepopulated_fields = {"slug": ("title",)}
-    readonly_fields = ["poster_preview", "created_at", "updated_at"]
+    readonly_fields = ["poster_preview", "recap_video_preview", "created_at", "updated_at"]
     date_hierarchy = "date"
     inlines = [EventPhotoInline]
     actions = [
@@ -85,8 +101,22 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
             "Detalles del evento",
             {"fields": ("date", "venue", "price_info", "ticket_url")},
         ),
-        ("Visual", {"fields": ("poster", "poster_preview", "recap_video")}),
-        ("Estado", {"fields": ("status",)}),
+        (
+            "Visual",
+            {"fields": ("poster", "poster_preview", "recap_video", "recap_video_preview")},
+        ),
+        (
+            "Estado",
+            {
+                "fields": ("status",),
+                "description": (
+                    "<strong>Publicado</strong>: aparece en /eventos como evento activo/en venta. "
+                    "<strong>Borrador</strong>: no aparece en /eventos, pero si tiene fecha pasada y "
+                    "fotos cargadas SI aparece en la Galeria de Momentos. Usa Borrador para cargar "
+                    "solo el recap fotografico de un evento que ya paso."
+                ),
+            },
+        ),
         (
             "Metadatos",
             {"fields": ("created_at", "updated_at"), "classes": ("collapse",)},
@@ -126,28 +156,31 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
             obj.date.strftime("%M"),
         )
 
-    @admin.display(description="Estado")
-    def status_badge(self, obj):
-        """Muestra badge de status con colores"""
-        colors = {
-            "draft": "#6c757d",
-            "published": "#28a745",
-            "cancelled": "#dc3545",
-            "sold_out": "#ffc107",
-        }
-        color = colors.get(obj.status, "#6c757d")
-        return format_html(
-            '<span style="background-color: {}; color: white; padding: 3px 10px; border-radius: 3px; font-size: 11px; font-weight: bold;">{}</span>',
-            color,
-            obj.get_status_display(),
-        )
+    @admin.display(description="Vista previa del video")
+    def recap_video_preview(self, obj):
+        """Muestra preview del video recap en el detalle"""
+        if obj.recap_video:
+            return format_html(
+                '<video src="{}" width="300" controls style="border-radius: 8px;"></video>',
+                obj.recap_video.url,
+            )
+        return "No hay video cargado"
 
-    @admin.display(description="Destacado")
-    def featured_badge(self, obj):
-        """Muestra si el evento está destacado"""
-        if obj.featured:
-            return format_html('<span style="color: #fbbf24;">⭐ Destacado</span>')
-        return "-"
+    @admin.display(description="Dónde aparece")
+    def visibility_info(self, obj):
+        """Aclara si el evento se ve en /eventos, en Momentos, en ambos o en ninguno"""
+        is_past = obj.date < timezone.now()
+        has_photos = obj.photos.exists()
+        in_eventos = obj.status == "published"
+        in_momentos = is_past and has_photos
+
+        if in_eventos and in_momentos:
+            return format_html('<span style="color: #a855f7;">🎫🖼️ Eventos + Momentos</span>')
+        if in_eventos:
+            return format_html('<span style="color: #3b82f6;">🎫 Eventos</span>')
+        if in_momentos:
+            return format_html('<span style="color: #a855f7;">🖼️ Solo Momentos</span>')
+        return format_html('<span style="color: #6b7280;">— Oculto</span>')
 
     @admin.action(description="✅ Marcar como publicado")
     def mark_as_published(self, request, queryset):

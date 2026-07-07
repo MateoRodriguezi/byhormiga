@@ -188,6 +188,14 @@ LOGOUT_REDIRECT_URL = "/admin/login/"
 # Default primary key field type
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+def _unread_messages_badge(request):
+    """Cantidad de mensajes de contacto sin leer, mostrada en el sidebar del admin."""
+    from contact.models import ContactMessage
+
+    count = ContactMessage.objects.filter(read=False).count()
+    return count or None
+
+
 # Django Unfold Admin Theme Configuration
 UNFOLD = {
     "SITE_TITLE": "ByHormiga Admin",
@@ -242,6 +250,7 @@ UNFOLD = {
                         "title": "Mensajes",
                         "icon": "mail",
                         "link": lambda request: "/admin/contact/contactmessage/",
+                        "badge": _unread_messages_badge,
                     },
                 ],
             },
