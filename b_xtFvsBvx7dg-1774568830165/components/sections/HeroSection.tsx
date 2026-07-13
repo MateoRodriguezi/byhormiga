@@ -80,9 +80,10 @@ export function HeroSection() {
 					<Image
 						src="/images/logo.png"
 						alt="ByHormiga"
-						width={2060}
-						height={396}
+						width={4120}
+						height={792}
 						priority
+						quality={95}
 						className="w-[min(84vw,900px)] h-auto object-contain brightness-0 invert"
 					/>
 				</motion.div>
