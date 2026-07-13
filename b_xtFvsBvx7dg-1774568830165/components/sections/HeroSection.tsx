@@ -77,10 +77,12 @@ export function HeroSection() {
 					transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
 					className="flex justify-center"
 				>
-					{/* eslint-disable-next-line @next/next/no-img-element */}
-					<img
-						src="/images/logo.svg"
+					<Image
+						src="/images/logo.png"
 						alt="ByHormiga"
+						width={2060}
+						height={396}
+						priority
 						className="w-[min(84vw,900px)] h-auto object-contain brightness-0 invert"
 					/>
 				</motion.div>
