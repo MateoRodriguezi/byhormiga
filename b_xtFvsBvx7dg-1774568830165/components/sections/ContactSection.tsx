@@ -109,10 +109,10 @@ export function ContactSection() {
 									Teléfono
 								</span>
 								<a
-									href="tel:+59893911111"
+									href="tel:+59899788032"
 									className="text-white hover:text-white/70 transition-colors"
 								>
-									+598 93 911 111
+									099 788 032
 								</a>
 							</div>
 							<div>
