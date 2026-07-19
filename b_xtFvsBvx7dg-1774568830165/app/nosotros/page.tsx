@@ -128,7 +128,7 @@ function AboutSection() {
 								</div>
 
 								<div className={imageFirst ? "lg:order-1" : "lg:order-2"}>
-									<div className="relative aspect-[4/3] overflow-hidden border border-white/[.08] bg-white/[.03]">
+									<div className="relative aspect-[4/3] overflow-hidden">
 										<Image
 											src={block.image}
 											alt={block.title}

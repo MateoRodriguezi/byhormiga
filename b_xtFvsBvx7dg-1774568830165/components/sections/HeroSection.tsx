@@ -40,15 +40,15 @@ export function HeroSection() {
 					loop
 					muted
 					playsInline
-					className="w-full h-full object-cover opacity-70"
+					className="w-full h-full object-cover"
 				>
 					<source src="/videos/hero-background.mp4" type="video/mp4" />
 				</video>
 				<motion.div
-					initial={{ opacity: 0.35 }}
-					animate={{ opacity: showContent ? 0.68 : 0.35 }}
+					initial={{ opacity: 0.2 }}
+					animate={{ opacity: showContent ? 0.4 : 0.2 }}
 					transition={{ duration: 1.2, ease: "easeOut" }}
-					className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/70 via-[#0a0908]/50 to-[#0a0908]"
+					className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/50 via-[#0a0908]/25 to-[#0a0908]"
 				/>
 			</motion.div>
 

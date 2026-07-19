@@ -28,7 +28,7 @@ export function RotatingPhotos({
   if (images.length === 0) return null
 
   return (
-    <div className={`relative overflow-hidden border border-white/[.08] bg-white/[.03] ${className}`}>
+    <div className={`relative overflow-hidden ${className}`}>
       <AnimatePresence mode="wait">
         <motion.div
           key={index}
