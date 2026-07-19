@@ -30,6 +30,7 @@ const teamMembers = [
 const storyBlocks = [
 	{
 		title: "¿Quiénes somos?",
+		hideTitle: true,
 		text: (
 			<>
 				Somos una productora de eventos y entretenimiento en Uruguay, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en{" "}
@@ -43,6 +44,7 @@ const storyBlocks = [
 	},
 	{
 		title: "Nuestro crecimiento",
+		hideTitle: false,
 		text: (
 			<>
 				Al año producimos un promedio de más de <span className="font-bold text-white">200 eventos</span>, trabajamos junto a más de <span className="font-bold text-white">150 artistas</span> nacionales e internacionales y convocamos a más de <span className="font-bold text-white">200.000 personas</span>. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
@@ -52,6 +54,7 @@ const storyBlocks = [
 	},
 	{
 		title: "Nuestra forma de hacer",
+		hideTitle: false,
 		text: (
 			<>
 				Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso,{" "}
@@ -90,11 +93,6 @@ function HeroSection() {
 					<h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
 						QUIÉNES SOMOS
 					</h1>
-					<p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
-						Desde 1996, ByHormiga ha estado transformando la escena de eventos
-						en Uruguay, creando experiencias inolvidables que conectan a las
-						personas a través de la música, el arte y la cultura.
-					</p>
 				</motion.div>
 			</div>
 		</section>
@@ -119,9 +117,11 @@ function AboutSection() {
 								className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
 							>
 								<div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
-									<h3 className="text-2xl lg:text-3xl font-black text-white uppercase mb-4">
-										{block.title}
-									</h3>
+									{!block.hideTitle && (
+										<h3 className="text-2xl lg:text-3xl font-black text-white uppercase mb-4">
+											{block.title}
+										</h3>
+									)}
 									<p className="text-gray-400 leading-relaxed text-base lg:text-lg">
 										{block.text}
 									</p>
