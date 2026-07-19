@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
+import { StatsSection } from "@/components/sections/StatsSection";
 import { motion } from "framer-motion";
 
 const teamMembers = [
@@ -28,23 +29,23 @@ const teamMembers = [
 
 const storyBlocks = [
 	{
-		title: "El comienzo",
+		title: "¿Quiénes somos?",
 		text: (
 			<>
-				ByHormiga nació en 1996 con una misión clara:{" "}
+				Somos una productora de eventos y entretenimiento en Uruguay, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en{" "}
 				<span className="font-bold text-white">
-					crear momentos únicos que las personas recordarán para siempre
+					un referente del entretenimiento
 				</span>
-				. Lo que comenzó como una pequeña productora de eventos se ha convertido en la empresa líder de entretenimiento en Uruguay.
+				, desarrollando formatos innovadores para distintos públicos, con impacto, recordación y conexión emocional.
 			</>
 		),
 		image: "/mock-photos/about-4.jpg",
 	},
 	{
-		title: "Un crecimiento sostenido",
+		title: "Nuestro crecimiento",
 		text: (
 			<>
-				Hemos producido más de <span className="font-bold text-white">500 eventos</span>, trabajado con más de <span className="font-bold text-white">200 artistas</span> nacionales e internacionales, y creado <span className="font-bold text-white">experiencias para miles de personas</span> que confían en nosotros para los momentos más importantes de sus vidas.
+				Al año producimos un promedio de más de <span className="font-bold text-white">200 eventos</span>, trabajamos junto a más de <span className="font-bold text-white">150 artistas</span> nacionales e internacionales y convocamos a más de <span className="font-bold text-white">200.000 personas</span>. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
 			</>
 		),
 		image: "/mock-photos/about-6.jpg",
@@ -53,7 +54,11 @@ const storyBlocks = [
 		title: "Nuestra forma de hacer",
 		text: (
 			<>
-				Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. <span className="font-bold text-white">Combinamos creatividad, tecnología y pasión</span> para entregar experiencias que superan las expectativas.
+				Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso,{" "}
+				<span className="font-bold text-white">
+					combinamos creatividad, tecnología y pasión
+				</span>{" "}
+				para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.
 			</>
 		),
 		image: "/mock-photos/about-11.jpg",
@@ -137,72 +142,6 @@ function AboutSection() {
 					})}
 				</div>
 
-				{/* Stats Cards with Interactive Hover */}
-				<div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mt-14 lg:mt-20">
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0 }}
-						whileHover={{ scale: 1.05, y: -8 }}
-						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
-					>
-						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
-							30+
-						</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
-							Años
-						</div>
-					</motion.div>
-
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.1 }}
-						whileHover={{ scale: 1.05, y: -8 }}
-						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
-					>
-						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
-							500+
-						</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
-							Eventos
-						</div>
-					</motion.div>
-
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.2 }}
-						whileHover={{ scale: 1.05, y: -8 }}
-						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
-					>
-						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
-							200+
-						</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
-							Artistas
-						</div>
-					</motion.div>
-
-					<motion.div
-						initial={{ opacity: 0, y: 30 }}
-						whileInView={{ opacity: 1, y: 0 }}
-						viewport={{ once: true }}
-						transition={{ duration: 0.6, delay: 0.3 }}
-						whileHover={{ scale: 1.05, y: -8 }}
-						className="group border border-white/[.08] p-8 text-center cursor-pointer transition-colors duration-300 hover:bg-white hover:border-white"
-					>
-						<div className="text-5xl font-black text-white mb-2 group-hover:text-[#0a0908] transition-colors duration-300">
-							50+
-						</div>
-						<div className="text-xs tracking-[.2em] text-gray-500 uppercase group-hover:text-[#0a0908]/70 transition-colors duration-300">
-							Por Mes
-						</div>
-					</motion.div>
-				</div>
 			</div>
 		</section>
 	);
@@ -269,6 +208,7 @@ export default function NosotrosPage() {
 			<main>
 				<HeroSection />
 				<AboutSection />
+				<StatsSection />
 				{/* Oculta temporalmente: todavia no hay contenido real del equipo cargado */}
 				{/* <TeamSection /> */}
 			</main>
