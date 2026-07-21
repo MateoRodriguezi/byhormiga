@@ -37,17 +37,33 @@ function Hero({ brand }: { brand: Brand }) {
   )
 }
 
+const wordVariants = {
+  hidden: { opacity: 0, y: 24, filter: 'blur(6px)' },
+  visible: { opacity: 1, y: 0, filter: 'blur(0px)' },
+}
+
 function Destacado({ text }: { text: string }) {
+  const words = text.split(' ')
+
   return (
     <section className="bg-[#0a0908] py-16 lg:py-24 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
       <motion.p
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: '-100px' }}
+        transition={{ staggerChildren: 0.06 }}
         className="max-w-4xl mx-auto text-center text-2xl lg:text-4xl font-black text-white tracking-[-0.035em] leading-tight"
       >
-        {text}
+        {words.map((word, index) => (
+          <motion.span
+            key={index}
+            variants={wordVariants}
+            transition={{ duration: 0.5, ease: [0.215, 0.61, 0.355, 1] }}
+            className="inline-block mr-[0.25em]"
+          >
+            {word}
+          </motion.span>
+        ))}
       </motion.p>
     </section>
   )
