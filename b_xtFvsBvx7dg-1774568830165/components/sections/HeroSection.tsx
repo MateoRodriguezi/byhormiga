@@ -78,13 +78,13 @@ export function HeroSection() {
 					className="flex justify-center"
 				>
 					<Image
-						src="/images/logo.png"
+						src="/images/logo-white.png"
 						alt="ByHormiga"
 						width={4120}
 						height={792}
 						priority
 						quality={95}
-						className="w-[min(84vw,900px)] h-auto object-contain brightness-0 invert"
+						className="w-[min(84vw,900px)] h-auto object-contain"
 					/>
 				</motion.div>
 
