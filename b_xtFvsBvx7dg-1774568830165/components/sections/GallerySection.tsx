@@ -129,7 +129,7 @@ export function GallerySection({ items }: GallerySectionProps) {
 	const isInView = useInView(ref, { once: true, margin: "-100px" });
 
 	return (
-		<section id="momentos" className="bg-[#0a0908] py-16 sm:py-24 lg:py-32">
+		<section id="momentos" className="bg-[#0a0908] py-12 sm:py-16 lg:py-20">
 			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
 				<SectionHeader />
 

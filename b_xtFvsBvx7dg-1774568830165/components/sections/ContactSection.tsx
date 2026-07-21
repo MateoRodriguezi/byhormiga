@@ -57,7 +57,7 @@ export function ContactSection() {
 	};
 
 	return (
-		<section id="contacto" className="bg-[#111111] py-16 sm:py-24 lg:py-32">
+		<section id="contacto" className="bg-[#111111] py-12 sm:py-16 lg:py-20">
 			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
 				<SectionHeader />
 

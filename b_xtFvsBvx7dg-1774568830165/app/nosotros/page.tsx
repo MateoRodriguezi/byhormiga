@@ -101,7 +101,7 @@ function HeroSection() {
 
 function AboutSection() {
 	return (
-		<section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+		<section className="bg-[#0a0908] py-14 lg:py-20 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
 			<div className="max-w-[1200px] mx-auto">
 				<div className="space-y-10 lg:space-y-14">
 					{storyBlocks.map((block, index) => {
@@ -149,7 +149,7 @@ function AboutSection() {
 
 function TeamSection() {
 	return (
-		<section className="bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+		<section className="bg-[#0a0908] py-14 lg:py-20 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
 			<div className="max-w-[1600px] mx-auto">
 				<motion.div
 					initial={{ opacity: 0, y: 20 }}

@@ -71,7 +71,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
   )
 
   return (
-    <section className="relative bg-[#0a0908] py-20 lg:py-32 px-4 sm:px-6 lg:px-12 border-t border-white/[.08] overflow-hidden">
+    <section className="relative bg-[#0a0908] py-14 lg:py-20 px-4 sm:px-6 lg:px-12 border-t border-white/[.08] overflow-hidden">
       {/* Background images con baja opacidad que van cambiando */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">

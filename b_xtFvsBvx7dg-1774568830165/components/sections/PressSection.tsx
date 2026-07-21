@@ -91,7 +91,7 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
 
 export function PressSection({ posts }: PressSectionProps) {
   return (
-    <section id="noticias" className="bg-[#0a0908] py-16 sm:py-24 lg:py-32">
+    <section id="noticias" className="bg-[#0a0908] py-12 sm:py-16 lg:py-20">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
         <SectionHeader />
 

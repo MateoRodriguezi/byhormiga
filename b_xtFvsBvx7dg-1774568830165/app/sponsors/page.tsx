@@ -83,7 +83,7 @@ export default function SponsorsPage() {
     <>
       <Navbar />
       <main>
-        <section className="bg-[#0a0908] py-32 lg:py-40 px-4 sm:px-6 lg:px-12">
+        <section className="bg-[#0a0908] py-20 lg:py-28 px-4 sm:px-6 lg:px-12">
           <div className="max-w-[1600px] mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
