@@ -92,24 +92,39 @@ export default function TodosEventosPage() {
   return (
     <>
       <Navbar />
-      <main className="min-h-screen bg-[#0a0908] pt-32 pb-24">
-        <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
-          {/* Header */}
-          <div className="mb-20">
-            <Link
-              href="/"
-              className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
-            >
-              ← VOLVER AL INICIO
-            </Link>
-            <h1 className="mt-8 text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">
+      <main className="min-h-screen bg-[#0a0908]">
+        {/* Header */}
+        <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-16">
+          <div className="absolute inset-0 z-0">
+            <Image
+              src="/mock-photos/about-1.jpg"
+              alt=""
+              fill
+              priority
+              sizes="100vw"
+              className="object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/30 via-[#0a0908]/40 to-[#0a0908]" />
+          </div>
+
+          <Link
+            href="/"
+            className="absolute top-24 left-6 lg:left-12 z-10 text-[12px] tracking-[.2em] text-gray-300 uppercase hover:text-white transition-colors"
+          >
+            ← VOLVER AL INICIO
+          </Link>
+
+          <div className="relative z-10 text-center px-6 lg:px-12 max-w-3xl mx-auto">
+            <h1 className="text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">
               Nuestras producciones
             </h1>
-            <p className="mt-6 text-lg text-gray-400 max-w-3xl leading-relaxed">
+            <p className="mt-6 text-lg text-gray-300 leading-relaxed">
               Creamos experiencias de entretenimiento para distintos públicos, combinando producción, contenido y ejecución profesional.
             </p>
           </div>
+        </section>
 
+        <div className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-16 pb-24">
           {/* Category Navigation */}
           <div className="mb-16 flex flex-wrap gap-4">
             <a href="#matinee" className="border border-white/30 text-white px-6 py-3 text-[12px] font-medium tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors">
