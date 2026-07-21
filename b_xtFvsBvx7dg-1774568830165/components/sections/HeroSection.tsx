@@ -45,10 +45,10 @@ export function HeroSection() {
 					<source src="/videos/hero-background.mp4" type="video/mp4" />
 				</video>
 				<motion.div
-					initial={{ opacity: 0.2 }}
-					animate={{ opacity: showContent ? 0.4 : 0.2 }}
+					initial={{ opacity: 0.1 }}
+					animate={{ opacity: showContent ? 0.25 : 0.1 }}
 					transition={{ duration: 1.2, ease: "easeOut" }}
-					className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/50 via-[#0a0908]/25 to-[#0a0908]"
+					className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/35 via-[#0a0908]/15 to-[#0a0908]"
 				/>
 			</motion.div>
 
