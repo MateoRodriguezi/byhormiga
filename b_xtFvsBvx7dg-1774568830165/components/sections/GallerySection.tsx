@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion, useInView } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { getGalleryCoverImage } from "@/lib/gallery";
 import type { GalleryItem } from "@/lib/types";
 
@@ -89,16 +90,22 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
 			>
 				{coverImage ? (
 					<AnimatePresence mode="wait">
-						<motion.img
+						<motion.div
 							key={galleryImages[activeImageIndex]}
-							src={galleryImages[activeImageIndex]}
-							alt={item.event_name}
 							initial={{ opacity: 0.45 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0.45 }}
 							transition={{ duration: 0.35, ease: "easeOut" }}
-							className="w-full h-full object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
-						/>
+							className="absolute inset-0"
+						>
+							<Image
+								src={galleryImages[activeImageIndex]}
+								alt={item.event_name}
+								fill
+								sizes="(max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+								className="object-cover transition-all duration-500 grayscale-[0.5] brightness-[0.7] group-hover:grayscale-0 group-hover:brightness-[0.9] group-hover:scale-[1.04]"
+							/>
+						</motion.div>
 					</AnimatePresence>
 				) : (
 					<div

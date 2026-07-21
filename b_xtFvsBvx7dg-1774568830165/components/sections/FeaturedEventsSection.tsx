@@ -31,10 +31,12 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 		>
 			{event.image ? (
 				<div className="absolute inset-0 transition-transform duration-700 group-hover:scale-110">
-					<img
+					<Image
 						src={event.image}
 						alt={event.name}
-						className="w-full h-full object-cover"
+						fill
+						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+						className="object-cover"
 					/>
 				</div>
 			) : (
