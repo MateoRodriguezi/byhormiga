@@ -112,7 +112,7 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 	}
 
 	return (
-		<section className="bg-[#0a0908] py-14 lg:py-20 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
+		<section className="bg-[#0a0908] py-10 lg:py-14 px-4 sm:px-6 lg:px-12 border-t border-white/[.08]">
 			<div className="max-w-[1600px] mx-auto">
 				{/* Section Header */}
 				<motion.div

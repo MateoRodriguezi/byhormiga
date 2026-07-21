@@ -33,7 +33,7 @@ export function AboutSection() {
   }, [])
 
   return (
-    <section id="nosotros" className="relative bg-[#0a0908] py-12 sm:py-16 lg:py-20 overflow-hidden">
+    <section id="nosotros" className="relative bg-[#0a0908] py-8 sm:py-10 lg:py-14 overflow-hidden">
       {/* Background images con baja opacidad que van cambiando */}
       <div className="absolute inset-0 z-0">
         <AnimatePresence mode="wait">

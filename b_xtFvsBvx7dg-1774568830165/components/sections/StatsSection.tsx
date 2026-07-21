@@ -94,7 +94,7 @@ export function StatsSection() {
 	];
 
 	return (
-		<section className="bg-[#0a0908] py-8 lg:py-14">
+		<section className="bg-[#0a0908] py-6 lg:py-10">
 			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
 				{/* Section title */}
 				{/* Stats grid */}

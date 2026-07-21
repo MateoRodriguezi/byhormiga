@@ -69,7 +69,7 @@ export default async function NoticiasPage() {
           </div>
         </section>
 
-        <section className="bg-[#0a0908] py-14 lg:py-20 px-4 sm:px-6 lg:px-12">
+        <section className="bg-[#0a0908] py-10 lg:py-14 px-4 sm:px-6 lg:px-12">
           <div className="max-w-[1600px] mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
               {posts.map((news) => (

@@ -134,7 +134,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 
 export function EventsSection({ events }: EventsSectionProps) {
   return (
-    <section id="eventos" className="bg-[#0a0908] py-12 sm:py-16 lg:py-20">
+    <section id="eventos" className="bg-[#0a0908] py-8 sm:py-10 lg:py-14">
       <div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
         <SectionHeader />
 
