@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next'
-import { Questrial, Archivo_Black } from 'next/font/google'
+import { Questrial } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import { defaultMetadata } from '@/lib/metadata'
 import { OrganizationSchema } from '@/components/StructuredData'
@@ -10,12 +10,6 @@ const questrial = Questrial({
   subsets: ['latin'],
   weight: ['400'],
   variable: '--font-questrial',
-})
-
-const archivoBlack = Archivo_Black({
-  subsets: ['latin'],
-  weight: ['400'],
-  variable: '--font-archivo-black',
 })
 
 export const metadata: Metadata = defaultMetadata
@@ -36,7 +30,7 @@ export default function RootLayout({
       <head>
         <OrganizationSchema />
       </head>
-      <body className={`${questrial.variable} ${archivoBlack.variable} font-sans antialiased bg-[#0a0908] text-white`}>
+      <body className={`${questrial.variable} font-sans antialiased bg-[#0a0908] text-white`}>
         <div className="film-grain" aria-hidden="true" />
         {children}
         <ScrollToTop />

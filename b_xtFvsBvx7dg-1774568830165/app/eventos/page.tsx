@@ -35,8 +35,8 @@ export default async function EventosPage() {
             <span className="block text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono mt-8">
               AGENDA COMPLETA
             </span>
-            <h1 className="font-heading mt-4 text-5xl lg:text-7xl font-black tracking-tighter text-white">
-              Eventos
+            <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
+              EVENTOS
             </h1>
           </div>
 

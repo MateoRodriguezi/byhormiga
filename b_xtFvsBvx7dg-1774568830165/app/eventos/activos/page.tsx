@@ -37,8 +37,8 @@ export default async function EventosActivosPage() {
             <span className="block text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono mt-8">
               ENTRADAS DISPONIBLES
             </span>
-            <h1 className="font-heading mt-4 text-5xl lg:text-7xl font-black tracking-tighter text-white">
-              Eventos activos
+            <h1 className="mt-4 text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
+              EVENTOS ACTIVOS
             </h1>
           </div>
 

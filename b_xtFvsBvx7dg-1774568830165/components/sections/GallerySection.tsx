@@ -26,8 +26,8 @@ function SectionHeader() {
 				<span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
 					NUESTRA TRAYECTORIA
 				</span>
-				<h2 className="font-heading mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tighter text-white">
-					Momentos
+				<h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
+					MOMENTOS
 				</h2>
 			</div>
 		</motion.div>
