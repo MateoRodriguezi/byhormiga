@@ -19,7 +19,7 @@ export function Footer() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 sm:gap-4 group">
             <Image
-              src="/images/logo-hormiga.png"
+              src="/images/logo-hormiga.svg"
               alt="BYHORMIGA"
               width={32}
               height={32}

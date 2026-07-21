@@ -73,7 +73,7 @@ export function ContactSection() {
 						{/* Watermark logo */}
 						<div className="absolute -left-8 top-0 opacity-[0.04] pointer-events-none hidden lg:block">
 							<Image
-								src="/images/logo-hormiga.png"
+								src="/images/logo-hormiga.svg"
 								alt="BYHORMIGA"
 								width={200}
 								height={200}

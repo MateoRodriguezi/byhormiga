@@ -55,7 +55,7 @@ export function HeroSection() {
 			{/* Background Logo with overlay effect */}
 			<div className="absolute top-1/4 right-0 opacity-[0.08] pointer-events-none hidden sm:block z-[1] mix-blend-overlay">
 				<Image
-					src="/images/logo-hormiga.png"
+					src="/images/logo-hormiga.svg"
 					alt=""
 					width={500}
 					height={500}

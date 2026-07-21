@@ -71,7 +71,7 @@ export function Navbar() {
                 isScrolled ? "w-7 h-7 sm:w-8 sm:h-8" : "w-8 h-8 sm:w-10 sm:h-10"
               )}>
                 <Image
-                  src="/images/logo-hormiga.png"
+                  src="/images/logo-hormiga.svg"
                   alt="BYHORMIGA"
                   width={40}
                   height={40}
