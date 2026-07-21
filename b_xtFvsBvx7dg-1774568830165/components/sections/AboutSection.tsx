@@ -66,8 +66,8 @@ export function AboutSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16 lg:mb-24"
         >
-          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tight text-white uppercase">
-            Quienes Somos
+          <h2 className="text-4xl sm:text-5xl lg:text-7xl font-black tracking-tighter text-white">
+            Quiénes somos
           </h2>
         </motion.div>
 

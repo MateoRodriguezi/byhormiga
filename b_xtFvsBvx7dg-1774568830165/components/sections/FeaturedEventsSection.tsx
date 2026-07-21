@@ -66,7 +66,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 				</motion.div>
 
 				{/* Event name - Large */}
-				<h3 className="text-4xl lg:text-5xl font-black text-white uppercase tracking-tight mb-4 transform group-hover:translate-y-[-8px] transition-transform duration-500">
+				<h3 className="text-4xl lg:text-5xl font-black text-white tracking-tighter mb-4 transform group-hover:translate-y-[-8px] transition-transform duration-500">
 					{event.name}
 				</h3>
 
@@ -125,8 +125,8 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					<span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
 						SELECCIÓN
 					</span>
-					<h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tight text-white uppercase">
-						EVENTOS DESTACADOS
+					<h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-tighter text-white">
+						Eventos destacados
 					</h2>
 				</motion.div>
 

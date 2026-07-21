@@ -86,7 +86,7 @@ export default async function EventPage({ params }: EventPageProps) {
               </div>
 
               {/* Title */}
-              <h1 className="text-4xl lg:text-6xl font-black text-white uppercase tracking-tight mb-6">
+              <h1 className="text-4xl lg:text-6xl font-black text-white tracking-tighter mb-6">
                 {event.name}
               </h1>
 
