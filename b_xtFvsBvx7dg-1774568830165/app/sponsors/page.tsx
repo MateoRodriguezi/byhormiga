@@ -16,19 +16,7 @@ const defaultSponsors: Sponsor[] = [
   { id: 7, name: 'Burger King', logo: '/sponsors/burgerking.png', website_url: 'https://www.burgerking.com.uy' },
   { id: 8, name: 'Chivas', logo: '/sponsors/chivas.png', website_url: 'https://www.chivas.com' },
   { id: 9, name: 'Dr Lemon', logo: '/sponsors/drlemon.png', website_url: 'https://www.instagram.com/drlemon.uy' },
-  {
-    id: 10,
-    name: 'Estrella Galicia',
-    logo: '/sponsors/estrellagalicia.png',
-    website_url: 'https://www.estrellagalicia.es',
-    activations: [
-      {
-        title: 'Estrella Galicia en nuestros eventos',
-        description: 'Presencia activa de la marca en el punto de venta y en la experiencia del público durante cada apertura.',
-        images: ['/mock-photos/event-1.jpeg', '/mock-photos/event-2.jpeg'],
-      },
-    ],
-  },
+  { id: 10, name: 'Estrella Galicia', logo: '/sponsors/estrellagalicia.png', website_url: 'https://www.estrellagalicia.es' },
   { id: 11, name: 'Jameson', logo: '/sponsors/james.png', website_url: 'https://www.jamesonwhiskey.com' },
   { id: 12, name: 'Johnnie Walker', logo: '/sponsors/johnnie.png', website_url: 'https://www.johnniewalker.com' },
   { id: 13, name: 'McDonald\'s', logo: '/sponsors/mc.png', website_url: 'https://www.mcdonalds.com.uy' },
