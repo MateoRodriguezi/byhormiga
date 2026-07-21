@@ -158,7 +158,7 @@ function TeamSection() {
 					transition={{ duration: 0.6 }}
 					className="text-center mb-16"
 				>
-					<span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
+					<span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
 						EL EQUIPO
 					</span>
 					<h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-[-0.035em] text-white">

@@ -91,7 +91,7 @@ export default function SponsorsPage() {
               transition={{ duration: 0.8 }}
               className="text-center mb-20"
             >
-              <span className="text-xs sm:text-sm tracking-[.25em] text-white uppercase font-mono">
+              <span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
                 MARCAS ALIADAS
               </span>
               <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">

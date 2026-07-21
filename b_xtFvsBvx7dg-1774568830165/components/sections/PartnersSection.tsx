@@ -104,7 +104,7 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
           transition={{ duration: 0.6 }}
           className="text-center mb-20 lg:mb-24"
         >
-          <span className="text-sm sm:text-base lg:text-lg tracking-[.25em] text-white uppercase font-mono font-semibold">
+          <span className="text-sm sm:text-base lg:text-lg tracking-[.18em] text-white uppercase font-mono font-semibold">
             MARCAS QUE CONFIARON EN NOSOTROS
           </span>
         </motion.div>

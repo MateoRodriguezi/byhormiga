@@ -19,7 +19,7 @@ function SectionHeader() {
 			transition={{ duration: 0.6 }}
 			className="mb-8 sm:mb-12 lg:mb-16"
 		>
-			<span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
+			<span className="text-xs sm:text-sm tracking-[.15em] sm:tracking-[.18em] text-white uppercase font-mono">
 				CONTACTO
 			</span>
 		</motion.div>
