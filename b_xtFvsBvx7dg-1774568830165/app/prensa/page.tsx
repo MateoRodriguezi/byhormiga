@@ -18,7 +18,7 @@ export default async function PrensaPage() {
       <main className="min-h-screen bg-[#0a0908] pt-32 pb-24">
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12">
           {/* Header */}
-          <div className="mb-16">
+          <div className="mb-16 text-center">
             <Link
               href="/"
 				className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors mb-4 inline-block"
