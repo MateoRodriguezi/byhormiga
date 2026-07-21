@@ -29,7 +29,7 @@ function Hero({ brand }: { brand: Brand }) {
               <Image src={brand.logo} alt={brand.name} fill className="object-contain brightness-0 invert" priority />
             </div>
           ) : (
-            <h1 className="text-5xl lg:text-8xl font-black tracking-tighter text-white">{brand.name}</h1>
+            <h1 className="text-5xl lg:text-8xl font-black tracking-[-0.035em] text-white">{brand.name}</h1>
           )}
         </motion.div>
       </div>
@@ -45,7 +45,7 @@ function Destacado({ text }: { text: string }) {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center text-2xl lg:text-4xl font-black text-white tracking-tighter leading-tight"
+        className="max-w-4xl mx-auto text-center text-2xl lg:text-4xl font-black text-white tracking-[-0.035em] leading-tight"
       >
         {text}
       </motion.p>

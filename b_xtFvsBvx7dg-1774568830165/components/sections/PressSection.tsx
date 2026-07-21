@@ -25,7 +25,7 @@ function SectionHeader() {
         <span className="text-xs sm:text-sm tracking-[.2em] sm:tracking-[.25em] text-white uppercase font-mono">
           NOTICIAS
         </span>
-        <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tighter text-white">
+        <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-[-0.035em] text-white">
           Noticias
         </h2>
       </div>

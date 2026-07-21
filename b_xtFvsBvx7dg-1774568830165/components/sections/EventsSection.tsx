@@ -27,7 +27,7 @@ function SectionHeader() {
         <span className="text-sm sm:text-base tracking-[.2em] sm:tracking-[.25em] text-gray-400 uppercase font-mono">
           AGENDA
         </span>
-        <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-tighter text-white">
+        <h2 className="mt-3 sm:mt-4 text-3xl sm:text-4xl lg:text-6xl font-black tracking-[-0.035em] text-white">
           Próximos eventos
         </h2>
       </div>

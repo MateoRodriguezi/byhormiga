@@ -70,7 +70,7 @@ function CategorySection({
   return (
     <div id={id} className="mb-24 lg:mb-32">
       <div className="mb-12">
-        <h2 className="text-3xl lg:text-5xl font-black tracking-tighter text-white">{title}</h2>
+        <h2 className="text-3xl lg:text-5xl font-black tracking-[-0.035em] text-white">{title}</h2>
         {subtitle && <p className="mt-4 text-sm text-gray-400 max-w-3xl">{subtitle}</p>}
       </div>
 
@@ -102,7 +102,7 @@ export default function TodosEventosPage() {
             >
               ← VOLVER AL INICIO
             </Link>
-            <h1 className="mt-8 text-5xl lg:text-7xl font-black tracking-tighter text-white">
+            <h1 className="mt-8 text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">
               Nuestras producciones
             </h1>
             <p className="mt-6 text-lg text-gray-400 max-w-3xl leading-relaxed">
@@ -147,7 +147,7 @@ export default function TodosEventosPage() {
           />
 
           <div id="coproducciones" className="mb-24 lg:mb-32">
-            <h2 className="text-3xl lg:text-5xl font-black tracking-tighter text-white mb-12">
+            <h2 className="text-3xl lg:text-5xl font-black tracking-[-0.035em] text-white mb-12">
               Co-producciones internacionales
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -156,7 +156,7 @@ export default function TodosEventosPage() {
               ))}
             </div>
 
-            <h2 className="text-3xl lg:text-5xl font-black tracking-tighter text-white mb-12 mt-20">
+            <h2 className="text-3xl lg:text-5xl font-black tracking-[-0.035em] text-white mb-12 mt-20">
               Co-producciones nacionales
             </h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">

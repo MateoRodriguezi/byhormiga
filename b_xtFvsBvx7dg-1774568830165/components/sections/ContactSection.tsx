@@ -83,10 +83,10 @@ export function ContactSection() {
 
 						{/* Large typographic statement */}
 						<div className="mb-8 sm:mb-12">
-							<h3 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white tracking-tighter leading-none">
+							<h3 className="text-2xl sm:text-3xl lg:text-5xl font-black text-white tracking-[-0.035em] leading-none">
 								Trabajemos juntos
 							</h3>
-							<p className="mt-2 text-2xl sm:text-3xl lg:text-5xl font-black text-stroke tracking-tighter leading-none">
+							<p className="mt-2 text-2xl sm:text-3xl lg:text-5xl font-black text-stroke tracking-[-0.035em] leading-none">
 								Contáctanos.
 							</p>
 						</div>
