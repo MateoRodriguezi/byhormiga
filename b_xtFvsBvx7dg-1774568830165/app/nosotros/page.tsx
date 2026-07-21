@@ -33,11 +33,11 @@ const storyBlocks = [
 		hideTitle: true,
 		text: (
 			<>
-				Somos una productora de eventos y entretenimiento en Uruguay, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en{" "}
+				Somos una <span className="font-bold text-white">productora de eventos y entretenimiento en Uruguay</span>, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en un referente del entretenimiento, desarrollando formatos innovadores para distintos públicos, con{" "}
 				<span className="font-bold text-white">
-					un referente del entretenimiento
+					impacto, recordación y conexión emocional
 				</span>
-				, desarrollando formatos innovadores para distintos públicos, con impacto, recordación y conexión emocional.
+				.
 			</>
 		),
 		image: "/mock-photos/about-4.jpg",
