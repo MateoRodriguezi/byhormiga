@@ -56,7 +56,7 @@ export default async function PostPage({ params }: PostPageProps) {
 			<time className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-6">
               {post.date}
             </time>
-            <h1 className="text-3xl lg:text-5xl font-black text-white uppercase tracking-tight leading-tight">
+            <h1 className="font-heading text-3xl lg:text-5xl font-black text-white tracking-tighter leading-tight">
               {post.title}
             </h1>
           </header>
