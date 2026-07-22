@@ -21,11 +21,11 @@ function BrandCard({ brand }: { brand: Brand }) {
           src={brand.heroImage}
           alt=""
           fill
-          className="object-cover opacity-35 grayscale group-hover:opacity-55 group-hover:grayscale-0 transition-all duration-500"
+          className="object-cover opacity-50 grayscale group-hover:opacity-75 group-hover:grayscale-0 transition-all duration-500"
           sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
       ) : null}
-      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0908] via-[#0a0908]/55 to-[#0a0908]/25" />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0a0908] via-[#0a0908]/40 to-[#0a0908]/15" />
 
       <div className="relative h-full flex flex-col items-center justify-center gap-6 p-8 text-center">
         {brand.logo ? (
