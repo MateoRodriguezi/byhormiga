@@ -23,7 +23,7 @@ export function Footer() {
               alt="BYHORMIGA"
               width={32}
               height={32}
-              className="w-6 h-6 sm:w-8 sm:h-8 object-contain opacity-60 group-hover:opacity-100 transition-opacity"
+              className="w-6 h-6 sm:w-8 sm:h-8 object-contain brightness-0 invert opacity-60 group-hover:opacity-100 transition-opacity"
             />
 			<span className="text-[12px] sm:text-xs font-black tracking-[.2em] sm:tracking-[.25em] text-white uppercase">
               BYHORMIGA
