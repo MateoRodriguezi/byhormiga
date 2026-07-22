@@ -123,7 +123,7 @@ export default async function EventPage({ params }: EventPageProps) {
 
               {/* Description */}
               {event.description && (
-                <p className="text-gray-400 leading-relaxed mb-8">{event.description}</p>
+                <p className="text-gray-400 leading-relaxed text-balance mb-8">{event.description}</p>
               )}
 
               {/* Price & CTA */}

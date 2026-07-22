@@ -92,7 +92,7 @@ export function HeroSection() {
 					initial={{ opacity: 0, y: 20 }}
 					animate={showContent ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
 					transition={{ delay: showContent ? 0.35 : 0, duration: 0.6 }}
-					className="mt-8 text-base lg:text-xl max-w-2xl leading-relaxed"
+					className="mt-8 text-base lg:text-xl max-w-2xl leading-relaxed text-balance"
 				>
 					<div className="flex flex-col sm:flex-row items-center justify-center gap-x-2 gap-y-1 text-center">
 						<span className="text-gray-400">Dedicados a crear</span>

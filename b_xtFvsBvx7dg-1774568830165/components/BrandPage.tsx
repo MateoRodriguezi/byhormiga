@@ -113,7 +113,7 @@ function SectionBlock({ side, text, images, video, label }: Brand['sections'][nu
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-lg lg:text-xl text-gray-300 leading-relaxed"
+              className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance"
             >
               {text}
             </motion.p>
@@ -134,7 +134,7 @@ function Venues({ intro, venues }: { intro?: string; venues: Brand['venues'] }) 
       <div className="max-w-[1600px] mx-auto">
         <h2 className="text-xs tracking-[.25em] text-gray-500 uppercase mb-4 text-center">Venues</h2>
         {intro && (
-          <p className="max-w-3xl mx-auto text-center text-gray-400 leading-relaxed mb-10">{intro}</p>
+          <p className="max-w-3xl mx-auto text-center text-gray-400 leading-relaxed text-balance mb-10">{intro}</p>
         )}
         <div className={`grid grid-cols-2 ${cols} gap-[3px]`}>
           {venues.map((venue) => (
@@ -177,7 +177,7 @@ function Closing({ image, video, text }: { image?: string; video?: string; text?
       ) : null}
       {text && (
         <div className="px-4 sm:px-6 lg:px-12 py-16 lg:py-24">
-          <p className="max-w-3xl mx-auto text-center text-gray-400 leading-relaxed text-base lg:text-lg">
+          <p className="max-w-3xl mx-auto text-center text-gray-400 leading-relaxed text-balance text-base lg:text-lg">
             {text}
           </p>
         </div>

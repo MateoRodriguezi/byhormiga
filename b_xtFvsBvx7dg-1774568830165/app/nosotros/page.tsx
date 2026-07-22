@@ -122,7 +122,7 @@ function AboutSection() {
 											{block.title}
 										</h3>
 									)}
-									<p className="text-gray-400 leading-relaxed text-base lg:text-lg">
+									<p className="text-gray-400 leading-relaxed text-balance text-base lg:text-lg">
 										{block.text}
 									</p>
 								</div>
@@ -190,7 +190,7 @@ function TeamSection() {
 							<p className="text-xs tracking-[.2em] text-gray-500 uppercase mb-4">
 								{member.role}
 							</p>
-							<p className="text-sm text-gray-400 leading-relaxed">
+							<p className="text-sm text-gray-400 leading-relaxed text-balance">
 								{member.bio}
 							</p>
 						</motion.div>

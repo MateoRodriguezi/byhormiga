@@ -74,7 +74,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 
 				{/* Description - Hidden by default, shown on hover */}
 				<div className="max-h-0 opacity-0 group-hover:max-h-24 group-hover:opacity-100 transition-all duration-500 overflow-hidden mb-4">
-					<p className="text-sm text-gray-300 leading-relaxed">
+					<p className="text-sm text-gray-300 leading-relaxed text-balance">
 						{event.description}
 					</p>
 				</div>

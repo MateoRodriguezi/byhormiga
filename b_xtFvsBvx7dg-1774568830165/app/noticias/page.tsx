@@ -34,7 +34,7 @@ function NewsCard({ news }: { news: Post }) {
           </h3>
 
           {news.description && (
-            <p className="text-gray-400 text-sm leading-relaxed mb-6">{news.description}</p>
+            <p className="text-gray-400 text-sm leading-relaxed text-balance mb-6">{news.description}</p>
           )}
 
 			<span className="inline-flex items-center text-[12px] font-bold tracking-[.2em] uppercase text-white transition-colors group-hover:text-white/60">
@@ -62,7 +62,7 @@ export default async function NoticiasPage() {
               <h1 className="mt-6 text-5xl lg:text-7xl font-black font-heading tracking-[-0.035em] text-white">
                 Noticias
               </h1>
-              <p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
+              <p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed text-balance">
                 Las últimas novedades, anuncios y logros de ByHormiga
               </p>
             </div>

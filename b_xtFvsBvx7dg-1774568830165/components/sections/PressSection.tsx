@@ -72,7 +72,7 @@ function ArticleCard({ post, index }: { post: Post; index: number }) {
 
       {/* Excerpt */}
       {post.description && (
-        <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed mb-4 sm:mb-6">
+        <p className="text-xs sm:text-[13px] text-gray-500 leading-relaxed text-balance mb-4 sm:mb-6">
           {post.description}
         </p>
       )}

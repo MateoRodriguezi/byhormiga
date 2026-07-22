@@ -78,7 +78,7 @@ export function AboutSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-5xl mx-auto mb-20 lg:mb-32 text-center"
         >
-          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed">
+          <p className="text-lg sm:text-xl lg:text-2xl text-gray-300 leading-relaxed text-balance">
             Somos una <span className="font-bold text-white">productora de eventos y entretenimiento en Uruguay</span>, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en un referente del entretenimiento, desarrollando formatos innovadores para distintos públicos, con <span className="font-bold text-white">impacto, recordación y conexión emocional</span>.
           </p>
         </motion.div>
@@ -91,7 +91,7 @@ export function AboutSection() {
           className="max-w-6xl mx-auto mb-20 lg:mb-32 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         >
           <div className="lg:order-2">
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed text-balance">
               Al año producimos un promedio de más de <span className="font-bold text-white">200 eventos</span>, trabajamos junto a más de <span className="font-bold text-white">150 artistas</span> nacionales e internacionales y convocamos a más de <span className="font-bold text-white">200.000 personas</span>. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
             </p>
           </div>
@@ -108,7 +108,7 @@ export function AboutSection() {
           className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
         >
           <div>
-            <p className="text-base sm:text-lg text-gray-300 leading-relaxed">
+            <p className="text-base sm:text-lg text-gray-300 leading-relaxed text-balance">
               Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, <span className="font-bold text-white">combinamos creatividad, tecnología y pasión</span> para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.
             </p>
           </div>

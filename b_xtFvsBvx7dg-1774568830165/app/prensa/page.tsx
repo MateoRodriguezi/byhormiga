@@ -60,7 +60,7 @@ export default async function PrensaPage() {
 
                 {/* Excerpt */}
                 {post.description && (
-                  <p className="text-sm text-gray-500 leading-relaxed mb-8 max-w-lg">
+                  <p className="text-sm text-gray-500 leading-relaxed text-balance mb-8 max-w-lg">
                     {post.description}
                   </p>
                 )}

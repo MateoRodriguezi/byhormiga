@@ -118,7 +118,7 @@ export default function TodosEventosPage() {
             <h1 className="text-5xl lg:text-7xl font-black font-heading tracking-[-0.035em] text-white">
               Nuestras producciones
             </h1>
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed">
+            <p className="mt-6 text-lg text-gray-300 leading-relaxed text-balance">
               Creamos experiencias de entretenimiento para distintos públicos, combinando producción, contenido y ejecución profesional.
             </p>
           </div>

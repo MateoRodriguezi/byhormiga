@@ -67,7 +67,7 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
                 </div>
               )}
               <p className="text-sm font-bold text-white uppercase tracking-wide mb-1">{activation.title}</p>
-              <p className="text-sm text-gray-400 leading-relaxed">{activation.description}</p>
+              <p className="text-sm text-gray-400 leading-relaxed text-balance">{activation.description}</p>
             </div>
           ))}
         </div>
@@ -110,7 +110,7 @@ export default function SponsorsPage() {
               <video autoPlay loop muted playsInline className="w-full aspect-video object-cover">
                 <source src="/videos/hero-background.mp4" type="video/mp4" />
               </video>
-              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed">
+              <p className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance">
                 Desarrollamos acciones de marca que reflejan la esencia de cada sponsor y elevan la experiencia del evento.
               </p>
             </motion.div>

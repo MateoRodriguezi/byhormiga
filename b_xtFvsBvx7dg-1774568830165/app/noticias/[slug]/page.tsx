@@ -59,7 +59,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
               {post.title}
             </h1>
             {post.description ? (
-              <p className="mt-6 max-w-3xl text-lg leading-relaxed text-gray-400">
+              <p className="mt-6 max-w-3xl text-lg leading-relaxed text-balance text-gray-400">
                 {post.description}
               </p>
             ) : null}
@@ -84,11 +84,11 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
 
           {post.content ? (
             <article
-              className="prose prose-invert prose-lg max-w-none prose-headings:font-black prose-headings:font-heading tracking-[-0.035em] prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-white prose-strong:text-white prose-li:text-gray-300 prose-img:rounded-none"
+              className="prose prose-invert prose-lg max-w-none prose-headings:font-black prose-headings:font-heading tracking-[-0.035em] prose-p:text-gray-300 prose-p:leading-relaxed prose-p:text-balance prose-a:text-white prose-strong:text-white prose-li:text-gray-300 prose-img:rounded-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           ) : post.description ? (
-            <article className="max-w-none text-gray-300 leading-relaxed">
+            <article className="max-w-none text-gray-300 leading-relaxed text-balance">
               <p>{post.description}</p>
             </article>
           ) : null}
