@@ -60,6 +60,7 @@ export const brands: Brand[] = [
   {
     slug: 'wonder',
     name: 'Wonder',
+    logo: '/logos/logos_Wonder.png',
     category: 'matinee',
     cardDescription:
       'Con una edición mensual y un promedio de 1.300 personas por apertura, desde 2019 se posiciona como una propuesta consolidada dentro del entretenimiento para menores en Uruguay.',
@@ -122,6 +123,7 @@ export const brands: Brand[] = [
   {
     slug: 'mood',
     name: 'Mood',
+    logo: '/logos/logos_mood-46.png',
     category: 'matinee',
     cardDescription:
       'Con una edición trimestral y un promedio de 800 personas por apertura, desde 2023 se consolida como una propuesta de entretenimiento para menores, pensada desde la música, la producción y la seguridad.',
@@ -171,6 +173,7 @@ export const brands: Brand[] = [
   {
     slug: 'madness',
     name: 'Madness',
+    logo: '/logos/logos_Madness.png',
     category: 'plus15',
     cardDescription:
       'Con una edición trimestral y un promedio de 1.300 personas por apertura, desde 2023 se posiciona como una propuesta consolidada dentro del entretenimiento para adolescentes en Uruguay.',
@@ -228,6 +231,7 @@ export const brands: Brand[] = [
   {
     slug: 'close',
     name: '.CLOSE',
+    logo: '/logos/logos_close.png',
     category: 'plus15',
     cardDescription:
       'Activa desde 2023, con una edición trimestral y un promedio de 1.200 personas por apertura, ofrece una experiencia de alta convocatoria en un entorno seguro y profesional.',
@@ -266,6 +270,7 @@ export const brands: Brand[] = [
   {
     slug: 'la-festa',
     name: 'La Festa',
+    logo: '/logos/logos_Lafesta.png',
     category: 'plus15',
     cardDescription:
       'Con una edición trimestral y un promedio de 4.000 personas por apertura, desde 2025 ofrece una experiencia masiva, cuidada y profesional.',
@@ -324,6 +329,7 @@ export const brands: Brand[] = [
   {
     slug: 'china',
     name: 'China',
+    logo: '/logos/logos_China.png',
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 25 años, activa desde 2016. Con una edición semanal y un promedio de 1.500 personas por apertura, es una de las propuestas más constantes de la noche.',
@@ -378,6 +384,7 @@ export const brands: Brand[] = [
   {
     slug: 'mala',
     name: 'NoSeasMala',
+    logo: '/logos/logos_Mala.png',
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 22 años, activa desde 2024. Con una edición bimensual y un promedio de 1.000 personas por apertura, se consolida como una propuesta joven, intensa y de alta convocatoria.',
@@ -426,6 +433,7 @@ export const brands: Brand[] = [
   {
     slug: 'oversize',
     name: 'Oversize',
+    logo: '/logos/logos_Oversize.png',
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 25 años, activa desde 2022. Con 6 ediciones anuales y un promedio de 3.500 personas por apertura, se destaca por su gran escala y alta convocatoria.',
@@ -483,6 +491,7 @@ export const brands: Brand[] = [
   {
     slug: 'nada-que-ver',
     name: 'Nada Que Ver',
+    logo: '/logos/logos_nqv.png',
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 30 a 40 años, activa desde 2025. Con una edición trimestral y un promedio de 1.500 personas por apertura, se diferencia por su dinámica sin fotos ni videos y por temáticas distintas en cada fecha.',
@@ -502,6 +511,7 @@ export const brands: Brand[] = [
   {
     slug: 'orca',
     name: 'Orca',
+    logo: '/logos/logos_Orca.png',
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 30 a 45 años, con una trayectoria de 25 años y una edición actualizada en 2025. Con un promedio de 800 personas por apertura, mantiene una propuesta reconocida y vigente.',
@@ -535,6 +545,7 @@ export const brands: Brand[] = [
   {
     slug: 'hit-the-beach',
     name: 'Hit The Beach',
+    logo: '/logos/logos_Hitthebeach.png',
     category: 'plus18',
     cardDescription:
       'Es una fiesta para público de 18 a 30 años, activa desde 2023. Con una edición anual en Punta del Este, propone una experiencia de temporada en formato playa.',
