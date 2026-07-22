@@ -55,7 +55,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
 			<time className="block text-[12px] tracking-[.2em] text-gray-500 uppercase mb-6">
               {post.date}
             </time>
-            <h1 className="text-3xl lg:text-5xl font-black text-white tracking-[-0.035em] leading-tight">
+            <h1 className="text-3xl lg:text-5xl font-black text-white font-heading tracking-[-0.04em] leading-tight">
               {post.title}
             </h1>
             {post.description ? (
@@ -84,7 +84,7 @@ export default async function NewsDetailPage({ params }: NewsPageProps) {
 
           {post.content ? (
             <article
-              className="prose prose-invert prose-lg max-w-none prose-headings:font-black prose-headings:tracking-[-0.035em] prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-white prose-strong:text-white prose-li:text-gray-300 prose-img:rounded-none"
+              className="prose prose-invert prose-lg max-w-none prose-headings:font-black prose-headings:font-heading tracking-[-0.04em] prose-p:text-gray-300 prose-p:leading-relaxed prose-a:text-white prose-strong:text-white prose-li:text-gray-300 prose-img:rounded-none"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
           ) : post.description ? (

@@ -76,7 +76,7 @@ export default async function GalleryDetailPage({ params }: GalleryDetailPagePro
               <span className="block text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
                 ARCHIVO VISUAL
               </span>
-              <h1 className="mt-4 text-4xl lg:text-6xl font-black tracking-[-0.035em] text-white">
+              <h1 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.04em] text-white">
                 {item.event_name}
               </h1>
             </div>
