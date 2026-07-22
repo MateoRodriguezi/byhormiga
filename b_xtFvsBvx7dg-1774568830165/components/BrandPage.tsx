@@ -104,7 +104,7 @@ function SectionBlock({ side, text, images, video, label }: Brand['sections'][nu
     <section className="bg-[#0a0908] px-4 sm:px-6 lg:px-12 pb-16 lg:pb-24">
       <div className="max-w-[1600px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
         <div className={imageFirst ? 'lg:order-1' : 'lg:order-2'}>
-          {images && images.length > 0 && <RotatingPhotos images={images} alt="" />}
+          {images && images.length > 0 && <RotatingPhotos images={images} alt="" intervalMs={2800} />}
         </div>
         <div className={imageFirst ? 'lg:order-2' : 'lg:order-1'}>
           {text && (
