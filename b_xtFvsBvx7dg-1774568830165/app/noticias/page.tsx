@@ -29,7 +29,7 @@ function NewsCard({ news }: { news: Post }) {
             <span>{news.date}</span>
           </div>
 
-          <h3 className="text-xl lg:text-2xl font-black text-white font-heading tracking-[-0.04em] mb-4 leading-tight group-hover:text-white/80 transition-colors">
+          <h3 className="text-xl lg:text-2xl font-black text-white tracking-[-0.035em] mb-4 leading-tight group-hover:text-white/80 transition-colors">
             {news.title}
           </h3>
 
@@ -59,7 +59,7 @@ export default async function NoticiasPage() {
               <span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
                 ACTUALIDAD
               </span>
-              <h1 className="mt-6 text-5xl lg:text-7xl font-black font-heading tracking-[-0.04em] text-white">
+              <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">
                 Noticias
               </h1>
               <p className="mt-8 text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
