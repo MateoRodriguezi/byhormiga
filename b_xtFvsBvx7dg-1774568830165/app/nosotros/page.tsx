@@ -90,8 +90,8 @@ function HeroSection() {
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ duration: 0.8 }}
 				>
-					<h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">
-						Quiénes somos
+					<h1 className="mt-6 text-5xl lg:text-7xl font-black font-heading tracking-[-0.035em] text-white">
+						¿Quiénes somos?
 					</h1>
 				</motion.div>
 			</div>
@@ -118,7 +118,7 @@ function AboutSection() {
 							>
 								<div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
 									{!block.hideTitle && (
-										<h3 className="text-2xl lg:text-3xl font-black text-white tracking-[-0.035em] mb-4">
+										<h3 className="text-2xl lg:text-3xl font-black text-white font-heading tracking-[-0.035em] mb-4">
 											{block.title}
 										</h3>
 									)}
@@ -161,7 +161,7 @@ function TeamSection() {
 					<span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
 						EL EQUIPO
 					</span>
-					<h2 className="mt-4 text-4xl lg:text-6xl font-black tracking-[-0.035em] text-white">
+					<h2 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.035em] text-white">
 						Nuestro equipo
 					</h2>
 				</motion.div>

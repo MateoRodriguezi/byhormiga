@@ -45,7 +45,7 @@ function SponsorCard({ sponsor, index }: { sponsor: Sponsor; index: number }) {
             <Image src={sponsor.logo} alt={sponsor.name} fill className="object-contain" />
           </div>
         ) : (
-          <div className="text-4xl font-black text-white tracking-[-0.035em]">{sponsor.name}</div>
+          <div className="text-4xl font-black text-white font-heading tracking-[-0.035em]">{sponsor.name}</div>
         )}
       </div>
 
@@ -94,7 +94,7 @@ export default function SponsorsPage() {
               <span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
                 MARCAS ALIADAS
               </span>
-              <h1 className="mt-6 text-5xl lg:text-7xl font-black tracking-[-0.035em] text-white">
+              <h1 className="mt-6 text-5xl lg:text-7xl font-black font-heading tracking-[-0.035em] text-white">
                 Marcas que eligen experiencias auténticas
               </h1>
             </motion.div>
