@@ -15,6 +15,10 @@ export const metadata: Metadata = {
 // Categorías de momentos
 const categories = [
   {
+    title: 'Hit The Beach',
+    keywords: ['hit the beach'],
+  },
+  {
     title: 'Antel Arena',
     keywords: ['antel arena', 'polenta antel', 'wonder antel', 'oversize antel', 'mega wonder'],
     subtitle: 'Polenta en Antel Arena · Mega Wonder en Antel Arena (2025) · Oversize en Antel Arena (2025 / 2024)',
@@ -33,10 +37,6 @@ const categories = [
     title: 'Artistas Nacionales',
     keywords: ['artista nacional', 'nacional'],
     subtitle: 'Marama, Luana, The La Planta, La Nueva Escuela, Zeballos.',
-  },
-  {
-    title: 'Hit The Beach',
-    keywords: ['hit the beach'],
   },
   {
     title: 'Oversize - El Jagüel, Punta Del Este',
