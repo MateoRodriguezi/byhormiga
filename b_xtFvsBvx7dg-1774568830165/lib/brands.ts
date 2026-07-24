@@ -296,6 +296,7 @@ export const brands: Brand[] = [
   {
     slug: 'code',
     name: 'Code',
+    logo: '/logos/logos_Code.png',
     category: 'plus15',
     cardDescription:
       'Desde 2026 ofrece una experiencia masiva, cuidada y profesional para el entretenimiento de adolescentes.',
