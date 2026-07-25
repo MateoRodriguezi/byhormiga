@@ -5,7 +5,9 @@ from unfold.admin import ModelAdmin
 from .models import Partner
 
 
-@admin.register(Partner)
+# Deprecado: el frontend no consume este modelo (los sponsors se manejan
+# hardcodeados en components/sections/PartnersSection.tsx y app/sponsors/page.tsx).
+# Se deja sin registrar para no confundir en el admin, sin tocar la base de datos.
 class PartnerAdmin(SortableAdminMixin, ModelAdmin):
     list_display = [
         "logo_thumbnail",
