@@ -23,8 +23,6 @@ class Command(BaseCommand):
                 event.recap_video.delete(save=False)
             if event.poster:
                 event.poster.delete(save=False)
-            if event.logo:
-                event.logo.delete(save=False)
 
             event.delete()
             self.stdout.write(self.style.SUCCESS(f"Borrado: {title}"))

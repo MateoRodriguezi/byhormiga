@@ -37,13 +37,12 @@ class EventPhotoInline(SortableInlineAdminMixin, TabularInline):
 
 @admin.register(Venue)
 class VenueAdmin(ModelAdmin):
-    list_display = ["name", "city", "address", "event_count", "created_at"]
-    search_fields = ["name", "address", "city"]
-    list_filter = ["city", "created_at"]
+    list_display = ["name", "event_count", "created_at"]
+    search_fields = ["name"]
     readonly_fields = ["event_count", "created_at", "updated_at"]
 
     fieldsets = (
-        ("Información básica", {"fields": ("name", "city", "address", "maps_url")}),
+        ("Información básica", {"fields": ("name",)}),
         (
             "Metadatos",
             {
