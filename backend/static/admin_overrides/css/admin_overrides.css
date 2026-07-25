@@ -1,30 +1,16 @@
 /*
- * Algunos formularios del admin (ej: "Añadir usuario") renderizan los inputs
- * con fondo blanco, pero el texto tipeado hereda el color claro que Unfold usa
- * para el modo oscuro, quedando casi invisible (texto claro sobre fondo claro).
- * Forzamos un color de texto oscuro siempre, ya que estos inputs siempre
- * tienen fondo claro/blanco sin importar el tema del admin.
+ * La vista nativa de Django "Añadir usuario" (paso 1: usuario/contraseña) no
+ * usa los widgets con la piel de Unfold: esos 3 inputs quedan con fondo
+ * blanco, pero el texto tipeado hereda igual el color claro del tema oscuro
+ * de Unfold, quedando invisible (texto claro sobre fondo blanco).
+ *
+ * Importante: el fix se limita a estos 3 campos puntuales por id. Una
+ * versión anterior lo aplicaba a TODOS los inputs/textarea/select del admin,
+ * lo cual rompió la legibilidad en el resto de los formularios (que ya
+ * tienen fondo oscuro y texto claro correctos por defecto).
  */
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="number"],
-input[type="url"],
-input[type="search"],
-input[type="tel"],
-textarea,
-select {
-  color: #111827 !important;
-}
-
-html.dark input[type="text"],
-html.dark input[type="password"],
-html.dark input[type="email"],
-html.dark input[type="number"],
-html.dark input[type="url"],
-html.dark input[type="search"],
-html.dark input[type="tel"],
-html.dark textarea,
-html.dark select {
+#id_username,
+#id_password1,
+#id_password2 {
   color: #111827 !important;
 }
