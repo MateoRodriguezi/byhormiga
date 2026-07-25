@@ -4,6 +4,7 @@ Django settings for byhormiga project.
 
 from pathlib import Path
 from decouple import Csv, config
+from django.templatetags.static import static
 import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -169,6 +170,7 @@ if AWS_STORAGE_BUCKET_NAME:
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"
 STATIC_ROOT = BASE_DIR / "staticfiles"
+STATICFILES_DIRS = [BASE_DIR / "static"]
 
 # WhiteNoise configuration
 WHITENOISE_USE_FINDERS = True
@@ -202,6 +204,9 @@ UNFOLD = {
     "SITE_HEADER": "ByHormiga",
     "SITE_URL": "/",
     "SITE_SYMBOL": "celebration",  # Google Material Symbol
+    "STYLES": [
+        lambda request: static("admin_overrides/css/admin_overrides.css"),
+    ],
     "COLORS": {
         "primary": {
             "50": "250 250 250",  # Casi blanco
