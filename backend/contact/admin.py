@@ -42,9 +42,10 @@ class ContactMessageAdmin(ModelAdmin):
 
     @admin.display(description="Mensaje")
     def message_formatted(self, obj):
-        """Muestra el mensaje con formato mejorado"""
+        """Muestra el mensaje con formato mejorado, legible en modo claro y oscuro"""
         return format_html(
-            '<div style="background-color: #f8f9fa; padding: 15px; border-radius: 8px; border-left: 4px solid #3b82f6; white-space: pre-wrap;">{}</div>',
+            '<div style="background-color: #f8f9fa; color: #111827; padding: 15px; border-radius: 8px; '
+            'border-left: 4px solid #3b82f6; white-space: pre-wrap;">{}</div>',
             obj.message,
         )
 
