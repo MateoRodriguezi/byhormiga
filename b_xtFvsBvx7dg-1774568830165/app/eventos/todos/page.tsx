@@ -150,7 +150,7 @@ export default function TodosEventosPage() {
 
           <CategorySection
             id="plus15"
-            title="+15"
+            title="Plus 15"
             subtitle="Eventos para adolescentes de 15 a 17 años."
             brands={plus15}
           />
