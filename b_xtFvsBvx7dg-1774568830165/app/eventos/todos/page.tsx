@@ -126,7 +126,7 @@ export default function TodosEventosPage() {
 
         <div className="mx-auto max-w-[1600px] px-6 lg:px-12 pt-16 pb-24">
           {/* Category Navigation */}
-          <div className="mb-16 flex flex-wrap gap-4">
+          <div className="mb-16 flex flex-wrap justify-center gap-4">
             <a href="#matinee" className="border border-white/30 text-white px-6 py-3 text-[12px] font-medium tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors">
               {CATEGORY_LABELS.matinee}
             </a>
@@ -143,21 +143,21 @@ export default function TodosEventosPage() {
 
           <CategorySection
             id="matinee"
-            title="Nuestras matinées"
+            title="Matinées"
             subtitle="Propuestas de entretenimiento para adolescentes de 12 a 15 años, diseñadas con foco en la diversión, la innovación y el cuidado integral de la experiencia."
             brands={matinee}
           />
 
           <CategorySection
             id="plus15"
-            title="Nuestras Plus 15"
+            title="+15"
             subtitle="Eventos para adolescentes de 15 a 17 años."
             brands={plus15}
           />
 
           <CategorySection
             id="plus18"
-            title="Nuestros productos para mayores de 18 años"
+            title="+18"
             brands={plus18}
           />
 
