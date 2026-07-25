@@ -88,14 +88,14 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="max-w-6xl mx-auto mb-20 lg:mb-32 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+          className="max-w-6xl mx-auto mb-20 lg:mb-32 grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center"
         >
-          <div className="lg:order-2">
+          <div className="lg:order-2 lg:col-span-2">
             <p className="text-base sm:text-lg text-gray-300 leading-relaxed text-balance">
               Al año producimos un promedio de más de <span className="font-bold text-white">200 eventos</span>, trabajamos junto a más de <span className="font-bold text-white">150 artistas</span> nacionales e internacionales y convocamos a más de <span className="font-bold text-white">200.000 personas</span>. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.
             </p>
           </div>
-          <div className="lg:order-1">
+          <div className="lg:order-1 lg:col-span-3">
             <RotatingPhotos images={sectorPhotos[0]} alt="Eventos ByHormiga" />
           </div>
         </motion.div>
@@ -105,14 +105,14 @@ export function AboutSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+          className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center"
         >
-          <div>
+          <div className="lg:col-span-2">
             <p className="text-base sm:text-lg text-gray-300 leading-relaxed text-balance">
               Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, <span className="font-bold text-white">combinamos creatividad, tecnología y pasión</span> para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.
             </p>
           </div>
-          <div>
+          <div className="lg:col-span-3">
             <RotatingPhotos images={sectorPhotos[1]} alt="Producción ByHormiga" />
           </div>
         </motion.div>

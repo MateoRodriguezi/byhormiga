@@ -114,9 +114,9 @@ function AboutSection() {
 								whileInView={{ opacity: 1, y: 0 }}
 								viewport={{ once: true }}
 								transition={{ duration: 0.6, delay: index * 0.08 }}
-								className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center"
+								className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center"
 							>
-								<div className={imageFirst ? "lg:order-2" : "lg:order-1"}>
+								<div className={`lg:col-span-2 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
 									{!block.hideTitle && (
 										<h3 className="text-2xl lg:text-3xl font-black text-white font-heading tracking-[-0.035em] mb-4">
 											{block.title}
@@ -127,7 +127,7 @@ function AboutSection() {
 									</p>
 								</div>
 
-								<div className={imageFirst ? "lg:order-1" : "lg:order-2"}>
+								<div className={`lg:col-span-3 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
 									<div className="relative aspect-[4/3] overflow-hidden">
 										<Image
 											src={block.image}
