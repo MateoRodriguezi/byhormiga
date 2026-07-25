@@ -254,17 +254,6 @@ UNFOLD = {
                     },
                 ],
             },
-            {
-                "title": "Partners",
-                "separator": True,
-                "items": [
-                    {
-                        "title": "Marcas",
-                        "icon": "handshake",
-                        "link": lambda request: "/admin/partners/partner/",
-                    },
-                ],
-            },
         ],
     },
 }
