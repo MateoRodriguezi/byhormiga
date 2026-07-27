@@ -128,7 +128,7 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 						SELECCIÓN
 					</span>
 					<h2 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.035em] text-white">
-						Eventos destacados
+						Eventos activos
 					</h2>
 				</motion.div>
 

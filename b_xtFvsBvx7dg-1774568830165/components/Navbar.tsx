@@ -8,15 +8,8 @@ import { cn } from '@/lib/utils'
 
 const navLinks = [
   { href: '/nosotros', label: 'NOSOTROS' },
-  {
-    href: '/eventos',
-    label: 'EVENTOS',
-    submenu: [
-      { href: '/eventos/activos', label: 'ACTIVOS' },
-      { href: '/eventos', label: 'TODOS' },
-      { href: '/eventos/todos', label: 'PRODUCCIONES' },
-    ]
-  },
+  { href: '/eventos', label: 'EVENTOS' },
+  { href: '/eventos/todos', label: 'PRODUCCIONES' },
   { href: '/momentos', label: 'MOMENTOS' },
   // Oculto temporalmente: todavia no hay contenido de noticias cargado
   // { href: '/noticias', label: 'NOTICIAS' },
