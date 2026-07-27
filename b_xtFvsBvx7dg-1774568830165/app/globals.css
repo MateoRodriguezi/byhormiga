@@ -25,10 +25,6 @@
   --input: rgba(255, 255, 255, 0.03);
   --ring: rgba(255, 255, 255, 0.3);
   --radius: 0;
-  --gray-400: #d1d5db;
-  --gray-500: #9ca3af;
-  --gray-800: #1f2937;
-  --gray-900: #111111;
 }
 
 @theme inline {
@@ -54,6 +50,9 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+  /* Tailwind's default gray-500 (#6b7280) sits just under WCAG AA (4.5:1)
+     on our near-black background (~4.1:1). Lightened to pass with margin. */
+  --color-gray-500: #7c8591;
   --radius-sm: 0;
   --radius-md: 0;
   --radius-lg: 0;
