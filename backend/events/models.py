@@ -44,8 +44,11 @@ class Event(TimeStampMixin):
         verbose_name="Poster",
     )
     ticket_url = models.URLField(blank=True, null=True, verbose_name="URL de tickets")
-    price_info = models.CharField(
-        max_length=200, blank=True, verbose_name="Información de precio"
+    price_info = models.PositiveIntegerField(
+        blank=True,
+        null=True,
+        verbose_name="Precio",
+        help_text="Precio de la entrada en pesos uruguayos, solo el número (ej: 500). Se muestra en el sitio como $U 500. Dejar vacío si no aplica.",
     )
     status = models.CharField(
         max_length=20, choices=STATUS_CHOICES, default="draft", verbose_name="Estado"

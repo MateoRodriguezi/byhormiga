@@ -26,7 +26,7 @@ class EventSerializer(serializers.ModelSerializer):
     status = serializers.CharField(source="frontend_status", read_only=True)
     image = serializers.SerializerMethodField()
     name = serializers.CharField(source="title", read_only=True)
-    price = serializers.CharField(source="price_info", read_only=True)
+    price = serializers.SerializerMethodField()
 
     class Meta:
         model = Event
@@ -71,6 +71,11 @@ class EventSerializer(serializers.ModelSerializer):
         if not request or not obj.poster:
             return None
         return build_media_proxy_url(request, obj.poster.name)
+
+    def get_price(self, obj):
+        if obj.price_info is None:
+            return None
+        return f"$U {obj.price_info:,}".replace(",", ".")
 
 
 class EventPhotoSerializer(serializers.ModelSerializer):
