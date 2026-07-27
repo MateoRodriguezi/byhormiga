@@ -6,9 +6,11 @@ from .serializers import EventSerializer, GalleryEventSerializer
 
 
 class EventListAPIView(generics.ListAPIView):
-    """API endpoint para listado de eventos publicados."""
+    """API endpoint para listado de eventos publicados o agotados."""
 
-    queryset = Event.objects.filter(status="published").select_related("venue")
+    queryset = Event.objects.filter(status__in=["published", "sold_out"]).select_related(
+        "venue"
+    )
     serializer_class = EventSerializer
     filter_backends = [DjangoFilterBackend, filters.OrderingFilter]
     filterset_fields = ["featured"]
@@ -17,19 +19,21 @@ class EventListAPIView(generics.ListAPIView):
 
 
 class EventRetrieveAPIView(generics.RetrieveAPIView):
-    """API endpoint para detalle de evento publicado."""
+    """API endpoint para detalle de evento publicado o agotado."""
 
-    queryset = Event.objects.filter(status="published").select_related("venue")
+    queryset = Event.objects.filter(status__in=["published", "sold_out"]).select_related(
+        "venue"
+    )
     serializer_class = EventSerializer
     lookup_field = "slug"
 
 
 class EventFeaturedListAPIView(generics.ListAPIView):
-    """API endpoint para eventos destacados publicados."""
+    """API endpoint para eventos destacados publicados o agotados."""
 
-    queryset = Event.objects.filter(status="published", featured=True).select_related(
-        "venue"
-    )
+    queryset = Event.objects.filter(
+        status__in=["published", "sold_out"], featured=True
+    ).select_related("venue")
     serializer_class = EventSerializer
     ordering = ["date"]
 

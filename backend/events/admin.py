@@ -110,6 +110,8 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
                 "fields": ("status",),
                 "description": (
                     "<strong>Publicado</strong>: aparece en /eventos como evento activo/en venta. "
+                    "<strong>Agotado</strong>: tambien aparece en /eventos, marcado como agotado. "
+                    "<strong>Cancelado</strong>: no aparece en /eventos. "
                     "<strong>Borrador</strong>: no aparece en /eventos, pero si tiene fecha pasada y "
                     "fotos cargadas SI aparece en la Galeria de Momentos. Usa Borrador para cargar "
                     "solo el recap fotografico de un evento que ya paso."
@@ -170,7 +172,7 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
         """Aclara si el evento se ve en /eventos, en Momentos, en ambos o en ninguno"""
         is_past = obj.date < timezone.now()
         has_photos = obj.photos.exists()
-        in_eventos = obj.status == "published"
+        in_eventos = obj.status in ("published", "sold_out")
         in_momentos = is_past and has_photos
 
         if in_eventos and in_momentos:
