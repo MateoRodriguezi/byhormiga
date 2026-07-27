@@ -18,4 +18,5 @@ RUN uv run --no-sync python manage.py collectstatic --no-input
 
 EXPOSE 8000
 
-CMD ["uv", "run", "--no-sync", "gunicorn", "byhormiga.wsgi:application", "--bind", "0.0.0.0:8000", "--workers", "4", "--timeout", "120", "--access-logfile", "-", "--error-logfile", "-"]
+CMD uv run --no-sync python manage.py migrate --no-input && \
+    uv run --no-sync gunicorn byhormiga.wsgi:application --bind 0.0.0.0:8000 --workers 4 --timeout 120 --access-logfile - --error-logfile -
