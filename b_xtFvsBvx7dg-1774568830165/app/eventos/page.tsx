@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { MapPin } from 'lucide-react'
+import { MapPin, PartyPopper } from 'lucide-react'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { getEvents } from '@/lib/api'
@@ -41,6 +41,20 @@ export default async function EventosPage() {
           </div>
 
           {/* Events List */}
+          {events.length === 0 ? (
+            <div className="border-t border-white/[.08] py-24 text-center">
+              <PartyPopper className="w-10 h-10 mx-auto text-white/40 animate-bounce" />
+              <span className="mt-6 block text-xs tracking-[.2em] text-gray-500 uppercase">
+                Volvé pronto
+              </span>
+              <h2 className="mt-4 text-3xl lg:text-4xl font-black font-heading tracking-[-0.035em] text-white text-balance">
+                Estamos armando los mejores eventos para vos
+              </h2>
+              <p className="mt-4 text-gray-400 max-w-md mx-auto text-balance">
+                Todavía no hay eventos cargados. En breve vas a ver toda la agenda acá.
+              </p>
+            </div>
+          ) : (
           <div className="border-t border-white/[.08]">
             {events.map((event) => (
               <div
@@ -112,6 +126,7 @@ export default async function EventosPage() {
               </div>
             ))}
           </div>
+          )}
         </div>
       </main>
       <Footer />
