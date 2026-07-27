@@ -14,3 +14,17 @@
 #id_password2 {
   color: #111827 !important;
 }
+
+/*
+ * En modo oscuro, el texto que se tipea en inputs/textareas/selects toma el
+ * color de --color-font-default-dark (gris #d1d5db), que contrasta poco
+ * contra el fondo oscuro de los campos y se lee casi invisible al escribir.
+ * Se sube el contraste solo dentro de ".dark" (clase que Unfold pone en
+ * <html> cuando el tema es oscuro) para no repetir el error de la regla de
+ * arriba: no tocar el modo claro, que ya se ve bien.
+ */
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark textarea,
+.dark select {
+  color: #f9fafb !important;
+}
