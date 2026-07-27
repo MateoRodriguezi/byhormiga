@@ -13,7 +13,8 @@ const navLinks = [
     label: 'EVENTOS',
     submenu: [
       { href: '/eventos/activos', label: 'ACTIVOS' },
-      { href: '/eventos/todos', label: 'TODOS' },
+      { href: '/eventos', label: 'TODOS' },
+      { href: '/eventos/todos', label: 'PRODUCCIONES' },
     ]
   },
   { href: '/momentos', label: 'MOMENTOS' },
