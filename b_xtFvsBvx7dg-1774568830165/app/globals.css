@@ -147,6 +147,16 @@
   animation: scrollLine 2s ease-in-out infinite;
 }
 
+/* Gentle float for empty-state icons */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 3.2s ease-in-out infinite;
+}
+
 /* Hide scrollbar but keep functionality */
 .scrollbar-hide {
   -ms-overflow-style: none;

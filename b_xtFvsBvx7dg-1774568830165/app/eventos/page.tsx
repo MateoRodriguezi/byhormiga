@@ -42,17 +42,36 @@ export default async function EventosPage() {
 
           {/* Events List */}
           {events.length === 0 ? (
-            <div className="border-t border-white/[.08] py-24 text-center">
-              <PartyPopper className="w-10 h-10 mx-auto text-white/40 animate-bounce" />
-              <span className="mt-6 block text-xs tracking-[.2em] text-gray-500 uppercase">
+            <div className="border-t border-white/[.08] py-20 lg:py-28 text-center">
+              <div className="relative mx-auto w-20 h-20">
+                <div className="absolute inset-0 rounded-full bg-white/[.06] animate-pulse" />
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <PartyPopper className="w-8 h-8 text-white/60 animate-float" />
+                </div>
+              </div>
+              <span className="mt-8 block text-xs tracking-[.2em] text-gray-500 uppercase">
                 Volvé pronto
               </span>
-              <h2 className="mt-4 text-3xl lg:text-4xl font-black font-heading tracking-[-0.035em] text-white text-balance">
+              <h2 className="mt-4 text-3xl lg:text-5xl font-black font-heading tracking-[-0.035em] text-white text-balance">
                 Estamos armando los mejores eventos para vos
               </h2>
               <p className="mt-4 text-gray-400 max-w-md mx-auto text-balance">
-                Todavía no hay eventos cargados. En breve vas a ver toda la agenda acá.
+                Todavía no hay eventos cargados, pero mientras tanto date una vuelta por lo que ya hicimos.
               </p>
+              <div className="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <Link
+                  href="/momentos"
+                  className="inline-flex items-center justify-center border border-white text-white px-8 py-4 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white hover:text-[#0a0908] transition-colors"
+                >
+                  Ver momentos
+                </Link>
+                <Link
+                  href="/eventos/todos"
+                  className="inline-flex items-center justify-center border border-white/20 text-white/70 px-8 py-4 text-[12px] font-bold tracking-[.2em] uppercase hover:border-white hover:text-white transition-colors"
+                >
+                  Ver producciones
+                </Link>
+              </div>
             </div>
           ) : (
           <div className="border-t border-white/[.08]">
