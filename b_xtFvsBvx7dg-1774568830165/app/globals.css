@@ -178,3 +178,14 @@
   background: rgba(255, 255, 255, 0.2);
   color: #ffffff;
 }
+
+/* Visible keyboard focus state, on-brand instead of the browser default */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 3px;
+}
