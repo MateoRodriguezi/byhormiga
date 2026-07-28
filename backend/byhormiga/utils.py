@@ -2,6 +2,7 @@ from urllib.parse import quote
 
 from django.conf import settings
 from django.core.files.storage import default_storage
+from django.utils import timezone
 
 
 SPANISH_MONTH_ABBR = {
@@ -21,12 +22,14 @@ SPANISH_MONTH_ABBR = {
 
 
 def format_spanish_date(date_value):
+    date_value = timezone.localtime(date_value)
     return (
         f"{date_value.day:02d} {SPANISH_MONTH_ABBR[date_value.month]} {date_value.year}"
     )
 
 
 def format_spanish_month_year(date_value):
+    date_value = timezone.localtime(date_value)
     return f"{SPANISH_MONTH_ABBR[date_value.month]} {date_value.year}"
 
 

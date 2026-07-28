@@ -147,14 +147,13 @@ class EventAdmin(SortableAdminBase, ModelAdmin):
     @admin.display(description="Fecha")
     def formatted_date(self, obj):
         """Muestra fecha formateada con día de la semana"""
-        weekday = WEEKDAY_ABBR[obj.date.weekday()]
+        local_date = timezone.localtime(obj.date)
+        weekday = WEEKDAY_ABBR[local_date.weekday()]
         return format_html(
-            "<strong>{}</strong><br><small>{} {} - {}:{}</small>",
-            obj.date.strftime("%d/%m/%Y"),
+            "<strong>{}</strong><br><small>{} {}</small>",
+            local_date.strftime("%d/%m/%Y"),
             weekday,
-            obj.date.strftime("%H:%M"),
-            obj.date.strftime("%H"),
-            obj.date.strftime("%M"),
+            local_date.strftime("%H:%M"),
         )
 
     @admin.display(description="Vista previa del video")

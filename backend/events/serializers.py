@@ -1,3 +1,4 @@
+from django.utils import timezone
 from rest_framework import serializers
 from .models import Event, EventPhoto, Venue
 from byhormiga.utils import (
@@ -49,10 +50,10 @@ class EventSerializer(serializers.ModelSerializer):
         ]
 
     def get_day(self, obj):
-        return obj.date.strftime("%d")
+        return timezone.localtime(obj.date).strftime("%d")
 
     def get_month(self, obj):
-        return SPANISH_MONTH_ABBR[obj.date.month]
+        return SPANISH_MONTH_ABBR[timezone.localtime(obj.date).month]
 
     def get_weekday(self, obj):
         weekdays = {
@@ -64,7 +65,7 @@ class EventSerializer(serializers.ModelSerializer):
             5: "SÁB",
             6: "DOM",
         }
-        return weekdays[obj.date.weekday()]
+        return weekdays[timezone.localtime(obj.date).weekday()]
 
     def get_image(self, obj):
         request = self.context.get("request")
