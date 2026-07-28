@@ -59,6 +59,7 @@ INSTALLED_APPS = [
     "blog",
     "contact",
     "partners",
+    "about",
 ]
 
 MIDDLEWARE = [
@@ -256,6 +257,27 @@ UNFOLD = {
                         "icon": "mail",
                         "link": lambda request: "/admin/contact/contactmessage/",
                         "badge": _unread_messages_badge,
+                    },
+                ],
+            },
+            {
+                "title": "Nosotros",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Título y hero",
+                        "icon": "tune",
+                        "link": lambda request: "/admin/about/aboutpage/",
+                    },
+                    {
+                        "title": "Bloques de historia",
+                        "icon": "auto_stories",
+                        "link": lambda request: "/admin/about/storyblock/",
+                    },
+                    {
+                        "title": "Estadísticas",
+                        "icon": "insights",
+                        "link": lambda request: "/admin/about/stat/",
                     },
                 ],
             },

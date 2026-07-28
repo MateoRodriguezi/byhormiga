@@ -1,12 +1,8 @@
 from django.contrib import admin
-from django.core.files.base import ContentFile
-from django.core.files.storage import default_storage
-from django.http import JsonResponse
 from django.urls import path, reverse
 from django.utils.html import format_html
-from django.utils.text import get_valid_filename
 from unfold.admin import ModelAdmin
-from byhormiga.utils import build_media_proxy_url
+from byhormiga.utils import handle_admin_rich_text_image_upload
 from .models import Post
 
 
@@ -44,7 +40,7 @@ class PostAdmin(ModelAdmin):
     readonly_fields = ["cover_preview", "created_at", "updated_at"]
 
     class Media:
-        js = ("blog/js/post_editor.js",)
+        js = ("admin_overrides/js/rich_text_editor.js",)
 
     def get_urls(self):
         urls = super().get_urls()
@@ -65,6 +61,7 @@ class PostAdmin(ModelAdmin):
             body_field.widget.attrs.update(
                 {
                     "rows": 18,
+                    "data-rich-text-editor": "true",
                     "data-upload-url": reverse("admin:blog_post_upload_image"),
                 }
             )
@@ -72,18 +69,7 @@ class PostAdmin(ModelAdmin):
         return super().render_change_form(request, context, add, change, form_url, obj)
 
     def upload_image_view(self, request):
-        if request.method != "POST":
-            return JsonResponse({"detail": "Method not allowed"}, status=405)
-
-        image = request.FILES.get("image")
-        if not image:
-            return JsonResponse({"detail": "No image provided"}, status=400)
-
-        filename = get_valid_filename(image.name)
-        storage_path = default_storage.save(
-            f"blog/content/{filename}", ContentFile(image.read())
-        )
-        return JsonResponse({"url": build_media_proxy_url(request, storage_path)})
+        return handle_admin_rich_text_image_upload(request, "blog/content")
 
     @admin.display(description="Portada")
     def cover_thumbnail(self, obj):

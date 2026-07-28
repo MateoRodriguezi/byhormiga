@@ -9,7 +9,7 @@ import { GallerySection } from '@/components/sections/GallerySection'
 // import { PressSection } from '@/components/sections/PressSection'
 import { PartnersSection } from '@/components/sections/PartnersSection'
 import { ContactSection } from '@/components/sections/ContactSection'
-import { getEvents, getGallery } from '@/lib/api'
+import { getAboutContent, getEvents, getGallery } from '@/lib/api'
 import type { GalleryItem } from '@/lib/types'
 
 // Slugs que van primero en la grilla de Momentos, en este orden
@@ -26,9 +26,10 @@ function withPinnedGalleryOrder(items: GalleryItem[]): GalleryItem[] {
 }
 
 export default async function HomePage() {
-  const [events, gallery] = await Promise.all([
+  const [events, gallery, about] = await Promise.all([
     getEvents(),
     getGallery(),
+    getAboutContent(),
   ])
 
   return (
@@ -37,8 +38,8 @@ export default async function HomePage() {
       <main>
         <HeroSection />
         <Ticker />
-        <AboutSection />
-        <StatsSection />
+        <AboutSection heroTitle={about.hero_title} storyBlocks={about.story_blocks} />
+        <StatsSection stats={about.stats} />
         <FeaturedEventsSection events={events} />
         <GallerySection items={withPinnedGalleryOrder(gallery)} />
         {/* Ocultada temporalmente: todavia no hay contenido de noticias/prensa cargado */}

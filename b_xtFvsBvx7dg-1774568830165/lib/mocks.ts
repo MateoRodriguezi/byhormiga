@@ -1,4 +1,4 @@
-import type { Event, GalleryItem, Post, Sponsor } from './types'
+import type { AboutContent, Event, GalleryItem, Post, Sponsor } from './types'
 
 // Mock data for events
 export const mockEvents: Event[] = [
@@ -491,3 +491,46 @@ export const mockPosts: Post[] = [
     image: '/mock-photos/event-2.jpeg',
   },
 ]
+
+// Fallback si la API de /api/about/ no responde
+export const mockAboutContent: AboutContent = {
+  hero_title: '¿Quiénes somos?',
+  story_blocks: [
+    {
+      title: '',
+      text: 'Somos una <strong>productora de eventos y entretenimiento en Uruguay</strong>, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en un referente del entretenimiento, desarrollando formatos innovadores para distintos públicos, con <strong>impacto, recordación y conexión emocional</strong>.',
+      image: '/mock-photos/about-4.jpg',
+    },
+    {
+      title: 'Nuestro crecimiento',
+      text: 'Al año producimos un promedio de más de <strong>200 eventos</strong>, trabajamos junto a más de <strong>150 artistas</strong> nacionales e internacionales y convocamos a más de <strong>200.000 personas</strong>. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.',
+      image: '/mock-photos/about-6.jpg',
+    },
+    {
+      title: 'Nuestra forma de hacer',
+      text: 'Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, <strong>combinamos creatividad, tecnología y pasión</strong> para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.',
+      image: '/mock-photos/about-11.jpg',
+    },
+  ],
+  stats: [
+    {
+      value: '+200',
+      label: 'eventos anuales',
+      description: 'Producimos más de 200 eventos al año en distintos puntos de Uruguay.',
+      is_number: true,
+    },
+    {
+      value: '+150',
+      label: 'artistas anuales',
+      description:
+        'Trabajamos junto a más de 150 artistas nacionales e internacionales, provenientes de Puerto Rico, Colombia, Estados Unidos y otros países.',
+      is_number: true,
+    },
+    {
+      value: '+200.000',
+      label: 'tickets anuales',
+      description: 'Más de 200.000 personas forman parte de nuestras experiencias cada año.',
+      is_number: true,
+    },
+  ],
+}

@@ -1,4 +1,5 @@
 import type {
+  AboutContent,
   ContactFormData,
   ContactSuccessResponse,
   Event,
@@ -7,7 +8,7 @@ import type {
   Post,
   Sponsor,
 } from './types'
-import { mockEvents, mockGallery } from './mocks'
+import { mockAboutContent, mockEvents, mockGallery } from './mocks'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -133,6 +134,16 @@ export async function getSponsors(): Promise<Sponsor[]> {
   } catch (error) {
     console.warn('Sponsors API failed, returning empty array (will use defaultSponsors from PartnersSection):', error)
     return []
+  }
+}
+
+export async function getAboutContent(): Promise<AboutContent> {
+  try {
+    const content = await apiGetBySlug<AboutContent>('/api/about/')
+    return content ?? mockAboutContent
+  } catch (error) {
+    console.warn('About API failed, using mock data:', error)
+    return mockAboutContent
   }
 }
 

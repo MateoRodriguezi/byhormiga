@@ -14,6 +14,7 @@ api_v1_url_patterns = [
     path("posts/", include("blog.urls")),
     path("contact/", include("contact.urls")),
     path("partners/", include("partners.urls")),
+    path("about/", include("about.urls")),
 ]
 
 if settings.DEBUG:

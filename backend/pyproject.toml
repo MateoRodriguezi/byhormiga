@@ -37,7 +37,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [tool.setuptools.packages.find]
-include = ["byhormiga*", "blog*", "events*", "contact*", "partners*"]
+include = ["byhormiga*", "blog*", "events*", "contact*", "partners*", "about*"]
 
 [dependency-groups]
 dev = []

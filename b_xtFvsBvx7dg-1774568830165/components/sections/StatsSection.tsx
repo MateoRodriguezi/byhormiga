@@ -2,6 +2,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
+import type { Stat } from "@/lib/types";
 
 interface StatItemProps {
 	value: string;
@@ -70,29 +71,7 @@ function StatItem({
 	);
 }
 
-export function StatsSection() {
-	const stats = [
-		{
-			value: "+200",
-			label: "eventos anuales",
-			description: "Producimos más de 200 eventos al año en distintos puntos de Uruguay.",
-			isNumber: true,
-		},
-		{
-			value: "+150",
-			label: "artistas anuales",
-			description:
-				"Trabajamos junto a más de 150 artistas nacionales e internacionales, provenientes de Puerto Rico, Colombia, Estados Unidos y otros países.",
-			isNumber: true,
-		},
-		{
-			value: "+200.000",
-			label: "tickets anuales",
-			description: "Más de 200.000 personas forman parte de nuestras experiencias cada año.",
-			isNumber: true,
-		},
-	];
-
+export function StatsSection({ stats }: { stats: Stat[] }) {
 	return (
 		<section className="bg-[#0a0908] py-6 lg:py-10">
 			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
@@ -104,7 +83,12 @@ export function StatsSection() {
 							key={index}
 							className={`${index < stats.length - 1 ? "border-b md:border-b-0 md:border-r border-white/[.08] pb-8 md:pb-0" : ""}`}
 						>
-							<StatItem {...stat} />
+							<StatItem
+								value={stat.value}
+								label={stat.label}
+								description={stat.description}
+								isNumber={stat.is_number}
+							/>
 						</div>
 					))}
 				</div>

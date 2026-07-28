@@ -63,6 +63,25 @@ export interface Sponsor {
   activations?: SponsorActivation[]
 }
 
+export interface StoryBlock {
+  title: string
+  text: string
+  image?: string
+}
+
+export interface Stat {
+  value: string
+  label: string
+  description: string
+  is_number: boolean
+}
+
+export interface AboutContent {
+  hero_title: string
+  story_blocks: StoryBlock[]
+  stats: Stat[]
+}
+
 export interface ContactSuccessResponse {
   success: boolean
   message: string
