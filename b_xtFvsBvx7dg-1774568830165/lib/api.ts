@@ -6,9 +6,12 @@ import type {
   GalleryItem,
   PaginatedResponse,
   Post,
+  Production,
+  ProductionListItem,
   Sponsor,
 } from './types'
 import { mockAboutContent, mockEvents, mockGallery } from './mocks'
+import { mockProductions } from './brands'
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL
 
@@ -144,6 +147,24 @@ export async function getAboutContent(): Promise<AboutContent> {
   } catch (error) {
     console.warn('About API failed, using mock data:', error)
     return mockAboutContent
+  }
+}
+
+export async function getProductions(): Promise<ProductionListItem[]> {
+  try {
+    return await apiGetList<ProductionListItem>('/api/productions/')
+  } catch (error) {
+    console.warn('Productions API failed, using mock data:', error)
+    return mockProductions
+  }
+}
+
+export async function getProductionBySlug(slug: string): Promise<Production | undefined> {
+  try {
+    return await apiGetBySlug<Production>(`/api/productions/${slug}/`)
+  } catch (error) {
+    console.warn(`Production API failed for slug "${slug}", returning undefined:`, error)
+    return undefined
   }
 }
 

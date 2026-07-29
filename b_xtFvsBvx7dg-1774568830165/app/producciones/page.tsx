@@ -3,22 +3,24 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
-import { CATEGORY_LABELS, coproduccionNacional, getBrandsByCategory, type Brand } from '@/lib/brands'
+import { CATEGORY_LABELS, coproduccionNacional } from '@/lib/brands'
+import { getProductions } from '@/lib/api'
+import type { ProductionListItem } from '@/lib/types'
 
 export const metadata: Metadata = {
   title: 'Nuestras Producciones | BYHORMIGA',
   description: 'Todas las producciones y eventos de BYHORMIGA en Uruguay.',
 }
 
-function BrandCard({ brand }: { brand: Brand }) {
+function BrandCard({ brand }: { brand: ProductionListItem }) {
   return (
     <Link
       href={`/producciones/${brand.slug}`}
       className="group relative block overflow-hidden border border-white/10 bg-gradient-to-br from-[#0a0908] to-[#1a1a1a] min-h-[280px] hover:border-white/30 transition-all duration-300"
     >
-      {brand.heroImage ? (
+      {brand.hero_image ? (
         <Image
-          src={brand.heroImage}
+          src={brand.hero_image}
           alt=""
           fill
           className="object-cover opacity-50 grayscale group-hover:opacity-75 group-hover:grayscale-0 transition-all duration-500"
@@ -63,7 +65,7 @@ function CategorySection({
   id: string
   title: string
   subtitle?: string
-  brands: Brand[]
+  brands: ProductionListItem[]
 }) {
   if (brands.length === 0) return null
 
@@ -83,11 +85,12 @@ function CategorySection({
   )
 }
 
-export default function TodosEventosPage() {
-  const matinee = getBrandsByCategory('matinee')
-  const plus15 = getBrandsByCategory('plus15')
-  const plus18 = getBrandsByCategory('plus18')
-  const coprodInternacional = getBrandsByCategory('coproduccion_internacional')
+export default async function TodosEventosPage() {
+  const productions = await getProductions()
+  const matinee = productions.filter((p) => p.category === 'matinee')
+  const plus15 = productions.filter((p) => p.category === 'plus15')
+  const plus18 = productions.filter((p) => p.category === 'plus18')
+  const coprodInternacional = productions.filter((p) => p.category === 'coproduccion_internacional')
 
   return (
     <>

@@ -1,37 +1,38 @@
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { BrandPage } from '@/components/BrandPage'
-import { brands, getBrandBySlug } from '@/lib/brands'
+import { getProductionBySlug, getProductions } from '@/lib/api'
 
 interface BrandRouteProps {
   params: Promise<{ slug: string }>
 }
 
-export function generateStaticParams() {
-  return brands.map((brand) => ({ slug: brand.slug }))
+export async function generateStaticParams() {
+  const productions = await getProductions()
+  return productions.map((production) => ({ slug: production.slug }))
 }
 
 export async function generateMetadata({ params }: BrandRouteProps): Promise<Metadata> {
   const { slug } = await params
-  const brand = getBrandBySlug(slug)
+  const production = await getProductionBySlug(slug)
 
-  if (!brand) {
+  if (!production) {
     return { title: 'No encontrado | BYHORMIGA' }
   }
 
   return {
-    title: `${brand.name} | BYHORMIGA`,
-    description: brand.cardDescription,
+    title: `${production.name} | BYHORMIGA`,
+    description: production.card_description,
   }
 }
 
 export default async function BrandRoute({ params }: BrandRouteProps) {
   const { slug } = await params
-  const brand = getBrandBySlug(slug)
+  const production = await getProductionBySlug(slug)
 
-  if (!brand) {
+  if (!production) {
     notFound()
   }
 
-  return <BrandPage brand={brand} />
+  return <BrandPage brand={production} />
 }

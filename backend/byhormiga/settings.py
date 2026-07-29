@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     "contact",
     "partners",
     "about",
+    "productions",
 ]
 
 MIDDLEWARE = [
@@ -278,6 +279,22 @@ UNFOLD = {
                         "title": "Estadísticas",
                         "icon": "insights",
                         "link": lambda request: "/admin/about/stat/",
+                    },
+                ],
+            },
+            {
+                "title": "Producciones",
+                "separator": True,
+                "items": [
+                    {
+                        "title": "Producciones",
+                        "icon": "celebration",
+                        "link": lambda request: "/admin/productions/production/",
+                    },
+                    {
+                        "title": "Secciones",
+                        "icon": "view_agenda",
+                        "link": lambda request: "/admin/productions/productionsection/",
                     },
                 ],
             },

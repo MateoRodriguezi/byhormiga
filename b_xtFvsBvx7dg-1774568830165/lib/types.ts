@@ -83,6 +83,43 @@ export interface AboutContent {
   stats: Stat[]
 }
 
+export type ProductionCategory = 'matinee' | 'plus15' | 'plus18' | 'coproduccion_internacional'
+
+export interface ProductionListItem {
+  slug: string
+  name: string
+  logo?: string
+  hero_image?: string
+  category: ProductionCategory
+}
+
+export interface ProductionSection {
+  side: 'left' | 'right' | 'full'
+  text: string
+  label?: string
+  images: string[]
+}
+
+export interface ProductionVenue {
+  name: string
+  image?: string
+}
+
+export interface Production {
+  slug: string
+  name: string
+  logo?: string
+  category: ProductionCategory
+  card_description?: string
+  hero_image?: string
+  destacado: string
+  venues_intro?: string
+  venues: ProductionVenue[]
+  sections: ProductionSection[]
+  closing_text?: string
+  closing_image?: string
+}
+
 export interface ContactSuccessResponse {
   success: boolean
   message: string

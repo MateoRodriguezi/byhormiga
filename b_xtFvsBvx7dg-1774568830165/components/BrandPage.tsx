@@ -6,18 +6,14 @@ import { motion } from 'framer-motion'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { RotatingPhotos } from '@/components/RotatingPhotos'
-import type { Brand } from '@/lib/brands'
+import type { Production } from '@/lib/types'
 
-function Hero({ brand }: { brand: Brand }) {
+function Hero({ brand }: { brand: Production }) {
   return (
     <section className="relative min-h-[60vh] bg-[#0a0908] flex flex-col items-center justify-center px-4 sm:px-6 lg:px-12 mt-8 overflow-hidden">
       <div className="absolute inset-0 z-0">
-        {brand.heroVideo ? (
-          <video autoPlay loop muted playsInline className="w-full h-full object-cover opacity-60">
-            <source src={brand.heroVideo} type="video/mp4" />
-          </video>
-        ) : brand.heroImage ? (
-          <Image src={brand.heroImage} alt="" fill className="object-cover opacity-60" priority />
+        {brand.hero_image ? (
+          <Image src={brand.hero_image} alt="" fill className="object-cover opacity-60" priority />
         ) : null}
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/70 via-[#0a0908]/60 to-[#0a0908]" />
       </div>
@@ -69,7 +65,7 @@ function Destacado({ text }: { text: string }) {
   )
 }
 
-function SectionBlock({ side, text, images, video, label }: Brand['sections'][number]) {
+function SectionBlock({ side, text, images, label }: Production['sections'][number]) {
   if (side === 'full') {
     return (
       <section className="bg-[#0a0908] px-4 sm:px-6 lg:px-12 pb-16 lg:pb-24">
@@ -77,18 +73,7 @@ function SectionBlock({ side, text, images, video, label }: Brand['sections'][nu
           {label && (
             <p className="text-center text-xs tracking-[.25em] text-gray-500 uppercase mb-6">{label}</p>
           )}
-          {video ? (
-            <video
-              autoPlay
-              loop
-              muted
-              playsInline
-              controls
-              className="mx-auto max-h-[85vh] w-auto max-w-full bg-black object-contain"
-            >
-              <source src={video} type="video/mp4" />
-            </video>
-          ) : images && images.length > 0 ? (
+          {images && images.length > 0 ? (
             <div className="relative w-full aspect-video overflow-hidden">
               <Image src={images[0]} alt={label ?? ''} fill className="object-cover" />
             </div>
@@ -113,10 +98,9 @@ function SectionBlock({ side, text, images, video, label }: Brand['sections'][nu
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance"
-            >
-              {text}
-            </motion.p>
+              className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance [&_strong]:font-bold [&_strong]:text-white"
+              dangerouslySetInnerHTML={{ __html: text }}
+            />
           )}
         </div>
       </div>
@@ -124,7 +108,7 @@ function SectionBlock({ side, text, images, video, label }: Brand['sections'][nu
   )
 }
 
-function Venues({ intro, venues }: { intro?: string; venues: Brand['venues'] }) {
+function Venues({ intro, venues }: { intro?: string; venues: Production['venues'] }) {
   if (!venues || venues.length === 0) return null
 
   const cols = venues.length >= 5 ? 'md:grid-cols-4' : venues.length === 4 ? 'md:grid-cols-4' : venues.length === 3 ? 'md:grid-cols-3' : 'md:grid-cols-2'
@@ -161,16 +145,12 @@ function Venues({ intro, venues }: { intro?: string; venues: Brand['venues'] }) 
   )
 }
 
-function Closing({ image, video, text }: { image?: string; video?: string; text?: string }) {
-  if (!image && !video && !text) return null
+function Closing({ image, text }: { image?: string; text?: string }) {
+  if (!image && !text) return null
 
   return (
     <section className="bg-[#0a0908] border-t border-white/[.08]">
-      {video ? (
-        <video autoPlay loop muted playsInline className="w-full aspect-video object-cover">
-          <source src={video} type="video/mp4" />
-        </video>
-      ) : image ? (
+      {image ? (
         <div className="relative w-full aspect-video">
           <Image src={image} alt="" fill className="object-cover" />
         </div>
@@ -186,7 +166,7 @@ function Closing({ image, video, text }: { image?: string; video?: string; text?
   )
 }
 
-export function BrandPage({ brand }: { brand: Brand }) {
+export function BrandPage({ brand }: { brand: Production }) {
   return (
     <>
       <Navbar />
@@ -207,9 +187,9 @@ export function BrandPage({ brand }: { brand: Brand }) {
           <SectionBlock key={i} {...section} />
         ))}
 
-        <Venues intro={brand.venuesIntro} venues={brand.venues} />
+        <Venues intro={brand.venues_intro} venues={brand.venues} />
 
-        <Closing image={brand.closingImage} video={brand.closingVideo} text={brand.closingText} />
+        <Closing image={brand.closing_image} text={brand.closing_text} />
       </main>
       <Footer />
     </>
