@@ -109,7 +109,7 @@ export function AboutSection({
                 />
               </div>
               <div className={`lg:col-span-3 ${imageFirst ? 'lg:order-1' : ''}`}>
-                {block.images.length > 0 && (
+                {block.images?.length > 0 && (
                   <RotatingPhotos images={block.images} alt={block.title || 'ByHormiga'} />
                 )}
               </div>

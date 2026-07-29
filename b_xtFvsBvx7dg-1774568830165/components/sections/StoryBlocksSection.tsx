@@ -34,7 +34,7 @@ export function StoryBlocksSection({ storyBlocks }: { storyBlocks: StoryBlock[] 
 								</div>
 
 								<div className={`lg:col-span-3 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
-									{block.images.length > 0 && (
+									{block.images?.length > 0 && (
 										<RotatingPhotos
 											images={block.images}
 											alt={block.title || "ByHormiga"}
