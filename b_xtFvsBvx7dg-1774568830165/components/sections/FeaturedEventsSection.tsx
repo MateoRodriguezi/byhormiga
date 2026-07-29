@@ -18,8 +18,8 @@ const statusLabels: Record<Event["status"], string> = {
 
 function EventCard({ event, index }: { event: Event; index: number }) {
 	const displayDate =
-		event.date ??
-		[event.weekday, event.day, event.month].filter(Boolean).join(" ");
+		[event.weekday, event.day, event.month].filter(Boolean).join(" ") ||
+		event.date;
 
 	return (
 		<motion.div

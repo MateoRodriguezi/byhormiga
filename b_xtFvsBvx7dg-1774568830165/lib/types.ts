@@ -12,6 +12,7 @@ export interface Event {
   day?: string
   month?: string
   weekday?: string
+  time?: string
   status: 'en-venta' | 'agotado' | 'proximamente'
   featured?: boolean
   date?: string

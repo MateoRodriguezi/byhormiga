@@ -113,11 +113,13 @@ export default async function EventPage({ params }: EventPageProps) {
                 </div>
                 <div className="flex items-center gap-4">
                   <Calendar className="w-5 h-5 text-gray-500" />
-                  <span className="text-white">{event.date ?? 'Fecha por confirmar'}</span>
+                  <span className="text-white">
+                    {[event.weekday, event.day, event.month].filter(Boolean).join(' ') || 'Fecha por confirmar'}
+                  </span>
                 </div>
                 <div className="flex items-center gap-4">
                   <Clock className="w-5 h-5 text-gray-500" />
-                  <span className="text-white">23:00 - 06:00</span>
+                  <span className="text-white">{event.time ?? 'Hora por confirmar'}</span>
                 </div>
               </div>
 

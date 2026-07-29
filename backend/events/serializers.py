@@ -24,6 +24,7 @@ class EventSerializer(serializers.ModelSerializer):
     day = serializers.SerializerMethodField()
     month = serializers.SerializerMethodField()
     weekday = serializers.SerializerMethodField()
+    time = serializers.SerializerMethodField()
     status = serializers.CharField(source="frontend_status", read_only=True)
     image = serializers.SerializerMethodField()
     name = serializers.CharField(source="title", read_only=True)
@@ -41,6 +42,7 @@ class EventSerializer(serializers.ModelSerializer):
             "day",
             "month",
             "weekday",
+            "time",
             "price",
             "status",
             "featured",
@@ -66,6 +68,9 @@ class EventSerializer(serializers.ModelSerializer):
             6: "DOM",
         }
         return weekdays[timezone.localtime(obj.date).weekday()]
+
+    def get_time(self, obj):
+        return timezone.localtime(obj.date).strftime("%H:%M")
 
     def get_image(self, obj):
         request = self.context.get("request")
