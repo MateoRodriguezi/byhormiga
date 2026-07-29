@@ -168,6 +168,11 @@ MEDIA_PROXY_ENABLED = config("MEDIA_PROXY_ENABLED", default=False, cast=bool)
 
 if AWS_STORAGE_BUCKET_NAME:
     DEFAULT_FILE_STORAGE = "storages.backends.s3.S3Storage"
+    # django-storages sobreescribe archivos con el mismo nombre por default en S3
+    # (a diferencia del storage local, que siempre genera un nombre único). Sin esto,
+    # dos uploads distintos con el mismo nombre de archivo (ej: "hero.jpg" en dos
+    # producciones distintas) pisan el mismo objeto en el bucket.
+    AWS_S3_FILE_OVERWRITE = False
 
 # Static files (CSS, JavaScript, Images)
 STATIC_URL = "/static/"

@@ -40,8 +40,10 @@ class Command(BaseCommand):
                 self.stdout.write(self.style.WARNING(f"Producción no encontrada: {entry['slug']}"))
                 continue
 
+            slug = entry["slug"]
+
             if entry.get("logo") and not production.logo:
-                path, ok = self._upload(source_dir, entry["logo"], "productions/logos")
+                path, ok = self._upload(source_dir, entry["logo"], f"productions/logos/{slug}")
                 if ok:
                     production.logo = path
                     uploaded += 1
@@ -49,7 +51,7 @@ class Command(BaseCommand):
                     skipped += 1
 
             if entry.get("hero_image") and not production.hero_image:
-                path, ok = self._upload(source_dir, entry["hero_image"], "productions/hero")
+                path, ok = self._upload(source_dir, entry["hero_image"], f"productions/hero/{slug}")
                 if ok:
                     production.hero_image = path
                     uploaded += 1
@@ -57,7 +59,9 @@ class Command(BaseCommand):
                     skipped += 1
 
             if entry.get("closing_image") and not production.closing_image:
-                path, ok = self._upload(source_dir, entry["closing_image"], "productions/closing")
+                path, ok = self._upload(
+                    source_dir, entry["closing_image"], f"productions/closing/{slug}"
+                )
                 if ok:
                     production.closing_image = path
                     uploaded += 1
@@ -71,7 +75,9 @@ class Command(BaseCommand):
                 if section.images.exists():
                     continue
                 for order, image_path in enumerate(section_entry.get("images", [])):
-                    path, ok = self._upload(source_dir, image_path, "productions/sections")
+                    path, ok = self._upload(
+                        source_dir, image_path, f"productions/sections/{slug}"
+                    )
                     if ok:
                         ProductionSectionImage.objects.create(
                             section=section, image=path, order=order
@@ -84,7 +90,7 @@ class Command(BaseCommand):
             for venue, venue_entry in zip(venues, entry.get("venues", [])):
                 if venue_entry.get("image") and not venue.image:
                     path, ok = self._upload(
-                        source_dir, venue_entry["image"], "productions/venues"
+                        source_dir, venue_entry["image"], f"productions/venues/{slug}"
                     )
                     if ok:
                         venue.image = path
@@ -96,7 +102,9 @@ class Command(BaseCommand):
         self.stdout.write(self.style.SUCCESS(f"Listo. Subidas: {uploaded}, saltadas: {skipped}"))
 
     def _upload(self, source_dir, relative_path, storage_folder):
-        """relative_path viene como '/brands/wonder/hero.jpg' o '/logos/logos_Wonder.png'"""
+        """relative_path viene como '/brands/wonder/hero.jpg' o '/logos/logos_Wonder.png'.
+        storage_folder incluye el slug de la producción para no colisionar con archivos
+        del mismo nombre de otra producción (ej: todas tienen un 'hero.jpg')."""
         local_path = os.path.join(source_dir, relative_path.lstrip("/"))
         if not os.path.isfile(local_path):
             self.stdout.write(self.style.WARNING(f"No existe: {local_path}"))
