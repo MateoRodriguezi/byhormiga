@@ -1,0 +1,484 @@
+[
+  {
+    "slug": "wonder",
+    "logo": "/logos/logos_Wonder.png",
+    "hero_image": "/brands/wonder/hero.jpg",
+    "closing_image": "/brands/wonder/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/wonder/section1-1.jpg",
+          "/brands/wonder/section1-2.jpg",
+          "/brands/wonder/section1-3.jpg",
+          "/brands/wonder/section1-4.jpg",
+          "/brands/wonder/section1-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/wonder/section2-1.jpg",
+          "/brands/wonder/section2-2.jpg",
+          "/brands/wonder/section2-3.jpg",
+          "/brands/wonder/section2-4.jpg",
+          "/brands/wonder/section2-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/wonder/section3-1.jpg",
+          "/brands/wonder/section3-2.jpg",
+          "/brands/wonder/section3-3.jpg",
+          "/brands/wonder/section3-4.jpg",
+          "/brands/wonder/section3-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Montevideo Music Box",
+        "image": "/brands/wonder/venue-musicbox.jpg"
+      },
+      {
+        "name": "Rambla de Punta Carretas Golf",
+        "image": "/brands/wonder/venue-clubdegolf.jpg"
+      },
+      {
+        "name": "Antel Arena",
+        "image": "/brands/wonder/venue-antelarena.jpg"
+      },
+      {
+        "name": "Punta Del Este",
+        "image": "/brands/wonder/venue-puntadeleste.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "mood",
+    "logo": "/logos/logos_mood-46.png",
+    "hero_image": "/brands/mood/hero.jpg",
+    "closing_image": "/brands/mood/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/mood/section1-1.jpg",
+          "/brands/mood/section1-2.jpg",
+          "/brands/mood/section1-3.jpg",
+          "/brands/mood/section1-4.jpg",
+          "/brands/mood/section1-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/mood/section2-1.jpg",
+          "/brands/mood/section2-2.jpg",
+          "/brands/mood/section2-3.jpg",
+          "/brands/mood/section2-4.jpg",
+          "/brands/mood/section2-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Carrasco",
+        "image": "/brands/mood/venue-carrasco.jpg"
+      },
+      {
+        "name": "Punta Del Este",
+        "image": "/brands/mood/venue-puntadeleste.jpg"
+      },
+      {
+        "name": "Kibón",
+        "image": "/brands/mood/venue-kibon.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "madness",
+    "logo": "/logos/logos_Madness.png",
+    "hero_image": "/brands/madness/hero.jpg",
+    "closing_image": "/brands/madness/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/madness/section1-1.jpg",
+          "/brands/madness/section1-2.jpg",
+          "/brands/madness/section1-3.jpg",
+          "/brands/madness/section1-4.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/madness/section2-1.jpg",
+          "/brands/madness/section2-2.jpg",
+          "/brands/madness/section2-3.jpg",
+          "/brands/madness/section2-4.jpg",
+          "/brands/madness/section2-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/madness/section3-1.jpg",
+          "/brands/madness/section3-2.jpg",
+          "/brands/madness/section3-3.jpg",
+          "/brands/madness/section3-4.jpg",
+          "/brands/madness/section3-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Montevideo Music Box",
+        "image": "/brands/madness/venue-musicbox.jpg"
+      },
+      {
+        "name": "Punta Del Este",
+        "image": "/brands/madness/venue-puntadeleste.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "close",
+    "logo": "/logos/logos_close.png",
+    "hero_image": "/brands/close/hero.jpg",
+    "closing_image": "/brands/close/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/close/section1-1.jpg",
+          "/brands/close/section1-2.jpg",
+          "/brands/close/section1-3.jpg",
+          "/brands/close/section1-4.jpg",
+          "/brands/close/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Hangar 33",
+        "image": "/brands/close/venue-hangar33.jpg"
+      },
+      {
+        "name": "Carrasco",
+        "image": "/brands/close/venue-carrasco.jpg"
+      },
+      {
+        "name": "Punta Del Este",
+        "image": "/brands/close/venue-puntadeleste.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "la-festa",
+    "logo": "/logos/logos_Lafesta.png",
+    "hero_image": "/brands/la-festa/hero-card.jpg",
+    "closing_image": null,
+    "sections": [
+      {
+        "images": []
+      },
+      {
+        "images": []
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "code",
+    "logo": "/logos/logos_Code.png",
+    "hero_image": "/brands/code/hero.jpg",
+    "closing_image": "/brands/code/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/code/section1-1.jpg",
+          "/brands/code/section1-2.jpg",
+          "/brands/code/section1-3.jpg",
+          "/brands/code/section1-4.jpg",
+          "/brands/code/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "china",
+    "logo": "/logos/logos_China.png",
+    "hero_image": "/brands/china/hero-card.jpg",
+    "closing_image": "/brands/china/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/china/section1-1.jpg",
+          "/brands/china/section1-2.jpg",
+          "/brands/china/section1-3.jpg",
+          "/brands/china/section1-4.jpg",
+          "/brands/china/section1-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/china/section2-1.jpg",
+          "/brands/china/section2-2.jpg",
+          "/brands/china/section2-3.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/china/section3-1.jpg",
+          "/brands/china/section3-2.jpg",
+          "/brands/china/section3-3.jpg",
+          "/brands/china/section3-4.jpg",
+          "/brands/china/section3-5.jpg"
+        ]
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "mala",
+    "logo": "/logos/logos_Mala.png",
+    "hero_image": "/brands/mala/hero.jpg",
+    "closing_image": "/brands/mala/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/mala/section1-1.jpg",
+          "/brands/mala/section1-2.jpg",
+          "/brands/mala/section1-3.jpg",
+          "/brands/mala/section1-4.jpg",
+          "/brands/mala/section1-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/mala/section2-1.jpg",
+          "/brands/mala/section2-2.jpg",
+          "/brands/mala/section2-3.jpg",
+          "/brands/mala/section2-4.jpg",
+          "/brands/mala/section2-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Montevideo Music Box",
+        "image": "/brands/mala/venue-musicbox.jpg"
+      },
+      {
+        "name": "Sala Maldonado",
+        "image": "/brands/mala/venue-salamaldonado.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "oversize",
+    "logo": "/logos/logos_Oversize.png",
+    "hero_image": "/brands/oversize/hero-card.jpg",
+    "closing_image": "/brands/oversize/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/oversize/section1-1.jpg",
+          "/brands/oversize/section1-2.jpg",
+          "/brands/oversize/section1-3.jpg",
+          "/brands/oversize/section1-4.jpg",
+          "/brands/oversize/section1-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/oversize/section2-1.jpg",
+          "/brands/oversize/section2-2.jpg",
+          "/brands/oversize/section2-3.jpg",
+          "/brands/oversize/section2-4.jpg",
+          "/brands/oversize/section2-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Antel Arena",
+        "image": "/brands/oversize/venue-antelarena.jpg"
+      },
+      {
+        "name": "Floripa",
+        "image": "/brands/oversize/venue-floripa.jpg"
+      },
+      {
+        "name": "Punta Del Este",
+        "image": "/brands/oversize/venue-puntadeleste.jpg"
+      },
+      {
+        "name": "Rambla de Punta Carretas Golf",
+        "image": "/brands/oversize/venue-rambladepc.jpg"
+      },
+      {
+        "name": "Plaza de Toros, Colonia",
+        "image": "/brands/oversize/venue-colonia.jpg"
+      },
+      {
+        "name": "Melo, Cerro Largo",
+        "image": "/brands/oversize/venue-melo.jpg"
+      },
+      {
+        "name": "Museo Oceanográfico",
+        "image": "/brands/oversize/venue-museo.jpg"
+      },
+      {
+        "name": "Chacra Lacrosse",
+        "image": "/brands/oversize/venue-lacrosse.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "nada-que-ver",
+    "logo": "/logos/logos_nqv.png",
+    "hero_image": null,
+    "closing_image": null,
+    "sections": [
+      {
+        "images": []
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "orca",
+    "logo": "/logos/logos_Orca.png",
+    "hero_image": "/brands/orca/hero.jpg",
+    "closing_image": "/brands/orca/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/orca/section1-1.jpg",
+          "/brands/orca/section1-2.jpg",
+          "/brands/orca/section1-3.jpg",
+          "/brands/orca/section1-4.jpg",
+          "/brands/orca/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "hit-the-beach",
+    "logo": "/logos/logos_Hitthebeach.png",
+    "hero_image": "/brands/hit-the-beach/hero.jpg",
+    "closing_image": "/brands/hit-the-beach/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/hit-the-beach/section1-1.jpg",
+          "/brands/hit-the-beach/section1-2.jpg",
+          "/brands/hit-the-beach/section1-3.jpg",
+          "/brands/hit-the-beach/section1-4.jpg",
+          "/brands/hit-the-beach/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "polenta",
+    "logo": "/logos/polenta.png",
+    "hero_image": "/brands/polenta/hero-card.jpg",
+    "closing_image": "/brands/polenta/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/polenta/section1-1.jpg",
+          "/brands/polenta/section1-2.jpg",
+          "/brands/polenta/section1-3.jpg",
+          "/brands/polenta/section1-4.jpg",
+          "/brands/polenta/section1-5.jpg"
+        ]
+      },
+      {
+        "images": [
+          "/brands/polenta/section2-1.jpg",
+          "/brands/polenta/section2-2.jpg",
+          "/brands/polenta/section2-3.jpg",
+          "/brands/polenta/section2-4.jpg",
+          "/brands/polenta/section2-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Antel Arena",
+        "image": "/brands/polenta/venue-antelarena.jpg"
+      },
+      {
+        "name": "Punta Del Este",
+        "image": "/brands/polenta/venue-puntadeleste.jpg"
+      },
+      {
+        "name": "Montevideo Music Box",
+        "image": "/brands/polenta/venue-musicbox.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "caserio",
+    "logo": "/logos/el-caserio-club.png",
+    "hero_image": "/brands/caserio/hero.jpg",
+    "closing_image": null,
+    "sections": [
+      {
+        "images": [
+          "/brands/caserio/section1-1.jpg",
+          "/brands/caserio/section1-2.jpg",
+          "/brands/caserio/section1-3.jpg",
+          "/brands/caserio/section1-4.jpg",
+          "/brands/caserio/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": [
+      {
+        "name": "Sala Maldonado",
+        "image": "/brands/caserio/venue-salamaldonado.jpg"
+      },
+      {
+        "name": "Montevideo Music Box",
+        "image": "/brands/caserio/venue-musicbox.jpg"
+      }
+    ]
+  },
+  {
+    "slug": "nonstop",
+    "logo": "/logos/non-stop.png",
+    "hero_image": "/brands/nonstop/hero-card.jpg",
+    "closing_image": "/brands/nonstop/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/nonstop/section1-1.jpg",
+          "/brands/nonstop/section1-2.jpg",
+          "/brands/nonstop/section1-3.jpg",
+          "/brands/nonstop/section1-4.jpg",
+          "/brands/nonstop/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": []
+  },
+  {
+    "slug": "hay-plan",
+    "logo": "/logos/hay-plan.png",
+    "hero_image": "/brands/hay-plan/hero.jpg",
+    "closing_image": "/brands/hay-plan/closing.jpg",
+    "sections": [
+      {
+        "images": [
+          "/brands/hay-plan/section1-1.jpg",
+          "/brands/hay-plan/section1-2.jpg",
+          "/brands/hay-plan/section1-3.jpg",
+          "/brands/hay-plan/section1-4.jpg",
+          "/brands/hay-plan/section1-5.jpg"
+        ]
+      }
+    ],
+    "venues": []
+  }
+]
