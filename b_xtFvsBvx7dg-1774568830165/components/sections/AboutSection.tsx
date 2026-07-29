@@ -109,8 +109,8 @@ export function AboutSection({
                 />
               </div>
               <div className={`lg:col-span-3 ${imageFirst ? 'lg:order-1' : ''}`}>
-                {block.image && (
-                  <RotatingPhotos images={[block.image]} alt={block.title || 'ByHormiga'} />
+                {block.images.length > 0 && (
+                  <RotatingPhotos images={block.images} alt={block.title || 'ByHormiga'} />
                 )}
               </div>
             </motion.div>

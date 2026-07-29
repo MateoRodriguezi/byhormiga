@@ -66,7 +66,7 @@ export default async function EventosPage() {
                   Ver momentos
                 </Link>
                 <Link
-                  href="/eventos/todos"
+                  href="/producciones"
                   className="inline-flex items-center justify-center border border-white/20 text-white/70 px-8 py-4 text-[12px] font-bold tracking-[.2em] uppercase hover:border-white hover:text-white transition-colors"
                 >
                   Ver producciones

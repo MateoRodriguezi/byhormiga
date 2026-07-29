@@ -66,7 +66,7 @@ export interface Sponsor {
 export interface StoryBlock {
   title: string
   text: string
-  image?: string
+  images: string[]
 }
 
 export interface Stat {

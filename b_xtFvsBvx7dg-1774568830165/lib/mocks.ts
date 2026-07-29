@@ -499,17 +499,17 @@ export const mockAboutContent: AboutContent = {
     {
       title: '',
       text: 'Somos una <strong>productora de eventos y entretenimiento en Uruguay</strong>, enfocada en crear propuestas de alta convocatoria que integran producción, contenido y ejecución profesional. Lo que comenzó como un pequeño proyecto hoy se convirtió en un referente del entretenimiento, desarrollando formatos innovadores para distintos públicos, con <strong>impacto, recordación y conexión emocional</strong>.',
-      image: '/mock-photos/about-4.jpg',
+      images: ['/mock-photos/about-4.jpg'],
     },
     {
       title: 'Nuestro crecimiento',
       text: 'Al año producimos un promedio de más de <strong>200 eventos</strong>, trabajamos junto a más de <strong>150 artistas</strong> nacionales e internacionales y convocamos a más de <strong>200.000 personas</strong>. Además, somos una de las empresas con mayor volumen de eventos para menores de 18 años en Uruguay, con un conocimiento profundo de las particularidades operativas, legales y logísticas que este tipo de producciones requiere.',
-      image: '/mock-photos/about-6.jpg',
+      images: ['/mock-photos/about-6.jpg', '/mock-photos/about-7.jpg', '/mock-photos/about-8.jpg'],
     },
     {
       title: 'Nuestra forma de hacer',
       text: 'Nuestra filosofía es simple: cada evento es una oportunidad para crear algo extraordinario. Por eso, <strong>combinamos creatividad, tecnología y pasión</strong> para diseñar propuestas memorables, capaces de superar las expectativas de cada cliente.',
-      image: '/mock-photos/about-11.jpg',
+      images: ['/mock-photos/about-9.jpg', '/mock-photos/about-10.jpg', '/mock-photos/about-11.jpg'],
     },
   ],
   stats: [

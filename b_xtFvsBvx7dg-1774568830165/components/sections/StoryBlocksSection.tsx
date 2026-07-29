@@ -1,7 +1,7 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
+import { RotatingPhotos } from "@/components/RotatingPhotos";
 import type { StoryBlock } from "@/lib/types";
 
 export function StoryBlocksSection({ storyBlocks }: { storyBlocks: StoryBlock[] }) {
@@ -34,15 +34,12 @@ export function StoryBlocksSection({ storyBlocks }: { storyBlocks: StoryBlock[] 
 								</div>
 
 								<div className={`lg:col-span-3 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
-									{block.image && (
-										<div className="relative aspect-[4/3] overflow-hidden">
-											<Image
-												src={block.image}
-												alt={block.title || "ByHormiga"}
-												fill
-												className="object-cover"
-											/>
-										</div>
+									{block.images.length > 0 && (
+										<RotatingPhotos
+											images={block.images}
+											alt={block.title || "ByHormiga"}
+											className="aspect-[4/3]"
+										/>
 									)}
 								</div>
 							</motion.div>

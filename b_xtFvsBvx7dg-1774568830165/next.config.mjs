@@ -27,6 +27,20 @@ const nextConfig = {
       },
     ],
   },
+  async redirects() {
+    return [
+      {
+        source: '/eventos/todos',
+        destination: '/producciones',
+        permanent: true,
+      },
+      {
+        source: '/eventos/todos/:slug',
+        destination: '/producciones/:slug',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 export default nextConfig

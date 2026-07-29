@@ -13,7 +13,7 @@ class AboutContentAPIView(APIView):
     def get(self, request):
         data = {
             "hero_title": AboutPage.load().hero_title,
-            "story_blocks": StoryBlock.objects.all(),
+            "story_blocks": StoryBlock.objects.prefetch_related("images"),
             "stats": Stat.objects.all(),
         }
         serializer = AboutContentSerializer(data, context={"request": request})

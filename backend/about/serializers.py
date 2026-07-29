@@ -4,17 +4,20 @@ from .models import AboutPage, Stat, StoryBlock
 
 
 class StoryBlockSerializer(serializers.ModelSerializer):
-    image = serializers.SerializerMethodField()
+    images = serializers.SerializerMethodField()
 
     class Meta:
         model = StoryBlock
-        fields = ["title", "text", "image"]
+        fields = ["title", "text", "images"]
 
-    def get_image(self, obj):
+    def get_images(self, obj):
         request = self.context.get("request")
-        if not request or not obj.image:
-            return None
-        return build_media_proxy_url(request, obj.image.name)
+        if not request:
+            return []
+        return [
+            build_media_proxy_url(request, image.image.name)
+            for image in obj.images.all()
+        ]
 
 
 class StatSerializer(serializers.ModelSerializer):

@@ -193,7 +193,7 @@ export function BrandPage({ brand }: { brand: Brand }) {
       <main className="min-h-screen bg-[#0a0908]">
         <div className="pt-32 px-4 sm:px-6 lg:px-12 max-w-[1600px] mx-auto w-full">
           <Link
-            href="/eventos/todos"
+            href="/producciones"
             className="text-[12px] tracking-[.2em] text-gray-500 uppercase hover:text-white transition-colors inline-block"
           >
             ← Volver a nuestras producciones

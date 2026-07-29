@@ -32,7 +32,7 @@ class AboutPage(TimeStampMixin):
 
 
 class StoryBlock(TimeStampMixin):
-    """Bloque de texto + foto de la sección 'Quiénes somos' (Home y /nosotros)"""
+    """Bloque de texto + fotos de la sección 'Quiénes somos' (Home y /nosotros)"""
 
     title = models.CharField(
         max_length=200,
@@ -41,9 +41,6 @@ class StoryBlock(TimeStampMixin):
         help_text="Dejar vacío para no mostrar título en este bloque",
     )
     text = models.TextField(verbose_name="Texto")
-    image = models.ImageField(
-        upload_to="about/story/", blank=True, verbose_name="Foto"
-    )
     order = models.PositiveIntegerField(
         default=0,
         verbose_name="Orden",
@@ -57,6 +54,28 @@ class StoryBlock(TimeStampMixin):
 
     def __str__(self):
         return self.title or f"Bloque {self.order}"
+
+
+class StoryBlockImage(TimeStampMixin):
+    """Foto de un bloque de historia. Si hay más de una, rotan en la Home."""
+
+    story_block = models.ForeignKey(
+        StoryBlock, on_delete=models.CASCADE, related_name="images", verbose_name="Bloque"
+    )
+    image = models.ImageField(upload_to="about/story/", verbose_name="Foto")
+    order = models.PositiveIntegerField(
+        default=0,
+        verbose_name="Orden",
+        help_text="Orden de rotación (menor número = primero)",
+    )
+
+    class Meta:
+        verbose_name = "Foto de bloque"
+        verbose_name_plural = "Fotos de bloque"
+        ordering = ["order"]
+
+    def __str__(self):
+        return f"{self.story_block} - Foto {self.order}"
 
 
 class Stat(TimeStampMixin):

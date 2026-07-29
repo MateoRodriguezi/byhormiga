@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 function BrandCard({ brand }: { brand: Brand }) {
   return (
     <Link
-      href={`/eventos/todos/${brand.slug}`}
+      href={`/producciones/${brand.slug}`}
       className="group relative block overflow-hidden border border-white/10 bg-gradient-to-br from-[#0a0908] to-[#1a1a1a] min-h-[280px] hover:border-white/30 transition-all duration-300"
     >
       {brand.heroImage ? (
