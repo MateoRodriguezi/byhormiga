@@ -153,13 +153,16 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
 }
 
-# Notificación por mail de mensajes de contacto nuevos (via Resend).
-# Si RESEND_API_KEY está vacío, el mensaje se sigue guardando en el admin
-# pero no se manda ningún mail.
-RESEND_API_KEY = config("RESEND_API_KEY", default="")
-CONTACT_FROM_EMAIL = config(
-    "CONTACT_FROM_EMAIL", default="ByHormiga Web <notificaciones@byhormiga.com>"
-)
+# Notificación por mail de mensajes de contacto nuevos, via SMTP (Gmail/Workspace
+# de contacto@byhormiga.com). Si EMAIL_HOST_USER/PASSWORD están vacíos, el mensaje
+# se sigue guardando en el admin pero no se manda ningún mail.
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = config("EMAIL_HOST", default="smtp.gmail.com")
+EMAIL_PORT = config("EMAIL_PORT", default=587, cast=int)
+EMAIL_USE_TLS = config("EMAIL_USE_TLS", default=True, cast=bool)
+EMAIL_HOST_USER = config("EMAIL_HOST_USER", default="")
+EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", default="")
+DEFAULT_FROM_EMAIL = config("DEFAULT_FROM_EMAIL", default=EMAIL_HOST_USER)
 CONTACT_NOTIFICATION_EMAIL = config(
     "CONTACT_NOTIFICATION_EMAIL", default="contacto@byhormiga.com"
 )
