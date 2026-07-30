@@ -94,7 +94,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 				{/* CTA Button */}
 				<Link
 					href={`/eventos/${event.slug}`}
-					className="inline-flex items-center justify-center bg-white text-[#0a0908] px-6 py-3 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-all duration-300 transform group-hover:translate-y-0 translate-y-4 opacity-0 group-hover:opacity-100"
+					className="inline-flex items-center justify-center bg-white text-[#0a0908] px-6 py-3 text-[12px] font-bold tracking-[.2em] uppercase hover:bg-white/90 transition-all duration-300 transform translate-y-0 opacity-100 lg:translate-y-4 lg:opacity-0 lg:group-hover:translate-y-0 lg:group-hover:opacity-100"
 				>
 					{event.status === "en-venta" ? "COMPRAR ENTRADAS" : "MÁS INFO"}
 				</Link>

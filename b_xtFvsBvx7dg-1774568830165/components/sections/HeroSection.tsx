@@ -123,7 +123,7 @@ export function HeroSection() {
 					<InteractiveButton href="/#contacto" variant="outline">
 						Trabajemos juntos
 					</InteractiveButton>
-					<InteractiveButton href="/producciones" variant="outline">
+					<InteractiveButton href="/eventos" variant="outline">
 						Ver Eventos
 					</InteractiveButton>
 				</motion.div>
