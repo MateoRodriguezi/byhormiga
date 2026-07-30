@@ -153,6 +153,17 @@ SPECTACULAR_SETTINGS = {
     "VERSION": "1.0.0",
 }
 
+# Notificación por mail de mensajes de contacto nuevos (via Resend).
+# Si RESEND_API_KEY está vacío, el mensaje se sigue guardando en el admin
+# pero no se manda ningún mail.
+RESEND_API_KEY = config("RESEND_API_KEY", default="")
+CONTACT_FROM_EMAIL = config(
+    "CONTACT_FROM_EMAIL", default="ByHormiga Web <notificaciones@byhormiga.com>"
+)
+CONTACT_NOTIFICATION_EMAIL = config(
+    "CONTACT_NOTIFICATION_EMAIL", default="contacto@byhormiga.com"
+)
+
 # S3-compatible bucket configuration (AWS S3, Cloudflare R2, Backblaze, etc.)
 AWS_ACCESS_KEY_ID = config("AWS_ACCESS_KEY_ID", default="")
 AWS_SECRET_ACCESS_KEY = config("AWS_SECRET_ACCESS_KEY", default="")

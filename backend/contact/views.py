@@ -1,6 +1,7 @@
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
+from .emails import send_contact_notification
 from .serializers import ContactMessageSerializer
 
 
@@ -17,7 +18,8 @@ class ContactMessageCreateAPIView(generics.CreateAPIView):
         """Crea un nuevo mensaje de contacto"""
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
-        serializer.save()
+        contact_message = serializer.save()
+        send_contact_notification(contact_message)
         return Response(
             {"success": True, "message": "Mensaje enviado correctamente"},
             status=status.HTTP_201_CREATED,
