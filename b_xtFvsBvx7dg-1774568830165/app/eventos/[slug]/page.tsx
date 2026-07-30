@@ -40,6 +40,8 @@ export default async function EventPage({ params }: EventPageProps) {
     notFound()
   }
 
+  const isPast = event.date ? new Date(event.date) < new Date() : false
+
   const statusLabels: Record<string, string> = {
     'en-venta': 'EN VENTA',
     'agotado': 'AGOTADO',
@@ -139,7 +141,7 @@ export default async function EventPage({ params }: EventPageProps) {
                   </div>
                 )}
 
-                {event.status === 'en-venta' && (
+                {event.status === 'en-venta' && !isPast && (
                   <a
                     href={event.ticket_url ?? '#'}
                     target={event.ticket_url ? '_blank' : undefined}
