@@ -109,7 +109,7 @@ export function AboutSection({
               </div>
               <div className={`lg:col-span-2 ${imageFirst ? 'lg:order-2' : 'lg:order-1'}`}>
                 <p
-                  className="text-base sm:text-lg text-gray-300 leading-relaxed text-balance [&_strong]:font-bold [&_strong]:text-white"
+                  className="max-w-lg lg:max-w-none text-base sm:text-lg text-gray-300 leading-relaxed text-balance [&_strong]:font-bold [&_strong]:text-white"
                   dangerouslySetInnerHTML={{ __html: block.text }}
                 />
               </div>

@@ -38,7 +38,7 @@ export function StoryBlocksSection({ storyBlocks }: { storyBlocks: StoryBlock[] 
 										</h3>
 									)}
 									<p
-										className="text-gray-400 leading-relaxed text-balance text-base lg:text-lg [&_strong]:font-bold [&_strong]:text-white"
+										className="max-w-lg lg:max-w-none text-gray-400 leading-relaxed text-balance text-base lg:text-lg [&_strong]:font-bold [&_strong]:text-white"
 										dangerouslySetInnerHTML={{ __html: block.text }}
 									/>
 								</div>

@@ -98,7 +98,7 @@ function SectionBlock({ side, text, images, label }: Production['sections'][numb
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6 }}
-              className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance [&_strong]:font-bold [&_strong]:text-white"
+              className="max-w-lg lg:max-w-none text-lg lg:text-xl text-gray-300 leading-relaxed text-balance [&_strong]:font-bold [&_strong]:text-white"
               dangerouslySetInnerHTML={{ __html: text }}
             />
           )}
