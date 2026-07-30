@@ -161,7 +161,13 @@ export function PartnersSection({ sponsors }: { sponsors: Sponsor[] }) {
         }
 
         .animate-scroll-partners {
-          animation: scroll-partners 30s linear infinite;
+          animation: scroll-partners 14s linear infinite;
+        }
+
+        @media (min-width: 1024px) {
+          .animate-scroll-partners {
+            animation-duration: 30s;
+          }
         }
 
         .animate-scroll-partners:hover {

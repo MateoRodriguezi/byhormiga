@@ -132,10 +132,12 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					</h2>
 				</motion.div>
 
-				{/* Events Grid */}
-				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+				{/* Events - scroll horizontal con snap en mobile, grilla desde md */}
+				<div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 lg:gap-8 [&::-webkit-scrollbar]:hidden">
 					{featuredEvents.map((event, index) => (
-						<EventCard key={event.slug} event={event} index={index} />
+						<div key={event.slug} className="w-[78%] shrink-0 snap-center sm:w-[55%] md:w-auto md:shrink md:snap-none">
+							<EventCard event={event} index={index} />
+						</div>
 					))}
 				</div>
 			</div>
