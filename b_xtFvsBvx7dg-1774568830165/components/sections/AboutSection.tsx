@@ -102,16 +102,16 @@ export function AboutSection({
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
               className={`max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center ${isLast ? '' : 'mb-20 lg:mb-32'}`}
             >
-              <div className={`lg:col-span-2 ${imageFirst ? 'lg:order-2' : ''}`}>
+              <div className={`lg:col-span-3 ${imageFirst ? 'lg:order-1' : 'lg:order-2'}`}>
+                {block.images?.length > 0 && (
+                  <RotatingPhotos images={block.images} alt={block.title || 'ByHormiga'} />
+                )}
+              </div>
+              <div className={`lg:col-span-2 ${imageFirst ? 'lg:order-2' : 'lg:order-1'}`}>
                 <p
                   className="text-base sm:text-lg text-gray-300 leading-relaxed text-balance [&_strong]:font-bold [&_strong]:text-white"
                   dangerouslySetInnerHTML={{ __html: block.text }}
                 />
-              </div>
-              <div className={`lg:col-span-3 ${imageFirst ? 'lg:order-1' : ''}`}>
-                {block.images?.length > 0 && (
-                  <RotatingPhotos images={block.images} alt={block.title || 'ByHormiga'} />
-                )}
               </div>
             </motion.div>
           )

@@ -21,6 +21,16 @@ export function StoryBlocksSection({ storyBlocks }: { storyBlocks: StoryBlock[] 
 								transition={{ duration: 0.6, delay: index * 0.08 }}
 								className="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center"
 							>
+								<div className={`lg:col-span-3 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
+									{block.images?.length > 0 && (
+										<RotatingPhotos
+											images={block.images}
+											alt={block.title || "ByHormiga"}
+											className="aspect-[4/3]"
+										/>
+									)}
+								</div>
+
 								<div className={`lg:col-span-2 ${imageFirst ? "lg:order-2" : "lg:order-1"}`}>
 									{block.title && (
 										<h3 className="text-2xl lg:text-3xl font-black text-white font-heading tracking-[-0.035em] mb-4">
@@ -31,16 +41,6 @@ export function StoryBlocksSection({ storyBlocks }: { storyBlocks: StoryBlock[] 
 										className="text-gray-400 leading-relaxed text-balance text-base lg:text-lg [&_strong]:font-bold [&_strong]:text-white"
 										dangerouslySetInnerHTML={{ __html: block.text }}
 									/>
-								</div>
-
-								<div className={`lg:col-span-3 ${imageFirst ? "lg:order-1" : "lg:order-2"}`}>
-									{block.images?.length > 0 && (
-										<RotatingPhotos
-											images={block.images}
-											alt={block.title || "ByHormiga"}
-											className="aspect-[4/3]"
-										/>
-									)}
 								</div>
 							</motion.div>
 						);
