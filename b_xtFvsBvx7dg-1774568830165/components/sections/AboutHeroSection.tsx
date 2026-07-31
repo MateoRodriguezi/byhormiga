@@ -1,20 +1,18 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { ResponsiveHeroVideo } from "@/components/ResponsiveHeroVideo";
 
 export function AboutHeroSection({ title }: { title: string }) {
 	return (
 		<section className="relative min-h-[60vh] bg-[#0a0908] flex items-center justify-center px-4 sm:px-6 lg:px-12 pt-24 overflow-hidden">
 			<div className="absolute inset-0 z-0">
-				<video
-					autoPlay
-					loop
-					muted
-					playsInline
+				<ResponsiveHeroVideo
+					videoSrc="/videos/hero-background.mp4"
+					mobileVideoSrc="/videos/hero-background-mobile.mp4"
+					posterSrc="/mock-photos/about-1.jpg"
 					className="w-full h-full object-cover opacity-60"
-				>
-					<source src="/videos/hero-background.mp4" type="video/mp4" />
-				</video>
+				/>
 				<div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/80 via-[#0a0908]/65 to-[#0a0908]" />
 			</div>
 

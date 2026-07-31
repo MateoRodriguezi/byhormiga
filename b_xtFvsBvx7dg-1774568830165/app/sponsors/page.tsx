@@ -4,6 +4,7 @@ import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
 import { motion } from 'framer-motion'
 import Image from 'next/image'
+import { ResponsiveHeroVideo } from '@/components/ResponsiveHeroVideo'
 import type { Sponsor } from '@/lib/types'
 
 const defaultSponsors: Sponsor[] = [
@@ -107,9 +108,12 @@ export default function SponsorsPage() {
               transition={{ duration: 0.6 }}
               className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center mb-24 lg:mb-32"
             >
-              <video autoPlay loop muted playsInline className="w-full aspect-video object-cover">
-                <source src="/videos/hero-background.mp4" type="video/mp4" />
-              </video>
+              <ResponsiveHeroVideo
+                videoSrc="/videos/hero-background.mp4"
+                mobileVideoSrc="/videos/hero-background-mobile.mp4"
+                posterSrc="/mock-photos/about-1.jpg"
+                className="w-full aspect-video object-cover"
+              />
               <p className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance">
                 Desarrollamos acciones de marca que reflejan la esencia de cada sponsor y elevan la experiencia del evento.
               </p>
