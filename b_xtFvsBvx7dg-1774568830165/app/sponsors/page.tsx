@@ -111,7 +111,6 @@ export default function SponsorsPage() {
               <ResponsiveHeroVideo
                 videoSrc="/videos/hero-background.mp4"
                 mobileVideoSrc="/videos/hero-background-mobile.mp4"
-                posterSrc="/mock-photos/about-1.jpg"
                 className="w-full aspect-video object-cover"
               />
               <p className="text-lg lg:text-xl text-gray-300 leading-relaxed text-balance">

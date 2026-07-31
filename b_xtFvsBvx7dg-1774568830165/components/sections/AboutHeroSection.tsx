@@ -10,7 +10,6 @@ export function AboutHeroSection({ title }: { title: string }) {
 				<ResponsiveHeroVideo
 					videoSrc="/videos/hero-background.mp4"
 					mobileVideoSrc="/videos/hero-background-mobile.mp4"
-					posterSrc="/mock-photos/about-1.jpg"
 					className="w-full h-full object-cover opacity-60"
 				/>
 				<div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/80 via-[#0a0908]/65 to-[#0a0908]" />

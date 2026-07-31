@@ -39,7 +39,6 @@ export function HeroSection() {
 				<ResponsiveHeroVideo
 					videoSrc="/videos/hero-background.mp4"
 					mobileVideoSrc="/videos/hero-background-mobile.mp4"
-					posterSrc="/mock-photos/about-1.jpg"
 					className="w-full h-full object-cover"
 				/>
 				<motion.div
