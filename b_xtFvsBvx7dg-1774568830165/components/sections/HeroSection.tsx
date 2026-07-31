@@ -4,13 +4,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { InteractiveButton } from "@/components/ui/InteractiveButton";
-import { ResponsiveHeroVideo } from "@/components/ResponsiveHeroVideo";
 
 const rotatingTexts = ["momentos únicos", "experiencias inolvidables"];
 
 export function HeroSection() {
 	const [currentTextIndex, setCurrentTextIndex] = useState(0);
 	const [showContent, setShowContent] = useState(false);
+	const [isDesktop, setIsDesktop] = useState(false);
+
+	useEffect(() => {
+		const mediaQuery = window.matchMedia("(min-width: 1024px)");
+		setIsDesktop(mediaQuery.matches);
+		const handleChange = (event: MediaQueryListEvent) => setIsDesktop(event.matches);
+		mediaQuery.addEventListener("change", handleChange);
+		return () => mediaQuery.removeEventListener("change", handleChange);
+	}, []);
 
 	useEffect(() => {
 		const interval = setInterval(() => {
@@ -36,11 +44,19 @@ export function HeroSection() {
 				transition={{ duration: 1.2, ease: "easeOut" }}
 				className="absolute inset-0 z-0"
 			>
-				<ResponsiveHeroVideo
-					videoSrc="/videos/hero-background.mp4"
-					mobileVideoSrc="/videos/hero-background-mobile.mp4"
-					className="w-full h-full object-cover"
-				/>
+				{isDesktop ? (
+					<video autoPlay loop muted playsInline className="w-full h-full object-cover">
+						<source src="/videos/hero-background.mp4" type="video/mp4" />
+					</video>
+				) : (
+					<Image
+						src="/mock-photos/about-1.jpg"
+						alt=""
+						fill
+						priority
+						className="object-cover"
+					/>
+				)}
 				<motion.div
 					initial={{ opacity: 0.15 }}
 					animate={{ opacity: showContent ? 0.4 : 0.15 }}

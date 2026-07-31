@@ -97,7 +97,7 @@ export default async function TodosEventosPage() {
       <Navbar />
       <main className="min-h-screen bg-[#0a0908]">
         {/* Header */}
-        <section className="relative min-h-[50vh] flex items-center justify-center overflow-hidden pt-16">
+        <section className="relative min-h-[50vh] flex flex-col overflow-hidden pt-16">
           <div className="absolute inset-0 z-0">
             <Image
               src="/mock-photos/about-1.jpg"
@@ -110,20 +110,24 @@ export default async function TodosEventosPage() {
             <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/30 via-[#0a0908]/40 to-[#0a0908]" />
           </div>
 
-          <Link
-            href="/"
-            className="absolute top-24 left-6 lg:left-12 z-10 text-[12px] tracking-[.2em] text-gray-300 uppercase hover:text-white transition-colors"
-          >
-            ← VOLVER AL INICIO
-          </Link>
+          <div className="relative z-10 px-6 lg:px-12 mt-8">
+            <Link
+              href="/"
+              className="inline-block text-[12px] tracking-[.2em] text-gray-300 uppercase hover:text-white transition-colors"
+            >
+              ← VOLVER AL INICIO
+            </Link>
+          </div>
 
-          <div className="relative z-10 text-center px-6 lg:px-12 max-w-3xl mx-auto">
-            <h1 className="text-5xl lg:text-7xl font-black font-heading tracking-[-0.035em] text-white">
-              Nuestras producciones
-            </h1>
-            <p className="mt-6 text-lg text-gray-300 leading-relaxed text-balance">
-              Creamos experiencias de entretenimiento para distintos públicos, combinando producción, contenido y ejecución profesional.
-            </p>
+          <div className="relative z-10 flex-1 flex items-center justify-center text-center px-6 lg:px-12">
+            <div className="max-w-3xl mx-auto">
+              <h1 className="text-5xl lg:text-7xl font-black font-heading tracking-[-0.035em] text-white">
+                Nuestras producciones
+              </h1>
+              <p className="mt-6 text-lg text-gray-300 leading-relaxed text-balance">
+                Creamos experiencias de entretenimiento para distintos públicos, combinando producción, contenido y ejecución profesional.
+              </p>
+            </div>
           </div>
         </section>
 
