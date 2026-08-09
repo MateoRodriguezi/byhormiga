@@ -80,7 +80,7 @@ function GalleryCell({ item, index }: { item: GalleryItem; index: number }) {
 			animate={isInView ? { opacity: 1, y: 0 } : {}}
 			transition={{ duration: 0.5, delay: index * 0.1 }}
 			className={`relative overflow-hidden ${getGridClasses()}`}
-			style={{ minHeight: index === 0 ? "400px" : "200px" }}
+			style={{ minHeight: index === 0 ? "460px" : "230px" }}
 		>
 			<Link
 				href={`/momentos/${item.slug}`}
@@ -139,14 +139,18 @@ export function GallerySection({ items }: GallerySectionProps) {
 		<section id="momentos" className="bg-[#0a0908] py-8 sm:py-10 lg:py-14">
 			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
 				<SectionHeader />
+			</div>
 
-				{/* Masonry Grid */}
+			{/* Masonry Grid - a los bordes del home, igual que el carrusel de eventos */}
+			<div className="mx-auto max-w-[1600px]">
 				<div className="grid grid-cols-2 lg:grid-cols-12 gap-[3px]">
 					{items.map((item, index) => (
 						<GalleryCell key={item.id} item={item} index={index} />
 					))}
 				</div>
+			</div>
 
+			<div className="mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
 				{/* CTA Button */}
 				<motion.div
 					ref={ref}
