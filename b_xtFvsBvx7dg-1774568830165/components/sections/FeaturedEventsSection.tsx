@@ -1,19 +1,16 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { Calendar, MapPin, ArrowLeft, ArrowRight } from "lucide-react";
-import {
-	Carousel,
-	CarouselContent,
-	CarouselItem,
-	type CarouselApi,
-} from "@/components/ui/carousel";
 import type { Event } from "@/lib/types";
 
-const AUTOPLAY_DELAY_MS = 5000;
+// Velocidad del desplazamiento continuo, en pixeles por segundo. Baja = mas lento.
+const SCROLL_SPEED_PX_PER_SEC = 30;
+// Cuanto esperar tras soltar/hacer click antes de retomar el desplazamiento automatico.
+const RESUME_DELAY_MS = 1200;
 
 interface FeaturedEventsSectionProps {
 	events: Event[];
@@ -35,7 +32,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 			initial={{ opacity: 0, y: 40 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: "-100px" }}
-			transition={{ delay: index * 0.15, duration: 0.6 }}
+			transition={{ delay: Math.min(index, 4) * 0.15, duration: 0.6 }}
 			className="group relative aspect-[3/4] overflow-hidden"
 		>
 			{event.image ? (
@@ -46,6 +43,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 						fill
 						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 						className="object-cover"
+						draggable={false}
 					/>
 				</div>
 			) : (
@@ -58,13 +56,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 			{/* Content */}
 			<div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
 				{/* Status badge */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ delay: index * 0.15 + 0.3 }}
-					className="absolute top-6 right-6"
-				>
+				<div className="absolute top-6 right-6">
 					<span
 						className={`text-[10px] tracking-[.2em] uppercase px-3 py-1.5 border ${
 							event.status === "en-venta"
@@ -74,7 +66,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 					>
 						{statusLabels[event.status]}
 					</span>
-				</motion.div>
+				</div>
 
 				{/* Event name - Large */}
 				<h3 className="text-4xl lg:text-5xl font-black text-white font-heading tracking-[-0.035em] mb-4 transform group-hover:translate-y-[-8px] transition-transform duration-500">
@@ -117,49 +109,72 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 
 export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 	const featuredEvents = events.filter((event) => event.featured);
+	const canLoop = featuredEvents.length > 1;
+	// Se duplica la lista para poder resetear el scroll sin que se note el salto.
+	const trackItems = canLoop ? [...featuredEvents, ...featuredEvents] : featuredEvents;
 
-	const [api, setApi] = useState<CarouselApi>();
-	const [canScrollPrev, setCanScrollPrev] = useState(false);
-	const [canScrollNext, setCanScrollNext] = useState(false);
-	const autoplayTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+	const trackRef = useRef<HTMLDivElement>(null);
+	const pausedRef = useRef(false);
+	const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-	const stopAutoplay = useCallback(() => {
-		if (autoplayTimer.current) {
-			clearInterval(autoplayTimer.current);
-			autoplayTimer.current = null;
+	const pause = useCallback(() => {
+		if (resumeTimeoutRef.current) {
+			clearTimeout(resumeTimeoutRef.current);
+			resumeTimeoutRef.current = null;
 		}
+		pausedRef.current = true;
 	}, []);
 
-	const startAutoplay = useCallback(() => {
-		if (!api) return;
-		stopAutoplay();
-		autoplayTimer.current = setInterval(() => {
-			api.scrollNext();
-		}, AUTOPLAY_DELAY_MS);
-	}, [api, stopAutoplay]);
+	const resumeSoon = useCallback(() => {
+		if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+		resumeTimeoutRef.current = setTimeout(() => {
+			pausedRef.current = false;
+		}, RESUME_DELAY_MS);
+	}, []);
 
 	useEffect(() => {
-		if (!api) return;
+		const track = trackRef.current;
+		if (!track || !canLoop) return;
 
-		const onSelect = () => {
-			setCanScrollPrev(api.canScrollPrev());
-			setCanScrollNext(api.canScrollNext());
+		let frameId: number;
+		let lastTimestamp: number | null = null;
+
+		const step = (timestamp: number) => {
+			if (lastTimestamp === null) lastTimestamp = timestamp;
+			const deltaSeconds = (timestamp - lastTimestamp) / 1000;
+			lastTimestamp = timestamp;
+
+			if (!pausedRef.current) {
+				track.scrollLeft += SCROLL_SPEED_PX_PER_SEC * deltaSeconds;
+				const halfWidth = track.scrollWidth / 2;
+				if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
+					track.scrollLeft -= halfWidth;
+				}
+			}
+			frameId = requestAnimationFrame(step);
 		};
-		onSelect();
-		api.on("select", onSelect);
-		api.on("reInit", onSelect);
 
-		startAutoplay();
-		api.on("pointerDown", stopAutoplay);
+		frameId = requestAnimationFrame(step);
+		return () => cancelAnimationFrame(frameId);
+	}, [canLoop]);
 
+	useEffect(() => {
 		return () => {
-			stopAutoplay();
-			api.off("select", onSelect);
-			api.off("reInit", onSelect);
-			api.off("pointerDown", stopAutoplay);
+			if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
 		};
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [api]);
+	}, []);
+
+	const scrollByCard = (direction: 1 | -1) => {
+		const track = trackRef.current;
+		if (!track) return;
+		pause();
+		const firstCard = track.querySelector<HTMLElement>("[data-carousel-card]");
+		const amount = firstCard
+			? firstCard.getBoundingClientRect().width + 16
+			: track.clientWidth * 0.85;
+		track.scrollBy({ left: direction * amount, behavior: "smooth" });
+		resumeSoon();
+	};
 
 	if (!featuredEvents.length) {
 		return null;
@@ -186,53 +201,49 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					</div>
 
 					{/* Arrows */}
-					<div className="hidden sm:flex items-center gap-3 shrink-0 mb-2">
-						<button
-							type="button"
-							aria-label="Evento anterior"
-							onClick={() => {
-								stopAutoplay();
-								api?.scrollPrev();
-							}}
-							disabled={!canScrollPrev}
-							className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white"
-						>
-							<ArrowLeft className="size-4" />
-						</button>
-						<button
-							type="button"
-							aria-label="Siguiente evento"
-							onClick={() => {
-								stopAutoplay();
-								api?.scrollNext();
-							}}
-							disabled={!canScrollNext}
-							className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white"
-						>
-							<ArrowRight className="size-4" />
-						</button>
-					</div>
+					{canLoop && (
+						<div className="hidden sm:flex items-center gap-3 shrink-0 mb-2">
+							<button
+								type="button"
+								aria-label="Evento anterior"
+								onClick={() => scrollByCard(-1)}
+								className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908]"
+							>
+								<ArrowLeft className="size-4" />
+							</button>
+							<button
+								type="button"
+								aria-label="Siguiente evento"
+								onClick={() => scrollByCard(1)}
+								className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908]"
+							>
+								<ArrowRight className="size-4" />
+							</button>
+						</div>
+					)}
 				</motion.div>
 
-				{/* Events - carrusel horizontal tipo passline */}
-				<Carousel
-					setApi={setApi}
-					opts={{ loop: true, align: "start" }}
-					className="-mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-12 lg:px-12"
-					onMouseEnter={stopAutoplay}
-					onMouseLeave={startAutoplay}
+				{/* Events - carrusel horizontal continuo tipo passline */}
+				<div
+					ref={trackRef}
+					onMouseEnter={pause}
+					onMouseLeave={resumeSoon}
+					onTouchStart={pause}
+					onTouchEnd={resumeSoon}
+					onPointerDown={pause}
+					onPointerUp={resumeSoon}
+					className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-12 lg:gap-8 lg:px-12 [&::-webkit-scrollbar]:hidden"
 				>
-					<CarouselContent>
-						{featuredEvents.map((event, index) => (
-							<CarouselItem
-								key={event.slug}
-								className="basis-[78%] sm:basis-[55%] md:basis-1/2 lg:basis-1/3"
-							>
-								<EventCard event={event} index={index} />
-							</CarouselItem>
-						))}
-					</CarouselContent>
-				</Carousel>
+					{trackItems.map((event, index) => (
+						<div
+							key={`${event.slug}-${index}`}
+							data-carousel-card
+							className="w-[78%] shrink-0 sm:w-[55%] md:w-1/2 lg:w-1/3"
+						>
+							<EventCard event={event} index={index} />
+						</div>
+					))}
+				</div>
 			</div>
 		</section>
 	);
