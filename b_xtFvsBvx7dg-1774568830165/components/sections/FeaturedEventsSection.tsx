@@ -1,10 +1,16 @@
 "use client";
 
+import { useCallback, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, ArrowLeft, ArrowRight } from "lucide-react";
 import type { Event } from "@/lib/types";
+
+// Velocidad del desplazamiento continuo, en pixeles por segundo. Baja = mas lento.
+const SCROLL_SPEED_PX_PER_SEC = 30;
+// Cuanto esperar tras soltar/hacer click antes de retomar el desplazamiento automatico.
+const RESUME_DELAY_MS = 1200;
 
 interface FeaturedEventsSectionProps {
 	events: Event[];
@@ -26,7 +32,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 			initial={{ opacity: 0, y: 40 }}
 			whileInView={{ opacity: 1, y: 0 }}
 			viewport={{ once: true, margin: "-100px" }}
-			transition={{ delay: index * 0.15, duration: 0.6 }}
+			transition={{ delay: Math.min(index, 4) * 0.15, duration: 0.6 }}
 			className="group relative aspect-[3/4] overflow-hidden"
 		>
 			{event.image ? (
@@ -37,6 +43,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 						fill
 						sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
 						className="object-cover"
+						draggable={false}
 					/>
 				</div>
 			) : (
@@ -49,13 +56,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 			{/* Content */}
 			<div className="relative h-full flex flex-col justify-end p-6 lg:p-8">
 				{/* Status badge */}
-				<motion.div
-					initial={{ opacity: 0, y: 20 }}
-					whileInView={{ opacity: 1, y: 0 }}
-					viewport={{ once: true }}
-					transition={{ delay: index * 0.15 + 0.3 }}
-					className="absolute top-6 right-6"
-				>
+				<div className="absolute top-6 right-6">
 					<span
 						className={`text-[10px] tracking-[.2em] uppercase px-3 py-1.5 border ${
 							event.status === "en-venta"
@@ -65,7 +66,7 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 					>
 						{statusLabels[event.status]}
 					</span>
-				</motion.div>
+				</div>
 
 				{/* Event name - Large */}
 				<h3 className="text-4xl lg:text-5xl font-black text-white font-heading tracking-[-0.035em] mb-4 transform group-hover:translate-y-[-8px] transition-transform duration-500">
@@ -108,6 +109,72 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 
 export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 	const featuredEvents = events.filter((event) => event.featured);
+	const canLoop = featuredEvents.length > 1;
+	// Se duplica la lista para poder resetear el scroll sin que se note el salto.
+	const trackItems = canLoop ? [...featuredEvents, ...featuredEvents] : featuredEvents;
+
+	const trackRef = useRef<HTMLDivElement>(null);
+	const pausedRef = useRef(false);
+	const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+	const pause = useCallback(() => {
+		if (resumeTimeoutRef.current) {
+			clearTimeout(resumeTimeoutRef.current);
+			resumeTimeoutRef.current = null;
+		}
+		pausedRef.current = true;
+	}, []);
+
+	const resumeSoon = useCallback(() => {
+		if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+		resumeTimeoutRef.current = setTimeout(() => {
+			pausedRef.current = false;
+		}, RESUME_DELAY_MS);
+	}, []);
+
+	useEffect(() => {
+		const track = trackRef.current;
+		if (!track || !canLoop) return;
+
+		let frameId: number;
+		let lastTimestamp: number | null = null;
+
+		const step = (timestamp: number) => {
+			if (lastTimestamp === null) lastTimestamp = timestamp;
+			const deltaSeconds = (timestamp - lastTimestamp) / 1000;
+			lastTimestamp = timestamp;
+
+			if (!pausedRef.current) {
+				track.scrollLeft += SCROLL_SPEED_PX_PER_SEC * deltaSeconds;
+				const halfWidth = track.scrollWidth / 2;
+				if (halfWidth > 0 && track.scrollLeft >= halfWidth) {
+					track.scrollLeft -= halfWidth;
+				}
+			}
+			frameId = requestAnimationFrame(step);
+		};
+
+		frameId = requestAnimationFrame(step);
+		return () => cancelAnimationFrame(frameId);
+	}, [canLoop]);
+
+	useEffect(() => {
+		return () => {
+			if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
+		};
+	}, []);
+
+	const scrollByCard = (direction: 1 | -1) => {
+		const track = trackRef.current;
+		if (!track) return;
+		pause();
+		const firstCard = track.querySelector<HTMLElement>("[data-carousel-card]");
+		const amount = firstCard
+			? firstCard.getBoundingClientRect().width + 16
+			: track.clientWidth * 0.85;
+		track.scrollBy({ left: direction * amount, behavior: "smooth" });
+		resumeSoon();
+	};
 
 	if (!featuredEvents.length) {
 		return null;
@@ -122,20 +189,57 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6 }}
-					className="mb-16"
+					className="mb-16 flex items-end justify-between gap-6"
 				>
-					<span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
-						SELECCIÓN
-					</span>
-					<h2 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.035em] text-white">
-						Próximos eventos
-					</h2>
+					<div>
+						<span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
+							SELECCIÓN
+						</span>
+						<h2 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.035em] text-white">
+							Próximos eventos
+						</h2>
+					</div>
+
+					{/* Arrows */}
+					{canLoop && (
+						<div className="hidden sm:flex items-center gap-3 shrink-0 mb-2">
+							<button
+								type="button"
+								aria-label="Evento anterior"
+								onClick={() => scrollByCard(-1)}
+								className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908]"
+							>
+								<ArrowLeft className="size-4" />
+							</button>
+							<button
+								type="button"
+								aria-label="Siguiente evento"
+								onClick={() => scrollByCard(1)}
+								className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908]"
+							>
+								<ArrowRight className="size-4" />
+							</button>
+						</div>
+					)}
 				</motion.div>
 
-				{/* Events - scroll horizontal con snap en mobile, grilla desde md */}
-				<div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 lg:gap-8 [&::-webkit-scrollbar]:hidden">
-					{featuredEvents.map((event, index) => (
-						<div key={event.slug} className="w-[78%] shrink-0 snap-center sm:w-[55%] md:w-auto md:shrink md:snap-none">
+				{/* Events - carrusel horizontal continuo tipo passline */}
+				<div
+					ref={trackRef}
+					onMouseEnter={pause}
+					onMouseLeave={resumeSoon}
+					onTouchStart={pause}
+					onTouchEnd={resumeSoon}
+					onPointerDown={pause}
+					onPointerUp={resumeSoon}
+					className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-12 lg:gap-8 lg:px-12 [&::-webkit-scrollbar]:hidden"
+				>
+					{trackItems.map((event, index) => (
+						<div
+							key={`${event.slug}-${index}`}
+							data-carousel-card
+							className="w-[78%] shrink-0 sm:w-[55%] md:w-1/2 lg:w-1/3"
+						>
 							<EventCard event={event} index={index} />
 						</div>
 					))}
