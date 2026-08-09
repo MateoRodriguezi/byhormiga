@@ -1,10 +1,19 @@
 "use client";
 
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { Calendar, MapPin } from "lucide-react";
+import { Calendar, MapPin, ArrowLeft, ArrowRight } from "lucide-react";
+import {
+	Carousel,
+	CarouselContent,
+	CarouselItem,
+	type CarouselApi,
+} from "@/components/ui/carousel";
 import type { Event } from "@/lib/types";
+
+const AUTOPLAY_DELAY_MS = 5000;
 
 interface FeaturedEventsSectionProps {
 	events: Event[];
@@ -109,6 +118,49 @@ function EventCard({ event, index }: { event: Event; index: number }) {
 export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 	const featuredEvents = events.filter((event) => event.featured);
 
+	const [api, setApi] = useState<CarouselApi>();
+	const [canScrollPrev, setCanScrollPrev] = useState(false);
+	const [canScrollNext, setCanScrollNext] = useState(false);
+	const autoplayTimer = useRef<ReturnType<typeof setInterval> | null>(null);
+
+	const stopAutoplay = useCallback(() => {
+		if (autoplayTimer.current) {
+			clearInterval(autoplayTimer.current);
+			autoplayTimer.current = null;
+		}
+	}, []);
+
+	const startAutoplay = useCallback(() => {
+		if (!api) return;
+		stopAutoplay();
+		autoplayTimer.current = setInterval(() => {
+			api.scrollNext();
+		}, AUTOPLAY_DELAY_MS);
+	}, [api, stopAutoplay]);
+
+	useEffect(() => {
+		if (!api) return;
+
+		const onSelect = () => {
+			setCanScrollPrev(api.canScrollPrev());
+			setCanScrollNext(api.canScrollNext());
+		};
+		onSelect();
+		api.on("select", onSelect);
+		api.on("reInit", onSelect);
+
+		startAutoplay();
+		api.on("pointerDown", stopAutoplay);
+
+		return () => {
+			stopAutoplay();
+			api.off("select", onSelect);
+			api.off("reInit", onSelect);
+			api.off("pointerDown", stopAutoplay);
+		};
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [api]);
+
 	if (!featuredEvents.length) {
 		return null;
 	}
@@ -122,24 +174,65 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					whileInView={{ opacity: 1, y: 0 }}
 					viewport={{ once: true }}
 					transition={{ duration: 0.6 }}
-					className="mb-16"
+					className="mb-16 flex items-end justify-between gap-6"
 				>
-					<span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
-						SELECCIÓN
-					</span>
-					<h2 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.035em] text-white">
-						Próximos eventos
-					</h2>
+					<div>
+						<span className="text-xs sm:text-sm tracking-[.18em] text-white uppercase font-mono">
+							SELECCIÓN
+						</span>
+						<h2 className="mt-4 text-4xl lg:text-6xl font-black font-heading tracking-[-0.035em] text-white">
+							Próximos eventos
+						</h2>
+					</div>
+
+					{/* Arrows */}
+					<div className="hidden sm:flex items-center gap-3 shrink-0 mb-2">
+						<button
+							type="button"
+							aria-label="Evento anterior"
+							onClick={() => {
+								stopAutoplay();
+								api?.scrollPrev();
+							}}
+							disabled={!canScrollPrev}
+							className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white"
+						>
+							<ArrowLeft className="size-4" />
+						</button>
+						<button
+							type="button"
+							aria-label="Siguiente evento"
+							onClick={() => {
+								stopAutoplay();
+								api?.scrollNext();
+							}}
+							disabled={!canScrollNext}
+							className="flex items-center justify-center size-11 border border-white/30 text-white transition-colors duration-300 hover:bg-white hover:text-[#0a0908] disabled:opacity-30 disabled:hover:bg-transparent disabled:hover:text-white"
+						>
+							<ArrowRight className="size-4" />
+						</button>
+					</div>
 				</motion.div>
 
-				{/* Events - scroll horizontal con snap en mobile, grilla desde md */}
-				<div className="-mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-6 sm:px-6 md:mx-0 md:grid md:grid-cols-2 md:gap-6 md:overflow-visible md:px-0 md:pb-0 lg:grid-cols-3 lg:gap-8 [&::-webkit-scrollbar]:hidden">
-					{featuredEvents.map((event, index) => (
-						<div key={event.slug} className="w-[78%] shrink-0 snap-center sm:w-[55%] md:w-auto md:shrink md:snap-none">
-							<EventCard event={event} index={index} />
-						</div>
-					))}
-				</div>
+				{/* Events - carrusel horizontal tipo passline */}
+				<Carousel
+					setApi={setApi}
+					opts={{ loop: true, align: "start" }}
+					className="-mx-4 px-4 sm:-mx-6 sm:px-6 lg:-mx-12 lg:px-12"
+					onMouseEnter={stopAutoplay}
+					onMouseLeave={startAutoplay}
+				>
+					<CarouselContent>
+						{featuredEvents.map((event, index) => (
+							<CarouselItem
+								key={event.slug}
+								className="basis-[78%] sm:basis-[55%] md:basis-1/2 lg:basis-1/3"
+							>
+								<EventCard event={event} index={index} />
+							</CarouselItem>
+						))}
+					</CarouselContent>
+				</Carousel>
 			</div>
 		</section>
 	);
