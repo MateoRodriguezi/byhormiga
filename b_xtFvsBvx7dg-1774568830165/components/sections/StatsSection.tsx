@@ -53,7 +53,7 @@ function StatItem({
 			initial={{ opacity: 0, y: 40 }}
 			animate={isInView ? { opacity: 1, y: 0 } : {}}
 			transition={{ duration: 0.6, ease: [0.215, 0.61, 0.355, 1] }}
-			className="py-8 sm:py-12 lg:py-16 px-4 sm:px-6 lg:px-12"
+			className="py-8 sm:py-12 lg:py-16"
 		>
 			<div
 				className="font-black tracking-tight text-white"
