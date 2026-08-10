@@ -52,7 +52,7 @@ function GalleryCard({ item, index }: { item: any; index: number }) {
       className={`relative overflow-hidden group block ${
         index === 0 ? 'col-span-2 row-span-2' : ''
       }`}
-      style={{ minHeight: index === 0 ? '400px' : '200px' }}
+      style={{ minHeight: index === 0 ? '460px' : '230px' }}
     >
       {getGalleryCoverImage(item) ? (
         <Image
@@ -144,7 +144,7 @@ export default async function GaleriaPage() {
                   {category.subtitle && (
                     <p className="text-sm text-gray-400 mb-8 max-w-3xl">{category.subtitle}</p>
                   )}
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-[3px]">
+                  <div className="-mx-6 grid grid-cols-2 gap-[3px] lg:-mx-12 lg:grid-cols-4">
                     {category.items.map((item, index) => (
                       <GalleryCard key={item.id} item={item} index={index} />
                     ))}
@@ -158,7 +158,7 @@ export default async function GaleriaPage() {
                   <h2 className="text-2xl lg:text-3xl font-black text-white font-heading tracking-[-0.035em] mb-8">
                     Otros momentos
                   </h2>
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-[3px]">
+                  <div className="-mx-6 grid grid-cols-2 gap-[3px] lg:-mx-12 lg:grid-cols-4">
                     {uncategorizedGallery.map((item, index) => (
                       <GalleryCard key={item.id} item={item} index={index} />
                     ))}
