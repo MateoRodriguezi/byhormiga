@@ -60,7 +60,7 @@ export function AboutSection({
         <div className="absolute inset-0 bg-gradient-to-b from-[#0a0908]/85 via-[#0a0908]/70 to-[#0a0908]" />
       </div>
 
-      <div className="relative z-10 mx-auto max-w-[1400px] px-4 sm:px-6 lg:px-12">
+      <div className="relative z-10 mx-auto max-w-[1600px] px-4 sm:px-6 lg:px-12">
         {/* Header */}
         <motion.div
           ref={ref}
@@ -100,7 +100,7 @@ export function AboutSection({
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.3 + index * 0.1 }}
-              className={`max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center ${isLast ? '' : 'mb-20 lg:mb-32'}`}
+              className={`mx-auto grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-16 items-center ${isLast ? '' : 'mb-20 lg:mb-32'}`}
             >
               <div className={`lg:col-span-3 ${imageFirst ? 'lg:order-1' : 'lg:order-2'}`}>
                 {block.images?.length > 0 && (
