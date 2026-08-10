@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, type PointerEvent as ReactPointerEvent } from "react";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
@@ -116,6 +116,7 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 	const trackRef = useRef<HTMLDivElement>(null);
 	const pausedRef = useRef(false);
 	const resumeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+	const dragStateRef = useRef<{ pointerId: number; startX: number; startY: number; dragging: boolean } | null>(null);
 
 	const pause = useCallback(() => {
 		if (resumeTimeoutRef.current) {
@@ -163,6 +164,29 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 			if (resumeTimeoutRef.current) clearTimeout(resumeTimeoutRef.current);
 		};
 	}, []);
+
+	const DRAG_THRESHOLD_PX = 6;
+
+	const handlePointerDown = (e: ReactPointerEvent) => {
+		dragStateRef.current = { pointerId: e.pointerId, startX: e.clientX, startY: e.clientY, dragging: false };
+	};
+
+	const handlePointerMove = (e: ReactPointerEvent) => {
+		const state = dragStateRef.current;
+		if (!state || state.pointerId !== e.pointerId || state.dragging) return;
+		const dx = Math.abs(e.clientX - state.startX);
+		const dy = Math.abs(e.clientY - state.startY);
+		if (dx > DRAG_THRESHOLD_PX || dy > DRAG_THRESHOLD_PX) {
+			state.dragging = true;
+			pause();
+		}
+	};
+
+	const handlePointerUp = (e: ReactPointerEvent) => {
+		const wasDragging = dragStateRef.current?.pointerId === e.pointerId && dragStateRef.current.dragging;
+		dragStateRef.current = null;
+		if (wasDragging) resumeSoon();
+	};
 
 	const scrollByCard = (direction: 1 | -1) => {
 		const track = trackRef.current;
@@ -226,12 +250,10 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 				{/* Events - carrusel horizontal continuo tipo passline */}
 				<div
 					ref={trackRef}
-					onMouseEnter={pause}
-					onMouseLeave={resumeSoon}
-					onTouchStart={pause}
-					onTouchEnd={resumeSoon}
-					onPointerDown={pause}
-					onPointerUp={resumeSoon}
+					onPointerDown={handlePointerDown}
+					onPointerMove={handlePointerMove}
+					onPointerUp={handlePointerUp}
+					onPointerCancel={handlePointerUp}
 					className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(to_right,transparent,black_56px,black_calc(100%-56px),transparent)] [-webkit-mask-repeat:no-repeat] [mask-image:linear-gradient(to_right,transparent,black_56px,black_calc(100%-56px),transparent)] [mask-repeat:no-repeat] [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-12 lg:gap-8 lg:px-12 [&::-webkit-scrollbar]:hidden"
 				>
 					{trackItems.map((event, index) => (
