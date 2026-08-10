@@ -38,10 +38,10 @@ export default async function HomePage() {
       <main>
         <HeroSection />
         <Ticker />
-        <AboutSection heroTitle={about.hero_title} storyBlocks={about.story_blocks} />
-        <StatsSection stats={about.stats} />
         <FeaturedEventsSection events={events} />
+        <StatsSection stats={about.stats} />
         <GallerySection items={withPinnedGalleryOrder(gallery)} />
+        <AboutSection heroTitle={about.hero_title} storyBlocks={about.story_blocks} />
         {/* Ocultada temporalmente: todavia no hay contenido de noticias/prensa cargado */}
         {/* <PressSection posts={posts} /> */}
         <PartnersSection sponsors={[]} />
