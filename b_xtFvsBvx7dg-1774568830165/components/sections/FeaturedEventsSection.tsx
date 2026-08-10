@@ -232,7 +232,7 @@ export function FeaturedEventsSection({ events }: FeaturedEventsSectionProps) {
 					onTouchEnd={resumeSoon}
 					onPointerDown={pause}
 					onPointerUp={resumeSoon}
-					className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-12 lg:gap-8 lg:px-12 [&::-webkit-scrollbar]:hidden"
+					className="-mx-4 flex gap-4 overflow-x-auto px-4 pb-2 [-ms-overflow-style:none] [-webkit-mask-image:linear-gradient(to_right,transparent,black_56px,black_calc(100%-56px),transparent)] [-webkit-mask-repeat:no-repeat] [mask-image:linear-gradient(to_right,transparent,black_56px,black_calc(100%-56px),transparent)] [mask-repeat:no-repeat] [scrollbar-width:none] sm:-mx-6 sm:px-6 lg:-mx-12 lg:gap-8 lg:px-12 [&::-webkit-scrollbar]:hidden"
 				>
 					{trackItems.map((event, index) => (
 						<div
